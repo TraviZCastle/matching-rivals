@@ -9,20 +9,25 @@ import {
   useState,
 } from "react";
 import {
-  createProductionRoom,
-  ensureAnonymousSession,
-  hasSupabaseConfig,
-  joinProductionRoom,
-  loadProductionRoom,
-  openProductionRound,
-  setProductionReady,
-  startProductionRematch,
-  submitProductionMatch,
-  subscribeToProductionRoom,
-  type ProductionRoomSnapshot,
-} from "@/lib/supabase-game";
+  createPracticeRoom,
+  createRaceRoom,
+  ensureGameSession,
+  expireGameRoom,
+  hasGameConfig,
+  isLocalTestBackend,
+  joinGameRoom,
+  loadGameRoom,
+  openGameRound,
+  setGameReady,
+  startGameRematch,
+  submitGameMatch,
+  subscribeToGameRoom,
+  type GameRoomSnapshot,
+} from "@/lib/game-service";
+import { getQuestionSet, QUESTION_SETS, type QuestionSetSlug } from "@/lib/question-sets";
 
-type RoomStatus = "waiting" | "countdown" | "playing" | "finished";
+type RoomStatus = "waiting" | "countdown" | "playing" | "finished" | "expired";
+type RoomMode = "race" | "practice";
 
 type Player = {
   id: string;
@@ -38,8 +43,11 @@ type Room = {
   id: string;
   code: string;
   status: RoomStatus;
+  mode: RoomMode;
   hostId: string;
+  questionSetId: string;
   createdAt: number;
+  expiresAt: number;
   countdownAt?: number;
   startedAt?: number;
   round: number;
@@ -53,14 +61,7 @@ type Question = {
   note: string;
 };
 
-const QUESTIONS: Question[] = [
-  { id: "q1", zh: "灵感", en: "inspiration", note: "noun" },
-  { id: "q2", zh: "勇气", en: "courage", note: "noun" },
-  { id: "q3", zh: "瞬间", en: "moment", note: "noun" },
-  { id: "q4", zh: "边界", en: "boundary", note: "noun" },
-  { id: "q5", zh: "探索", en: "explore", note: "verb" },
-  { id: "q6", zh: "精准", en: "precise", note: "adjective" },
-];
+const QUESTIONS: Question[] = getQuestionSet("cet4")?.questions ?? [];
 
 const SESSION_ROOM = "matching-rivals:active-room";
 
@@ -102,6 +103,13 @@ function formatTime(milliseconds: number) {
   return `${minutes ? `${minutes}:` : ""}${minutes ? String(remainder).padStart(2, "0") : remainder}.${String(millisecondsPart).padStart(3, "0")}`;
 }
 
+function formatRoomLifetime(milliseconds: number) {
+  const totalSeconds = Math.max(0, Math.ceil(milliseconds / 1000));
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes}:${String(seconds).padStart(2, "0")}`;
+}
+
 function playerTime(player: Player, room: Room, now: number) {
   if (!room.startedAt) return 0;
   return (player.finishedAt ?? now) - room.startedAt;
@@ -111,13 +119,16 @@ function toTimestamp(value: string | null) {
   return value ? Date.parse(value) : undefined;
 }
 
-function mapProductionSnapshot(snapshot: ProductionRoomSnapshot) {
+function mapGameSnapshot(snapshot: GameRoomSnapshot) {
   const room: Room = {
     id: snapshot.room.id,
     code: snapshot.room.code,
     status: snapshot.room.status,
+    mode: snapshot.room.mode,
     hostId: snapshot.room.host_id,
+    questionSetId: snapshot.room.question_set_slug ?? snapshot.room.question_set_id,
     createdAt: Date.parse(snapshot.room.created_at),
+    expiresAt: Date.parse(snapshot.room.expires_at),
     countdownAt: toTimestamp(snapshot.room.countdown_at),
     startedAt: toTimestamp(snapshot.room.started_at),
     round: snapshot.room.round,
@@ -140,11 +151,13 @@ function mapProductionSnapshot(snapshot: ProductionRoomSnapshot) {
   return { room, questions };
 }
 
-function friendlyProductionError(error: unknown) {
+function friendlyGameError(error: unknown) {
   const message = error instanceof Error ? error.message : String(error);
   if (message.includes("room_not_found")) return "Room not found. Check the code with your rival.";
   if (message.includes("room_full")) return "This room already has two players.";
   if (message.includes("room_not_joinable")) return "This match has already started.";
+  if (message.includes("room_expired")) return "This room has expired. Create a new one to keep playing.";
+  if (message.includes("question_set_not_found")) return "That question set is not available.";
   if (message.includes("invalid_nickname")) return "Use a nickname between 1 and 24 characters.";
   if (message.includes("Failed to fetch")) return "Could not reach the match server. Check your connection.";
   return "Something went wrong. Please try again.";
@@ -153,6 +166,8 @@ function friendlyProductionError(error: unknown) {
 export default function Home() {
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
+  const [mode, setMode] = useState<RoomMode>("race");
+  const [questionSetSlug, setQuestionSetSlug] = useState<QuestionSetSlug>("cet4");
   const [room, setRoom] = useState<Room | null>(null);
   const [questions, setQuestions] = useState<Question[]>(QUESTIONS);
   const [playerId, setPlayerId] = useState("");
@@ -168,8 +183,8 @@ export default function Home() {
   const errorTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const refreshRoom = useCallback(async (roomId: string) => {
-    const snapshot = await loadProductionRoom(roomId);
-    const mapped = mapProductionSnapshot(snapshot);
+    const snapshot = await loadGameRoom(roomId);
+    const mapped = mapGameSnapshot(snapshot);
     const measuredAt = Date.now();
     setRoom(mapped.room);
     setQuestions(mapped.questions);
@@ -182,7 +197,7 @@ export default function Home() {
     queueMicrotask(() => setName(randomNickname()));
     let cancelled = false;
 
-    if (!hasSupabaseConfig()) {
+    if (!hasGameConfig()) {
       queueMicrotask(() => {
         setFormError("The live match server is not configured.");
         setBooting(false);
@@ -192,7 +207,7 @@ export default function Home() {
 
     void (async () => {
       try {
-        const user = await ensureAnonymousSession();
+        const user = await ensureGameSession();
         if (cancelled) return;
         setPlayerId(user.id);
 
@@ -205,7 +220,7 @@ export default function Home() {
           }
         }
       } catch (error) {
-        if (!cancelled) setFormError(friendlyProductionError(error));
+        if (!cancelled) setFormError(friendlyGameError(error));
       } finally {
         if (!cancelled) setBooting(false);
       }
@@ -223,11 +238,11 @@ export default function Home() {
     let unsubscribe: (() => void) | undefined;
     let cancelled = false;
 
-    void subscribeToProductionRoom(roomId, async () => {
+    void subscribeToGameRoom(roomId, async () => {
       try {
         await refreshRoom(roomId);
       } catch (error) {
-        const message = friendlyProductionError(error);
+        const message = friendlyGameError(error);
         setFormError(message);
         setLiveMessage(message);
       }
@@ -237,7 +252,7 @@ export default function Home() {
         else unsubscribe = stop;
       })
       .catch((error) => {
-        if (!cancelled) setFormError(friendlyProductionError(error));
+        if (!cancelled) setFormError(friendlyGameError(error));
       });
 
     return () => {
@@ -247,7 +262,7 @@ export default function Home() {
   }, [room?.id, playerId, refreshRoom]);
 
   useEffect(() => {
-    if (!room || (room.status !== "countdown" && room.status !== "playing")) {
+    if (!room || room.status === "finished" || room.status === "expired") {
       return;
     }
     const timer = window.setInterval(() => setClock(Date.now()), 47);
@@ -258,17 +273,32 @@ export default function Home() {
     if (room?.status !== "countdown" || !room.countdownAt) return;
     const target = room.countdownAt;
     const timer = window.setTimeout(() => {
-      void openProductionRound(room.id)
+      void openGameRound(room.id)
         .then(() => refreshRoom(room.id))
-        .catch((error) => setFormError(friendlyProductionError(error)));
+        .catch((error) => setFormError(friendlyGameError(error)));
     }, Math.max(0, target - (Date.now() + serverClockOffset)));
     return () => window.clearTimeout(timer);
   }, [room?.status, room?.countdownAt, room?.id, refreshRoom, serverClockOffset]);
+
+  const expiringRoomId = room?.id;
+  const expiringRoomStatus = room?.status;
+  const expiringRoomAt = room?.expiresAt;
+  useEffect(() => {
+    if (!expiringRoomId || !expiringRoomAt || expiringRoomStatus === "finished" || expiringRoomStatus === "expired") return;
+    const timer = window.setTimeout(() => {
+      void expireGameRoom(expiringRoomId)
+        .then(() => refreshRoom(expiringRoomId))
+        .catch((error) => setFormError(friendlyGameError(error)));
+    }, Math.max(0, expiringRoomAt - (Date.now() + serverClockOffset)));
+    return () => window.clearTimeout(timer);
+  }, [expiringRoomId, expiringRoomStatus, expiringRoomAt, refreshRoom, serverClockOffset]);
 
   const me = room?.players.find((player) => player.id === playerId);
   const opponent = room?.players.find((player) => player.id !== playerId);
   const isHost = room?.hostId === playerId;
   const serverClock = clock + serverClockOffset;
+  const selectedQuestionSet = getQuestionSet(questionSetSlug) ?? QUESTION_SETS[0];
+  const roomQuestionSet = getQuestionSet(room?.questionSetId ?? questionSetSlug) ?? selectedQuestionSet;
 
   const chineseOrder = useMemo(
     () => seededShuffle(questions, `${room?.code}-${room?.round}-${playerId}-zh`),
@@ -279,7 +309,7 @@ export default function Home() {
     [questions, room?.code, room?.round, playerId],
   );
 
-  async function rememberProductionRoom(roomId: string) {
+  async function rememberGameRoom(roomId: string) {
     window.sessionStorage.setItem(SESSION_ROOM, roomId);
     await refreshRoom(roomId);
   }
@@ -287,7 +317,7 @@ export default function Home() {
   function validateName() {
     const cleanName = name.trim();
     if (!cleanName) {
-      setFormError("Enter a nickname before starting a match.");
+      setFormError("Enter a nickname before continuing.");
       return null;
     }
     return cleanName;
@@ -298,11 +328,28 @@ export default function Home() {
     if (!cleanName) return;
     setBusy(true);
     try {
-      const createdRoom = await createProductionRoom(cleanName);
+      const createdRoom = await createRaceRoom(cleanName, questionSetSlug);
       setFormError("");
-      await rememberProductionRoom(createdRoom.id);
+      await rememberGameRoom(createdRoom.id);
     } catch (error) {
-      const message = friendlyProductionError(error);
+      const message = friendlyGameError(error);
+      setFormError(message);
+      setLiveMessage(message);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function startPractice() {
+    const cleanName = validateName();
+    if (!cleanName) return;
+    setBusy(true);
+    try {
+      const practiceRoom = await createPracticeRoom(cleanName, questionSetSlug);
+      setFormError("");
+      await rememberGameRoom(practiceRoom.id);
+    } catch (error) {
+      const message = friendlyGameError(error);
       setFormError(message);
       setLiveMessage(message);
     } finally {
@@ -320,11 +367,11 @@ export default function Home() {
     }
     setBusy(true);
     try {
-      const joinedRoom = await joinProductionRoom(code, cleanName);
+      const joinedRoom = await joinGameRoom(code, cleanName);
       setFormError("");
-      await rememberProductionRoom(joinedRoom.id);
+      await rememberGameRoom(joinedRoom.id);
     } catch (error) {
-      const message = friendlyProductionError(error);
+      const message = friendlyGameError(error);
       setFormError(message);
       setLiveMessage(message);
     } finally {
@@ -336,10 +383,10 @@ export default function Home() {
     if (!room || !me || room.status !== "waiting") return;
     setBusy(true);
     try {
-      await setProductionReady(room.id, !me.ready);
+      await setGameReady(room.id, !me.ready);
       await refreshRoom(room.id);
     } catch (error) {
-      setFormError(friendlyProductionError(error));
+      setFormError(friendlyGameError(error));
     } finally {
       setBusy(false);
     }
@@ -370,7 +417,7 @@ export default function Home() {
     const chinesePairId = selectedZh;
     setBusy(true);
     try {
-      const result = await submitProductionMatch(room.id, chinesePairId, questionId);
+      const result = await submitGameMatch(room.id, chinesePairId, questionId);
       if (!result.correct) {
         setErrorPair({ zh: chinesePairId, en: questionId });
         setLiveMessage("Incorrect match. Input is locked for half a second.");
@@ -386,7 +433,7 @@ export default function Home() {
       }
       await refreshRoom(room.id);
     } catch (error) {
-      setFormError(friendlyProductionError(error));
+      setFormError(friendlyGameError(error));
     } finally {
       setBusy(false);
     }
@@ -398,10 +445,10 @@ export default function Home() {
     setErrorPair(null);
     setBusy(true);
     try {
-      await startProductionRematch(room.id);
+      await startGameRematch(room.id);
       await refreshRoom(room.id);
     } catch (error) {
-      setFormError(friendlyProductionError(error));
+      setFormError(friendlyGameError(error));
     } finally {
       setBusy(false);
     }
@@ -410,10 +457,11 @@ export default function Home() {
   function exitRoom() {
     window.sessionStorage.removeItem(SESSION_ROOM);
     setRoom(null);
-    setQuestions(QUESTIONS);
+    setQuestions(selectedQuestionSet.questions);
     setName(randomNickname());
     setCode("");
     setFormError("");
+    setLiveMessage("");
     setSelectedZh(null);
     setErrorPair(null);
   }
@@ -424,64 +472,90 @@ export default function Home() {
         <SiteHeader />
         <section className="hero" id="top">
           <div className="hero-copy">
-            <p className="eyebrow"><span>01</span> HEAD-TO-HEAD WORD RACE</p>
-            <h1>Find the right word.<br /><em>Beat your rival.</em></h1>
-            <p className="intro">The same Chinese–English set, two players, and one focused race that takes less than two minutes.</p>
+            <p className="eyebrow"><span>01</span> RACE OR PRACTICE</p>
+            <h1>Find the right word.<br /><em>Train your instinct.</em></h1>
+            <p className="intro">Practice alone or race a rival through a focused Chinese–English set before the five-minute room closes.</p>
             <div className="feature-row" aria-label="Match features">
               <span><b>06</b> word pairs</span>
-              <span><b>2P</b> live sync</span>
-              <span><b>MS</b> precision timing</span>
+              <span><b>05</b> question sets</span>
+              <span><b>5M</b> room lifetime</span>
             </div>
           </div>
 
           <form className="lobby-card" onSubmit={joinRoom}>
             <div className="card-heading">
-              <div><p>READY ROOM</p><h2>Enter the arena</h2></div>
-              <span className="round-index">1/2</span>
+              <div><p>CHOOSE YOUR MODE</p><h2>{mode === "race" ? "Enter the arena" : "Solo practice"}</h2></div>
+              <span className="round-index">{mode === "race" ? "2P" : "1P"}</span>
+            </div>
+
+            <div className="mode-toggle" role="group" aria-label="Game mode">
+              <button type="button" className={mode === "race" ? "active" : ""} aria-pressed={mode === "race"} onClick={() => setMode("race")}>Rival match</button>
+              <button type="button" className={mode === "practice" ? "active" : ""} aria-pressed={mode === "practice"} onClick={() => setMode("practice")}>Solo practice</button>
             </div>
 
             <label htmlFor="player-name">Your nickname</label>
             <input
               id="player-name"
               value={name}
-              maxLength={12}
+              maxLength={24}
               onChange={(event) => setName(event.target.value)}
               placeholder="e.g. Night Owl"
               autoComplete="nickname"
             />
 
-            <button className="primary-action" type="button" onClick={createRoom} disabled={busy || booting}>
-              <span>Create a new match</span><b aria-hidden="true">↗</b>
+            <label htmlFor="question-set">Question set</label>
+            <select id="question-set" value={questionSetSlug} onChange={(event) => setQuestionSetSlug(event.target.value as QuestionSetSlug)}>
+              {QUESTION_SETS.map((set) => <option value={set.slug} key={set.slug}>{set.label} · {set.description}</option>)}
+            </select>
+
+            <button className="primary-action" type="button" onClick={mode === "race" ? createRoom : startPractice} disabled={busy || booting}>
+              <span>{mode === "race" ? "Create a rival match" : "Start solo practice"}</span><b aria-hidden="true">↗</b>
             </button>
 
-            <div className="or"><span />OR JOIN A RIVAL<span /></div>
+            {mode === "race" && <>
+              <div className="or"><span />OR JOIN A RIVAL<span /></div>
 
-            <label htmlFor="room-code">Six-digit room code</label>
-            <div className="join-row">
-              <input
-                id="room-code"
-                className="code-input"
-                value={code}
-                inputMode="numeric"
-                maxLength={6}
-                onChange={(event) => setCode(event.target.value.replace(/\D/g, ""))}
-                placeholder="000 000"
-              />
-              <button type="submit" aria-label="Join room" disabled={busy || booting}>Join</button>
-            </div>
+              <label htmlFor="room-code">Six-digit room code</label>
+              <div className="join-row">
+                <input
+                  id="room-code"
+                  className="code-input"
+                  value={code}
+                  inputMode="numeric"
+                  maxLength={6}
+                  onChange={(event) => setCode(event.target.value.replace(/\D/g, ""))}
+                  placeholder="000 000"
+                />
+                <button type="submit" aria-label="Join room" disabled={busy || booting}>Join</button>
+              </div>
+            </>}
 
             {formError && <p className="form-error" role="alert">{formError}</p>}
-            <p className="privacy-note"><span aria-hidden="true">◇</span> Anonymous session · No email required</p>
+            <p className="privacy-note"><span aria-hidden="true">◇</span> {isLocalTestBackend() ? "Local test data · This browser only" : "Anonymous session · No email required"}</p>
           </form>
         </section>
 
         <section className="how-it-works" aria-labelledby="how-title">
-          <div><p className="eyebrow"><span>02</span> HOW IT WORKS</p><h2 id="how-title">Settle it in three steps</h2></div>
+          <div><p className="eyebrow"><span>02</span> HOW IT WORKS</p><h2 id="how-title">Choose your own pace</h2></div>
           <ol>
-            <li><b>01</b><span><strong>Invite a rival</strong>Share the six-digit room code</span></li>
-            <li><b>02</b><span><strong>Start together</strong>The countdown begins when both are ready</span></li>
-            <li><b>03</b><span><strong>Match quickly</strong>The fastest player wins the round</span></li>
+            <li><b>01</b><span><strong>Pick a set</strong>Choose CET-4, CET-6, TEM-8, IELTS, or TOEFL</span></li>
+            <li><b>02</b><span><strong>Choose a mode</strong>Practice alone or invite a rival</span></li>
+            <li><b>03</b><span><strong>Finish first</strong>The race ends as soon as one player completes every pair</span></li>
           </ol>
+        </section>
+      </main>
+    );
+  }
+
+  if (room.status === "expired") {
+    return (
+      <main className="arena-shell expired-shell">
+        <SiteHeader onExit={exitRoom} />
+        <section className="expired-stage">
+          <p className="eyebrow"><span>TIME</span> ROOM CLOSED</p>
+          <h1>This room has expired.</h1>
+          <p>Rooms stay active for five minutes. Start a fresh room to play again.</p>
+          <button className="ready-button" type="button" onClick={exitRoom}><span>Return to lobby</span><b>↗</b></button>
         </section>
       </main>
     );
@@ -503,6 +577,7 @@ export default function Home() {
             <strong>{room.code.slice(0, 3)} {room.code.slice(3)}</strong>
             <button type="button" onClick={copyRoomCode}>{copied ? "COPIED" : "COPY CODE"}</button>
           </div>
+          <p className="room-expiry">{roomQuestionSet.label} · ROOM EXPIRES IN {formatRoomLifetime(room.expiresAt - serverClock)}</p>
 
           <div className="versus-board">
             <PlayerReadyCard player={me} label="YOU" accent="acid" />
@@ -546,53 +621,43 @@ export default function Home() {
     );
   }
 
-  if (room.status === "playing" && me.finishedAt) {
-    return (
-      <main className="finish-wait-screen">
-        <div className="finish-orbit" aria-hidden="true"><i /><i /><i /></div>
-        <p className="eyebrow"><span>FINISH</span> TIME LOCKED</p>
-        <h1>{formatTime(playerTime(me, room, serverClock))}</h1>
-        <p>{me.mistakes} errors · Waiting for {opponent?.name} to finish</p>
-        <div className="opponent-progress"><i style={{ width: `${((opponent?.progress ?? 0) / questions.length) * 100}%` }} /></div>
-        <strong>{opponent?.progress ?? 0} / {questions.length}</strong>
-      </main>
-    );
-  }
-
   if (room.status === "finished") {
     const standings = [...room.players].sort((left, right) => {
+      if (Boolean(left.finishedAt) !== Boolean(right.finishedAt)) return left.finishedAt ? -1 : 1;
+      if (!left.finishedAt && !right.finishedAt) return right.progress - left.progress || left.mistakes - right.mistakes;
       const timeDelta = playerTime(left, room, serverClock) - playerTime(right, room, serverClock);
       return timeDelta || left.mistakes - right.mistakes;
     });
     const winner = standings[0];
-    const tie = standings.length === 2
-      && playerTime(standings[0], room, serverClock) === playerTime(standings[1], room, serverClock)
-      && standings[0].mistakes === standings[1].mistakes;
+    const isPractice = room.mode === "practice";
 
     return (
       <main className="result-shell">
-        <SiteHeader roomCode={room.code} />
+        <SiteHeader roomCode={isPractice ? undefined : room.code} />
         <section className="result-stage">
-          <p className="eyebrow"><span>RESULT</span> ROUND {String(room.round).padStart(2, "0")}</p>
-          <div className="result-title"><span>{tie ? "DRAW" : winner.id === playerId ? "VICTORY" : "RESULT"}</span><h1>{tie ? "Evenly matched." : `${winner.name} wins.`}</h1></div>
+          <p className="eyebrow"><span>{isPractice ? "PRACTICE" : "RESULT"}</span> {roomQuestionSet.label} · ROUND {String(room.round).padStart(2, "0")}</p>
+          <div className="result-title">
+            <span>{isPractice ? "COMPLETE" : winner.id === playerId ? "VICTORY" : "RESULT"}</span>
+            <h1>{isPractice ? "Set complete." : `${winner.name} wins.`}</h1>
+          </div>
 
           <div className="standings">
             {standings.map((player, index) => (
               <article className={`standing-card ${player.id === playerId ? "is-me" : ""}`} key={player.id}>
                 <div className="place">0{index + 1}</div>
                 <div className="result-avatar">{player.name.slice(0, 1).toUpperCase()}</div>
-                <div className="standing-player"><span>{player.id === playerId ? "YOU" : "RIVAL"}</span><h2>{player.name}</h2></div>
-                <div className="standing-stat"><span>TIME</span><strong>{formatTime(playerTime(player, room, serverClock))}</strong></div>
+                <div className="standing-player"><span>{isPractice ? "SOLO" : player.id === playerId ? "YOU" : "RIVAL"}</span><h2>{player.name}</h2></div>
+                <div className="standing-stat"><span>TIME</span><strong>{player.finishedAt ? formatTime(playerTime(player, room, serverClock)) : "DNF"}</strong></div>
                 <div className="standing-stat"><span>ERRORS</span><strong>{String(player.mistakes).padStart(2, "0")}</strong></div>
               </article>
             ))}
           </div>
 
           <div className="result-actions">
-            <button className="primary-result" type="button" onClick={startRematch} disabled={busy}><span>Play again</span><b>↻</b></button>
+            <button className="primary-result" type="button" onClick={startRematch} disabled={busy}><span>{isPractice ? "Practice again" : "Play again"}</span><b>↻</b></button>
             <button className="secondary-result" type="button" onClick={exitRoom}>Leave room</button>
           </div>
-          {!isHost && <p className="result-note">Either player can start a rematch.</p>}
+          {!isPractice && !isHost && <p className="result-note">Either player can start a rematch.</p>}
         </section>
       </main>
     );
@@ -602,22 +667,22 @@ export default function Home() {
     <main className="game-shell">
       <header className="game-header">
         <div className="compact-brand"><BrandIcon compact /><strong>Matching Rivals</strong></div>
-        <div className="round-label">ROUND {String(room.round).padStart(2, "0")} <i /> ROOM {room.code}</div>
+        <div className="round-label">{room.mode === "practice" ? "PRACTICE" : `ROUND ${String(room.round).padStart(2, "0")}`} <i /> {roomQuestionSet.label}{room.mode === "race" ? ` · ROOM ${room.code}` : ""}</div>
         <div className="game-tools">
           <div className="game-timer"><span>TIME</span><strong>{formatTime(playerTime(me, room, serverClock))}</strong></div>
           <ThemeToggle />
         </div>
       </header>
 
-      <section className="score-ribbon" aria-label="Player progress">
+      <section className={`score-ribbon ${room.mode === "practice" ? "is-solo" : ""}`} aria-label="Player progress">
         <ProgressPlayer player={me} label="YOU" total={questions.length} />
-        <div className="mini-versus">VS</div>
-        {opponent && <ProgressPlayer player={opponent} label="RIVAL" total={questions.length} reverse />}
+        {room.mode === "race" && <div className="mini-versus">VS</div>}
+        {room.mode === "race" && opponent && <ProgressPlayer player={opponent} label="RIVAL" total={questions.length} reverse />}
       </section>
 
       <section className="match-stage">
         <div className="match-heading">
-          <div><p className="eyebrow"><span>MATCH</span> CHINESE FIRST, THEN ENGLISH</p><h1>Find every matching pair.</h1></div>
+          <div><p className="eyebrow"><span>{room.mode === "practice" ? "PRACTICE" : "MATCH"}</span> {roomQuestionSet.label} · CHINESE FIRST, THEN ENGLISH</p><h1>{room.mode === "practice" ? "Complete the set at your pace." : "Find every matching pair."}</h1></div>
           <div className="match-status"><strong>{me.progress}/{questions.length}</strong><span>COMPLETE</span></div>
         </div>
 
@@ -689,7 +754,7 @@ function SiteHeader({ roomCode, onExit }: { roomCode?: string; onExit?: () => vo
       </a>
       <div className="nav-actions">
         {roomCode && <span className="nav-room">ROOM {roomCode}</span>}
-        <span className="demo-pill"><i /> LIVE BETA</span>
+        <span className="demo-pill"><i /> {isLocalTestBackend() ? "LOCAL TEST" : "LIVE BETA"}</span>
         <ThemeToggle />
         {onExit && <button className="text-button" type="button" onClick={onExit}>EXIT</button>}
       </div>

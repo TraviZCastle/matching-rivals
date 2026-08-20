@@ -5,11 +5,14 @@ export type ProductionRoom = {
   code: string;
   host_id: string;
   question_set_id: string;
-  status: "waiting" | "countdown" | "playing" | "finished";
+  question_set_slug?: string;
+  mode: "race" | "practice";
+  status: "waiting" | "countdown" | "playing" | "finished" | "expired";
   round: number;
   countdown_at: string | null;
   started_at: string | null;
   finished_at: string | null;
+  expires_at: string;
   created_at: string;
 };
 
@@ -92,12 +95,23 @@ export async function ensureAnonymousSession(client = getSupabaseGameClient()) {
   return data.user;
 }
 
-export async function createProductionRoom(nickname: string) {
+export async function createProductionRoom(nickname: string, questionSetSlug: string) {
   const client = getSupabaseGameClient();
   await ensureAnonymousSession(client);
   const { data, error } = await client.rpc("create_room", {
     p_nickname: nickname,
-    p_question_set_slug: "starter",
+    p_question_set_slug: questionSetSlug,
+  });
+  if (error) throw error;
+  return data as ProductionRoom;
+}
+
+export async function createProductionPracticeRoom(nickname: string, questionSetSlug: string) {
+  const client = getSupabaseGameClient();
+  await ensureAnonymousSession(client);
+  const { data, error } = await client.rpc("create_practice_room", {
+    p_nickname: nickname,
+    p_question_set_slug: questionSetSlug,
   });
   if (error) throw error;
   return data as ProductionRoom;
@@ -156,6 +170,15 @@ export async function submitProductionMatch(
 export async function startProductionRematch(roomId: string) {
   const client = getSupabaseGameClient();
   const { data, error } = await client.rpc("start_rematch", {
+    p_room_id: roomId,
+  });
+  if (error) throw error;
+  return data as ProductionRoom;
+}
+
+export async function expireProductionRoom(roomId: string) {
+  const client = getSupabaseGameClient();
+  const { data, error } = await client.rpc("expire_room_if_due", {
     p_room_id: roomId,
   });
   if (error) throw error;
