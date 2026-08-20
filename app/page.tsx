@@ -2,6 +2,7 @@
 
 import {
   FormEvent,
+  KeyboardEvent as ReactKeyboardEvent,
   useCallback,
   useEffect,
   useMemo,
@@ -14,6 +15,7 @@ import {
   ensureGameSession,
   expireGameRoom,
   hasGameConfig,
+  hasSharedSoloLeaderboard,
   isLocalTestBackend,
   joinGameRoom,
   loadGameRoom,
@@ -63,9 +65,16 @@ type Question = {
   note: string;
 };
 
+type DropdownOption<T extends string> = {
+  value: T;
+  label: string;
+  description?: string;
+};
+
 const QUESTIONS: Question[] = getQuestionSet("cet4")?.questions.slice(0, 6) ?? [];
 
 const SESSION_ROOM = "matching-rivals:active-room";
+const LOCAL_NICKNAME = "matching-rivals:nickname";
 
 const NICKNAME_ADJECTIVES = ["Quiet", "Swift", "Cedar", "Silver", "Moss", "Dusk", "Night", "Calm"];
 const NICKNAME_ANIMALS = ["Lynx", "Fox", "Heron", "Otter", "Owl", "Raven", "Koi", "Wolf"];
@@ -75,6 +84,24 @@ function randomNickname() {
   const animal = NICKNAME_ANIMALS[Math.floor(Math.random() * NICKNAME_ANIMALS.length)];
   return `${adjective} ${animal}`;
 }
+
+function cachedNickname() {
+  const current = window.localStorage.getItem(LOCAL_NICKNAME)?.trim();
+  if (current && current.length <= 24) return current;
+  const created = randomNickname();
+  window.localStorage.setItem(LOCAL_NICKNAME, created);
+  return created;
+}
+
+function titleCaseLabel(value: string) {
+  return value.replace(/\b[a-z]/g, (character) => character.toUpperCase());
+}
+
+const QUESTION_SET_DROPDOWN_OPTIONS: DropdownOption<QuestionSetSlug>[] = QUESTION_SETS.map((set) => ({
+  value: set.slug,
+  label: set.label,
+  description: titleCaseLabel(set.description),
+}));
 
 function seededShuffle<T>(items: T[], seedText: string) {
   let seed = 2166136261;
@@ -183,6 +210,9 @@ export default function Home() {
   const [busy, setBusy] = useState(false);
   const [booting, setBooting] = useState(true);
   const [soloLeaderboard, setSoloLeaderboard] = useState<GameSoloRecord[]>([]);
+  const [soloLeaderboardLoading, setSoloLeaderboardLoading] = useState(false);
+  const [recordsOpen, setRecordsOpen] = useState(false);
+  const [recordsQuestionSetSlug, setRecordsQuestionSetSlug] = useState<QuestionSetSlug>("cet4");
   const errorTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const refreshRoom = useCallback(async (roomId: string) => {
@@ -197,7 +227,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    queueMicrotask(() => setName(randomNickname()));
+    queueMicrotask(() => setName(cachedNickname()));
     let cancelled = false;
 
     if (!hasGameConfig()) {
@@ -234,6 +264,20 @@ export default function Home() {
       if (errorTimerRef.current) clearTimeout(errorTimerRef.current);
     };
   }, [refreshRoom]);
+
+  useEffect(() => {
+    if (!recordsOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setRecordsOpen(false);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [recordsOpen]);
 
   useEffect(() => {
     if (!room?.id || !playerId) return;
@@ -302,22 +346,25 @@ export default function Home() {
   const serverClock = clock + serverClockOffset;
   const selectedQuestionSet = getQuestionSet(questionSetSlug) ?? QUESTION_SETS[0];
   const roomQuestionSet = getQuestionSet(room?.questionSetId ?? questionSetSlug) ?? selectedQuestionSet;
-  const soloSetSlug = room?.mode === "practice" ? room.questionSetId : questionSetSlug;
+  const recordsQuestionSet = getQuestionSet(recordsQuestionSetSlug) ?? QUESTION_SETS[0];
 
   useEffect(() => {
-    if (mode !== "practice" && room?.mode !== "practice") return;
+    if (!recordsOpen) return;
     let cancelled = false;
-    void loadSoloLeaderboard(soloSetSlug)
+    void loadSoloLeaderboard(recordsQuestionSetSlug)
       .then((records) => {
         if (!cancelled) setSoloLeaderboard(records);
       })
       .catch(() => {
         if (!cancelled) setSoloLeaderboard([]);
+      })
+      .finally(() => {
+        if (!cancelled) setSoloLeaderboardLoading(false);
       });
     return () => {
       cancelled = true;
     };
-  }, [mode, soloSetSlug, room?.mode, room?.status, room?.round]);
+  }, [recordsOpen, recordsQuestionSetSlug, room?.status, room?.round]);
 
   const chineseOrder = useMemo(
     () => seededShuffle(questions, `${room?.code}-${room?.round}-${playerId}-zh`),
@@ -339,7 +386,17 @@ export default function Home() {
       setFormError("Enter a nickname before continuing.");
       return null;
     }
+    window.localStorage.setItem(LOCAL_NICKNAME, cleanName);
+    if (cleanName !== name) setName(cleanName);
     return cleanName;
+  }
+
+  function updateNickname(nextName: string) {
+    setName(nextName);
+    const cleanName = nextName.trim();
+    if (cleanName && cleanName.length <= 24) {
+      window.localStorage.setItem(LOCAL_NICKNAME, cleanName);
+    }
   }
 
   async function createRoom() {
@@ -477,12 +534,12 @@ export default function Home() {
     window.sessionStorage.removeItem(SESSION_ROOM);
     setRoom(null);
     setQuestions(selectedQuestionSet.questions.slice(0, 6));
-    setName(randomNickname());
     setCode("");
     setFormError("");
     setLiveMessage("");
     setSelectedZh(null);
     setErrorPair(null);
+    setRecordsOpen(false);
   }
 
   function selectMode(nextMode: RoomMode) {
@@ -490,89 +547,110 @@ export default function Home() {
     setFormError("");
   }
 
+  function openRecords(questionSetId: string) {
+    setSoloLeaderboardLoading(true);
+    setRecordsQuestionSetSlug(getQuestionSet(questionSetId)?.slug ?? QUESTION_SETS[0].slug);
+    setRecordsOpen(true);
+  }
+
+  function selectRecordsQuestionSet(slug: QuestionSetSlug) {
+    setSoloLeaderboardLoading(true);
+    setRecordsQuestionSetSlug(slug);
+  }
+
   if (!room || !me) {
     return (
-      <main className="site-shell">
-        <SiteHeader />
-        <section className="hero" id="top">
+      <>
+        <main className="site-shell">
+          <SiteHeader />
+          <section className="hero" id="top">
           <div className="hero-copy">
-            <p className="eyebrow"><span>01</span> RACE OR PRACTICE</p>
             <h1>Find the right word.<br /><em>Train your instinct.</em></h1>
-            <p className="intro">Practice alone or race a rival through a focused Chinese–English set before the five-minute room closes.</p>
-            <div className="feature-row" aria-label="Match features">
-              <span><b>06</b> word pairs</span>
-              <span><b>05</b> question sets</span>
-              <span><b>5M</b> room lifetime</span>
-            </div>
+            <p className="intro">Practice alone or race a rival through a focused Chinese–English set designed to sharpen recall.</p>
           </div>
 
           <form className="lobby-card" onSubmit={joinRoom}>
             <div className="card-heading">
-              <div><p>CHOOSE YOUR MODE</p><h2>{mode === "race" ? "Enter the arena" : "Solo practice"}</h2></div>
+              <div><p>Choose Your Mode</p><h2>{mode === "race" ? "Enter The Arena" : "Solo Practice"}</h2></div>
               <span className="round-index">{mode === "race" ? "2P" : "1P"}</span>
             </div>
 
-            <div className="mode-toggle" role="group" aria-label="Game mode">
-              <button type="button" className={mode === "race" ? "active" : ""} aria-pressed={mode === "race"} onClick={() => selectMode("race")}>Rival match</button>
-              <button type="button" className={mode === "practice" ? "active" : ""} aria-pressed={mode === "practice"} onClick={() => selectMode("practice")}>Solo practice</button>
+            <div className="mode-toggle" role="group" aria-label="Game Mode">
+              <button type="button" className={mode === "race" ? "active" : ""} aria-pressed={mode === "race"} onClick={() => selectMode("race")}>Rival Match</button>
+              <button type="button" className={mode === "practice" ? "active" : ""} aria-pressed={mode === "practice"} onClick={() => selectMode("practice")}>Solo Practice</button>
             </div>
 
-            <label htmlFor="player-name">Your nickname</label>
+            <label htmlFor="player-name">Your Nickname</label>
             <input
               id="player-name"
               value={name}
               maxLength={24}
-              onChange={(event) => setName(event.target.value)}
+              onChange={(event) => updateNickname(event.target.value)}
               placeholder="e.g. Night Owl"
               autoComplete="nickname"
             />
 
-            <label htmlFor="question-set">Question set</label>
-            <select id="question-set" value={questionSetSlug} onChange={(event) => setQuestionSetSlug(event.target.value as QuestionSetSlug)}>
-              {QUESTION_SETS.map((set) => <option value={set.slug} key={set.slug}>{set.label} · {set.description}</option>)}
-            </select>
+            <label htmlFor="question-set">Question Set</label>
+            <CompositeDropdown
+              id="question-set"
+              value={questionSetSlug}
+              options={QUESTION_SET_DROPDOWN_OPTIONS}
+              onChange={setQuestionSetSlug}
+            />
 
             <button className="primary-action" type="button" onClick={mode === "race" ? createRoom : startPractice} disabled={busy || booting}>
-              <span>{mode === "race" ? "Create a rival match" : "Start solo practice"}</span><b aria-hidden="true">↗</b>
+              <span>{mode === "race" ? "New Match" : "Solo Practice"}</span><b aria-hidden="true">↗</b>
             </button>
 
             <div className="mode-detail-panel">
               {mode === "race" ? (
-                <div className="race-join-panel">
-                  <div className="or"><span />OR JOIN A RIVAL<span /></div>
-                  <label htmlFor="room-code">Six-digit room code</label>
-                  <div className="join-row">
+                <div className="mode-support-panel">
+                  <div className="mode-support-copy">
+                    <strong>Join A Rival</strong>
+                    <p>Enter the six-digit code shared by your rival.</p>
+                  </div>
+                  <div className="mode-support-row">
                     <input
                       id="room-code"
                       className="code-input"
+                      aria-label="Room Code"
                       value={code}
                       inputMode="numeric"
                       maxLength={6}
                       onChange={(event) => setCode(event.target.value.replace(/\D/g, ""))}
                       placeholder="000 000"
                     />
-                    <button type="submit" aria-label="Join room" disabled={busy || booting}>Join</button>
+                    <button type="submit" aria-label="Join Room" disabled={busy || booting}>Join Room</button>
                   </div>
                 </div>
               ) : (
-                <SoloLeaderboard records={soloLeaderboard} setLabel={selectedQuestionSet.label} compact />
+                <div className="mode-support-panel">
+                  <div className="mode-support-copy">
+                    <strong>Leaderboard</strong>
+                    <p>See the ten fastest solo finishes.</p>
+                  </div>
+                  <div className="mode-support-row is-solo-action">
+                    <button type="button" onClick={() => openRecords(questionSetSlug)}>View Records</button>
+                  </div>
+                </div>
               )}
             </div>
 
             {formError && <p className="form-error" role="alert">{formError}</p>}
-            <p className="privacy-note"><span aria-hidden="true">◇</span> {isLocalTestBackend() ? "Local test data · This browser only" : "Anonymous session · No email required"}</p>
           </form>
-        </section>
-
-        <section className="how-it-works" aria-labelledby="how-title">
-          <div><p className="eyebrow"><span>02</span> HOW IT WORKS</p><h2 id="how-title">Choose your own pace</h2></div>
-          <ol>
-            <li><b>01</b><span><strong>Pick a set</strong>Choose CET-4, CET-6, TEM-8, IELTS, or TOEFL</span></li>
-            <li><b>02</b><span><strong>Choose a mode</strong>Practice alone or invite a rival</span></li>
-            <li><b>03</b><span><strong>Finish first</strong>The race ends as soon as one player completes every pair</span></li>
-          </ol>
-        </section>
-      </main>
+          </section>
+        </main>
+        {recordsOpen && (
+          <RecordsDialog
+            records={soloLeaderboard}
+            loading={soloLeaderboardLoading}
+            selectedSetSlug={recordsQuestionSet.slug}
+            shared={hasSharedSoloLeaderboard()}
+            onSelectSet={selectRecordsQuestionSet}
+            onClose={() => setRecordsOpen(false)}
+          />
+        )}
+      </>
     );
   }
 
@@ -581,10 +659,10 @@ export default function Home() {
       <main className="arena-shell expired-shell">
         <SiteHeader onExit={exitRoom} />
         <section className="expired-stage">
-          <p className="eyebrow"><span>TIME</span> ROOM CLOSED</p>
+          <p className="eyebrow"><span>Time</span> Room Closed</p>
           <h1>This room has expired.</h1>
           <p>Rooms stay active for five minutes. Start a fresh room to play again.</p>
-          <button className="ready-button" type="button" onClick={exitRoom}><span>Return to lobby</span><b>↗</b></button>
+          <button className="ready-button" type="button" onClick={exitRoom}><span>Return To Lobby</span><b>↗</b></button>
         </section>
       </main>
     );
@@ -596,27 +674,27 @@ export default function Home() {
         <SiteHeader roomCode={room.code} onExit={exitRoom} />
         <section className="waiting-stage">
           <div className="waiting-intro">
-            <p className="eyebrow"><span>ROUND {String(room.round).padStart(2, "0")}</span> READY ROOM</p>
+            <p className="eyebrow"><span>Round {String(room.round).padStart(2, "0")}</span> Ready Room</p>
             <h1>{opponent ? "Your rival is here." : "Waiting for a rival."}</h1>
             <p>{opponent ? "Once both players are ready, the match begins after a three-second countdown." : "Open this page in a new browser tab and join with the room code."}</p>
           </div>
 
           <div className="room-code-card">
-            <span>ROOM CODE</span>
+            <span>Room Code</span>
             <strong>{room.code.slice(0, 3)} {room.code.slice(3)}</strong>
-            <button type="button" onClick={copyRoomCode}>{copied ? "COPIED" : "COPY CODE"}</button>
+            <button type="button" onClick={copyRoomCode}>{copied ? "Copied" : "Copy Code"}</button>
           </div>
-          <p className="room-expiry">{roomQuestionSet.label} · ROOM EXPIRES IN {formatRoomLifetime(room.expiresAt - serverClock)}</p>
+          <p className="room-expiry">{roomQuestionSet.label} · Expires In {formatRoomLifetime(room.expiresAt - serverClock)}</p>
 
           <div className="versus-board">
-            <PlayerReadyCard player={me} label="YOU" accent="acid" />
-            <div className="versus-mark"><span>V</span><span>S</span></div>
+            <PlayerReadyCard player={me} label="You" accent="acid" />
+            <div className="versus-mark">VS</div>
             {opponent ? (
-              <PlayerReadyCard player={opponent} label="RIVAL" accent="aqua" />
+              <PlayerReadyCard player={opponent} label="Rival" accent="aqua" />
             ) : (
               <div className="player-ready-card empty-player">
                 <div className="avatar-slot"><i /><i /><i /></div>
-                <p>RIVAL</p><h2>Waiting to join</h2><span className="player-state">OFFLINE</span>
+                <p>Rival</p><h2>Waiting To Join</h2><span className="player-state">Offline</span>
               </div>
             )}
           </div>
@@ -627,8 +705,8 @@ export default function Home() {
             onClick={toggleReady}
             disabled={!opponent || busy}
           >
-            <span>{!opponent ? "Waiting for a rival" : me.ready ? "Cancel ready" : "I'm ready"}</span>
-            <b>{me.ready ? "READY" : "GO"}</b>
+            <span>{!opponent ? "Waiting For Rival" : me.ready ? "Cancel Ready" : "Ready"}</span>
+            <b>{me.ready ? "Ready" : "Go"}</b>
           </button>
           {opponent && me.ready && !opponent.ready && <p className="ready-hint">Ready. Waiting for {opponent.name}…</p>}
         </section>
@@ -642,7 +720,7 @@ export default function Home() {
     return (
       <main className="countdown-screen">
         <div className="countdown-grid" aria-hidden="true" />
-        <p>ROUND {String(room.round).padStart(2, "0")} · GET READY</p>
+        <p>Round {String(room.round).padStart(2, "0")} · Get Ready</p>
         <div className="countdown-number" key={count}>{count}</div>
         <h1>{count === 1 ? "Lock in" : "The match is about to begin"}</h1>
         <div className="countdown-players"><span>{me.name}</span><i /> <span>{opponent?.name}</span></div>
@@ -661,12 +739,13 @@ export default function Home() {
     const isPractice = room.mode === "practice";
 
     return (
-      <main className="result-shell">
-        <SiteHeader roomCode={isPractice ? undefined : room.code} />
-        <section className="result-stage">
-          <p className="eyebrow"><span>{isPractice ? "PRACTICE" : "RESULT"}</span> {roomQuestionSet.label} · ROUND {String(room.round).padStart(2, "0")}</p>
+      <>
+        <main className="result-shell">
+          <SiteHeader roomCode={isPractice ? undefined : room.code} />
+          <section className="result-stage">
+          <p className="eyebrow"><span>{isPractice ? "Practice" : "Result"}</span> {roomQuestionSet.label} · Round {String(room.round).padStart(2, "0")}</p>
           <div className="result-title">
-            <span>{isPractice ? "COMPLETE" : winner.id === playerId ? "VICTORY" : "RESULT"}</span>
+            <span>{isPractice ? "Complete" : winner.id === playerId ? "Victory" : "Result"}</span>
             <h1>{isPractice ? "Set complete." : `${winner.name} wins.`}</h1>
           </div>
 
@@ -675,22 +754,32 @@ export default function Home() {
               <article className={`standing-card ${player.id === playerId ? "is-me" : ""}`} key={player.id}>
                 <div className="place">0{index + 1}</div>
                 <div className="result-avatar">{player.name.slice(0, 1).toUpperCase()}</div>
-                <div className="standing-player"><span>{isPractice ? "SOLO" : player.id === playerId ? "YOU" : "RIVAL"}</span><h2>{player.name}</h2></div>
-                <div className="standing-stat"><span>TIME</span><strong>{player.finishedAt ? formatTime(playerTime(player, room, serverClock)) : "DNF"}</strong></div>
-                <div className="standing-stat"><span>ERRORS</span><strong>{String(player.mistakes).padStart(2, "0")}</strong></div>
+                <div className="standing-player"><span>{isPractice ? "Solo" : player.id === playerId ? "You" : "Rival"}</span><h2>{player.name}</h2></div>
+                <div className="standing-stat"><span>Time</span><strong>{player.finishedAt ? formatTime(playerTime(player, room, serverClock)) : "DNF"}</strong></div>
+                <div className="standing-stat"><span>Errors</span><strong>{String(player.mistakes).padStart(2, "0")}</strong></div>
               </article>
             ))}
           </div>
 
-          {isPractice && <SoloLeaderboard records={soloLeaderboard} setLabel={roomQuestionSet.label} />}
-
-          <div className="result-actions">
-            <button className="primary-result" type="button" onClick={startRematch} disabled={busy}><span>{isPractice ? "Practice again" : "Play again"}</span><b>↻</b></button>
-            <button className="secondary-result" type="button" onClick={exitRoom}>Leave room</button>
+          <div className={`result-actions ${isPractice ? "is-practice" : ""}`}>
+            <button className="primary-result" type="button" onClick={startRematch} disabled={busy}><span>{isPractice ? "Practice Again" : "Play Again"}</span><b>↻</b></button>
+            {isPractice && <button className="secondary-result" type="button" onClick={() => openRecords(room.questionSetId)}>View Records</button>}
+            <button className="secondary-result" type="button" onClick={exitRoom}>Leave Room</button>
           </div>
           {!isPractice && !isHost && <p className="result-note">Either player can start a rematch.</p>}
-        </section>
-      </main>
+          </section>
+        </main>
+        {isPractice && recordsOpen && (
+          <RecordsDialog
+            records={soloLeaderboard}
+            loading={soloLeaderboardLoading}
+            selectedSetSlug={recordsQuestionSet.slug}
+            shared={hasSharedSoloLeaderboard()}
+            onSelectSet={selectRecordsQuestionSet}
+            onClose={() => setRecordsOpen(false)}
+          />
+        )}
+      </>
     );
   }
 
@@ -698,28 +787,28 @@ export default function Home() {
     <main className="game-shell">
       <header className="game-header">
         <div className="compact-brand"><BrandIcon compact /><strong>Matching Rivals</strong></div>
-        <div className="round-label">{room.mode === "practice" ? "PRACTICE" : `ROUND ${String(room.round).padStart(2, "0")}`} <i /> {roomQuestionSet.label}{room.mode === "race" ? ` · ROOM ${room.code}` : ""}</div>
+        <div className="round-label">{room.mode === "practice" ? "Practice" : `Round ${String(room.round).padStart(2, "0")}`} <i /> {roomQuestionSet.label}{room.mode === "race" ? ` · Room ${room.code}` : ""}</div>
         <div className="game-tools">
-          <div className="game-timer"><span>TIME</span><strong>{formatTime(playerTime(me, room, serverClock))}</strong></div>
+          <div className="game-timer"><span>Time</span><strong>{formatTime(playerTime(me, room, serverClock))}</strong></div>
           <ThemeToggle />
         </div>
       </header>
 
-      <section className={`score-ribbon ${room.mode === "practice" ? "is-solo" : ""}`} aria-label="Player progress">
-        <ProgressPlayer player={me} label="YOU" total={questions.length} />
+      <section className={`score-ribbon ${room.mode === "practice" ? "is-solo" : ""}`} aria-label="Player Progress">
+        <ProgressPlayer player={me} label="You" total={questions.length} />
         {room.mode === "race" && <div className="mini-versus">VS</div>}
-        {room.mode === "race" && opponent && <ProgressPlayer player={opponent} label="RIVAL" total={questions.length} reverse />}
+        {room.mode === "race" && opponent && <ProgressPlayer player={opponent} label="Rival" total={questions.length} reverse />}
       </section>
 
       <section className="match-stage">
         <div className="match-heading">
-          <div><p className="eyebrow"><span>{room.mode === "practice" ? "PRACTICE" : "MATCH"}</span> {roomQuestionSet.label} · CHINESE FIRST, THEN ENGLISH</p><h1>{room.mode === "practice" ? "Complete the set at your pace." : "Find every matching pair."}</h1></div>
-          <div className="match-status"><strong>{me.progress}/{questions.length}</strong><span>COMPLETE</span></div>
+          <div><p className="eyebrow"><span>{room.mode === "practice" ? "Practice" : "Match"}</span> {roomQuestionSet.label} · Chinese First, Then English</p><h1>{room.mode === "practice" ? "Complete the set at your pace." : "Find every matching pair."}</h1></div>
+          <div className="match-status"><strong>{me.progress}/{questions.length}</strong><span>Complete</span></div>
         </div>
 
         <div className="match-board">
           <div className="word-column chinese-column">
-            <div className="column-label"><span>ZH</span>CHINESE</div>
+            <div className="column-label"><span>ZH</span>Chinese</div>
             {chineseOrder.map((question, index) => {
               const matched = me.matchedIds.includes(question.id);
               const selected = selectedZh === question.id;
@@ -741,10 +830,10 @@ export default function Home() {
             })}
           </div>
 
-          <div className="board-spine" aria-hidden="true"><span>SELECT</span><i /> <span>MATCH</span></div>
+          <div className="board-spine" aria-hidden="true"><span>Select</span><i /> <span>Match</span></div>
 
           <div className="word-column english-column">
-            <div className="column-label"><span>EN</span>ENGLISH</div>
+            <div className="column-label"><span>EN</span>English</div>
             {englishOrder.map((question, index) => {
               const matched = me.matchedIds.includes(question.id);
               const failed = errorPair?.en === question.id;
@@ -758,7 +847,7 @@ export default function Home() {
                 >
                   <span className="word-index">{String.fromCharCode(65 + index)}</span>
                   <strong>{question.en}</strong>
-                  <small>{question.note}</small>
+                  <small>{titleCaseLabel(question.note)}</small>
                   <i aria-hidden="true">{matched ? "✓" : ""}</i>
                 </button>
               );
@@ -767,9 +856,9 @@ export default function Home() {
         </div>
 
         <div className="game-footer">
-          <span>ERRORS <b>{me.mistakes}</b></span>
+          <span>Errors <b>{me.mistakes}</b></span>
           <div className="game-progress"><i style={{ width: `${(me.progress / questions.length) * 100}%` }} /></div>
-          <span>{me.progress === questions.length ? "COMPLETE" : `${questions.length - me.progress} PAIRS LEFT`}</span>
+          <span>{me.progress === questions.length ? "Complete" : `${questions.length - me.progress} Pairs Left`}</span>
         </div>
         <p className="sr-only" aria-live="polite">{liveMessage}</p>
       </section>
@@ -779,15 +868,15 @@ export default function Home() {
 
 function SiteHeader({ roomCode, onExit }: { roomCode?: string; onExit?: () => void }) {
   return (
-    <nav className="topbar" aria-label="Main navigation">
-      <a className="brand" href="#top" aria-label="Matching Rivals home">
+    <nav className="topbar" aria-label="Main Navigation">
+      <a className="brand" href="#top" aria-label="Matching Rivals Home">
         <BrandIcon /><span>Matching Rivals</span>
       </a>
       <div className="nav-actions">
-        {roomCode && <span className="nav-room">ROOM {roomCode}</span>}
-        <span className="demo-pill"><i /> {isLocalTestBackend() ? "LOCAL TEST" : "LIVE BETA"}</span>
+        {roomCode && <span className="nav-room">Room {roomCode}</span>}
+        <span className="demo-pill"><i /> {isLocalTestBackend() ? "Local Test" : "Live Beta"}</span>
         <ThemeToggle />
-        {onExit && <button className="text-button" type="button" onClick={onExit}>EXIT</button>}
+        {onExit && <button className="text-button" type="button" onClick={onExit}>Exit</button>}
       </div>
     </nav>
   );
@@ -815,8 +904,8 @@ function ThemeToggle() {
       className="theme-toggle"
       type="button"
       onClick={toggleTheme}
-      aria-label="Toggle light and dark mode"
-      title="Toggle light and dark mode"
+      aria-label="Toggle Light And Dark Mode"
+      title="Toggle Light And Dark Mode"
     >
       <span className="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
       <span className="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
@@ -829,7 +918,7 @@ function PlayerReadyCard({ player, label, accent }: { player: Player; label: str
     <div className={`player-ready-card ${accent}`}>
       <div className="ready-avatar">{player.name.slice(0, 1).toUpperCase()}</div>
       <p>{label}</p><h2>{player.name}</h2>
-      <span className={`player-state ${player.ready ? "ready" : ""}`}>{player.ready ? "READY" : "NOT READY"}</span>
+      <span className={`player-state ${player.ready ? "ready" : ""}`}>{player.ready ? "Ready" : "Not Ready"}</span>
     </div>
   );
 }
@@ -844,29 +933,163 @@ function ProgressPlayer({ player, label, total, reverse = false }: { player: Pla
   );
 }
 
-function SoloLeaderboard({
-  records,
-  setLabel,
+function CompositeDropdown<T extends string>({
+  id,
+  value,
+  options,
+  onChange,
+  ariaLabel,
   compact = false,
 }: {
-  records: GameSoloRecord[];
-  setLabel: string;
+  id: string;
+  value: T;
+  options: DropdownOption<T>[];
+  onChange: (value: T) => void;
+  ariaLabel?: string;
   compact?: boolean;
 }) {
+  const selectedIndex = Math.max(0, options.findIndex((option) => option.value === value));
+  const selectedOption = options[selectedIndex];
+  const [open, setOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(selectedIndex);
+  const rootRef = useRef<HTMLDivElement | null>(null);
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const optionRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const listboxId = `${id}-listbox`;
+
+  useEffect(() => {
+    if (!open) return;
+    const closeOnOutsidePress = (event: PointerEvent) => {
+      if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
+    };
+    document.addEventListener("pointerdown", closeOnOutsidePress);
+    return () => document.removeEventListener("pointerdown", closeOnOutsidePress);
+  }, [open]);
+
+  useEffect(() => {
+    if (open) optionRefs.current[activeIndex]?.focus();
+  }, [activeIndex, open]);
+
+  function openAt(index: number) {
+    setActiveIndex(index);
+    setOpen(true);
+  }
+
+  function closeAndFocusTrigger() {
+    setOpen(false);
+    window.requestAnimationFrame(() => triggerRef.current?.focus());
+  }
+
+  function chooseOption(option: DropdownOption<T>) {
+    onChange(option.value);
+    closeAndFocusTrigger();
+  }
+
+  function moveActive(delta: number) {
+    setActiveIndex((current) => (current + delta + options.length) % options.length);
+  }
+
+  function handleTriggerKeyDown(event: ReactKeyboardEvent<HTMLButtonElement>) {
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      event.preventDefault();
+      openAt(event.key === "ArrowDown" ? selectedIndex : (selectedIndex - 1 + options.length) % options.length);
+    }
+    if (event.key === "Escape" && open) {
+      event.preventDefault();
+      event.stopPropagation();
+      closeAndFocusTrigger();
+    }
+  }
+
+  function handleOptionKeyDown(event: ReactKeyboardEvent<HTMLButtonElement>, index: number) {
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      event.preventDefault();
+      moveActive(event.key === "ArrowDown" ? 1 : -1);
+      return;
+    }
+    if (event.key === "Home" || event.key === "End") {
+      event.preventDefault();
+      setActiveIndex(event.key === "Home" ? 0 : options.length - 1);
+      return;
+    }
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      chooseOption(options[index]);
+      return;
+    }
+    if (event.key === "Escape") {
+      event.preventDefault();
+      event.stopPropagation();
+      closeAndFocusTrigger();
+    } else if (event.key === "Tab") {
+      setOpen(false);
+    }
+  }
+
   return (
-    <section className={`solo-leaderboard ${compact ? "is-compact" : ""}`} aria-label={`${setLabel} solo leaderboard`}>
-      <header>
-        <div><span>SOLO RECORDS</span><strong>{setLabel}</strong></div>
-        <small>TOP 10</small>
-      </header>
-      {records.length ? (
+    <div className={`composite-dropdown ${compact ? "is-compact" : ""} ${open ? "is-open" : ""}`} ref={rootRef}>
+      <button
+        id={id}
+        ref={triggerRef}
+        className="composite-dropdown-trigger"
+        type="button"
+        role="combobox"
+        aria-label={ariaLabel}
+        aria-controls={listboxId}
+        aria-expanded={open}
+        aria-haspopup="listbox"
+        onClick={() => open ? setOpen(false) : openAt(selectedIndex)}
+        onKeyDown={handleTriggerKeyDown}
+      >
+        <span className="dropdown-trigger-copy">
+          <strong>{selectedOption.label}</strong>
+          {selectedOption.description && <small>{selectedOption.description}</small>}
+        </span>
+        <span className="dropdown-chevron" aria-hidden="true"><i /><i /></span>
+      </button>
+
+      {open && (
+        <div className="composite-dropdown-menu" id={listboxId} role="listbox" aria-label={ariaLabel ?? "Question Set"}>
+          {options.map((option, index) => (
+            <button
+              className={`composite-dropdown-option ${option.value === value ? "is-selected" : ""}`}
+              type="button"
+              role="option"
+              aria-selected={option.value === value}
+              tabIndex={index === activeIndex ? 0 : -1}
+              key={option.value}
+              ref={(element) => { optionRefs.current[index] = element; }}
+              onClick={() => chooseOption(option)}
+              onKeyDown={(event) => handleOptionKeyDown(event, index)}
+              onPointerMove={() => setActiveIndex(index)}
+            >
+              <span className="dropdown-option-index">{String(index + 1).padStart(2, "0")}</span>
+              <span className="dropdown-option-copy"><strong>{option.label}</strong>{option.description && <small>{option.description}</small>}</span>
+              <span className="dropdown-option-mark" aria-hidden="true">{option.value === value ? "✓" : ""}</span>
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function SoloLeaderboard({ records, loading }: {
+  records: GameSoloRecord[];
+  loading: boolean;
+}) {
+  return (
+    <section className="solo-leaderboard" aria-label="Solo Leaderboard">
+      {loading ? (
+        <p className="leaderboard-empty">Loading Records...</p>
+      ) : records.length ? (
         <ol>
           {records.map((record, index) => (
             <li className={index < 3 ? `podium rank-${index + 1}` : ""} key={record.id}>
               <span className="leaderboard-rank">{String(index + 1).padStart(2, "0")}</span>
               <strong title={record.nickname}>{record.nickname}</strong>
               <time>{formatTime(record.duration_ms)}</time>
-              <small>{record.mistakes} ERR</small>
+              <small>{record.mistakes} Err</small>
             </li>
           ))}
         </ol>
@@ -874,5 +1097,56 @@ function SoloLeaderboard({
         <p className="leaderboard-empty">No records yet. Set the first time.</p>
       )}
     </section>
+  );
+}
+
+function RecordsDialog({
+  records,
+  loading,
+  selectedSetSlug,
+  shared,
+  onSelectSet,
+  onClose,
+}: {
+  records: GameSoloRecord[];
+  loading: boolean;
+  selectedSetSlug: QuestionSetSlug;
+  shared: boolean;
+  onSelectSet: (slug: QuestionSetSlug) => void;
+  onClose: () => void;
+}) {
+  const selectedSet = getQuestionSet(selectedSetSlug) ?? QUESTION_SETS[0];
+
+  return (
+    <div className="records-modal-layer">
+      <button className="records-backdrop" type="button" aria-label="Close Records" onClick={onClose} />
+      <section className="records-dialog" role="dialog" aria-modal="true" aria-labelledby="records-title">
+        <header>
+          <div>
+            <p><span>Solo Records</span></p>
+            <h2 id="records-title">{selectedSet.label} Leaderboard</h2>
+          </div>
+          <button className="records-close" type="button" aria-label="Close Records" onClick={onClose}>×</button>
+        </header>
+        <div className="records-summary">
+          <div>
+            <p>{shared ? "Shared across all Matching Rivals players." : "Records stay in this browser until Supabase is configured."}</p>
+            <span>Fastest 10</span>
+          </div>
+          <div className="records-set-picker">
+            <span>Question Set</span>
+            <CompositeDropdown
+              id="record-question-set"
+              ariaLabel="Record Question Set"
+              value={selectedSetSlug}
+              options={QUESTION_SET_DROPDOWN_OPTIONS}
+              onChange={onSelectSet}
+              compact
+            />
+          </div>
+        </div>
+        <SoloLeaderboard records={records} loading={loading} />
+      </section>
+    </div>
   );
 }

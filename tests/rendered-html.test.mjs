@@ -15,17 +15,18 @@ test("server-renders the Matching Rivals lobby", async () => {
   const html = await renderedHtml();
   assert.match(html, /<title>Matching Rivals<\/title>/i);
   assert.match(html, /Find the right word/);
-  assert.match(html, /Create a rival match/);
-  assert.match(html, /Solo practice/);
-  assert.match(html, /Six-digit room code/);
-  for (const set of ["CET-4", "CET-6", "TEM-8", "IELTS", "TOEFL"]) {
-    assert.match(html, new RegExp(set));
-  }
+  assert.match(html, /New Match/);
+  assert.match(html, /Solo Practice/);
+  assert.match(html, /Room Code/);
+  assert.match(html, /role="combobox"/);
+  assert.match(html, /CET-4/);
+  assert.doesNotMatch(html, /<select|<option/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/);
 });
 
 test("ships race, practice, first-finisher, and half-second error interactions", async () => {
   const source = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
+  const styles = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
 
   assert.match(source, /ensureGameSession/);
   assert.match(source, /subscribeToGameRoom/);
@@ -39,17 +40,48 @@ test("ships race, practice, first-finisher, and half-second error interactions",
   assert.match(source, /startRematch/);
   assert.match(source, /matching-rivals:theme/);
   assert.match(source, /randomNickname/);
+  assert.match(source, /matching-rivals:nickname/);
+  assert.match(source, /function cachedNickname/);
+  assert.match(source, /window\.localStorage\.setItem\(LOCAL_NICKNAME/);
   assert.match(source, /BrandIcon/);
   assert.match(source, /Boolean\(errorPair\)/);
   assert.match(source, /}, 500\);/);
   assert.match(source, /DNF/);
   assert.match(source, /loadSoloLeaderboard/);
   assert.match(source, /SoloLeaderboard/);
+  assert.match(source, /function RecordsDialog/);
+  assert.match(source, /aria-modal="true"/);
+  assert.match(source, /Shared across all Matching Rivals players/);
+  assert.match(source, /Record Question Set/);
+  assert.match(source, /function CompositeDropdown/);
+  assert.match(source, /role="combobox"/);
+  assert.match(source, /role="listbox"/);
+  assert.match(source, /role="option"/);
   assert.match(source, /rank-\$\{index \+ 1\}/);
   assert.match(source, /mode-detail-panel/);
-  assert.match(source, /The race ends as soon as one player completes every pair/);
+  assert.match(source, /mode-support-panel/);
+  assert.match(source, /designed to sharpen recall/);
+  assert.doesNotMatch(source, /feature-row|how-it-works/);
+  assert.doesNotMatch(source, /raceOrPractice|mode-support-set/);
+  assert.doesNotMatch(source, /privacy-note|Local data · This browser only/);
+  assert.doesNotMatch(source, /Local Preview/);
+  assert.doesNotMatch(source, /ten fastest finishes for/);
+  assert.doesNotMatch(source, /<select|<option/);
+  assert.doesNotMatch(source, /Existing Room|Global Records|Top Solo Times|Global Top 10/);
+  assert.doesNotMatch(source, /Create A Rival Match|Start Solo Practice/);
+  assert.doesNotMatch(source, /five-minute room closes/);
   assert.doesNotMatch(source, /Waiting for .* to finish/);
   assert.doesNotMatch(source, /WORD MATCH RACE/);
+  assert.match(styles, /\.mode-detail-panel::after[\s\S]*width: 42px/);
+  assert.match(styles, /\.mode-detail-panel \{[\s\S]*padding-top: 34px/);
+  assert.match(styles, /\.mode-support-copy[\s\S]*justify-content: flex-end/);
+  assert.match(styles, /--font-product-sans: "Avenir Next"/);
+  assert.match(styles, /--font-product-display: "Avenir Next"/);
+  assert.match(styles, /\.primary-action \{[\s\S]*font-weight: 600/);
+  assert.match(styles, /\.mode-toggle button \{[\s\S]*font-weight: 600/);
+
+  const exitRoomSource = source.slice(source.indexOf("function exitRoom"), source.indexOf("function selectMode"));
+  assert.doesNotMatch(exitRoomSource, /randomNickname|setName/);
 });
 
 test("includes five disjoint 500-pair banks and randomly selects six pairs per round", async () => {
@@ -57,6 +89,8 @@ test("includes five disjoint 500-pair banks and randomly selects six pairs per r
   const localGame = await readFile(new URL("../lib/local-game.ts", import.meta.url), "utf8");
   const service = await readFile(new URL("../lib/game-service.ts", import.meta.url), "utf8");
   const banks = await questionBanks();
+
+  assert.doesNotMatch(sets, /500-word/i);
 
   for (const slug of ["cet4", "cet6", "tem8", "ielts", "toefl"]) {
     assert.equal(banks[slug].length, 500);
@@ -81,6 +115,8 @@ test("includes five disjoint 500-pair banks and randomly selects six pairs per r
   assert.match(localGame, /matching-rivals:solo-leaderboard:/);
   assert.match(localGame, /\.slice\(0, 10\)/);
   assert.match(service, /loadSoloLeaderboard/);
+  assert.match(service, /hasSupabaseConfig\(\)[\s\S]*loadProductionSoloLeaderboard/);
+  assert.match(service, /hasSharedSoloLeaderboard/);
   assert.match(service, /NEXT_PUBLIC_GAME_BACKEND === "local"/);
 });
 
@@ -134,6 +170,8 @@ test("includes the Supabase production foundation", async () => {
   assert.match(randomRoundMigration, /order by random\(\)[\s\S]*limit 6/i);
   assert.match(randomRoundMigration, /create table public\.solo_records/i);
   assert.match(randomRoundMigration, /create or replace function public\.get_solo_leaderboard/i);
+  assert.match(randomRoundMigration, /where set_row\.slug = p_question_set_slug/i);
+  assert.match(randomRoundMigration, /delete from public\.solo_records as record_row/i);
   assert.match(randomRoundMigration, /limit 10/i);
   assert.match(randomRoundMigration, /set status = 'finished', finished_at = current_player\.finished_at/i);
 });

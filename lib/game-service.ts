@@ -88,9 +88,13 @@ export function loadGameRoom(roomId: string) {
 }
 
 export function loadSoloLeaderboard(questionSetSlug: string) {
-  return isLocalTestBackend()
-    ? loadLocalSoloLeaderboard(questionSetSlug)
-    : loadProductionSoloLeaderboard(questionSetSlug);
+  return hasSupabaseConfig()
+    ? loadProductionSoloLeaderboard(questionSetSlug)
+    : loadLocalSoloLeaderboard(questionSetSlug);
+}
+
+export function hasSharedSoloLeaderboard() {
+  return hasSupabaseConfig();
 }
 
 export function subscribeToGameRoom(roomId: string, onChange: () => void | Promise<void>) {

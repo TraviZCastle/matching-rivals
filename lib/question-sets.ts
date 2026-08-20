@@ -20,31 +20,31 @@ export const QUESTION_SETS: QuestionSetDefinition[] = [
   {
     slug: "cet4",
     label: "CET-4",
-    description: "500-word college core",
+    description: "college core",
     questions: [...QUESTION_BANKS.cet4],
   },
   {
     slug: "cet6",
     label: "CET-6",
-    description: "500-word advanced college",
+    description: "advanced college",
     questions: [...QUESTION_BANKS.cet6],
   },
   {
     slug: "tem8",
     label: "TEM-8",
-    description: "500-word English-major core",
+    description: "English-major core",
     questions: [...QUESTION_BANKS.tem8],
   },
   {
     slug: "ielts",
     label: "IELTS",
-    description: "500-word academic and social",
+    description: "academic and social",
     questions: [...QUESTION_BANKS.ielts],
   },
   {
     slug: "toefl",
     label: "TOEFL",
-    description: "500-word academic lecture",
+    description: "academic lecture",
     questions: [...QUESTION_BANKS.toefl],
   },
 ];
