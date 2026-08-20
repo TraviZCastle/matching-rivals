@@ -8,6 +8,19 @@ import {
   useRef,
   useState,
 } from "react";
+import {
+  createProductionRoom,
+  ensureAnonymousSession,
+  hasSupabaseConfig,
+  joinProductionRoom,
+  loadProductionRoom,
+  openProductionRound,
+  setProductionReady,
+  startProductionRematch,
+  submitProductionMatch,
+  subscribeToProductionRoom,
+  type ProductionRoomSnapshot,
+} from "@/lib/supabase-game";
 
 type RoomStatus = "waiting" | "countdown" | "playing" | "finished";
 
@@ -22,6 +35,7 @@ type Player = {
 };
 
 type Room = {
+  id: string;
   code: string;
   status: RoomStatus;
   hostId: string;
@@ -48,10 +62,7 @@ const QUESTIONS: Question[] = [
   { id: "q6", zh: "精准", en: "precise", note: "adjective" },
 ];
 
-const STORAGE_PREFIX = "matching-rivals:room:";
 const SESSION_ROOM = "matching-rivals:active-room";
-const SESSION_PLAYER = "matching-rivals:player";
-const CHANNEL_NAME = "matching-rivals:sync";
 
 const NICKNAME_ADJECTIVES = ["Quiet", "Swift", "Cedar", "Silver", "Moss", "Dusk", "Night", "Calm"];
 const NICKNAME_ANIMALS = ["Lynx", "Fox", "Heron", "Otter", "Owl", "Raven", "Koi", "Wolf"];
@@ -60,34 +71,6 @@ function randomNickname() {
   const adjective = NICKNAME_ADJECTIVES[Math.floor(Math.random() * NICKNAME_ADJECTIVES.length)];
   const animal = NICKNAME_ANIMALS[Math.floor(Math.random() * NICKNAME_ANIMALS.length)];
   return `${adjective} ${animal}`;
-}
-
-function roomKey(code: string) {
-  return `${STORAGE_PREFIX}${code}`;
-}
-
-function readRoom(code: string): Room | null {
-  try {
-    const value = window.localStorage.getItem(roomKey(code));
-    return value ? (JSON.parse(value) as Room) : null;
-  } catch {
-    return null;
-  }
-}
-
-function makeId() {
-  if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
-    return crypto.randomUUID();
-  }
-  return `player-${Date.now()}-${Math.random().toString(16).slice(2)}`;
-}
-
-function makeRoomCode() {
-  for (let attempt = 0; attempt < 20; attempt += 1) {
-    const code = String(Math.floor(100000 + Math.random() * 900000));
-    if (!window.localStorage.getItem(roomKey(code))) return code;
-  }
-  return String(Date.now()).slice(-6);
 }
 
 function seededShuffle<T>(items: T[], seedText: string) {
@@ -110,24 +93,13 @@ function seededShuffle<T>(items: T[], seedText: string) {
   return result;
 }
 
-function emptyPlayer(id: string, name: string): Player {
-  return {
-    id,
-    name,
-    ready: false,
-    progress: 0,
-    mistakes: 0,
-    matchedIds: [],
-  };
-}
-
 function formatTime(milliseconds: number) {
   const safeValue = Math.max(0, milliseconds);
   const seconds = Math.floor(safeValue / 1000);
-  const hundredths = Math.floor((safeValue % 1000) / 10);
+  const millisecondsPart = Math.floor(safeValue % 1000);
   const minutes = Math.floor(seconds / 60);
   const remainder = seconds % 60;
-  return `${minutes ? `${minutes}:` : ""}${minutes ? String(remainder).padStart(2, "0") : remainder}.${String(hundredths).padStart(2, "0")}`;
+  return `${minutes ? `${minutes}:` : ""}${minutes ? String(remainder).padStart(2, "0") : remainder}.${String(millisecondsPart).padStart(3, "0")}`;
 }
 
 function playerTime(player: Player, room: Room, now: number) {
@@ -135,86 +107,144 @@ function playerTime(player: Player, room: Room, now: number) {
   return (player.finishedAt ?? now) - room.startedAt;
 }
 
+function toTimestamp(value: string | null) {
+  return value ? Date.parse(value) : undefined;
+}
+
+function mapProductionSnapshot(snapshot: ProductionRoomSnapshot) {
+  const room: Room = {
+    id: snapshot.room.id,
+    code: snapshot.room.code,
+    status: snapshot.room.status,
+    hostId: snapshot.room.host_id,
+    createdAt: Date.parse(snapshot.room.created_at),
+    countdownAt: toTimestamp(snapshot.room.countdown_at),
+    startedAt: toTimestamp(snapshot.room.started_at),
+    round: snapshot.room.round,
+    players: snapshot.players.map((player) => ({
+      id: player.user_id,
+      name: player.nickname,
+      ready: player.ready,
+      progress: player.progress,
+      mistakes: player.mistakes,
+      matchedIds: player.matched_pair_ids,
+      finishedAt: toTimestamp(player.finished_at),
+    })),
+  };
+  const questions: Question[] = snapshot.questions.map((question) => ({
+    id: question.id,
+    zh: question.zh,
+    en: question.en,
+    note: question.part_of_speech,
+  }));
+  return { room, questions };
+}
+
+function friendlyProductionError(error: unknown) {
+  const message = error instanceof Error ? error.message : String(error);
+  if (message.includes("room_not_found")) return "Room not found. Check the code with your rival.";
+  if (message.includes("room_full")) return "This room already has two players.";
+  if (message.includes("room_not_joinable")) return "This match has already started.";
+  if (message.includes("invalid_nickname")) return "Use a nickname between 1 and 24 characters.";
+  if (message.includes("Failed to fetch")) return "Could not reach the match server. Check your connection.";
+  return "Something went wrong. Please try again.";
+}
+
 export default function Home() {
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
   const [room, setRoom] = useState<Room | null>(null);
+  const [questions, setQuestions] = useState<Question[]>(QUESTIONS);
   const [playerId, setPlayerId] = useState("");
   const [formError, setFormError] = useState("");
   const [selectedZh, setSelectedZh] = useState<string | null>(null);
   const [errorPair, setErrorPair] = useState<{ zh: string; en: string } | null>(null);
   const [clock, setClock] = useState(() => Date.now());
+  const [serverClockOffset, setServerClockOffset] = useState(0);
   const [copied, setCopied] = useState(false);
   const [liveMessage, setLiveMessage] = useState("");
-  const channelRef = useRef<BroadcastChannel | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [booting, setBooting] = useState(true);
   const errorTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const publishRoom = useCallback((nextRoom: Room) => {
-    window.localStorage.setItem(roomKey(nextRoom.code), JSON.stringify(nextRoom));
-    setRoom(nextRoom);
-    channelRef.current?.postMessage({ type: "room", room: nextRoom });
+  const refreshRoom = useCallback(async (roomId: string) => {
+    const snapshot = await loadProductionRoom(roomId);
+    const mapped = mapProductionSnapshot(snapshot);
+    const measuredAt = Date.now();
+    setRoom(mapped.room);
+    setQuestions(mapped.questions);
+    setServerClockOffset(Date.parse(snapshot.serverNow) - snapshot.clientClockSampledAt);
+    setClock(measuredAt);
+    return mapped.room;
   }, []);
-
-  const mutateRoom = useCallback(
-    (targetCode: string, transform: (latest: Room) => Room) => {
-      const latest = readRoom(targetCode);
-      if (!latest) return null;
-      const next = transform(latest);
-      publishRoom(next);
-      return next;
-    },
-    [publishRoom],
-  );
 
   useEffect(() => {
     queueMicrotask(() => setName(randomNickname()));
-    const savedCode = window.sessionStorage.getItem(SESSION_ROOM);
-    const savedPlayer = window.sessionStorage.getItem(SESSION_PLAYER);
-    if (savedCode && savedPlayer) {
-      const savedRoom = readRoom(savedCode);
-      if (savedRoom?.players.some((player) => player.id === savedPlayer)) {
-        queueMicrotask(() => {
-          setRoom(savedRoom);
-          setPlayerId(savedPlayer);
-        });
-      } else {
-        window.sessionStorage.removeItem(SESSION_ROOM);
-        window.sessionStorage.removeItem(SESSION_PLAYER);
-      }
+    let cancelled = false;
+
+    if (!hasSupabaseConfig()) {
+      queueMicrotask(() => {
+        setFormError("The live match server is not configured.");
+        setBooting(false);
+      });
+      return;
     }
 
-    const receiveRoom = (nextRoom: Room) => {
-      const activeRoom = window.sessionStorage.getItem(SESSION_ROOM);
-      if (activeRoom === nextRoom.code) setRoom(nextRoom);
-    };
-
-    let channel: BroadcastChannel | null = null;
-    if ("BroadcastChannel" in window) {
-      channel = new BroadcastChannel(CHANNEL_NAME);
-      channel.onmessage = (event: MessageEvent<{ type: string; room?: Room }>) => {
-        if (event.data.type === "room" && event.data.room) {
-          receiveRoom(event.data.room);
-        }
-      };
-      channelRef.current = channel;
-    }
-
-    const onStorage = (event: StorageEvent) => {
-      if (!event.key?.startsWith(STORAGE_PREFIX) || !event.newValue) return;
+    void (async () => {
       try {
-        receiveRoom(JSON.parse(event.newValue) as Room);
-      } catch {
-        // Ignore malformed local demo data.
+        const user = await ensureAnonymousSession();
+        if (cancelled) return;
+        setPlayerId(user.id);
+
+        const savedRoomId = window.sessionStorage.getItem(SESSION_ROOM);
+        if (savedRoomId) {
+          try {
+            await refreshRoom(savedRoomId);
+          } catch {
+            window.sessionStorage.removeItem(SESSION_ROOM);
+          }
+        }
+      } catch (error) {
+        if (!cancelled) setFormError(friendlyProductionError(error));
+      } finally {
+        if (!cancelled) setBooting(false);
       }
-    };
-    window.addEventListener("storage", onStorage);
+    })();
 
     return () => {
-      channel?.close();
-      window.removeEventListener("storage", onStorage);
+      cancelled = true;
       if (errorTimerRef.current) clearTimeout(errorTimerRef.current);
     };
-  }, []);
+  }, [refreshRoom]);
+
+  useEffect(() => {
+    if (!room?.id || !playerId) return;
+    const roomId = room.id;
+    let unsubscribe: (() => void) | undefined;
+    let cancelled = false;
+
+    void subscribeToProductionRoom(roomId, async () => {
+      try {
+        await refreshRoom(roomId);
+      } catch (error) {
+        const message = friendlyProductionError(error);
+        setFormError(message);
+        setLiveMessage(message);
+      }
+    })
+      .then((stop) => {
+        if (cancelled) stop();
+        else unsubscribe = stop;
+      })
+      .catch((error) => {
+        if (!cancelled) setFormError(friendlyProductionError(error));
+      });
+
+    return () => {
+      cancelled = true;
+      unsubscribe?.();
+    };
+  }, [room?.id, playerId, refreshRoom]);
 
   useEffect(() => {
     if (!room || (room.status !== "countdown" && room.status !== "playing")) {
@@ -228,36 +258,30 @@ export default function Home() {
     if (room?.status !== "countdown" || !room.countdownAt) return;
     const target = room.countdownAt;
     const timer = window.setTimeout(() => {
-      mutateRoom(room.code, (latest) => {
-        if (latest.status !== "countdown") return latest;
-        return {
-          ...latest,
-          status: "playing",
-          startedAt: latest.countdownAt ?? target,
-        };
-      });
-    }, Math.max(0, target - Date.now()));
+      void openProductionRound(room.id)
+        .then(() => refreshRoom(room.id))
+        .catch((error) => setFormError(friendlyProductionError(error)));
+    }, Math.max(0, target - (Date.now() + serverClockOffset)));
     return () => window.clearTimeout(timer);
-  }, [room?.status, room?.countdownAt, room?.code, mutateRoom]);
+  }, [room?.status, room?.countdownAt, room?.id, refreshRoom, serverClockOffset]);
 
   const me = room?.players.find((player) => player.id === playerId);
   const opponent = room?.players.find((player) => player.id !== playerId);
   const isHost = room?.hostId === playerId;
+  const serverClock = clock + serverClockOffset;
 
   const chineseOrder = useMemo(
-    () => seededShuffle(QUESTIONS, `${room?.code}-${room?.round}-${playerId}-zh`),
-    [room?.code, room?.round, playerId],
+    () => seededShuffle(questions, `${room?.code}-${room?.round}-${playerId}-zh`),
+    [questions, room?.code, room?.round, playerId],
   );
   const englishOrder = useMemo(
-    () => seededShuffle(QUESTIONS, `${room?.code}-${room?.round}-${playerId}-en`),
-    [room?.code, room?.round, playerId],
+    () => seededShuffle(questions, `${room?.code}-${room?.round}-${playerId}-en`),
+    [questions, room?.code, room?.round, playerId],
   );
 
-  function rememberSession(nextRoom: Room, nextPlayerId: string) {
-    window.sessionStorage.setItem(SESSION_ROOM, nextRoom.code);
-    window.sessionStorage.setItem(SESSION_PLAYER, nextPlayerId);
-    setPlayerId(nextPlayerId);
-    setRoom(nextRoom);
+  async function rememberProductionRoom(roomId: string) {
+    window.sessionStorage.setItem(SESSION_ROOM, roomId);
+    await refreshRoom(roomId);
   }
 
   function validateName() {
@@ -269,24 +293,24 @@ export default function Home() {
     return cleanName;
   }
 
-  function createRoom() {
+  async function createRoom() {
     const cleanName = validateName();
     if (!cleanName) return;
-    const nextPlayerId = makeId();
-    const nextRoom: Room = {
-      code: makeRoomCode(),
-      status: "waiting",
-      hostId: nextPlayerId,
-      createdAt: Date.now(),
-      round: 1,
-      players: [emptyPlayer(nextPlayerId, cleanName)],
-    };
-    setFormError("");
-    rememberSession(nextRoom, nextPlayerId);
-    publishRoom(nextRoom);
+    setBusy(true);
+    try {
+      const createdRoom = await createProductionRoom(cleanName);
+      setFormError("");
+      await rememberProductionRoom(createdRoom.id);
+    } catch (error) {
+      const message = friendlyProductionError(error);
+      setFormError(message);
+      setLiveMessage(message);
+    } finally {
+      setBusy(false);
+    }
   }
 
-  function joinRoom(event: FormEvent) {
+  async function joinRoom(event: FormEvent) {
     event.preventDefault();
     const cleanName = validateName();
     if (!cleanName) return;
@@ -294,44 +318,31 @@ export default function Home() {
       setFormError("Enter the complete six-digit room code.");
       return;
     }
-    const target = readRoom(code);
-    if (!target) {
-      setFormError("Room not found. Check the code with your rival.");
-      return;
+    setBusy(true);
+    try {
+      const joinedRoom = await joinProductionRoom(code, cleanName);
+      setFormError("");
+      await rememberProductionRoom(joinedRoom.id);
+    } catch (error) {
+      const message = friendlyProductionError(error);
+      setFormError(message);
+      setLiveMessage(message);
+    } finally {
+      setBusy(false);
     }
-    if (target.players.length >= 2) {
-      setFormError("This room already has two players.");
-      return;
-    }
-    if (target.status !== "waiting") {
-      setFormError("This match has already started.");
-      return;
-    }
-
-    const nextPlayerId = makeId();
-    const nextRoom = {
-      ...target,
-      players: [...target.players, emptyPlayer(nextPlayerId, cleanName)],
-    };
-    setFormError("");
-    rememberSession(nextRoom, nextPlayerId);
-    publishRoom(nextRoom);
   }
 
-  function toggleReady() {
+  async function toggleReady() {
     if (!room || !me || room.status !== "waiting") return;
-    mutateRoom(room.code, (latest) => {
-      const players = latest.players.map((player) =>
-        player.id === playerId ? { ...player, ready: !player.ready } : player,
-      );
-      const allReady = players.length === 2 && players.every((player) => player.ready);
-      return {
-        ...latest,
-        players,
-        status: allReady ? "countdown" : "waiting",
-        countdownAt: allReady ? Date.now() + 3200 : undefined,
-      };
-    });
+    setBusy(true);
+    try {
+      await setProductionReady(room.id, !me.ready);
+      await refreshRoom(room.id);
+    } catch (error) {
+      setFormError(friendlyProductionError(error));
+    } finally {
+      setBusy(false);
+    }
   }
 
   async function copyRoomCode() {
@@ -346,114 +357,60 @@ export default function Home() {
   }
 
   function chooseChinese(questionId: string) {
-    if (!room || room.status !== "playing" || me?.finishedAt || errorPair) return;
+    if (!room || room.status !== "playing" || me?.finishedAt || errorPair || busy) return;
     if (me?.matchedIds.includes(questionId)) return;
     setSelectedZh((current) => (current === questionId ? null : questionId));
     setErrorPair(null);
     setLiveMessage("Chinese word selected. Choose its English match.");
   }
 
-  function chooseEnglish(questionId: string) {
-    if (!room || room.status !== "playing" || me?.finishedAt || errorPair) return;
+  async function chooseEnglish(questionId: string) {
+    if (!room || room.status !== "playing" || me?.finishedAt || errorPair || busy) return;
     if (!selectedZh || me?.matchedIds.includes(questionId)) return;
-
-    if (selectedZh !== questionId) {
-      const failedPair = { zh: selectedZh, en: questionId };
-      setErrorPair(failedPair);
-      setLiveMessage("Incorrect match. Input is locked for half a second.");
-      mutateRoom(room.code, (latest) => ({
-        ...latest,
-        players: latest.players.map((player) =>
-          player.id === playerId
-            ? { ...player, mistakes: player.mistakes + 1 }
-            : player,
-        ),
-      }));
-      if (errorTimerRef.current) clearTimeout(errorTimerRef.current);
-      errorTimerRef.current = setTimeout(() => {
-        setErrorPair(null);
+    const chinesePairId = selectedZh;
+    setBusy(true);
+    try {
+      const result = await submitProductionMatch(room.id, chinesePairId, questionId);
+      if (!result.correct) {
+        setErrorPair({ zh: chinesePairId, en: questionId });
+        setLiveMessage("Incorrect match. Input is locked for half a second.");
+        if (errorTimerRef.current) clearTimeout(errorTimerRef.current);
+        errorTimerRef.current = setTimeout(() => {
+          setErrorPair(null);
+          setSelectedZh(null);
+        }, 500);
+      } else {
         setSelectedZh(null);
-      }, 500);
-      return;
+        setErrorPair(null);
+        setLiveMessage("Correct match.");
+      }
+      await refreshRoom(room.id);
+    } catch (error) {
+      setFormError(friendlyProductionError(error));
+    } finally {
+      setBusy(false);
     }
-
-    setSelectedZh(null);
-    setErrorPair(null);
-    setLiveMessage("Correct match.");
-    mutateRoom(room.code, (latest) => {
-      const players = latest.players.map((player) => {
-        if (player.id !== playerId || player.matchedIds.includes(questionId)) {
-          return player;
-        }
-        const matchedIds = [...player.matchedIds, questionId];
-        const isComplete = matchedIds.length === QUESTIONS.length;
-        return {
-          ...player,
-          matchedIds,
-          progress: matchedIds.length,
-          finishedAt: isComplete ? Date.now() : undefined,
-        };
-      });
-      const allFinished = players.length === 2 && players.every((player) => player.finishedAt);
-      return {
-        ...latest,
-        players,
-        status: allFinished ? "finished" : latest.status,
-      };
-    });
   }
 
-  function startRematch() {
+  async function startRematch() {
     if (!room || room.status !== "finished") return;
     setSelectedZh(null);
     setErrorPair(null);
-    mutateRoom(room.code, (latest) => ({
-      ...latest,
-      status: "waiting",
-      round: latest.round + 1,
-      countdownAt: undefined,
-      startedAt: undefined,
-      players: latest.players.map((player) => ({
-        ...player,
-        ready: false,
-        progress: 0,
-        mistakes: 0,
-        matchedIds: [],
-        finishedAt: undefined,
-      })),
-    }));
+    setBusy(true);
+    try {
+      await startProductionRematch(room.id);
+      await refreshRoom(room.id);
+    } catch (error) {
+      setFormError(friendlyProductionError(error));
+    } finally {
+      setBusy(false);
+    }
   }
 
   function exitRoom() {
-    if (room) {
-      const latest = readRoom(room.code);
-      if (latest) {
-        const players = latest.players.filter((player) => player.id !== playerId);
-        if (players.length === 0) {
-          window.localStorage.removeItem(roomKey(room.code));
-        } else if (latest.status === "waiting" || latest.status === "finished") {
-          publishRoom({
-            ...latest,
-            hostId: players[0].id,
-            status: "waiting",
-            countdownAt: undefined,
-            startedAt: undefined,
-            players: players.map((player) => ({
-              ...player,
-              ready: false,
-              progress: 0,
-              mistakes: 0,
-              matchedIds: [],
-              finishedAt: undefined,
-            })),
-          });
-        }
-      }
-    }
     window.sessionStorage.removeItem(SESSION_ROOM);
-    window.sessionStorage.removeItem(SESSION_PLAYER);
     setRoom(null);
-    setPlayerId("");
+    setQuestions(QUESTIONS);
     setName(randomNickname());
     setCode("");
     setFormError("");
@@ -493,7 +450,7 @@ export default function Home() {
               autoComplete="nickname"
             />
 
-            <button className="primary-action" type="button" onClick={createRoom}>
+            <button className="primary-action" type="button" onClick={createRoom} disabled={busy || booting}>
               <span>Create a new match</span><b aria-hidden="true">↗</b>
             </button>
 
@@ -510,11 +467,11 @@ export default function Home() {
                 onChange={(event) => setCode(event.target.value.replace(/\D/g, ""))}
                 placeholder="000 000"
               />
-              <button type="submit" aria-label="Join room">Join</button>
+              <button type="submit" aria-label="Join room" disabled={busy || booting}>Join</button>
             </div>
 
             {formError && <p className="form-error" role="alert">{formError}</p>}
-            <p className="privacy-note"><span aria-hidden="true">◇</span> Local mode never uploads personal data</p>
+            <p className="privacy-note"><span aria-hidden="true">◇</span> Anonymous session · No email required</p>
           </form>
         </section>
 
@@ -564,7 +521,7 @@ export default function Home() {
             type="button"
             className={`ready-button ${me.ready ? "is-ready" : ""}`}
             onClick={toggleReady}
-            disabled={!opponent}
+            disabled={!opponent || busy}
           >
             <span>{!opponent ? "Waiting for a rival" : me.ready ? "Cancel ready" : "I'm ready"}</span>
             <b>{me.ready ? "READY" : "GO"}</b>
@@ -576,8 +533,8 @@ export default function Home() {
   }
 
   if (room.status === "countdown") {
-    const remaining = Math.max(0, (room.countdownAt ?? clock) - clock);
-    const count = Math.max(1, Math.ceil(remaining / 1000));
+    const remaining = Math.max(0, (room.countdownAt ?? serverClock) - serverClock);
+    const count = Math.max(1, Math.min(3, Math.ceil(remaining / 1000)));
     return (
       <main className="countdown-screen">
         <div className="countdown-grid" aria-hidden="true" />
@@ -594,22 +551,22 @@ export default function Home() {
       <main className="finish-wait-screen">
         <div className="finish-orbit" aria-hidden="true"><i /><i /><i /></div>
         <p className="eyebrow"><span>FINISH</span> TIME LOCKED</p>
-        <h1>{formatTime(playerTime(me, room, clock))}</h1>
+        <h1>{formatTime(playerTime(me, room, serverClock))}</h1>
         <p>{me.mistakes} errors · Waiting for {opponent?.name} to finish</p>
-        <div className="opponent-progress"><i style={{ width: `${((opponent?.progress ?? 0) / QUESTIONS.length) * 100}%` }} /></div>
-        <strong>{opponent?.progress ?? 0} / {QUESTIONS.length}</strong>
+        <div className="opponent-progress"><i style={{ width: `${((opponent?.progress ?? 0) / questions.length) * 100}%` }} /></div>
+        <strong>{opponent?.progress ?? 0} / {questions.length}</strong>
       </main>
     );
   }
 
   if (room.status === "finished") {
     const standings = [...room.players].sort((left, right) => {
-      const timeDelta = playerTime(left, room, clock) - playerTime(right, room, clock);
+      const timeDelta = playerTime(left, room, serverClock) - playerTime(right, room, serverClock);
       return timeDelta || left.mistakes - right.mistakes;
     });
     const winner = standings[0];
     const tie = standings.length === 2
-      && playerTime(standings[0], room, clock) === playerTime(standings[1], room, clock)
+      && playerTime(standings[0], room, serverClock) === playerTime(standings[1], room, serverClock)
       && standings[0].mistakes === standings[1].mistakes;
 
     return (
@@ -625,14 +582,14 @@ export default function Home() {
                 <div className="place">0{index + 1}</div>
                 <div className="result-avatar">{player.name.slice(0, 1).toUpperCase()}</div>
                 <div className="standing-player"><span>{player.id === playerId ? "YOU" : "RIVAL"}</span><h2>{player.name}</h2></div>
-                <div className="standing-stat"><span>TIME</span><strong>{formatTime(playerTime(player, room, clock))}</strong></div>
+                <div className="standing-stat"><span>TIME</span><strong>{formatTime(playerTime(player, room, serverClock))}</strong></div>
                 <div className="standing-stat"><span>ERRORS</span><strong>{String(player.mistakes).padStart(2, "0")}</strong></div>
               </article>
             ))}
           </div>
 
           <div className="result-actions">
-            <button className="primary-result" type="button" onClick={startRematch}><span>Play again</span><b>↻</b></button>
+            <button className="primary-result" type="button" onClick={startRematch} disabled={busy}><span>Play again</span><b>↻</b></button>
             <button className="secondary-result" type="button" onClick={exitRoom}>Leave room</button>
           </div>
           {!isHost && <p className="result-note">Either player can start a rematch.</p>}
@@ -647,21 +604,21 @@ export default function Home() {
         <div className="compact-brand"><BrandIcon compact /><strong>Matching Rivals</strong></div>
         <div className="round-label">ROUND {String(room.round).padStart(2, "0")} <i /> ROOM {room.code}</div>
         <div className="game-tools">
-          <div className="game-timer"><span>TIME</span><strong>{formatTime(playerTime(me, room, clock))}</strong></div>
+          <div className="game-timer"><span>TIME</span><strong>{formatTime(playerTime(me, room, serverClock))}</strong></div>
           <ThemeToggle />
         </div>
       </header>
 
       <section className="score-ribbon" aria-label="Player progress">
-        <ProgressPlayer player={me} label="YOU" />
+        <ProgressPlayer player={me} label="YOU" total={questions.length} />
         <div className="mini-versus">VS</div>
-        {opponent && <ProgressPlayer player={opponent} label="RIVAL" reverse />}
+        {opponent && <ProgressPlayer player={opponent} label="RIVAL" total={questions.length} reverse />}
       </section>
 
       <section className="match-stage">
         <div className="match-heading">
           <div><p className="eyebrow"><span>MATCH</span> CHINESE FIRST, THEN ENGLISH</p><h1>Find every matching pair.</h1></div>
-          <div className="match-status"><strong>{me.progress}/{QUESTIONS.length}</strong><span>COMPLETE</span></div>
+          <div className="match-status"><strong>{me.progress}/{questions.length}</strong><span>COMPLETE</span></div>
         </div>
 
         <div className="match-board">
@@ -676,7 +633,7 @@ export default function Home() {
                   type="button"
                   key={question.id}
                   className={`word-card ${matched ? "matched" : ""} ${selected ? "selected" : ""} ${failed ? "failed" : ""}`}
-                  disabled={matched || Boolean(errorPair)}
+                  disabled={matched || Boolean(errorPair) || busy}
                   onClick={() => chooseChinese(question.id)}
                   aria-pressed={selected}
                 >
@@ -700,7 +657,7 @@ export default function Home() {
                   type="button"
                   key={question.id}
                   className={`word-card ${matched ? "matched" : ""} ${failed ? "failed" : ""}`}
-                  disabled={matched || !selectedZh || Boolean(errorPair)}
+                  disabled={matched || !selectedZh || Boolean(errorPair) || busy}
                   onClick={() => chooseEnglish(question.id)}
                 >
                   <span className="word-index">{String.fromCharCode(65 + index)}</span>
@@ -715,8 +672,8 @@ export default function Home() {
 
         <div className="game-footer">
           <span>ERRORS <b>{me.mistakes}</b></span>
-          <div className="game-progress"><i style={{ width: `${(me.progress / QUESTIONS.length) * 100}%` }} /></div>
-          <span>{me.progress === QUESTIONS.length ? "COMPLETE" : `${QUESTIONS.length - me.progress} PAIRS LEFT`}</span>
+          <div className="game-progress"><i style={{ width: `${(me.progress / questions.length) * 100}%` }} /></div>
+          <span>{me.progress === questions.length ? "COMPLETE" : `${questions.length - me.progress} PAIRS LEFT`}</span>
         </div>
         <p className="sr-only" aria-live="polite">{liveMessage}</p>
       </section>
@@ -732,7 +689,7 @@ function SiteHeader({ roomCode, onExit }: { roomCode?: string; onExit?: () => vo
       </a>
       <div className="nav-actions">
         {roomCode && <span className="nav-room">ROOM {roomCode}</span>}
-        <span className="demo-pill"><i /> LOCAL DEMO</span>
+        <span className="demo-pill"><i /> LIVE BETA</span>
         <ThemeToggle />
         {onExit && <button className="text-button" type="button" onClick={onExit}>EXIT</button>}
       </div>
@@ -781,12 +738,12 @@ function PlayerReadyCard({ player, label, accent }: { player: Player; label: str
   );
 }
 
-function ProgressPlayer({ player, label, reverse = false }: { player: Player; label: string; reverse?: boolean }) {
+function ProgressPlayer({ player, label, total, reverse = false }: { player: Player; label: string; total: number; reverse?: boolean }) {
   return (
     <div className={`progress-player ${reverse ? "reverse" : ""}`}>
       <div className="progress-avatar">{player.name.slice(0, 1).toUpperCase()}</div>
-      <div className="progress-copy"><span>{label} · {player.name}</span><div><i style={{ width: `${(player.progress / QUESTIONS.length) * 100}%` }} /></div></div>
-      <strong>{player.progress}/{QUESTIONS.length}</strong>
+      <div className="progress-copy"><span>{label} · {player.name}</span><div><i style={{ width: `${(player.progress / total) * 100}%` }} /></div></div>
+      <strong>{player.progress}/{total}</strong>
     </div>
   );
 }

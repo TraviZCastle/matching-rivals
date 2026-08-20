@@ -15,13 +15,16 @@ test("server-renders the Matching Rivals lobby", async () => {
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/);
 });
 
-test("ships the complete local two-player interaction layer", async () => {
+test("ships the complete live two-player interaction layer", async () => {
   const source = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
 
-  assert.match(source, /BroadcastChannel/);
-  assert.match(source, /localStorage/);
+  assert.match(source, /ensureAnonymousSession/);
+  assert.match(source, /subscribeToProductionRoom/);
+  assert.match(source, /submitProductionMatch/);
+  assert.match(source, /sessionStorage/);
   assert.match(source, /countdownAt/);
   assert.match(source, /finishedAt/);
+  assert.match(source, /millisecondsPart/);
   assert.match(source, /startRematch/);
   assert.match(source, /matching-rivals:theme/);
   assert.match(source, /randomNickname/);
@@ -39,12 +42,22 @@ test("includes the Supabase production foundation", async () => {
     "utf8",
   );
   const adapter = await readFile(new URL("../lib/supabase-game.ts", import.meta.url), "utf8");
+  const snapshotMigration = await readFile(
+    new URL("../supabase/migrations/202608200003_room_snapshot.sql", import.meta.url),
+    "utf8",
+  );
 
   assert.match(migration, /enable row level security/i);
   assert.match(migration, /realtime\.broadcast_changes/i);
   assert.match(migration, /create or replace function public\.submit_match/i);
   assert.match(migration, /clock_timestamp\(\)/i);
   assert.match(adapter, /signInAnonymously/);
+  assert.match(adapter, /server_now/);
+  assert.match(adapter, /get_room_snapshot/);
+  assert.match(adapter, /NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY/);
+  assert.match(adapter, /window\.sessionStorage/);
   assert.match(adapter, /private: true/);
   assert.match(adapter, /submitProductionMatch/);
+  assert.match(snapshotMigration, /create or replace function public\.get_room_snapshot/i);
+  assert.match(snapshotMigration, /clock_timestamp\(\)/i);
 });

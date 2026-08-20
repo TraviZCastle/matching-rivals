@@ -4,11 +4,12 @@
 
 - 本地 Demo 已于 2026-08-20 验收通过。
 - Light / Dark Mode 均已统一为藏青与深蓝视觉体系。
-- 生产 Beta 基础阶段进行中。
+- 生产 Beta 已接入，完整双用户本地联机验收通过，等待 GitHub/Vercel 发布验证。
 - 已新增 Supabase 初始迁移：账号归属、房间、玩家、题集、答题记录、RLS、私有 Realtime Broadcast 和服务器计时 RPC。
 - 已迁移为标准 Next.js 工程，可由 GitHub 连接 Vercel 自动部署。
 - 已发布 GitHub 与 Vercel Production，并连接 `main` 分支自动部署。
-- 下一接入点：创建 Supabase 项目并应用迁移，然后把前端的 `localStorage` / `BroadcastChannel` 仓库替换为 Supabase Auth、RPC 与 Realtime。
+- 已创建 Supabase 项目、应用迁移、启用匿名登录，并向 Vercel Production、Preview 与 Development 写入浏览器公开环境变量。
+- 前端已从本地 `localStorage` / `BroadcastChannel` 仓库切换为 Supabase Auth、RPC、受 RLS 保护的表读取与私有 Realtime Broadcast。
 
 ## 1. 项目目标
 
@@ -18,7 +19,7 @@
 
 ## 2. MVP 范围
 
-### 本地 Demo
+### 已验收 Demo
 
 - 输入昵称后创建六位房间口令。
 - 第二个浏览器标签页通过口令加入。
@@ -26,7 +27,7 @@
 - 点击中文和英文完成配对，错配可视化反馈。
 - 同步对手进度，记录用时和错配数。
 - 双方完成后显示排名，支持再来一局。
-- 本地 Demo 通过 `localStorage` + `BroadcastChannel` 模拟实时后端，不需要密钥。
+- Demo 阶段曾通过 `localStorage` + `BroadcastChannel` 模拟实时后端；生产分支现已替换为 Supabase。
 
 ### 生产 Beta
 
@@ -42,7 +43,7 @@
 - 首版不做公开排行榜、好友系统、聊天和赛季。
 - 首版不做拖拽配对，优先使用适合手机的两次点击。
 - 首版不依赖 AI 生成题目。
-- 本地 Demo 不实现真实账号、RLS 或多设备网络通信。
+- 首版不要求注册式账号；使用 Supabase 匿名身份。
 
 ## 4. 核心游戏规则
 
@@ -75,7 +76,7 @@
 
 房间状态：`waiting` → `countdown` → `playing` → `finished`。
 
-## 6. 本地 Demo 数据结构
+## 6. 前端房间视图
 
 ```ts
 type Room = {
@@ -98,7 +99,7 @@ type Room = {
 }
 ```
 
-房间快照写入 `localStorage`，并通过 `BroadcastChannel` 通知其他标签页重读。每个标签页的玩家身份保存在 `sessionStorage`。
+房间权威快照保存在 Postgres。客户端通过私有 Realtime Broadcast 收到变化通知后重新读取；每个标签页的匿名 Auth 会话与当前房间 ID 保存在 `sessionStorage`，因此同一浏览器的两个标签页也可作为两个玩家验收。
 
 ## 7. 生产数据表
 
@@ -129,8 +130,8 @@ type Room = {
 - 只能修改自己允许的玩家状态。
 - 开局、答题校验与完成使用 Postgres RPC。
 - 服务端使用数据库时间，不信任客户端提交的用时。
-- Supabase secret key 仅存在 Vercel 服务端环境变量中。
-- 对创建/加入房间和匿名登录实施限流。
+- 浏览器只使用 Supabase publishable key；当前不配置也不暴露 service-role key。
+- Supabase Auth 自带基础速率限制；正式公开推广前补充 CAPTCHA、房间清理策略和业务级创建/加入限流。
 
 ## 10. 视觉方向
 

@@ -39,33 +39,45 @@ export type ProductionRoomSnapshot = {
   room: ProductionRoom;
   players: ProductionPlayer[];
   questions: ProductionQuestion[];
+  serverNow: string;
+  clientClockSampledAt: number;
 };
 
-let browserClient: SupabaseClient | null = null;
+const globalForSupabase = globalThis as typeof globalThis & {
+  matchingRivalsSupabaseClient?: SupabaseClient;
+};
 
 export function hasSupabaseConfig() {
   return Boolean(
     process.env.NEXT_PUBLIC_SUPABASE_URL
-      && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+      && (
+        process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+        || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+      ),
   );
 }
 
 export function getSupabaseGameClient() {
-  if (browserClient) return browserClient;
+  if (globalForSupabase.matchingRivalsSupabaseClient) {
+    return globalForSupabase.matchingRivalsSupabaseClient;
+  }
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const publishableKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const publishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+    || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (!url || !publishableKey) {
     throw new Error("Supabase browser configuration is incomplete.");
   }
 
-  browserClient = createClient(url, publishableKey, {
+  const browserClient = createClient(url, publishableKey, {
     auth: {
       autoRefreshToken: true,
       persistSession: true,
       detectSessionInUrl: false,
+      storage: window.sessionStorage,
     },
   });
+  globalForSupabase.matchingRivalsSupabaseClient = browserClient;
   return browserClient;
 }
 
@@ -152,32 +164,26 @@ export async function startProductionRematch(roomId: string) {
 
 export async function loadProductionRoom(roomId: string): Promise<ProductionRoomSnapshot> {
   const client = getSupabaseGameClient();
-  const roomResult = await client
-    .from("rooms")
-    .select("id, code, host_id, question_set_id, status, round, countdown_at, started_at, finished_at, created_at")
-    .eq("id", roomId)
-    .single();
-  if (roomResult.error) throw roomResult.error;
+  const requestStartedAt = Date.now();
+  const { data, error } = await client.rpc("get_room_snapshot", {
+    p_room_id: roomId,
+  });
+  const requestFinishedAt = Date.now();
+  if (error) throw error;
 
-  const [playersResult, questionsResult] = await Promise.all([
-    client
-      .from("room_players")
-      .select("room_id, user_id, seat, nickname, ready, progress, mistakes, matched_pair_ids, finished_at, joined_at")
-      .eq("room_id", roomId)
-      .order("seat"),
-    client
-      .from("question_pairs")
-      .select("id, question_set_id, ordinal, zh, en, part_of_speech")
-      .eq("question_set_id", roomResult.data.question_set_id)
-      .order("ordinal"),
-  ]);
-  if (playersResult.error) throw playersResult.error;
-  if (questionsResult.error) throw questionsResult.error;
+  const snapshot = data as {
+    room: ProductionRoom;
+    players: ProductionPlayer[];
+    questions: ProductionQuestion[];
+    server_now: string;
+  };
 
   return {
-    room: roomResult.data as ProductionRoom,
-    players: playersResult.data as ProductionPlayer[],
-    questions: questionsResult.data as ProductionQuestion[],
+    room: snapshot.room,
+    players: snapshot.players,
+    questions: snapshot.questions,
+    serverNow: snapshot.server_now,
+    clientClockSampledAt: (requestStartedAt + requestFinishedAt) / 2,
   };
 }
 
@@ -194,8 +200,36 @@ export async function subscribeToProductionRoom(
     .channel(`room:${roomId}`, { config: { private: true } })
     .on("broadcast", { event: "INSERT" }, receiveChange)
     .on("broadcast", { event: "UPDATE" }, receiveChange)
-    .on("broadcast", { event: "DELETE" }, receiveChange)
-    .subscribe();
+    .on("broadcast", { event: "DELETE" }, receiveChange);
+
+  await new Promise<void>((resolve, reject) => {
+    let settled = false;
+    const timeout = window.setTimeout(() => {
+      if (settled) return;
+      settled = true;
+      void client.removeChannel(channel);
+      reject(new Error("Realtime subscription timed out."));
+    }, 10_000);
+
+    channel.subscribe((status, error) => {
+      if (status === "SUBSCRIBED") {
+        void onChange();
+        if (!settled) {
+          settled = true;
+          window.clearTimeout(timeout);
+          resolve();
+        }
+        return;
+      }
+
+      if (!settled && (status === "CHANNEL_ERROR" || status === "TIMED_OUT")) {
+        settled = true;
+        window.clearTimeout(timeout);
+        void client.removeChannel(channel);
+        reject(error ?? new Error(`Realtime subscription failed: ${status}`));
+      }
+    });
+  });
 
   return () => {
     void client.removeChannel(channel);

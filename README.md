@@ -1,6 +1,6 @@
 # 词局 · Matching Rivals
 
-一个双人中英文词汇配对竞速项目。Demo 已验收，当前工程已迁移为标准 Next.js，并开始接入 Vercel + Supabase 生产 Beta。
+一个双人中英文词汇配对竞速项目。Demo 已验收，当前工程已接入 Vercel + Supabase 生产 Beta。
 
 ## 在线地址
 
@@ -13,7 +13,7 @@
 
 - 六位房间口令。
 - 进入大厅时自动生成可编辑的英文昵称。
-- 两个独立浏览器标签页同步。
+- 两个独立浏览器标签页或设备实时同步。
 - 双方准备和 3 秒倒计时。
 - 6 组中英文点击配对。
 - 错配计数、对手进度和成绩排名。
@@ -23,12 +23,15 @@
 
 ## 本地启动
 
-需要 Node.js 22.13 或更高版本，以及 pnpm。
+需要 Node.js 22.13 或更高版本、pnpm，以及 Supabase 浏览器环境变量。
 
 ```bash
 pnpm install
+cp .env.example .env.local
 pnpm run dev
 ```
+
+在 `.env.local` 中填写 `NEXT_PUBLIC_SUPABASE_URL` 和 `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`。Vercel Production、Preview 与 Development 已配置同名变量。
 
 打开终端显示的本地地址，通常是 `http://localhost:3000/`。
 
@@ -41,9 +44,7 @@ pnpm run dev
 5. 两个标签页分别点击“I'm ready”。
 6. 倒计时后，先点击左侧中文，再点击右侧英文。
 
-Demo 使用 `localStorage` 保存房间快照，并通过 `BroadcastChannel` 同步标签页。它只适合本地演示，不是生产级后端。
-
-仓库内已包含 Supabase 初始数据库迁移和前端适配层；在生产环境变量配置完成前，页面继续使用本地 Demo 数据层，方便独立验收界面与交互。
+生产 Beta 使用 Supabase 匿名 Auth 建立玩家身份，通过 Postgres RPC 校验房间与答题，并使用私有 Realtime Broadcast 通知双方刷新权威状态。浏览器仅保存当前标签页的匿名会话和房间 ID；比赛时间以数据库时间为准。
 
 当前 Demo 没有接入外部词典或词典 API；题目是代码内维护的 6 组人工示例词。生产版需要单独确定授权词源、词义粒度和题库审核流程。
 
@@ -57,7 +58,7 @@ pnpm test
 
 ## 生产版路线
 
-生产 Beta 将使用 Vercel + Supabase：
+生产 Beta 使用 Vercel + Supabase：
 
 - Supabase Auth：匿名登录和稳定的玩家 ID。
 - Postgres：房间、玩家、题库和成绩。
