@@ -2,6 +2,13 @@
 
 一个双人中英文词汇配对竞速项目。Demo 已验收，当前工程已迁移为标准 Next.js，并开始接入 Vercel + Supabase 生产 Beta。
 
+## 在线地址
+
+- Production: [matching-rivals.vercel.app](https://matching-rivals.vercel.app)
+- Source: [github.com/TraviZCastle/matching-rivals](https://github.com/TraviZCastle/matching-rivals)
+
+`main` 分支已连接 Vercel，后续 Git push 会自动触发 Production 部署。
+
 ## 当前能力
 
 - 六位房间口令。

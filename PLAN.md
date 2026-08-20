@@ -7,7 +7,8 @@
 - 生产 Beta 基础阶段进行中。
 - 已新增 Supabase 初始迁移：账号归属、房间、玩家、题集、答题记录、RLS、私有 Realtime Broadcast 和服务器计时 RPC。
 - 已迁移为标准 Next.js 工程，可由 GitHub 连接 Vercel 自动部署。
-- 下一接入点：发布 GitHub / Vercel，创建 Supabase 项目并应用迁移，然后把前端的 `localStorage` / `BroadcastChannel` 仓库替换为 Supabase Auth、RPC 与 Realtime。
+- 已发布 GitHub 与 Vercel Production，并连接 `main` 分支自动部署。
+- 下一接入点：创建 Supabase 项目并应用迁移，然后把前端的 `localStorage` / `BroadcastChannel` 仓库替换为 Supabase Auth、RPC 与 Realtime。
 
 ## 1. 项目目标
 
