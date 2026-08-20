@@ -10,8 +10,8 @@
 - 已发布 GitHub 与 Vercel Production，并连接 `main` 分支自动部署。
 - 已创建 Supabase 项目、应用迁移、启用匿名登录，并向 Vercel Production、Preview 与 Development 写入浏览器公开环境变量。
 - 前端已从本地 `localStorage` / `BroadcastChannel` 仓库切换为 Supabase Auth、RPC、受 RLS 保护的表读取与私有 Realtime Broadcast。
-- 下一阶段已进入本地验收：5 分钟房间有效期、单人练习、五类 500 词题库、随机 6 题、分难度 Solo 前十，以及首位完成即结束比赛。
-- 本地验收使用仅在开发环境开启的浏览器本地后端；对应 Supabase 迁移已准备，功能代码直接在 `main` 推进。
+- 下一阶段已完成本地与 Production 验收：5 分钟房间有效期、单人练习、五类 500 词题库、随机 6 题、分难度 Solo 前十，以及首位完成即结束比赛。
+- Supabase 迁移 004–006 已应用，功能代码已直接推送 `main` 并由 Vercel 部署；Production 已实测创建 TEM-8 Solo 并正确返回 6 题。
 
 ## 1. 项目目标
 
@@ -168,7 +168,7 @@ type Room = {
 5. 构建检查和两标签页端到端验收。
 6. 替换本地同步层为 Supabase，部署 Vercel Beta。
 7. 本地验证 5 分钟期限、单人练习、500 词题库、随机 6 题、Solo 榜和首位完成即结束。
-8. 应用下一阶段 Supabase 迁移，推送 `main` 并验证 Vercel Production。
+8. 已应用下一阶段 Supabase 迁移、推送 `main` 并验证 Vercel Production。
 
 ## 12. Demo 验收标准
 
