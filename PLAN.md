@@ -4,7 +4,7 @@
 
 - 本地 Demo 已于 2026-08-20 验收通过。
 - Light / Dark Mode 均已统一为藏青与深蓝视觉体系。
-- 生产 Beta 已接入，完整双用户本地联机验收通过，等待 GitHub/Vercel 发布验证。
+- 生产 Beta 已接入，完整双用户本地及正式域名联机验收均已通过。
 - 已新增 Supabase 初始迁移：账号归属、房间、玩家、题集、答题记录、RLS、私有 Realtime Broadcast 和服务器计时 RPC。
 - 已迁移为标准 Next.js 工程，可由 GitHub 连接 Vercel 自动部署。
 - 已发布 GitHub 与 Vercel Production，并连接 `main` 分支自动部署。
