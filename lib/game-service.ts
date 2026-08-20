@@ -5,6 +5,7 @@ import {
   expireProductionRoom,
   hasSupabaseConfig,
   joinProductionRoom,
+  loadProductionSoloLeaderboard,
   loadProductionRoom,
   openProductionRound,
   setProductionReady,
@@ -12,6 +13,7 @@ import {
   submitProductionMatch,
   subscribeToProductionRoom,
   type ProductionRoomSnapshot,
+  type SoloLeaderboardRecord,
 } from "@/lib/supabase-game";
 import {
   createLocalPracticeRoom,
@@ -19,6 +21,7 @@ import {
   ensureLocalSession,
   expireLocalRoom,
   joinLocalRoom,
+  loadLocalSoloLeaderboard,
   loadLocalRoom,
   openLocalRound,
   setLocalReady,
@@ -28,6 +31,7 @@ import {
 } from "@/lib/local-game";
 
 export type GameRoomSnapshot = ProductionRoomSnapshot;
+export type GameSoloRecord = SoloLeaderboardRecord;
 
 export function isLocalTestBackend() {
   return process.env.NEXT_PUBLIC_GAME_BACKEND === "local";
@@ -81,6 +85,12 @@ export function expireGameRoom(roomId: string) {
 
 export function loadGameRoom(roomId: string) {
   return isLocalTestBackend() ? loadLocalRoom(roomId) : loadProductionRoom(roomId);
+}
+
+export function loadSoloLeaderboard(questionSetSlug: string) {
+  return isLocalTestBackend()
+    ? loadLocalSoloLeaderboard(questionSetSlug)
+    : loadProductionSoloLeaderboard(questionSetSlug);
 }
 
 export function subscribeToGameRoom(roomId: string, onChange: () => void | Promise<void>) {

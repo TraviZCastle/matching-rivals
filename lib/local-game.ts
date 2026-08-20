@@ -3,12 +3,15 @@ import type {
   ProductionQuestion,
   ProductionRoom,
   ProductionRoomSnapshot,
+  SoloLeaderboardRecord,
 } from "@/lib/supabase-game";
 import { getQuestionSet } from "@/lib/question-sets";
 
 const ROOM_PREFIX = "matching-rivals:local-room:";
 const PLAYER_KEY = "matching-rivals:local-player-id";
+const LEADERBOARD_PREFIX = "matching-rivals:solo-leaderboard:";
 export const LOCAL_ROOM_LIFETIME_MS = 5 * 60 * 1000;
+const ROUND_PAIR_COUNT = 6;
 
 function localUserId() {
   const current = window.sessionStorage.getItem(PLAYER_KEY);
@@ -79,14 +82,62 @@ function mutateRoom<T>(roomId: string, mutation: (record: { room: ProductionRoom
 function questionsFor(room: ProductionRoom): ProductionQuestion[] {
   const set = getQuestionSet(room.question_set_id);
   if (!set) throw new Error("question_set_not_found");
-  return set.questions.map((question, index) => ({
-    id: question.id,
-    question_set_id: set.slug,
-    ordinal: index + 1,
-    zh: question.zh,
-    en: question.en,
-    part_of_speech: question.note,
-  }));
+  const byId = new Map(set.questions.map((question) => [question.id, question]));
+  const selectedIds = room.selected_pair_ids?.length
+    ? room.selected_pair_ids
+    : set.questions.slice(0, ROUND_PAIR_COUNT).map((question) => question.id);
+  return selectedIds.map((questionId, index) => {
+    const question = byId.get(questionId);
+    if (!question) throw new Error("pair_not_in_question_set");
+    return {
+      id: question.id,
+      question_set_id: set.slug,
+      ordinal: index + 1,
+      zh: question.zh,
+      en: question.en,
+      part_of_speech: question.note,
+    };
+  });
+}
+
+function randomQuestionIds(questionSetSlug: string) {
+  const set = getQuestionSet(questionSetSlug);
+  if (!set || set.questions.length < ROUND_PAIR_COUNT) throw new Error("question_set_not_found");
+  const questions = [...set.questions];
+  for (let index = questions.length - 1; index > 0; index -= 1) {
+    const values = new Uint32Array(1);
+    crypto.getRandomValues(values);
+    const target = values[0] % (index + 1);
+    [questions[index], questions[target]] = [questions[target], questions[index]];
+  }
+  return questions.slice(0, ROUND_PAIR_COUNT).map((question) => question.id);
+}
+
+function leaderboardKey(questionSetSlug: string) {
+  return `${LEADERBOARD_PREFIX}${questionSetSlug}`;
+}
+
+function readLeaderboard(questionSetSlug: string): SoloLeaderboardRecord[] {
+  try {
+    return JSON.parse(window.localStorage.getItem(leaderboardKey(questionSetSlug)) ?? "[]");
+  } catch {
+    return [];
+  }
+}
+
+function recordPracticeResult(room: ProductionRoom, player: ProductionPlayer) {
+  if (!room.started_at || !player.finished_at) return;
+  const record: SoloLeaderboardRecord = {
+    id: crypto.randomUUID(),
+    nickname: player.nickname,
+    duration_ms: Math.max(0, Date.parse(player.finished_at) - Date.parse(room.started_at)),
+    mistakes: player.mistakes,
+    completed_at: player.finished_at,
+  };
+  const records = [...readLeaderboard(room.question_set_id), record]
+    .sort((left, right) => left.duration_ms - right.duration_ms || left.mistakes - right.mistakes || left.completed_at.localeCompare(right.completed_at))
+    .slice(0, 10);
+  window.localStorage.setItem(leaderboardKey(room.question_set_id), JSON.stringify(records));
 }
 
 function createCode() {
@@ -108,6 +159,7 @@ function createLocalRoom(nickname: string, questionSetSlug: string, mode: "race"
     code: mode === "race" ? createCode() : "000000",
     host_id: userId,
     question_set_id: questionSetSlug,
+    selected_pair_ids: randomQuestionIds(questionSetSlug),
     mode,
     status: mode === "practice" ? "playing" : "waiting",
     round: 1,
@@ -227,6 +279,7 @@ export async function submitLocalMatch(roomId: string, chinesePairId: string, en
         player.finished_at = finishedAt;
         record.room.status = "finished";
         record.room.finished_at = finishedAt;
+        if (record.room.mode === "practice") recordPracticeResult(record.room, player);
       }
     }
     return {
@@ -255,6 +308,7 @@ export async function startLocalRematch(roomId: string) {
     record.room.started_at = record.room.mode === "practice" ? new Date(now).toISOString() : null;
     record.room.finished_at = null;
     record.room.expires_at = new Date(now + LOCAL_ROOM_LIFETIME_MS).toISOString();
+    record.room.selected_pair_ids = randomQuestionIds(record.room.question_set_id);
     return record.room;
   });
 }
@@ -277,6 +331,10 @@ export async function loadLocalRoom(roomId: string): Promise<ProductionRoomSnaps
     serverNow: new Date(now).toISOString(),
     clientClockSampledAt: now,
   };
+}
+
+export async function loadLocalSoloLeaderboard(questionSetSlug: string) {
+  return readLeaderboard(questionSetSlug);
 }
 
 export async function subscribeToLocalRoom(roomId: string, onChange: () => void | Promise<void>) {

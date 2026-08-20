@@ -6,6 +6,7 @@ export type ProductionRoom = {
   host_id: string;
   question_set_id: string;
   question_set_slug?: string;
+  selected_pair_ids?: string[];
   mode: "race" | "practice";
   status: "waiting" | "countdown" | "playing" | "finished" | "expired";
   round: number;
@@ -44,6 +45,14 @@ export type ProductionRoomSnapshot = {
   questions: ProductionQuestion[];
   serverNow: string;
   clientClockSampledAt: number;
+};
+
+export type SoloLeaderboardRecord = {
+  id: string;
+  nickname: string;
+  duration_ms: number;
+  mistakes: number;
+  completed_at: string;
 };
 
 const globalForSupabase = globalThis as typeof globalThis & {
@@ -183,6 +192,16 @@ export async function expireProductionRoom(roomId: string) {
   });
   if (error) throw error;
   return data as ProductionRoom;
+}
+
+export async function loadProductionSoloLeaderboard(questionSetSlug: string) {
+  const client = getSupabaseGameClient();
+  await ensureAnonymousSession(client);
+  const { data, error } = await client.rpc("get_solo_leaderboard", {
+    p_question_set_slug: questionSetSlug,
+  });
+  if (error) throw error;
+  return (data ?? []) as SoloLeaderboardRecord[];
 }
 
 export async function loadProductionRoom(roomId: string): Promise<ProductionRoomSnapshot> {

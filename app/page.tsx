@@ -17,11 +17,13 @@ import {
   isLocalTestBackend,
   joinGameRoom,
   loadGameRoom,
+  loadSoloLeaderboard,
   openGameRound,
   setGameReady,
   startGameRematch,
   submitGameMatch,
   subscribeToGameRoom,
+  type GameSoloRecord,
   type GameRoomSnapshot,
 } from "@/lib/game-service";
 import { getQuestionSet, QUESTION_SETS, type QuestionSetSlug } from "@/lib/question-sets";
@@ -61,7 +63,7 @@ type Question = {
   note: string;
 };
 
-const QUESTIONS: Question[] = getQuestionSet("cet4")?.questions ?? [];
+const QUESTIONS: Question[] = getQuestionSet("cet4")?.questions.slice(0, 6) ?? [];
 
 const SESSION_ROOM = "matching-rivals:active-room";
 
@@ -180,6 +182,7 @@ export default function Home() {
   const [liveMessage, setLiveMessage] = useState("");
   const [busy, setBusy] = useState(false);
   const [booting, setBooting] = useState(true);
+  const [soloLeaderboard, setSoloLeaderboard] = useState<GameSoloRecord[]>([]);
   const errorTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const refreshRoom = useCallback(async (roomId: string) => {
@@ -299,6 +302,22 @@ export default function Home() {
   const serverClock = clock + serverClockOffset;
   const selectedQuestionSet = getQuestionSet(questionSetSlug) ?? QUESTION_SETS[0];
   const roomQuestionSet = getQuestionSet(room?.questionSetId ?? questionSetSlug) ?? selectedQuestionSet;
+  const soloSetSlug = room?.mode === "practice" ? room.questionSetId : questionSetSlug;
+
+  useEffect(() => {
+    if (mode !== "practice" && room?.mode !== "practice") return;
+    let cancelled = false;
+    void loadSoloLeaderboard(soloSetSlug)
+      .then((records) => {
+        if (!cancelled) setSoloLeaderboard(records);
+      })
+      .catch(() => {
+        if (!cancelled) setSoloLeaderboard([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [mode, soloSetSlug, room?.mode, room?.status, room?.round]);
 
   const chineseOrder = useMemo(
     () => seededShuffle(questions, `${room?.code}-${room?.round}-${playerId}-zh`),
@@ -457,13 +476,18 @@ export default function Home() {
   function exitRoom() {
     window.sessionStorage.removeItem(SESSION_ROOM);
     setRoom(null);
-    setQuestions(selectedQuestionSet.questions);
+    setQuestions(selectedQuestionSet.questions.slice(0, 6));
     setName(randomNickname());
     setCode("");
     setFormError("");
     setLiveMessage("");
     setSelectedZh(null);
     setErrorPair(null);
+  }
+
+  function selectMode(nextMode: RoomMode) {
+    setMode(nextMode);
+    setFormError("");
   }
 
   if (!room || !me) {
@@ -489,8 +513,8 @@ export default function Home() {
             </div>
 
             <div className="mode-toggle" role="group" aria-label="Game mode">
-              <button type="button" className={mode === "race" ? "active" : ""} aria-pressed={mode === "race"} onClick={() => setMode("race")}>Rival match</button>
-              <button type="button" className={mode === "practice" ? "active" : ""} aria-pressed={mode === "practice"} onClick={() => setMode("practice")}>Solo practice</button>
+              <button type="button" className={mode === "race" ? "active" : ""} aria-pressed={mode === "race"} onClick={() => selectMode("race")}>Rival match</button>
+              <button type="button" className={mode === "practice" ? "active" : ""} aria-pressed={mode === "practice"} onClick={() => selectMode("practice")}>Solo practice</button>
             </div>
 
             <label htmlFor="player-name">Your nickname</label>
@@ -512,23 +536,28 @@ export default function Home() {
               <span>{mode === "race" ? "Create a rival match" : "Start solo practice"}</span><b aria-hidden="true">↗</b>
             </button>
 
-            {mode === "race" && <>
-              <div className="or"><span />OR JOIN A RIVAL<span /></div>
-
-              <label htmlFor="room-code">Six-digit room code</label>
-              <div className="join-row">
-                <input
-                  id="room-code"
-                  className="code-input"
-                  value={code}
-                  inputMode="numeric"
-                  maxLength={6}
-                  onChange={(event) => setCode(event.target.value.replace(/\D/g, ""))}
-                  placeholder="000 000"
-                />
-                <button type="submit" aria-label="Join room" disabled={busy || booting}>Join</button>
-              </div>
-            </>}
+            <div className="mode-detail-panel">
+              {mode === "race" ? (
+                <div className="race-join-panel">
+                  <div className="or"><span />OR JOIN A RIVAL<span /></div>
+                  <label htmlFor="room-code">Six-digit room code</label>
+                  <div className="join-row">
+                    <input
+                      id="room-code"
+                      className="code-input"
+                      value={code}
+                      inputMode="numeric"
+                      maxLength={6}
+                      onChange={(event) => setCode(event.target.value.replace(/\D/g, ""))}
+                      placeholder="000 000"
+                    />
+                    <button type="submit" aria-label="Join room" disabled={busy || booting}>Join</button>
+                  </div>
+                </div>
+              ) : (
+                <SoloLeaderboard records={soloLeaderboard} setLabel={selectedQuestionSet.label} compact />
+              )}
+            </div>
 
             {formError && <p className="form-error" role="alert">{formError}</p>}
             <p className="privacy-note"><span aria-hidden="true">◇</span> {isLocalTestBackend() ? "Local test data · This browser only" : "Anonymous session · No email required"}</p>
@@ -652,6 +681,8 @@ export default function Home() {
               </article>
             ))}
           </div>
+
+          {isPractice && <SoloLeaderboard records={soloLeaderboard} setLabel={roomQuestionSet.label} />}
 
           <div className="result-actions">
             <button className="primary-result" type="button" onClick={startRematch} disabled={busy}><span>{isPractice ? "Practice again" : "Play again"}</span><b>↻</b></button>
@@ -810,5 +841,38 @@ function ProgressPlayer({ player, label, total, reverse = false }: { player: Pla
       <div className="progress-copy"><span>{label} · {player.name}</span><div><i style={{ width: `${(player.progress / total) * 100}%` }} /></div></div>
       <strong>{player.progress}/{total}</strong>
     </div>
+  );
+}
+
+function SoloLeaderboard({
+  records,
+  setLabel,
+  compact = false,
+}: {
+  records: GameSoloRecord[];
+  setLabel: string;
+  compact?: boolean;
+}) {
+  return (
+    <section className={`solo-leaderboard ${compact ? "is-compact" : ""}`} aria-label={`${setLabel} solo leaderboard`}>
+      <header>
+        <div><span>SOLO RECORDS</span><strong>{setLabel}</strong></div>
+        <small>TOP 10</small>
+      </header>
+      {records.length ? (
+        <ol>
+          {records.map((record, index) => (
+            <li className={index < 3 ? `podium rank-${index + 1}` : ""} key={record.id}>
+              <span className="leaderboard-rank">{String(index + 1).padStart(2, "0")}</span>
+              <strong title={record.nickname}>{record.nickname}</strong>
+              <time>{formatTime(record.duration_ms)}</time>
+              <small>{record.mistakes} ERR</small>
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <p className="leaderboard-empty">No records yet. Set the first time.</p>
+      )}
+    </section>
   );
 }
