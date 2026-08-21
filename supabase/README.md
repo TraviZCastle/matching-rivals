@@ -12,6 +12,7 @@ This folder contains the first production-backend milestone for Matching Rivals.
 - Private Realtime Broadcast triggers for `rooms` and `room_players` with topic-level authorization.
 - The original six Demo pairs as the legacy `starter` question set.
 - Five-minute expiry, solo practice, first-finisher race closure, five 500-pair banks, random six-pair rounds, and per-set Solo top-ten records.
+- Local-first matching with non-blocking progress sync, idempotent final submission, and one validated `duration_ms` shared by the live timer, result screen, and leaderboard.
 
 ## Environment contract
 
@@ -29,4 +30,4 @@ These values are intentionally absent from source control. The publishable key i
 3. Add the two public environment variables locally and to the production host.
 4. Connect the application through Supabase Auth, RPC, private Realtime Broadcast, and RLS-protected table reads.
 
-Migrations through `202608200006_random_rounds_and_solo_leaderboard.sql` were applied to the Matching Rivals remote project on 2026-08-20. The five production banks were verified at 500 pairs each (2,500 total), and the random-round column, Solo records table, and leaderboard RPC were verified present. Anonymous sign-ins and the three Vercel environment scopes are configured.
+Migrations through `202608210007_local_first_rounds.sql` define the current Matching Rivals backend. The five production banks contain 500 pairs each (2,500 total); the local-first migration adds background progress sync, exact client-visible duration persistence, completion idempotency, and final six-pair validation. Anonymous sign-ins and the three Vercel environment scopes are configured.

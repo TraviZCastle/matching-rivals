@@ -14,6 +14,7 @@ import {
   createRaceRoom,
   ensureGameSession,
   expireGameRoom,
+  finishGameLocalRound,
   hasGameConfig,
   hasSharedSoloLeaderboard,
   isLocalTestBackend,
@@ -23,8 +24,8 @@ import {
   openGameRound,
   setGameReady,
   startGameRematch,
-  submitGameMatch,
   subscribeToGameRoom,
+  syncGameMatchProgress,
   type GameSoloRecord,
   type GameRoomSnapshot,
 } from "@/lib/game-service";
@@ -41,6 +42,7 @@ type Player = {
   mistakes: number;
   matchedIds: string[];
   finishedAt?: number;
+  durationMs?: number;
 };
 
 type Room = {
@@ -65,6 +67,21 @@ type Question = {
   note: string;
 };
 
+type LocalRoundOverlay = {
+  roomId: string;
+  round: number;
+  matchedIds: string[];
+  mistakes: number;
+  durationMs?: number;
+  completionId?: string;
+};
+
+type RunClock = {
+  key: string;
+  startedAtEpoch: number;
+  startedAtPerformance: number;
+};
+
 type DropdownOption<T extends string> = {
   value: T;
   label: string;
@@ -75,6 +92,7 @@ const QUESTIONS: Question[] = getQuestionSet("cet4")?.questions.slice(0, 6) ?? [
 
 const SESSION_ROOM = "matching-rivals:active-room";
 const LOCAL_NICKNAME = "matching-rivals:nickname";
+const RUN_CLOCK_PREFIX = "matching-rivals:run-clock:";
 
 const NICKNAME_ADJECTIVES = ["Quiet", "Swift", "Cedar", "Silver", "Moss", "Dusk", "Night", "Calm"];
 const NICKNAME_ANIMALS = ["Lynx", "Fox", "Heron", "Otter", "Owl", "Raven", "Koi", "Wolf"];
@@ -140,6 +158,7 @@ function formatRoomLifetime(milliseconds: number) {
 }
 
 function playerTime(player: Player, room: Room, now: number) {
+  if (player.durationMs !== undefined) return player.durationMs;
   if (!room.startedAt) return 0;
   return (player.finishedAt ?? now) - room.startedAt;
 }
@@ -169,6 +188,7 @@ function mapGameSnapshot(snapshot: GameRoomSnapshot) {
       mistakes: player.mistakes,
       matchedIds: player.matched_pair_ids,
       finishedAt: toTimestamp(player.finished_at),
+      durationMs: player.duration_ms ?? undefined,
     })),
   };
   const questions: Question[] = snapshot.questions.map((question) => ({
@@ -204,6 +224,8 @@ export default function Home() {
   const [selectedZh, setSelectedZh] = useState<string | null>(null);
   const [errorPair, setErrorPair] = useState<{ zh: string; en: string } | null>(null);
   const [clock, setClock] = useState(() => Date.now());
+  const [runNow, setRunNow] = useState(0);
+  const [runClock, setRunClock] = useState<RunClock | null>(null);
   const [serverClockOffset, setServerClockOffset] = useState(0);
   const [copied, setCopied] = useState(false);
   const [liveMessage, setLiveMessage] = useState("");
@@ -213,11 +235,38 @@ export default function Home() {
   const [soloLeaderboardLoading, setSoloLeaderboardLoading] = useState(false);
   const [recordsOpen, setRecordsOpen] = useState(false);
   const [recordsQuestionSetSlug, setRecordsQuestionSetSlug] = useState<QuestionSetSlug>("cet4");
+  const [resultSyncing, setResultSyncing] = useState(false);
   const errorTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const playerIdRef = useRef("");
+  const localRoundRef = useRef<LocalRoundOverlay | null>(null);
+  const runClockRef = useRef<RunClock | null>(null);
+  const refreshTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const refreshInFlightRef = useRef(false);
+  const refreshQueuedRef = useRef(false);
 
   const refreshRoom = useCallback(async (roomId: string) => {
     const snapshot = await loadGameRoom(roomId);
     const mapped = mapGameSnapshot(snapshot);
+    const localRound = localRoundRef.current;
+    const currentPlayerId = playerIdRef.current;
+    if (localRound && localRound.roomId === mapped.room.id && localRound.round === mapped.room.round) {
+      const currentPlayer = mapped.room.players.find((player) => player.id === currentPlayerId);
+      if (currentPlayer) {
+        if (localRound.matchedIds.length > currentPlayer.progress) {
+          currentPlayer.progress = localRound.matchedIds.length;
+          currentPlayer.matchedIds = [...localRound.matchedIds];
+        }
+        currentPlayer.mistakes = Math.max(currentPlayer.mistakes, localRound.mistakes);
+
+        if (localRound.durationMs !== undefined && currentPlayer.durationMs === undefined && mapped.room.status !== "expired") {
+          currentPlayer.durationMs = localRound.durationMs;
+          currentPlayer.finishedAt = Date.now();
+          mapped.room.status = "finished";
+        } else if (currentPlayer.durationMs !== undefined) {
+          localRoundRef.current = null;
+        }
+      }
+    }
     const measuredAt = Date.now();
     setRoom(mapped.room);
     setQuestions(mapped.questions);
@@ -225,6 +274,33 @@ export default function Home() {
     setClock(measuredAt);
     return mapped.room;
   }, []);
+
+  const queueRoomRefresh = useCallback((roomId: string) => {
+    refreshQueuedRef.current = true;
+    if (refreshTimerRef.current) return;
+    refreshTimerRef.current = setTimeout(() => {
+      refreshTimerRef.current = null;
+      if (refreshInFlightRef.current || !refreshQueuedRef.current) return;
+      refreshInFlightRef.current = true;
+      void (async () => {
+        do {
+          refreshQueuedRef.current = false;
+          await refreshRoom(roomId);
+          if (refreshQueuedRef.current) {
+            await new Promise((resolve) => setTimeout(resolve, 40));
+          }
+        } while (refreshQueuedRef.current);
+      })()
+        .catch((error) => {
+          const message = friendlyGameError(error);
+          setFormError(message);
+          setLiveMessage(message);
+        })
+        .finally(() => {
+          refreshInFlightRef.current = false;
+        });
+    }, 40);
+  }, [refreshRoom]);
 
   useEffect(() => {
     queueMicrotask(() => setName(cachedNickname()));
@@ -242,6 +318,7 @@ export default function Home() {
       try {
         const user = await ensureGameSession();
         if (cancelled) return;
+        playerIdRef.current = user.id;
         setPlayerId(user.id);
 
         const savedRoomId = window.sessionStorage.getItem(SESSION_ROOM);
@@ -262,6 +339,7 @@ export default function Home() {
     return () => {
       cancelled = true;
       if (errorTimerRef.current) clearTimeout(errorTimerRef.current);
+      if (refreshTimerRef.current) clearTimeout(refreshTimerRef.current);
     };
   }, [refreshRoom]);
 
@@ -285,15 +363,7 @@ export default function Home() {
     let unsubscribe: (() => void) | undefined;
     let cancelled = false;
 
-    void subscribeToGameRoom(roomId, async () => {
-      try {
-        await refreshRoom(roomId);
-      } catch (error) {
-        const message = friendlyGameError(error);
-        setFormError(message);
-        setLiveMessage(message);
-      }
-    })
+    void subscribeToGameRoom(roomId, () => queueRoomRefresh(roomId))
       .then((stop) => {
         if (cancelled) stop();
         else unsubscribe = stop;
@@ -306,13 +376,16 @@ export default function Home() {
       cancelled = true;
       unsubscribe?.();
     };
-  }, [room?.id, playerId, refreshRoom]);
+  }, [room?.id, playerId, queueRoomRefresh]);
 
   useEffect(() => {
     if (!room || room.status === "finished" || room.status === "expired") {
       return;
     }
-    const timer = window.setInterval(() => setClock(Date.now()), 47);
+    const timer = window.setInterval(() => {
+      setClock(Date.now());
+      setRunNow(performance.now());
+    }, 50);
     return () => window.clearInterval(timer);
   }, [room]);
 
@@ -349,6 +422,59 @@ export default function Home() {
   const recordsQuestionSet = getQuestionSet(recordsQuestionSetSlug) ?? QUESTION_SETS[0];
 
   useEffect(() => {
+    if (!room || room.status !== "playing" || !me || !playerId || questions.length !== 6) return;
+    const key = `${room.id}:${room.round}:${playerId}`;
+    if (runClockRef.current?.key === key) return;
+
+    const nowEpoch = Date.now();
+    const nowPerformance = performance.now();
+    let startedAtEpoch = nowEpoch;
+
+    if (room.mode === "race" && room.startedAt) {
+      const elapsed = Math.max(0, nowEpoch + serverClockOffset - room.startedAt);
+      startedAtEpoch = nowEpoch - elapsed;
+    } else {
+      try {
+        const stored = JSON.parse(window.sessionStorage.getItem(`${RUN_CLOCK_PREFIX}${key}`) ?? "null") as { startedAtEpoch?: number } | null;
+        if (stored?.startedAtEpoch && stored.startedAtEpoch <= nowEpoch) {
+          startedAtEpoch = stored.startedAtEpoch;
+        }
+      } catch {
+        // Start a fresh local monotonic clock if a saved value is malformed.
+      }
+      window.sessionStorage.setItem(`${RUN_CLOCK_PREFIX}${key}`, JSON.stringify({ startedAtEpoch }));
+    }
+
+    const nextClock: RunClock = {
+      key,
+      startedAtEpoch,
+      startedAtPerformance: nowPerformance - Math.max(0, nowEpoch - startedAtEpoch),
+    };
+    runClockRef.current = nextClock;
+    setRunClock(nextClock);
+    setRunNow(nowPerformance);
+
+    const currentLocalRound = localRoundRef.current;
+    if (!currentLocalRound || currentLocalRound.roomId !== room.id || currentLocalRound.round !== room.round) {
+      localRoundRef.current = {
+        roomId: room.id,
+        round: room.round,
+        matchedIds: [...me.matchedIds],
+        mistakes: me.mistakes,
+      };
+    }
+  }, [me, playerId, questions.length, room, serverClockOffset]);
+
+  const currentRunKey = room && playerId ? `${room.id}:${room.round}:${playerId}` : "";
+  const localPlayerTime = me?.durationMs !== undefined
+    ? me.durationMs
+    : runClock?.key === currentRunKey
+      ? Math.max(0, runNow - runClock.startedAtPerformance)
+      : room && me
+        ? playerTime(me, room, serverClock)
+        : 0;
+
+  useEffect(() => {
     if (!recordsOpen) return;
     let cancelled = false;
     void loadSoloLeaderboard(recordsQuestionSetSlug)
@@ -377,6 +503,10 @@ export default function Home() {
 
   async function rememberGameRoom(roomId: string) {
     window.sessionStorage.setItem(SESSION_ROOM, roomId);
+    localRoundRef.current = null;
+    runClockRef.current = null;
+    setRunClock(null);
+    setResultSyncing(false);
     await refreshRoom(roomId);
   }
 
@@ -480,45 +610,119 @@ export default function Home() {
   }
 
   function chooseChinese(questionId: string) {
-    if (!room || room.status !== "playing" || me?.finishedAt || errorPair || busy) return;
+    if (!room || room.status !== "playing" || me?.finishedAt || errorPair) return;
     if (me?.matchedIds.includes(questionId)) return;
     setSelectedZh((current) => (current === questionId ? null : questionId));
     setErrorPair(null);
     setLiveMessage("Chinese word selected. Choose its English match.");
   }
 
-  async function chooseEnglish(questionId: string) {
-    if (!room || room.status !== "playing" || me?.finishedAt || errorPair || busy) return;
+  function chooseEnglish(questionId: string, eventTime: number) {
+    if (!room || room.status !== "playing" || !me || me.finishedAt || errorPair) return;
     if (!selectedZh || me?.matchedIds.includes(questionId)) return;
     const chinesePairId = selectedZh;
-    setBusy(true);
-    try {
-      const result = await submitGameMatch(room.id, chinesePairId, questionId);
-      if (!result.correct) {
-        setErrorPair({ zh: chinesePairId, en: questionId });
-        setLiveMessage("Incorrect match. Input is locked for half a second.");
-        if (errorTimerRef.current) clearTimeout(errorTimerRef.current);
-        errorTimerRef.current = setTimeout(() => {
-          setErrorPair(null);
-          setSelectedZh(null);
-        }, 500);
-      } else {
-        setSelectedZh(null);
+    const currentRound = localRoundRef.current && localRoundRef.current.roomId === room.id && localRoundRef.current.round === room.round
+      ? localRoundRef.current
+      : { roomId: room.id, round: room.round, matchedIds: [...me.matchedIds], mistakes: me.mistakes };
+    const correct = chinesePairId === questionId;
+
+    if (!correct) {
+      const nextRound: LocalRoundOverlay = { ...currentRound, mistakes: currentRound.mistakes + 1 };
+      localRoundRef.current = nextRound;
+      setRoom((current) => current && current.id === room.id && current.round === room.round
+        ? {
+            ...current,
+            players: current.players.map((player) => player.id === playerId
+              ? { ...player, mistakes: nextRound.mistakes }
+              : player),
+          }
+        : current);
+      setErrorPair({ zh: chinesePairId, en: questionId });
+      setLiveMessage("Incorrect match. Input is locked for half a second.");
+      if (errorTimerRef.current) clearTimeout(errorTimerRef.current);
+      errorTimerRef.current = setTimeout(() => {
         setErrorPair(null);
-        setLiveMessage("Correct match.");
-      }
-      await refreshRoom(room.id);
-    } catch (error) {
-      setFormError(friendlyGameError(error));
-    } finally {
-      setBusy(false);
+        setSelectedZh(null);
+      }, 500);
+      void syncGameMatchProgress(room.id, room.round, nextRound.matchedIds, nextRound.mistakes).catch(() => {
+        // The final completion submission contains the full local result.
+      });
+      return;
     }
+
+    const nextMatchedIds = [...currentRound.matchedIds, chinesePairId];
+    const complete = nextMatchedIds.length === questions.length;
+    const runTimer = runClockRef.current;
+    const durationMs = complete
+      ? Math.max(250, Math.round(runTimer?.key === `${room.id}:${room.round}:${playerId}`
+        ? eventTime - runTimer.startedAtPerformance
+        : playerTime(me, room, serverClock)))
+      : undefined;
+    const completionId = complete ? crypto.randomUUID() : undefined;
+    const nextRound: LocalRoundOverlay = {
+      ...currentRound,
+      matchedIds: nextMatchedIds,
+      durationMs,
+      completionId,
+    };
+    localRoundRef.current = nextRound;
+    setSelectedZh(null);
+    setErrorPair(null);
+    setLiveMessage(complete ? "Set complete. Saving the result." : "Correct match.");
+    setRoom((current) => current && current.id === room.id && current.round === room.round
+      ? {
+          ...current,
+          status: complete ? "finished" : current.status,
+          players: current.players.map((player) => player.id === playerId
+            ? {
+                ...player,
+                progress: nextMatchedIds.length,
+                matchedIds: nextMatchedIds,
+                finishedAt: complete ? Date.now() : player.finishedAt,
+                durationMs,
+              }
+            : player),
+        }
+      : current);
+
+    if (!complete) {
+      void syncGameMatchProgress(room.id, room.round, nextMatchedIds, nextRound.mistakes).catch(() => {
+        // The final completion submission contains the full local result.
+      });
+      return;
+    }
+
+    setResultSyncing(true);
+    void finishGameLocalRound(
+      room.id,
+      room.round,
+      nextMatchedIds,
+      nextRound.mistakes,
+      durationMs!,
+      completionId!,
+    )
+      .then(() => {
+        setFormError("");
+        queueRoomRefresh(room.id);
+      })
+      .catch(async (error) => {
+        const rawMessage = error instanceof Error ? error.message : String(error);
+        if (rawMessage.includes("room_not_playing") || rawMessage.includes("player_already_finished")) {
+          localRoundRef.current = null;
+          await refreshRoom(room.id).catch(() => undefined);
+        }
+        setFormError(friendlyGameError(error));
+      })
+      .finally(() => setResultSyncing(false));
   }
 
   async function startRematch() {
-    if (!room || room.status !== "finished") return;
+    if (!room || room.status !== "finished" || resultSyncing) return;
     setSelectedZh(null);
     setErrorPair(null);
+    localRoundRef.current = null;
+    runClockRef.current = null;
+    setRunClock(null);
     setBusy(true);
     try {
       await startGameRematch(room.id);
@@ -532,6 +736,9 @@ export default function Home() {
 
   function exitRoom() {
     window.sessionStorage.removeItem(SESSION_ROOM);
+    if (room && playerId) window.sessionStorage.removeItem(`${RUN_CLOCK_PREFIX}${room.id}:${room.round}:${playerId}`);
+    localRoundRef.current = null;
+    runClockRef.current = null;
     setRoom(null);
     setQuestions(selectedQuestionSet.questions.slice(0, 6));
     setCode("");
@@ -540,6 +747,8 @@ export default function Home() {
     setSelectedZh(null);
     setErrorPair(null);
     setRecordsOpen(false);
+    setRunClock(null);
+    setResultSyncing(false);
   }
 
   function selectMode(nextMode: RoomMode) {
@@ -762,11 +971,13 @@ export default function Home() {
           </div>
 
           <div className={`result-actions ${isPractice ? "is-practice" : ""}`}>
-            <button className="primary-result" type="button" onClick={startRematch} disabled={busy}><span>{isPractice ? "Practice Again" : "Play Again"}</span><b>↻</b></button>
+            <button className="primary-result" type="button" onClick={startRematch} disabled={busy || resultSyncing}><span>{isPractice ? "Practice Again" : "Play Again"}</span><b>↻</b></button>
             {isPractice && <button className="secondary-result" type="button" onClick={() => openRecords(room.questionSetId)}>View Records</button>}
             <button className="secondary-result" type="button" onClick={exitRoom}>Leave Room</button>
           </div>
-          {!isPractice && !isHost && <p className="result-note">Either player can start a rematch.</p>}
+          {resultSyncing && <p className="result-note">Saving the exact displayed time…</p>}
+          {formError && <p className="result-note" role="alert">{formError}</p>}
+          {!resultSyncing && !isPractice && !isHost && <p className="result-note">Either player can start a rematch.</p>}
           </section>
         </main>
         {isPractice && recordsOpen && (
@@ -789,7 +1000,7 @@ export default function Home() {
         <div className="compact-brand"><BrandIcon compact /><strong>Matching Rivals</strong></div>
         <div className="round-label">{room.mode === "practice" ? "Practice" : `Round ${String(room.round).padStart(2, "0")}`} <i /> {roomQuestionSet.label}{room.mode === "race" ? ` · Room ${room.code}` : ""}</div>
         <div className="game-tools">
-          <div className="game-timer"><span>Time</span><strong>{formatTime(playerTime(me, room, serverClock))}</strong></div>
+          <div className="game-timer"><span>Time</span><strong>{formatTime(localPlayerTime)}</strong></div>
           <ThemeToggle />
         </div>
       </header>
@@ -818,7 +1029,7 @@ export default function Home() {
                   type="button"
                   key={question.id}
                   className={`word-card ${matched ? "matched" : ""} ${selected ? "selected" : ""} ${failed ? "failed" : ""}`}
-                  disabled={matched || Boolean(errorPair) || busy}
+                  disabled={matched || Boolean(errorPair)}
                   onClick={() => chooseChinese(question.id)}
                   aria-pressed={selected}
                 >
@@ -842,8 +1053,8 @@ export default function Home() {
                   type="button"
                   key={question.id}
                   className={`word-card ${matched ? "matched" : ""} ${failed ? "failed" : ""}`}
-                  disabled={matched || !selectedZh || Boolean(errorPair) || busy}
-                  onClick={() => chooseEnglish(question.id)}
+                  disabled={matched || !selectedZh || Boolean(errorPair)}
+                  onClick={(event) => chooseEnglish(question.id, event.timeStamp)}
                 >
                   <span className="word-index">{String.fromCharCode(65 + index)}</span>
                   <strong>{question.en}</strong>

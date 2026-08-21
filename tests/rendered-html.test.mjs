@@ -30,7 +30,13 @@ test("ships race, practice, first-finisher, and half-second error interactions",
 
   assert.match(source, /ensureGameSession/);
   assert.match(source, /subscribeToGameRoom/);
-  assert.match(source, /submitGameMatch/);
+  assert.doesNotMatch(source, /submitGameMatch/);
+  assert.match(source, /syncGameMatchProgress/);
+  assert.match(source, /finishGameLocalRound/);
+  assert.match(source, /performance\.now/);
+  assert.match(source, /event\.timeStamp/);
+  assert.match(source, /durationMs/);
+  assert.match(source, /Saving the exact displayed time/);
   assert.match(source, /createPracticeRoom/);
   assert.match(source, /sessionStorage/);
   assert.match(source, /countdownAt/);
@@ -114,6 +120,9 @@ test("includes five disjoint 500-pair banks and randomly selects six pairs per r
   assert.match(localGame, /record\.room\.mode === "practice"/);
   assert.match(localGame, /matching-rivals:solo-leaderboard:/);
   assert.match(localGame, /\.slice\(0, 10\)/);
+  assert.match(localGame, /finishLocalRound/);
+  assert.match(localGame, /duration_ms: durationMs/);
+  assert.match(localGame, /syncLocalMatchProgress/);
   assert.match(service, /loadSoloLeaderboard/);
   assert.match(service, /hasSupabaseConfig\(\)[\s\S]*loadProductionSoloLeaderboard/);
   assert.match(service, /hasSharedSoloLeaderboard/);
@@ -140,6 +149,10 @@ test("includes the Supabase production foundation", async () => {
   );
   const randomRoundMigration = await readFile(
     new URL("../supabase/migrations/202608200006_random_rounds_and_solo_leaderboard.sql", import.meta.url),
+    "utf8",
+  );
+  const localFirstMigration = await readFile(
+    new URL("../supabase/migrations/202608210007_local_first_rounds.sql", import.meta.url),
     "utf8",
   );
 
@@ -174,4 +187,13 @@ test("includes the Supabase production foundation", async () => {
   assert.match(randomRoundMigration, /delete from public\.solo_records as record_row/i);
   assert.match(randomRoundMigration, /limit 10/i);
   assert.match(randomRoundMigration, /set status = 'finished', finished_at = current_player\.finished_at/i);
+  assert.match(localFirstMigration, /add column if not exists duration_ms integer/i);
+  assert.match(localFirstMigration, /create or replace function public\.sync_match_progress/i);
+  assert.match(localFirstMigration, /create or replace function public\.finish_local_round/i);
+  assert.match(localFirstMigration, /p_duration_ms/i);
+  assert.match(localFirstMigration, /p_matched_pair_ids/i);
+  assert.match(localFirstMigration, /completion_id/i);
+  assert.match(localFirstMigration, /submitted_progress >= cardinality\(target_room\.selected_pair_ids\)/i);
+  assert.match(localFirstMigration, /duration_ms = p_duration_ms/i);
+  assert.match(localFirstMigration, /p_duration_ms, p_mistakes, completed_at/i);
 });

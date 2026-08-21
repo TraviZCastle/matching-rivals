@@ -27,6 +27,8 @@ export type ProductionPlayer = {
   mistakes: number;
   matched_pair_ids: string[];
   finished_at: string | null;
+  duration_ms: number | null;
+  completion_id: string | null;
   joined_at: string;
 };
 
@@ -53,6 +55,14 @@ export type SoloLeaderboardRecord = {
   duration_ms: number;
   mistakes: number;
   completed_at: string;
+};
+
+export type FinalizedRound = {
+  accepted: boolean;
+  duration_ms: number;
+  mistakes: number;
+  finished_at: string;
+  completion_id: string;
 };
 
 const globalForSupabase = globalThis as typeof globalThis & {
@@ -174,6 +184,44 @@ export async function submitProductionMatch(
     mistakes: number;
     finished_at: string | null;
   };
+}
+
+export async function syncProductionMatchProgress(
+  roomId: string,
+  round: number,
+  matchedPairIds: string[],
+  mistakes: number,
+) {
+  const client = getSupabaseGameClient();
+  const { data, error } = await client.rpc("sync_match_progress", {
+    p_room_id: roomId,
+    p_round: round,
+    p_matched_pair_ids: matchedPairIds,
+    p_mistakes: mistakes,
+  });
+  if (error) throw error;
+  return data as { accepted: boolean; progress: number; mistakes: number };
+}
+
+export async function finishProductionLocalRound(
+  roomId: string,
+  round: number,
+  matchedPairIds: string[],
+  mistakes: number,
+  durationMs: number,
+  completionId: string,
+) {
+  const client = getSupabaseGameClient();
+  const { data, error } = await client.rpc("finish_local_round", {
+    p_room_id: roomId,
+    p_round: round,
+    p_matched_pair_ids: matchedPairIds,
+    p_mistakes: mistakes,
+    p_duration_ms: durationMs,
+    p_completion_id: completionId,
+  });
+  if (error) throw error;
+  return data as FinalizedRound;
 }
 
 export async function startProductionRematch(roomId: string) {

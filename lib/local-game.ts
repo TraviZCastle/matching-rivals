@@ -126,11 +126,11 @@ function readLeaderboard(questionSetSlug: string): SoloLeaderboardRecord[] {
 }
 
 function recordPracticeResult(room: ProductionRoom, player: ProductionPlayer) {
-  if (!room.started_at || !player.finished_at) return;
+  if (!player.finished_at || player.duration_ms === null) return;
   const record: SoloLeaderboardRecord = {
     id: crypto.randomUUID(),
     nickname: player.nickname,
-    duration_ms: Math.max(0, Date.parse(player.finished_at) - Date.parse(room.started_at)),
+    duration_ms: player.duration_ms,
     mistakes: player.mistakes,
     completed_at: player.finished_at,
   };
@@ -179,6 +179,8 @@ function createLocalRoom(nickname: string, questionSetSlug: string, mode: "race"
     mistakes: 0,
     matched_pair_ids: [],
     finished_at: null,
+    duration_ms: null,
+    completion_id: null,
     joined_at: new Date(now).toISOString(),
   };
   saveRoom({ room, players: [player] });
@@ -220,6 +222,8 @@ export async function joinLocalRoom(code: string, nickname: string) {
       mistakes: 0,
       matched_pair_ids: [],
       finished_at: null,
+      duration_ms: null,
+      completion_id: null,
       joined_at: new Date().toISOString(),
     });
   }
@@ -291,6 +295,97 @@ export async function submitLocalMatch(roomId: string, chinesePairId: string, en
   });
 }
 
+export async function syncLocalMatchProgress(
+  roomId: string,
+  round: number,
+  matchedPairIds: string[],
+  mistakes: number,
+) {
+  return mutateRoom(roomId, (record) => {
+    if (record.room.status === "expired") throw new Error("room_expired");
+    const player = record.players.find((item) => item.user_id === localUserId());
+    if (!player) throw new Error("room_not_found");
+    if (record.room.round !== round) throw new Error("round_mismatch");
+    if (record.room.status !== "playing" || player.finished_at) {
+      return { accepted: false, progress: player.progress, mistakes: player.mistakes };
+    }
+
+    const selectedIds = new Set(questionsFor(record.room).map((question) => question.id));
+    if (
+      new Set(matchedPairIds).size !== matchedPairIds.length
+      || matchedPairIds.some((pairId) => !selectedIds.has(pairId))
+      || mistakes < 0
+    ) {
+      throw new Error("invalid_progress");
+    }
+
+    if (matchedPairIds.length > player.progress) {
+      player.matched_pair_ids = [...matchedPairIds];
+      player.progress = matchedPairIds.length;
+    }
+    player.mistakes = Math.max(player.mistakes, mistakes);
+    return { accepted: true, progress: player.progress, mistakes: player.mistakes };
+  });
+}
+
+export async function finishLocalRound(
+  roomId: string,
+  round: number,
+  matchedPairIds: string[],
+  mistakes: number,
+  durationMs: number,
+  completionId: string,
+) {
+  return mutateRoom(roomId, (record) => {
+    if (record.room.status === "expired") throw new Error("room_expired");
+    if (record.room.round !== round) throw new Error("round_mismatch");
+    const player = record.players.find((item) => item.user_id === localUserId());
+    if (!player) throw new Error("room_not_found");
+
+    if (player.completion_id === completionId && player.duration_ms !== null) {
+      return {
+        accepted: true,
+        duration_ms: player.duration_ms,
+        mistakes: player.mistakes,
+        finished_at: player.finished_at,
+        completion_id: player.completion_id,
+      };
+    }
+
+    if (record.room.status !== "playing") throw new Error("room_not_playing");
+    const selectedIds = questionsFor(record.room).map((question) => question.id);
+    if (
+      matchedPairIds.length !== selectedIds.length
+      || new Set(matchedPairIds).size !== selectedIds.length
+      || selectedIds.some((pairId) => !matchedPairIds.includes(pairId))
+    ) {
+      throw new Error("incomplete_round");
+    }
+    if (durationMs < 250 || durationMs > LOCAL_ROOM_LIFETIME_MS || mistakes < 0) {
+      throw new Error("invalid_duration");
+    }
+
+    const finishedAt = new Date().toISOString();
+    player.matched_pair_ids = [...matchedPairIds];
+    player.progress = matchedPairIds.length;
+    player.mistakes = mistakes;
+    player.duration_ms = durationMs;
+    player.completion_id = completionId;
+    player.finished_at = finishedAt;
+    record.room.status = "finished";
+    record.room.finished_at = finishedAt;
+    if (record.room.mode === "practice") recordPracticeResult(record.room, player);
+
+    return {
+      accepted: true,
+      duration_ms: durationMs,
+      mistakes,
+      finished_at: finishedAt,
+      completion_id: completionId,
+    };
+  });
+}
+
 export async function startLocalRematch(roomId: string) {
   return mutateRoom(roomId, (record) => {
     if (record.room.status !== "finished") throw new Error("room_not_finished");
@@ -301,6 +396,8 @@ export async function startLocalRematch(roomId: string) {
       player.mistakes = 0;
       player.matched_pair_ids = [];
       player.finished_at = null;
+      player.duration_ms = null;
+      player.completion_id = null;
     }
     record.room.round += 1;
     record.room.status = record.room.mode === "practice" ? "playing" : "waiting";

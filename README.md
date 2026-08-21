@@ -26,6 +26,8 @@
 - 每个题集包含 500 个互不重复的词对，每局随机抽取 6 对；双人双方使用同一组题。
 - Solo 成绩按难度分别保留前十，前三名使用特殊样式。
 - 双人竞速在第一名玩家完成全部配对时立即结束；未完成玩家在结果页显示 `DNF`。
+- 六个词对加载后，Match 判断、500ms 错误态和计时完全在本地执行，不再等待每次 Supabase 往返。
+- 第六对完成时冻结唯一的 `durationMs`；比赛计时、结果页与 Solo Leaderboard 使用同一个正式成绩。
 
 ## 本地启动
 
@@ -60,7 +62,7 @@ NEXT_PUBLIC_GAME_BACKEND=local
 
 单人练习可在大厅选择 “Solo practice” 后直接开始。双人竞速中任意一方完成 6 对词后，本局立即结束，另一方显示 `DNF`。
 
-生产 Beta 使用 Supabase 匿名 Auth 建立玩家身份，通过 Postgres RPC 校验房间与答题，并使用私有 Realtime Broadcast 通知双方刷新权威状态。浏览器仅保存当前标签页的匿名会话和房间 ID；比赛时间以数据库时间为准。
+生产 Beta 使用 Supabase 匿名 Auth 建立玩家身份，通过 Postgres RPC 校验房间、后台进度和最终六对完成结果，并使用私有 Realtime Broadcast 通知双方刷新权威状态。浏览器保存当前标签页的匿名会话、房间 ID 和本轮计时锚点；点击交互不等待网络，第六对完成时冻结的本地单调时钟成绩会被原样校验并写入数据库。
 
 题库不是运行时调用外部 API，而是由 `scripts/build_question_banks.py` 离线生成。CET-4、CET-6、IELTS 与 TOEFL 的分类标签、中文释义、词频及词性来自 ECDICT；TEM-8 的分类范围来自 OpenEtymology TEM8，中文释义与词性仍由 ECDICT 补全。生成器按题集标签、词频和词长做确定性筛选，并在所有题集之间排除重复英文词与中文提示。具体授权与署名见 [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md)。这些是学习用代表性词表，不是考试机构发布的官方词表。
 
@@ -79,7 +81,7 @@ pnpm test
 - Supabase Auth：匿名登录和稳定的玩家 ID。
 - Postgres：房间、玩家、题库和成绩。
 - Realtime Broadcast / Presence：事件和在线状态。
-- Postgres RPC：原子加入、开局、答题校验和服务器计时。
+- Postgres RPC：原子加入、开局、后台进度同步和本地正式成绩校验。
 - RLS：限制玩家只能访问自己参加的房间。
 
 完整产品规则、数据模型和验收标准见 [`PLAN.md`](./PLAN.md)。

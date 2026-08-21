@@ -3,6 +3,7 @@ import {
   createProductionRoom,
   ensureAnonymousSession,
   expireProductionRoom,
+  finishProductionLocalRound,
   hasSupabaseConfig,
   joinProductionRoom,
   loadProductionSoloLeaderboard,
@@ -10,7 +11,7 @@ import {
   openProductionRound,
   setProductionReady,
   startProductionRematch,
-  submitProductionMatch,
+  syncProductionMatchProgress,
   subscribeToProductionRoom,
   type ProductionRoomSnapshot,
   type SoloLeaderboardRecord,
@@ -20,13 +21,14 @@ import {
   createLocalRaceRoom,
   ensureLocalSession,
   expireLocalRoom,
+  finishLocalRound,
   joinLocalRoom,
   loadLocalSoloLeaderboard,
   loadLocalRoom,
   openLocalRound,
   setLocalReady,
   startLocalRematch,
-  submitLocalMatch,
+  syncLocalMatchProgress,
   subscribeToLocalRoom,
 } from "@/lib/local-game";
 
@@ -69,10 +71,28 @@ export function openGameRound(roomId: string) {
   return isLocalTestBackend() ? openLocalRound(roomId) : openProductionRound(roomId);
 }
 
-export function submitGameMatch(roomId: string, chinesePairId: string, englishPairId: string) {
+export function syncGameMatchProgress(
+  roomId: string,
+  round: number,
+  matchedPairIds: string[],
+  mistakes: number,
+) {
   return isLocalTestBackend()
-    ? submitLocalMatch(roomId, chinesePairId, englishPairId)
-    : submitProductionMatch(roomId, chinesePairId, englishPairId);
+    ? syncLocalMatchProgress(roomId, round, matchedPairIds, mistakes)
+    : syncProductionMatchProgress(roomId, round, matchedPairIds, mistakes);
+}
+
+export function finishGameLocalRound(
+  roomId: string,
+  round: number,
+  matchedPairIds: string[],
+  mistakes: number,
+  durationMs: number,
+  completionId: string,
+) {
+  return isLocalTestBackend()
+    ? finishLocalRound(roomId, round, matchedPairIds, mistakes, durationMs, completionId)
+    : finishProductionLocalRound(roomId, round, matchedPairIds, mistakes, durationMs, completionId);
 }
 
 export function startGameRematch(roomId: string) {
