@@ -96,6 +96,11 @@ type LeaderboardCacheEntry<T> = {
   loadedAt: number;
 };
 
+type RoomSession = {
+  roomId: string;
+  generation: number;
+};
+
 const QUESTIONS: Question[] = getQuestionSet("cet4")?.questions.slice(0, 6) ?? [];
 
 const SESSION_ROOM = "matching-rivals:active-room";
@@ -296,6 +301,8 @@ export default function Home() {
   const refreshTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const refreshInFlightRef = useRef(false);
   const refreshQueuedRef = useRef(false);
+  const activeRoomIdRef = useRef<string | null>(null);
+  const roomSessionGenerationRef = useRef(0);
   const soloLeaderboardCacheRef = useRef(new Map<QuestionSetSlug, LeaderboardCacheEntry<GameSoloRecord>>());
   const soloLeaderboardRequestsRef = useRef(new Map<QuestionSetSlug, Promise<GameSoloRecord[]>>());
   const raceLeaderboardCacheRef = useRef(new Map<QuestionSetSlug, LeaderboardCacheEntry<GameRaceRecord>>());
@@ -354,7 +361,24 @@ export default function Home() {
     return request;
   }, []);
 
-  const applyRoomSnapshot = useCallback((snapshot: GameRoomSnapshot) => {
+  const isCurrentRoomSession = useCallback((session: RoomSession) => (
+    activeRoomIdRef.current === session.roomId
+    && roomSessionGenerationRef.current === session.generation
+  ), []);
+
+  const beginRoomSession = useCallback((roomId: string) => {
+    roomSessionGenerationRef.current += 1;
+    activeRoomIdRef.current = roomId;
+    refreshQueuedRef.current = false;
+    if (refreshTimerRef.current) {
+      clearTimeout(refreshTimerRef.current);
+      refreshTimerRef.current = null;
+    }
+    return { roomId, generation: roomSessionGenerationRef.current } satisfies RoomSession;
+  }, []);
+
+  const applyRoomSnapshot = useCallback((snapshot: GameRoomSnapshot, session: RoomSession) => {
+    if (!isCurrentRoomSession(session) || snapshot.room.id !== session.roomId) return null;
     const mapped = mapGameSnapshot(snapshot);
     const localRound = localRoundRef.current;
     const currentPlayerId = playerIdRef.current;
@@ -379,6 +403,7 @@ export default function Home() {
         }
       }
     }
+    if (!isCurrentRoomSession(session)) return null;
     const measuredAt = Date.now();
     setRoom(mapped.room);
     setQuestions(mapped.questions);
@@ -386,39 +411,52 @@ export default function Home() {
     setServerClockOffset(Date.parse(snapshot.serverNow) - snapshot.clientClockSampledAt);
     setClock(measuredAt);
     return mapped.room;
-  }, []);
+  }, [isCurrentRoomSession]);
 
-  const refreshRoom = useCallback(async (roomId: string) => {
+  const refreshRoom = useCallback(async (
+    roomId: string,
+    session: RoomSession = { roomId, generation: roomSessionGenerationRef.current },
+  ) => {
+    if (!isCurrentRoomSession(session)) return null;
     const snapshot = await withRoomRequestRetry(() => loadGameRoom(roomId));
-    return applyRoomSnapshot(snapshot);
-  }, [applyRoomSnapshot]);
+    if (!isCurrentRoomSession(session)) return null;
+    return applyRoomSnapshot(snapshot, session);
+  }, [applyRoomSnapshot, isCurrentRoomSession]);
 
   const queueRoomRefresh = useCallback((roomId: string) => {
+    const session = { roomId, generation: roomSessionGenerationRef.current } satisfies RoomSession;
+    if (!isCurrentRoomSession(session)) return;
     refreshQueuedRef.current = true;
     if (refreshTimerRef.current) return;
     refreshTimerRef.current = setTimeout(() => {
       refreshTimerRef.current = null;
+      if (!isCurrentRoomSession(session)) {
+        refreshQueuedRef.current = false;
+        return;
+      }
       if (refreshInFlightRef.current || !refreshQueuedRef.current) return;
       refreshInFlightRef.current = true;
       void (async () => {
         do {
           refreshQueuedRef.current = false;
-          await refreshRoom(roomId);
-          if (refreshQueuedRef.current) {
+          await refreshRoom(roomId, session);
+          if (refreshQueuedRef.current && isCurrentRoomSession(session)) {
             await new Promise((resolve) => setTimeout(resolve, 40));
           }
-        } while (refreshQueuedRef.current);
+        } while (refreshQueuedRef.current && isCurrentRoomSession(session));
       })()
         .catch((error) => {
+          if (!isCurrentRoomSession(session)) return;
           const message = friendlyGameError(error);
           setFormError(message);
           setLiveMessage(message);
         })
         .finally(() => {
           refreshInFlightRef.current = false;
+          if (!isCurrentRoomSession(session)) refreshQueuedRef.current = false;
         });
     }, 40);
-  }, [refreshRoom]);
+  }, [isCurrentRoomSession, refreshRoom]);
 
   useEffect(() => {
     queueMicrotask(() => setName(cachedNickname()));
@@ -441,9 +479,10 @@ export default function Home() {
 
         const savedRoomId = window.sessionStorage.getItem(SESSION_ROOM);
         if (savedRoomId) {
+          const session = beginRoomSession(savedRoomId);
           setPendingRoomId(savedRoomId);
           try {
-            await refreshRoom(savedRoomId);
+            await refreshRoom(savedRoomId, session);
           } catch (error) {
             if (isTerminalRoomError(error)) {
               window.sessionStorage.removeItem(SESSION_ROOM);
@@ -463,10 +502,13 @@ export default function Home() {
 
     return () => {
       cancelled = true;
+      activeRoomIdRef.current = null;
+      roomSessionGenerationRef.current += 1;
+      refreshQueuedRef.current = false;
       if (errorTimerRef.current) clearTimeout(errorTimerRef.current);
       if (refreshTimerRef.current) clearTimeout(refreshTimerRef.current);
     };
-  }, [refreshRoom]);
+  }, [beginRoomSession, refreshRoom]);
 
   useEffect(() => {
     if (!recordsOpen) return;
@@ -722,23 +764,25 @@ export default function Home() {
   );
 
   async function rememberGameRoom(roomId: string) {
+    const session = beginRoomSession(roomId);
     window.sessionStorage.setItem(SESSION_ROOM, roomId);
     setPendingRoomId(roomId);
     localRoundRef.current = null;
     runClockRef.current = null;
     setRunClock(null);
     setResultSyncing(false);
-    await refreshRoom(roomId);
+    await refreshRoom(roomId, session);
   }
 
   function rememberGameSnapshot(snapshot: GameRoomSnapshot) {
+    const session = beginRoomSession(snapshot.room.id);
     window.sessionStorage.setItem(SESSION_ROOM, snapshot.room.id);
     setPendingRoomId(snapshot.room.id);
     localRoundRef.current = null;
     runClockRef.current = null;
     setRunClock(null);
     setResultSyncing(false);
-    applyRoomSnapshot(snapshot);
+    applyRoomSnapshot(snapshot, session);
   }
 
   function validateName() {
@@ -928,10 +972,12 @@ export default function Home() {
       completionId!,
     )
       .then(() => {
+        if (activeRoomIdRef.current !== room.id) return;
         setFormError("");
         queueRoomRefresh(room.id);
       })
       .catch(async (error) => {
+        if (activeRoomIdRef.current !== room.id) return;
         const rawMessage = error instanceof Error ? error.message : String(error);
         if (rawMessage.includes("room_not_playing") || rawMessage.includes("player_already_finished")) {
           localRoundRef.current = null;
@@ -986,6 +1032,13 @@ export default function Home() {
   }
 
   function exitRoom() {
+    activeRoomIdRef.current = null;
+    roomSessionGenerationRef.current += 1;
+    refreshQueuedRef.current = false;
+    if (refreshTimerRef.current) {
+      clearTimeout(refreshTimerRef.current);
+      refreshTimerRef.current = null;
+    }
     window.sessionStorage.removeItem(SESSION_ROOM);
     if (room && playerId) window.sessionStorage.removeItem(`${RUN_CLOCK_PREFIX}${room.id}:${room.round}:${playerId}`);
     localRoundRef.current = null;

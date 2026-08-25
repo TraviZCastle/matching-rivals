@@ -116,6 +116,11 @@ test("ships race, practice, first-finisher, and half-second error interactions",
   assert.match(source, /rememberGameSnapshot/);
   assert.match(source, /pendingRoomId/);
   assert.match(source, /Connecting Room/);
+  assert.match(source, /activeRoomIdRef/);
+  assert.match(source, /roomSessionGenerationRef/);
+  assert.match(source, /function rememberGameRoom\(roomId: string\) \{\s*const session = beginRoomSession\(roomId\)/);
+  assert.match(source, /if \(!isCurrentRoomSession\(session\)\) return null;\s*const snapshot = await withRoomRequestRetry/);
+  assert.match(source, /if \(!isCurrentRoomSession\(session\) \|\| snapshot\.room\.id !== session\.roomId\) return null;/);
   assert.match(source, /const joinedSnapshot = await withRoomRequestRetry\(\(\) => joinGameRoom/);
   assert.doesNotMatch(source, /const joinedRoom = await joinGameRoom[\s\S]{0,160}rememberGameRoom\(joinedRoom\.id\)/);
   assert.match(styles, /\.standing-stats \{[^}]*grid-template-columns: 135px 90px/);
@@ -126,6 +131,10 @@ test("ships race, practice, first-finisher, and half-second error interactions",
 
   const exitRoomSource = source.slice(source.indexOf("function exitRoom"), source.indexOf("function selectMode"));
   assert.doesNotMatch(exitRoomSource, /randomNickname|setName/);
+  assert.match(exitRoomSource, /activeRoomIdRef\.current = null/);
+  assert.match(exitRoomSource, /roomSessionGenerationRef\.current \+= 1/);
+  assert.match(exitRoomSource, /refreshQueuedRef\.current = false/);
+  assert.match(exitRoomSource, /clearTimeout\(refreshTimerRef\.current\)/);
 });
 
 test("includes five disjoint 500-pair banks and randomly selects six pairs per round", async () => {
