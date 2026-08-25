@@ -112,6 +112,7 @@ test("ships race, practice, first-finisher, and half-second error interactions",
   assert.match(styles, /\.word-card strong \{[^}]*white-space: nowrap/);
   assert.match(source, /standing-stats/);
   assert.match(source, /ROOM_REQUEST_RETRY_DELAYS_MS/);
+  assert.match(source, /if \(booting \|\| room\) return;[\s\S]*requestIdleCallback/);
   assert.match(source, /rememberGameSnapshot/);
   assert.match(source, /pendingRoomId/);
   assert.match(source, /Connecting Room/);
@@ -226,6 +227,8 @@ test("includes the Supabase production foundation", async () => {
   assert.match(adapter, /submitProductionMatch/);
   assert.match(adapter, /join_room_snapshot/);
   assert.match(adapter, /normalizeRoomSnapshot/);
+  assert.match(adapter, /matchingRivalsSessionPromise/);
+  assert.match(adapter, /delete globalForSupabase\.matchingRivalsSessionPromise/);
   assert.match(snapshotMigration, /create or replace function public\.get_room_snapshot/i);
   assert.match(snapshotMigration, /clock_timestamp\(\)/i);
   assert.match(nextMilestoneMigration, /interval '5 minutes'/i);

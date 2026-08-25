@@ -1,4 +1,4 @@
-import { createClient, SupabaseClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient, type User } from "@supabase/supabase-js";
 
 export type ProductionRoom = {
   id: string;
@@ -83,6 +83,7 @@ type RawRoomSnapshot = {
 
 const globalForSupabase = globalThis as typeof globalThis & {
   matchingRivalsSupabaseClient?: SupabaseClient;
+  matchingRivalsSessionPromise?: Promise<User>;
 };
 
 export function hasSupabaseConfig() {
@@ -120,14 +121,29 @@ export function getSupabaseGameClient() {
 }
 
 export async function ensureAnonymousSession(client = getSupabaseGameClient()) {
-  const { data: sessionData, error: sessionError } = await client.auth.getSession();
-  if (sessionError) throw sessionError;
-  if (sessionData.session?.user) return sessionData.session.user;
+  if (globalForSupabase.matchingRivalsSessionPromise) {
+    return globalForSupabase.matchingRivalsSessionPromise;
+  }
 
-  const { data, error } = await client.auth.signInAnonymously();
-  if (error) throw error;
-  if (!data.user) throw new Error("Supabase did not return an anonymous user.");
-  return data.user;
+  const sessionPromise = (async () => {
+    const { data: sessionData, error: sessionError } = await client.auth.getSession();
+    if (sessionError) throw sessionError;
+    if (sessionData.session?.user) return sessionData.session.user;
+
+    const { data, error } = await client.auth.signInAnonymously();
+    if (error) throw error;
+    if (!data.user) throw new Error("Supabase did not return an anonymous user.");
+    return data.user;
+  })();
+
+  globalForSupabase.matchingRivalsSessionPromise = sessionPromise;
+  try {
+    return await sessionPromise;
+  } finally {
+    if (globalForSupabase.matchingRivalsSessionPromise === sessionPromise) {
+      delete globalForSupabase.matchingRivalsSessionPromise;
+    }
+  }
 }
 
 export async function createProductionRoom(nickname: string, questionSetSlug: string) {

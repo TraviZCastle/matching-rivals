@@ -677,7 +677,7 @@ export default function Home() {
   }, [booting, loadCachedRaceLeaderboard, loadCachedSoloLeaderboard, questionSetSlug, room]);
 
   useEffect(() => {
-    if (room) return;
+    if (booting || room) return;
     let cancelled = false;
 
     const prefetch = async () => {
@@ -710,7 +710,7 @@ export default function Home() {
       cancelled = true;
       clearTimeout(timerId);
     };
-  }, [loadCachedRaceLeaderboard, loadCachedSoloLeaderboard, mode, questionSetSlug, room]);
+  }, [booting, loadCachedRaceLeaderboard, loadCachedSoloLeaderboard, mode, questionSetSlug, room]);
 
   const chineseOrder = useMemo(
     () => seededShuffle(questions, `${room?.code}-${room?.round}-${playerId}-zh`),
