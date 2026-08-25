@@ -1,6 +1,7 @@
 import type {
   ProductionPlayer,
   ProductionQuestion,
+  RaceLeaderboardRecord,
   ProductionRoom,
   ProductionRoomSnapshot,
   SoloLeaderboardRecord,
@@ -10,6 +11,7 @@ import { getQuestionSet } from "@/lib/question-sets";
 const ROOM_PREFIX = "matching-rivals:local-room:";
 const PLAYER_KEY = "matching-rivals:local-player-id";
 const LEADERBOARD_PREFIX = "matching-rivals:solo-leaderboard:";
+const RACE_LEADERBOARD_PREFIX = "matching-rivals:race-leaderboard:";
 export const LOCAL_ROOM_LIFETIME_MS = 5 * 60 * 1000;
 const ROUND_PAIR_COUNT = 6;
 
@@ -117,9 +119,21 @@ function leaderboardKey(questionSetSlug: string) {
   return `${LEADERBOARD_PREFIX}${questionSetSlug}`;
 }
 
+function raceLeaderboardKey(questionSetSlug: string) {
+  return `${RACE_LEADERBOARD_PREFIX}${questionSetSlug}`;
+}
+
 function readLeaderboard(questionSetSlug: string): SoloLeaderboardRecord[] {
   try {
     return JSON.parse(window.localStorage.getItem(leaderboardKey(questionSetSlug)) ?? "[]");
+  } catch {
+    return [];
+  }
+}
+
+function readRaceLeaderboard(questionSetSlug: string): RaceLeaderboardRecord[] {
+  try {
+    return JSON.parse(window.localStorage.getItem(raceLeaderboardKey(questionSetSlug)) ?? "[]");
   } catch {
     return [];
   }
@@ -138,6 +152,23 @@ function recordPracticeResult(room: ProductionRoom, player: ProductionPlayer) {
     .sort((left, right) => left.duration_ms - right.duration_ms || left.mistakes - right.mistakes || left.completed_at.localeCompare(right.completed_at))
     .slice(0, 10);
   window.localStorage.setItem(leaderboardKey(room.question_set_id), JSON.stringify(records));
+}
+
+function recordRaceResult(room: ProductionRoom, players: ProductionPlayer[], winner: ProductionPlayer) {
+  if (!winner.finished_at || winner.duration_ms === null || players.length !== 2) return;
+  const orderedPlayers = [...players].sort((left, right) => left.seat - right.seat);
+  const record: RaceLeaderboardRecord = {
+    id: crypto.randomUUID(),
+    player_one_nickname: orderedPlayers[0].nickname,
+    player_two_nickname: orderedPlayers[1].nickname,
+    winner_seat: winner.seat,
+    duration_ms: winner.duration_ms,
+    completed_at: winner.finished_at,
+  };
+  const records = [...readRaceLeaderboard(room.question_set_id), record]
+    .sort((left, right) => left.duration_ms - right.duration_ms || left.completed_at.localeCompare(right.completed_at))
+    .slice(0, 10);
+  window.localStorage.setItem(raceLeaderboardKey(room.question_set_id), JSON.stringify(records));
 }
 
 function createCode() {
@@ -375,6 +406,7 @@ export async function finishLocalRound(
     record.room.status = "finished";
     record.room.finished_at = finishedAt;
     if (record.room.mode === "practice") recordPracticeResult(record.room, player);
+    if (record.room.mode === "race") recordRaceResult(record.room, record.players, player);
 
     return {
       accepted: true,
@@ -432,6 +464,10 @@ export async function loadLocalRoom(roomId: string): Promise<ProductionRoomSnaps
 
 export async function loadLocalSoloLeaderboard(questionSetSlug: string) {
   return readLeaderboard(questionSetSlug);
+}
+
+export async function loadLocalRaceLeaderboard(questionSetSlug: string) {
+  return readRaceLeaderboard(questionSetSlug);
 }
 
 export async function subscribeToLocalRoom(roomId: string, onChange: () => void | Promise<void>) {

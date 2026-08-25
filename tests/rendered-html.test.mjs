@@ -54,10 +54,23 @@ test("ships race, practice, first-finisher, and half-second error interactions",
   assert.match(source, /}, 500\);/);
   assert.match(source, /DNF/);
   assert.match(source, /loadSoloLeaderboard/);
+  assert.match(source, /loadRaceLeaderboard/);
+  assert.match(source, /soloLeaderboardCacheRef/);
+  assert.match(source, /raceLeaderboardCacheRef/);
+  assert.match(source, /useTransition/);
+  assert.match(source, /commitSoloLeaderboard/);
+  assert.match(source, /aria-busy=\{loading\}/);
+  assert.match(source, /requestIdleCallback/);
+  assert.match(source, /RECORDS_CACHE_TTL_MS/);
+  assert.match(source, /if \(booting \|\| room\) return;[\s\S]*loadCachedSoloLeaderboard\(questionSetSlug\)/);
   assert.match(source, /SoloLeaderboard/);
+  assert.match(source, /RaceLeaderboard/);
   assert.match(source, /function RecordsDialog/);
   assert.match(source, /aria-modal="true"/);
-  assert.match(source, /Shared across all Matching Rivals players/);
+  assert.match(source, /Shared Records/);
+  assert.match(source, /formatRecordDate/);
+  assert.match(source, /Both rivals are shown\. The winner is marked with a star/);
+  assert.match(source, /aria-label="Winner">★/);
   assert.match(source, /Record Question Set/);
   assert.match(source, /function CompositeDropdown/);
   assert.match(source, /role="combobox"/);
@@ -78,6 +91,12 @@ test("ships race, practice, first-finisher, and half-second error interactions",
   assert.doesNotMatch(source, /five-minute room closes/);
   assert.doesNotMatch(source, /Waiting for .* to finish/);
   assert.doesNotMatch(source, /WORD MATCH RACE/);
+  assert.match(source, /function resolvePair/);
+  assert.match(source, /if \(selectedEn\)/);
+  assert.match(source, /if \(selectedZh\)/);
+  assert.match(source, /Choose Either Side/);
+  assert.match(source, /nav-leaderboard-button/);
+  assert.doesNotMatch(source, /Local Test|Live Beta/);
   assert.match(styles, /\.mode-detail-panel::after[\s\S]*width: 42px/);
   assert.match(styles, /\.mode-detail-panel \{[\s\S]*padding-top: 34px/);
   assert.match(styles, /\.mode-support-copy[\s\S]*justify-content: flex-end/);
@@ -85,6 +104,17 @@ test("ships race, practice, first-finisher, and half-second error interactions",
   assert.match(styles, /--font-product-display: "Avenir Next"/);
   assert.match(styles, /\.primary-action \{[\s\S]*font-weight: 600/);
   assert.match(styles, /\.mode-toggle button \{[\s\S]*font-weight: 600/);
+  assert.match(source, /onHome=\{exitRoom\}/);
+  assert.match(source, /Return To Matching Rivals Home/);
+  assert.match(styles, /\.result-title > span \{[\s\S]*letter-spacing: \.01em/);
+  assert.match(styles, /\.records-dialog \{[\s\S]*height: min\(760px/);
+  assert.match(styles, /\.leaderboard-skeleton-row/);
+  assert.match(styles, /\.word-card strong \{[^}]*white-space: nowrap/);
+  assert.match(source, /standing-stats/);
+  assert.match(styles, /\.standing-stats \{[^}]*grid-template-columns: 135px 90px/);
+  assert.match(styles, /@media \(max-width: 680px\)[\s\S]*\.standing-stats \{[^}]*grid-column: 2 \/ -1/);
+  assert.match(styles, /\.race-leaderboard li/);
+  assert.doesNotMatch(styles, /\.records-backdrop[^}]*backdrop-filter/);
 
   const exitRoomSource = source.slice(source.indexOf("function exitRoom"), source.indexOf("function selectMode"));
   assert.doesNotMatch(exitRoomSource, /randomNickname|setName/);
@@ -107,6 +137,10 @@ test("includes five disjoint 500-pair banks and randomly selects six pairs per r
   assert.equal(new Set(allPairs.map((pair) => pair.id)).size, 2_500);
   assert.equal(new Set(allPairs.map((pair) => pair.en.toLowerCase())).size, 2_500);
   assert.equal(new Set(allPairs.map((pair) => pair.zh)).size, 2_500);
+  assert.ok(allPairs.filter((pair) => pair.zh.includes("，")).length >= 2_000);
+  assert.ok(allPairs.every((pair) => pair.zh.length <= 8));
+  assert.ok(allPairs.every((pair) => !pair.zh.includes("/")));
+  assert.ok(allPairs.every((pair) => pair.zh.split("，").length <= 3));
   assert.ok(allPairs.every((pair) => ["noun", "verb", "adjective", "adverb", "phrase"].includes(pair.note)));
   assert.match(sets, /QUESTION_BANKS/);
   assert.match(localGame, /LOCAL_ROOM_LIFETIME_MS = 5 \* 60 \* 1000/);
@@ -119,13 +153,16 @@ test("includes five disjoint 500-pair banks and randomly selects six pairs per r
   assert.match(localGame, /record\.room\.status = "finished"/);
   assert.match(localGame, /record\.room\.mode === "practice"/);
   assert.match(localGame, /matching-rivals:solo-leaderboard:/);
+  assert.match(localGame, /matching-rivals:race-leaderboard:/);
+  assert.match(localGame, /recordRaceResult/);
   assert.match(localGame, /\.slice\(0, 10\)/);
   assert.match(localGame, /finishLocalRound/);
   assert.match(localGame, /duration_ms: durationMs/);
   assert.match(localGame, /syncLocalMatchProgress/);
   assert.match(service, /loadSoloLeaderboard/);
+  assert.match(service, /loadRaceLeaderboard/);
   assert.match(service, /hasSupabaseConfig\(\)[\s\S]*loadProductionSoloLeaderboard/);
-  assert.match(service, /hasSharedSoloLeaderboard/);
+  assert.match(service, /hasSharedLeaderboard/);
   assert.match(service, /NEXT_PUBLIC_GAME_BACKEND === "local"/);
 });
 
@@ -153,6 +190,14 @@ test("includes the Supabase production foundation", async () => {
   );
   const localFirstMigration = await readFile(
     new URL("../supabase/migrations/202608210007_local_first_rounds.sql", import.meta.url),
+    "utf8",
+  );
+  const raceLeaderboardMigration = await readFile(
+    new URL("../supabase/migrations/202608210008_race_leaderboard.sql", import.meta.url),
+    "utf8",
+  );
+  const glossMigration = await readFile(
+    new URL("../supabase/migrations/202608210009_expand_question_glosses.sql", import.meta.url),
     "utf8",
   );
 
@@ -196,4 +241,12 @@ test("includes the Supabase production foundation", async () => {
   assert.match(localFirstMigration, /submitted_progress >= cardinality\(target_room\.selected_pair_ids\)/i);
   assert.match(localFirstMigration, /duration_ms = p_duration_ms/i);
   assert.match(localFirstMigration, /p_duration_ms, p_mistakes, completed_at/i);
+  assert.match(adapter, /get_race_leaderboard/i);
+  assert.match(raceLeaderboardMigration, /create table if not exists public\.race_records/i);
+  assert.match(raceLeaderboardMigration, /player_one_nickname/i);
+  assert.match(raceLeaderboardMigration, /player_two_nickname/i);
+  assert.match(raceLeaderboardMigration, /winner_seat/i);
+  assert.match(raceLeaderboardMigration, /create or replace function public\.get_race_leaderboard/i);
+  assert.match(raceLeaderboardMigration, /limit 10/i);
+  assert.equal((glossMigration.match(/^ {2}\('[0-9a-f-]{36}'::uuid,/gm) ?? []).length, 2_500);
 });

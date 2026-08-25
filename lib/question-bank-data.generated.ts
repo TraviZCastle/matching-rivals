@@ -5,31 +5,31 @@ export const QUESTION_BANKS = {
   "cet4": [
     {
       "id": "b0625a32-5625-5510-9b13-13c4c0148dd9",
-      "zh": "强迫",
+      "zh": "强迫，执行，坚持",
       "en": "enforce",
       "note": "verb"
     },
     {
       "id": "f6a13378-a557-5b3a-ae0a-f11e5b7bfabe",
-      "zh": "谣言",
+      "zh": "谣言，传闻，谣传",
       "en": "rumour",
       "note": "noun"
     },
     {
       "id": "b531eff9-a45d-52dc-93e9-cc2d7a7b7823",
-      "zh": "保证人",
+      "zh": "教父，发起，赞助",
       "en": "sponsor",
       "note": "noun"
     },
     {
       "id": "dd413104-abb0-5d8c-8ae3-d169dd1bcfb2",
-      "zh": "研究班",
+      "zh": "研究班，讨论会",
       "en": "seminar",
       "note": "noun"
     },
     {
       "id": "b2f53be6-bc4c-517e-a304-154cb813943d",
-      "zh": "不快乐的",
+      "zh": "不快乐的，不幸的",
       "en": "unhappy",
       "note": "adjective"
     },
@@ -41,97 +41,97 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "ac1a3307-471e-584c-99a5-1dbba6d00ec7",
-      "zh": "不停的",
+      "zh": "不停的，无穷尽的",
       "en": "endless",
       "note": "adjective"
     },
     {
       "id": "36fb75fc-9bfc-51ff-ab88-fdf3f6fbc972",
-      "zh": "凯旋",
+      "zh": "凯旋，胜利，欢欣",
       "en": "triumph",
       "note": "noun"
     },
     {
       "id": "a26cf49c-cb80-5c4f-903d-7d1c2059edc1",
-      "zh": "长者",
+      "zh": "长者，占优势的人",
       "en": "superior",
       "note": "noun"
     },
     {
       "id": "5ca47dfa-1409-5099-9c6b-dbe3c8485735",
-      "zh": "运送者",
+      "zh": "运送者，邮递员",
       "en": "carrier",
       "note": "noun"
     },
     {
       "id": "3c7e1155-fd0b-554d-93a7-8b1784e6f62a",
-      "zh": "笑声",
+      "zh": "笑声，大笑",
       "en": "laughter",
       "note": "noun"
     },
     {
       "id": "3c0d12e9-7943-54ed-a413-5d3ce1e41fe1",
-      "zh": "判刑",
+      "zh": "判刑，责备，谴责",
       "en": "condemn",
       "note": "verb"
     },
     {
       "id": "a4a90fe0-b9ca-58b7-a0b6-01fcb7972f13",
-      "zh": "集合",
+      "zh": "集合，收集，装配",
       "en": "assemble",
       "note": "verb"
     },
     {
       "id": "038d1fc4-90a0-5985-8cb2-b4e0a49d322a",
-      "zh": "新兵",
+      "zh": "新兵，新手，恢复",
       "en": "recruit",
       "note": "noun"
     },
     {
       "id": "0b1b5a17-0575-52be-b72c-d6229b76cfed",
-      "zh": "叛徒",
+      "zh": "叛徒，造反，反抗",
       "en": "rebel",
       "note": "noun"
     },
     {
       "id": "f4fc6a24-4874-591f-8f62-2fd4ca283329",
-      "zh": "毛毯",
+      "zh": "毛毯，毯子，掩盖",
       "en": "blanket",
       "note": "noun"
     },
     {
       "id": "57e336dd-0d03-56f2-90d1-2429d6d1f98c",
-      "zh": "电池",
+      "zh": "电池，殴打",
       "en": "battery",
       "note": "noun"
     },
     {
       "id": "56662f54-67aa-5b62-83f2-97282450bc6a",
-      "zh": "加热",
+      "zh": "加热，供热",
       "en": "heating",
       "note": "noun"
     },
     {
       "id": "6a63b336-17ae-589f-9e67-da20af79c596",
-      "zh": "皇帝",
+      "zh": "皇帝，君主",
       "en": "emperor",
       "note": "noun"
     },
     {
       "id": "405d2efa-485e-506e-a5bf-f0b6b5001b20",
-      "zh": "排水沟",
+      "zh": "消耗，排水，排出",
       "en": "drain",
       "note": "noun"
     },
     {
       "id": "d489fc34-554a-53f8-83c9-635bcda479a8",
-      "zh": "闪光",
+      "zh": "闪光，闪现，反射",
       "en": "flash",
       "note": "noun"
     },
     {
       "id": "2747abfc-e2fa-5c03-9b1f-4830abef6968",
-      "zh": "圣堂",
+      "zh": "圣堂，庙宇，教堂",
       "en": "temple",
       "note": "noun"
     },
@@ -143,31 +143,31 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "37ca06f1-c37a-5184-b740-85168f8439b1",
-      "zh": "手肘",
+      "zh": "手肘，弯头，扶手",
       "en": "elbow",
       "note": "noun"
     },
     {
       "id": "64cf767b-a3c4-5fec-b0a3-22c1f44d0ad9",
-      "zh": "可怕的",
+      "zh": "可怕的，遭透的",
       "en": "horrible",
       "note": "adjective"
     },
     {
       "id": "301ad1ee-3e06-59dc-9aa6-7c07b9fea763",
-      "zh": "滤波器",
+      "zh": "过滤，渗透，走漏",
       "en": "filter",
       "note": "noun"
     },
     {
       "id": "125b108d-33d4-571a-9d2c-0581865f91d9",
-      "zh": "不足",
+      "zh": "不足，缺乏，缺额",
       "en": "shortage",
       "note": "noun"
     },
     {
       "id": "8cb665e4-92c4-543b-acb9-bbf0cf4b2286",
-      "zh": "避难所",
+      "zh": "避难所，庇护",
       "en": "harbour",
       "note": "noun"
     },
@@ -179,7 +179,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "4a7769ab-6b48-58f4-85df-98822a62f243",
-      "zh": "拒绝",
+      "zh": "拒绝，推却，谢绝",
       "en": "refusal",
       "note": "noun"
     },
@@ -191,103 +191,103 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "562727c9-1128-5535-8615-b6e4892e3472",
-      "zh": "给与动机",
+      "zh": "刺激，促动，激发",
       "en": "motivate",
       "note": "verb"
     },
     {
       "id": "111e34cf-cc92-569e-8a71-33b4e798eeee",
-      "zh": "奖牌",
+      "zh": "奖牌，勋章",
       "en": "medal",
       "note": "noun"
     },
     {
       "id": "26068c8a-80e3-5a3e-ab2f-9784d18ca5ae",
-      "zh": "零售",
+      "zh": "零售，详述，传播",
       "en": "retail",
       "note": "noun"
     },
     {
       "id": "e002e2a5-31a7-5f6f-8811-18f9c63b87d5",
-      "zh": "陆军上校",
+      "zh": "陆军上校，长官",
       "en": "colonel",
       "note": "noun"
     },
     {
       "id": "5e79956e-c22d-5fed-9d91-83a81cb0c3fc",
-      "zh": "抽象的",
+      "zh": "摘要，提炼，摘录",
       "en": "abstract",
       "note": "adjective"
     },
     {
       "id": "fde05e49-9865-52a7-a33c-59eeb7625ac2",
-      "zh": "符咒",
+      "zh": "符咒，魅力，轮值",
       "en": "spell",
       "note": "noun"
     },
     {
       "id": "422ad92b-5132-5acc-ba16-00cc71e6fb69",
-      "zh": "重音",
+      "zh": "重音，口音，特点",
       "en": "accent",
       "note": "noun"
     },
     {
       "id": "008439d2-4679-53e4-a0c0-5d19d0c74e6b",
-      "zh": "下降",
+      "zh": "下降，屈尊，袭击",
       "en": "descend",
       "note": "verb"
     },
     {
       "id": "63770180-b625-5548-b021-e8c9e5ff95fa",
-      "zh": "回报",
+      "zh": "回报，给于，付给",
       "en": "render",
       "note": "verb"
     },
     {
       "id": "62a6f366-eb68-580f-808d-a8cff90662a0",
-      "zh": "废物",
+      "zh": "废物，垃圾，胡说",
       "en": "rubbish",
       "note": "noun"
     },
     {
       "id": "67570551-ee89-5cc6-8ad9-83488f3c0d66",
-      "zh": "折层",
+      "zh": "折层，羊栏，折痕",
       "en": "fold",
       "note": "noun"
     },
     {
       "id": "898f28f8-34c5-5cbd-9dfe-80f1ca82d903",
-      "zh": "周刊",
+      "zh": "周刊，周报，每周",
       "en": "weekly",
       "note": "noun"
     },
     {
       "id": "7a906e71-5e58-557f-84cc-0e33a9d69352",
-      "zh": "法令",
+      "zh": "法令，法规，章程",
       "en": "statute",
       "note": "noun"
     },
     {
       "id": "33b3b576-80fe-52c0-9444-bf3af3ace825",
-      "zh": "碎片",
+      "zh": "碎片，破片，片段",
       "en": "fragment",
       "note": "noun"
     },
     {
       "id": "418fa247-4308-568a-89d7-5d726cff2e10",
-      "zh": "致命的",
+      "zh": "致命的，致死的",
       "en": "deadly",
       "note": "adjective"
     },
     {
       "id": "1c9ce089-4824-5b48-ad6c-5237ad39a419",
-      "zh": "实际上起作用的",
+      "zh": "虚的，实质的",
       "en": "virtual",
       "note": "adjective"
     },
     {
       "id": "03712f4e-6ab9-5ea8-844d-069182bf3b14",
-      "zh": "登陆",
+      "zh": "登陆，码头，降落",
       "en": "landing",
       "note": "noun"
     },
@@ -299,79 +299,79 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "f19f8143-f2bc-50d5-bc3b-cfa56184d4da",
-      "zh": "崩溃",
+      "zh": "崩溃，倒塌，虚脱",
       "en": "collapse",
       "note": "noun"
     },
     {
       "id": "296a3f12-6c3d-5580-8271-b75e9cc0fe91",
-      "zh": "旋律",
+      "zh": "旋律，节奏，韵律",
       "en": "rhythm",
       "note": "noun"
     },
     {
       "id": "b3c78289-3153-5734-83a7-c604d8fc78be",
-      "zh": "喜剧",
+      "zh": "喜剧，有趣的事情",
       "en": "comedy",
       "note": "noun"
     },
     {
       "id": "ba8aa9d5-1b54-5ce7-b215-70e98e769ffc",
-      "zh": "严格地",
+      "zh": "严格地，确实地",
       "en": "strictly",
       "note": "adverb"
     },
     {
       "id": "225d31b1-d5b3-5244-b10b-63e243d4a52f",
-      "zh": "墓穴",
+      "zh": "墓穴，坟墓，终结",
       "en": "grave",
       "note": "noun"
     },
     {
       "id": "0ccd7417-1ab6-57ac-8151-3393ca3218f1",
-      "zh": "手巾",
+      "zh": "手巾，毛巾",
       "en": "towel",
       "note": "noun"
     },
     {
       "id": "ab89df58-d124-59c4-ad37-1413e13fe4cc",
-      "zh": "百分比",
+      "zh": "百分比，百分数",
       "en": "percent",
       "note": "noun"
     },
     {
       "id": "0b156e63-81ea-5d35-8291-e5dfae2e9fb9",
-      "zh": "艺术的",
+      "zh": "艺术的，艺术家的",
       "en": "artistic",
       "note": "adjective"
     },
     {
       "id": "081b4524-2ae0-5973-a886-ba4cc91a7ba6",
-      "zh": "漂流物",
+      "zh": "漂流物，漂流",
       "en": "drift",
       "note": "noun"
     },
     {
       "id": "50deb3a5-1a32-51af-8f6e-2942a688fe74",
-      "zh": "侵犯",
+      "zh": "侵犯，侵入，侵害",
       "en": "invasion",
       "note": "noun"
     },
     {
       "id": "5172213c-e80f-5d39-b14e-bd8dcd572305",
-      "zh": "细菌",
+      "zh": "细菌，杆菌",
       "en": "bacteria",
       "note": "noun"
     },
     {
       "id": "43e38c94-2630-59f7-b88b-eb132c16c2ab",
-      "zh": "扰乱",
+      "zh": "扰乱，妨碍，滋扰",
       "en": "disturb",
       "note": "verb"
     },
     {
       "id": "9f05bd96-9bb1-5824-8ad3-350422881173",
-      "zh": "勇敢的",
+      "zh": "勇敢的，美好的",
       "en": "brave",
       "note": "adjective"
     },
@@ -383,37 +383,37 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "660761c1-4978-5ad8-95de-8fd4a8dc9d96",
-      "zh": "钉子",
+      "zh": "钉子，指甲，截住",
       "en": "nail",
       "note": "noun"
     },
     {
       "id": "422eb68d-dcf0-52b3-8621-85d616f3cc18",
-      "zh": "揭露",
+      "zh": "揭露，透露，揭发",
       "en": "disclose",
       "note": "verb"
     },
     {
       "id": "14409658-8f13-5dbd-8a35-1454de8412e1",
-      "zh": "骑手",
+      "zh": "骑手，附件，扶手",
       "en": "rider",
       "note": "noun"
     },
     {
       "id": "e0a589d5-c05a-5553-a01d-79b377a8bd65",
-      "zh": "完全地",
+      "zh": "整个，统统，全部",
       "en": "wholly",
       "note": "adverb"
     },
     {
       "id": "70d9a653-7ec4-5c0b-a95f-f1eefeb0009c",
-      "zh": "平静的",
+      "zh": "平静的，和平的",
       "en": "peaceful",
       "note": "adjective"
     },
     {
       "id": "b55be464-6a41-52c0-9ccd-7a006ea0da7b",
-      "zh": "熟练的",
+      "zh": "熟练的，有技能的",
       "en": "skilled",
       "note": "adjective"
     },
@@ -425,13 +425,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "266d6a4f-df34-5728-8ad6-a4c097296bf5",
-      "zh": "不情愿的",
+      "zh": "不情愿的，勉强的",
       "en": "reluctant",
       "note": "adjective"
     },
     {
       "id": "ed288e4e-2c90-5fe6-b427-1cba4720f2f1",
-      "zh": "魔鬼",
+      "zh": "魔鬼，折磨，戏弄",
       "en": "devil",
       "note": "noun"
     },
@@ -443,13 +443,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "94d4ec50-ecf6-5555-9900-f33155bdc1b3",
-      "zh": "前额",
+      "zh": "前额，前部",
       "en": "forehead",
       "note": "noun"
     },
     {
       "id": "9c498271-d64a-5b5c-8225-cf5205d2b12b",
-      "zh": "传说",
+      "zh": "传说，传奇文学",
       "en": "legend",
       "note": "noun"
     },
@@ -461,139 +461,139 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "dd48ffc2-1b12-552c-afca-3d8147ce32e9",
-      "zh": "相反",
+      "zh": "相反，背面，倒退",
       "en": "reverse",
       "note": "noun"
     },
     {
       "id": "5dd5ffd4-20f6-5a11-8da4-3e9203e1caff",
-      "zh": "装备",
+      "zh": "装备，配备，设备",
       "en": "equip",
       "note": "verb"
     },
     {
       "id": "d9c4111f-1dd2-54a4-aece-f282d103d2e7",
-      "zh": "犹豫",
+      "zh": "犹豫，迟疑，踌躇",
       "en": "hesitate",
       "note": "verb"
     },
     {
       "id": "d9b91efd-2f4c-5b31-bff4-fd7585d0ffee",
-      "zh": "爆炸",
+      "zh": "爆炸，爆发，激增",
       "en": "explode",
       "note": "verb"
     },
     {
       "id": "8244c497-8dd6-538a-b2d5-7e91cd6c0aac",
-      "zh": "消失",
+      "zh": "消失，不见",
       "en": "vanish",
       "note": "verb"
     },
     {
       "id": "92d35395-bd1f-57eb-be34-8faadd307b01",
-      "zh": "苦的",
+      "zh": "苦的，刺骨，变苦",
       "en": "bitter",
       "note": "adjective"
     },
     {
       "id": "d5f1de00-1f23-5097-8203-fbecfde66fb9",
-      "zh": "给...权利",
+      "zh": "取名为，给予名称",
       "en": "entitle",
       "note": "verb"
     },
     {
       "id": "fde9a50e-9cd4-5dc5-acc8-ec09fb9035a5",
-      "zh": "水浅的地方",
+      "zh": "浅滩，浅的，变浅",
       "en": "shallow",
       "note": "noun"
     },
     {
       "id": "dc683e83-9dc4-52d8-8def-315e1a620ad9",
-      "zh": "笨拙的",
+      "zh": "笨拙的，棘手的",
       "en": "awkward",
       "note": "adjective"
     },
     {
       "id": "77c0395a-5952-51e4-9aa2-edbf31e7e91e",
-      "zh": "接收器",
+      "zh": "接收器，接受者",
       "en": "receiver",
       "note": "noun"
     },
     {
       "id": "8174d5ec-fac3-510a-aa31-bce9f19cce62",
-      "zh": "富有的",
+      "zh": "富有的，丰裕的",
       "en": "wealthy",
       "note": "adjective"
     },
     {
       "id": "35be7b3b-4ab3-5b06-9f98-d474ef5e43b6",
-      "zh": "紫色",
+      "zh": "紫色，帝位",
       "en": "purple",
       "note": "noun"
     },
     {
       "id": "8fb87917-cf75-5496-ae30-58d7695198b1",
-      "zh": "水晶",
+      "zh": "水晶，水晶装饰品",
       "en": "crystal",
       "note": "noun"
     },
     {
       "id": "ff9e01ae-1232-5a42-a197-d6ea67d4770f",
-      "zh": "创伤",
+      "zh": "创伤，伤口，伤疤",
       "en": "wound",
       "note": "noun"
     },
     {
       "id": "139ffb8b-b3b5-5bdb-a2ff-ccd7e191b209",
-      "zh": "弄翻的",
+      "zh": "弄翻，颠覆，推翻",
       "en": "upset",
       "note": "adjective"
     },
     {
       "id": "64372c4d-7dd6-5a43-85c2-0e9529ac448a",
-      "zh": "三明治",
+      "zh": "三明治，夹心面包",
       "en": "sandwich",
       "note": "noun"
     },
     {
       "id": "6547bca5-9504-5f42-a78b-629f9ecdd0a6",
-      "zh": "自由",
+      "zh": "自由，特权，许可",
       "en": "liberty",
       "note": "noun"
     },
     {
       "id": "09255a9a-a973-52ab-9b69-c09a09aecf2f",
-      "zh": "援救",
+      "zh": "援救，解救，营救",
       "en": "rescue",
       "note": "noun"
     },
     {
       "id": "49ea2be9-f5a3-5a18-a898-7d3a39278866",
-      "zh": "插入物",
+      "zh": "插入，添写，附着",
       "en": "insert",
       "note": "noun"
     },
     {
       "id": "7438cfca-84ca-56e8-8d22-2a8271aa59c8",
-      "zh": "狩猎",
+      "zh": "狩猎，追捕，搜寻",
       "en": "hunt",
       "note": "noun"
     },
     {
       "id": "00c0e68c-4209-5888-8665-e8f1e3eb257f",
-      "zh": "遗憾",
+      "zh": "遗憾，后悔，悔恨",
       "en": "regret",
       "note": "noun"
     },
     {
       "id": "93c1c2ba-e262-5914-9326-8c6a5c9fa86b",
-      "zh": "教育",
+      "zh": "教育，命令，通知",
       "en": "instruct",
       "note": "verb"
     },
     {
       "id": "2f8e1e61-f9d3-52df-a526-e3f380a467de",
-      "zh": "不见的",
+      "zh": "不见的，缺少的",
       "en": "missing",
       "note": "adjective"
     },
@@ -605,79 +605,79 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "4d7fd763-2840-5ccd-9560-672ac5444539",
-      "zh": "发明",
+      "zh": "发明，创作，虚构",
       "en": "invent",
       "note": "verb"
     },
     {
       "id": "b2c39291-094d-5ff4-9e4f-52d0db642931",
-      "zh": "粗糙的",
+      "zh": "粗糙的，刺耳的",
       "en": "harsh",
       "note": "adjective"
     },
     {
       "id": "6621f305-be36-53d1-921f-565f6c3a4693",
-      "zh": "总理",
+      "zh": "总理，首相",
       "en": "premier",
       "note": "noun"
     },
     {
       "id": "a88b54f8-72cc-5721-90e0-b51d3b7215d9",
-      "zh": "厕所",
+      "zh": "厕所，梳妆，打扮",
       "en": "toilet",
       "note": "noun"
     },
     {
       "id": "4c1061e0-a690-5bbd-8aaf-6b122542e029",
-      "zh": "十七",
+      "zh": "十七，十七个",
       "en": "seventeen",
       "note": "noun"
     },
     {
       "id": "886421ba-0b89-53d3-81ac-e28d77fa8f39",
-      "zh": "特别地",
+      "zh": "特别地，专门地",
       "en": "specially",
       "note": "adverb"
     },
     {
       "id": "6b752b98-d51f-515c-8091-c748311cb369",
-      "zh": "跳跃",
+      "zh": "跳跃，剧增，急变",
       "en": "leap",
       "note": "noun"
     },
     {
       "id": "14e5553f-b56a-5912-a68a-bd992f854bd9",
-      "zh": "偶然的",
+      "zh": "偶然的，不经意的",
       "en": "casual",
       "note": "adjective"
     },
     {
       "id": "41b7cdeb-8f20-5fe1-ad82-661c3fc54399",
-      "zh": "路面",
+      "zh": "路面，人行道",
       "en": "pavement",
       "note": "noun"
     },
     {
       "id": "7fabae70-e46a-5733-b578-fab0397fcef4",
-      "zh": "手势",
+      "zh": "手势，姿态",
       "en": "gesture",
       "note": "noun"
     },
     {
       "id": "d03a0e11-197c-5c40-94df-e0962f7c0966",
-      "zh": "使混乱",
+      "zh": "使混乱，使狼狈",
       "en": "confuse",
       "note": "verb"
     },
     {
       "id": "0624c8f3-0664-5ee4-859d-109aecade65c",
-      "zh": "浮舟",
+      "zh": "浮舟，漂浮，浮萍",
       "en": "float",
       "note": "noun"
     },
     {
       "id": "fab2e3ea-06db-5916-92da-a6aad3dac666",
-      "zh": "隐藏",
+      "zh": "隐藏，掩盖，隐瞒",
       "en": "conceal",
       "note": "verb"
     },
@@ -689,7 +689,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "7a83dbf9-02cb-516b-b2cd-984b0f70f594",
-      "zh": "马车",
+      "zh": "马车，客车，举止",
       "en": "carriage",
       "note": "noun"
     },
@@ -701,109 +701,109 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "8e6fe043-49cf-5184-96ba-68142c6004a2",
-      "zh": "明确的",
+      "zh": "明确的，一定的",
       "en": "definite",
       "note": "adjective"
     },
     {
       "id": "25c51094-aca5-542c-8648-3e117041a9e5",
-      "zh": "池塘",
+      "zh": "池塘，筑成池塘",
       "en": "pond",
       "note": "noun"
     },
     {
       "id": "d6c43e39-a0b0-5e4d-a5b1-7a7bf61ce8b5",
-      "zh": "原谅",
+      "zh": "原谅，宽恕，免除",
       "en": "forgive",
       "note": "verb"
     },
     {
       "id": "36a31424-3f78-5162-a0a4-f45d5491015d",
-      "zh": "四肢",
+      "zh": "四肢，枝干，边缘",
       "en": "limb",
       "note": "noun"
     },
     {
       "id": "a08d39a4-de0f-5079-8da8-d7ed72cd5f36",
-      "zh": "强烈",
+      "zh": "强烈，紧张，强度",
       "en": "intensity",
       "note": "noun"
     },
     {
       "id": "afffeef5-96f1-536d-a1b3-f88b23a59542",
-      "zh": "物理学",
+      "zh": "物理学，物理过程",
       "en": "physics",
       "note": "noun"
     },
     {
       "id": "a9c9c982-c080-5f61-a793-1ba90c3c7d09",
-      "zh": "凹陷",
+      "zh": "凹陷，塌落，挖洞",
       "en": "cave",
       "note": "noun"
     },
     {
       "id": "a049b611-0c2e-5cbd-83d1-f2d344cd2ed4",
-      "zh": "等候",
+      "zh": "等候，等待着",
       "en": "await",
       "note": "verb"
     },
     {
       "id": "6c0faf92-e162-5da6-8466-f86ea10f2f7b",
-      "zh": "追踪",
+      "zh": "追踪，追求，追赶",
       "en": "pursuit",
       "note": "noun"
     },
     {
       "id": "8cbd9fa8-a669-5492-ac94-f33b4005c048",
-      "zh": "地心引力",
+      "zh": "地心引力，重力",
       "en": "gravity",
       "note": "noun"
     },
     {
       "id": "641f52ee-b92e-5d3c-a1f3-46f6da179f88",
-      "zh": "精确的",
+      "zh": "精确的，准确的",
       "en": "exact",
       "note": "adjective"
     },
     {
       "id": "8bf9e07e-a1e2-5458-9724-cf45ebf6f44b",
-      "zh": "轻轻地",
+      "zh": "轻轻地，少许",
       "en": "lightly",
       "note": "adverb"
     },
     {
       "id": "5756dc7a-ebc9-5b85-84c4-fe5bbc2a2d96",
-      "zh": "阴险的人",
+      "zh": "阴险的人，迂回",
       "en": "snake",
       "note": "noun"
     },
     {
       "id": "4c22151c-36f3-5c07-9ea3-aab31d131399",
-      "zh": "愚人",
+      "zh": "愚人，愚弄，欺骗",
       "en": "fool",
       "note": "noun"
     },
     {
       "id": "e0eeec7f-50a6-51a7-8dd1-2f896ebc2d82",
-      "zh": "谷粒",
+      "zh": "谷粒，颗粒，谷类",
       "en": "grain",
       "note": "noun"
     },
     {
       "id": "974ddcc5-95a0-5b1d-9781-ffbe8666ab01",
-      "zh": "紧急的",
+      "zh": "紧急的，急迫的",
       "en": "urgent",
       "note": "adjective"
     },
     {
       "id": "2c5a3dfa-b971-5547-82b7-70833ebc21ad",
-      "zh": "角质",
+      "zh": "角质，喇叭，号角",
       "en": "horn",
       "note": "noun"
     },
     {
       "id": "f70cb6d2-b460-5265-a1be-709a5f37b673",
-      "zh": "承受",
+      "zh": "承受，支持，供养",
       "en": "sustain",
       "note": "verb"
     },
@@ -815,79 +815,79 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "b27857b7-c785-50dc-9a62-db6267144bf6",
-      "zh": "月刊",
+      "zh": "月刊，每月的",
       "en": "monthly",
       "note": "noun"
     },
     {
       "id": "456a0090-1ca7-563b-b63b-ab07d09e658c",
-      "zh": "袭击",
+      "zh": "袭击，突袭，搜捕",
       "en": "raid",
       "note": "noun"
     },
     {
       "id": "227a7015-33a9-5560-9fea-5a8fd9d7fb95",
-      "zh": "画家",
+      "zh": "画家，油漆匠",
       "en": "painter",
       "note": "noun"
     },
     {
       "id": "a278c03b-53c2-5091-988f-cca02cb8e752",
-      "zh": "赞美",
+      "zh": "赞美，钦佩，爱慕",
       "en": "admire",
       "note": "verb"
     },
     {
       "id": "f242a78d-6127-54d9-b3fd-fd928bdc452a",
-      "zh": "任何人",
+      "zh": "任何人，无论谁",
       "en": "whoever",
       "note": "noun"
     },
     {
       "id": "80cf1633-f7f5-5bea-aaf3-74183c44be2d",
-      "zh": "鸭子",
+      "zh": "鸭子，闪避，躲避",
       "en": "duck",
       "note": "noun"
     },
     {
       "id": "6b3d5cb1-8d90-5c86-b252-7d07317014c0",
-      "zh": "海外的",
+      "zh": "海外的，国外的",
       "en": "overseas",
       "note": "adjective"
     },
     {
       "id": "b71abb93-08ad-544c-9d99-ada3db2a32ad",
-      "zh": "面粉",
+      "zh": "面粉，粉沫，碎粉",
       "en": "flour",
       "note": "noun"
     },
     {
       "id": "3be1142e-aed5-5cb3-8548-b3afbb492b61",
-      "zh": "不公平的",
+      "zh": "不公平的，偏颇的",
       "en": "unfair",
       "note": "adjective"
     },
     {
       "id": "bca22090-d62a-5af1-a9c7-b9df2247fd67",
-      "zh": "绊倒",
+      "zh": "绊倒，失足，失策",
       "en": "stumble",
       "note": "noun"
     },
     {
       "id": "6f6848dc-c0de-5a29-88b0-bbd6f8b7a8d0",
-      "zh": "凝结物",
+      "zh": "凝结物，混凝土",
       "en": "concrete",
       "note": "noun"
     },
     {
       "id": "e95ec300-cd53-50b3-af99-c7b0ff915326",
-      "zh": "管理",
+      "zh": "管理，控制，调节",
       "en": "regulate",
       "note": "verb"
     },
     {
       "id": "802622be-d0a2-5314-a041-f04d896edfac",
-      "zh": "雕刻",
+      "zh": "雕刻，切开",
       "en": "carve",
       "note": "verb"
     },
@@ -899,61 +899,61 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "f34e3b14-82e1-5163-bf78-ede8330d0f4f",
-      "zh": "修正",
+      "zh": "修正，变更，修饰",
       "en": "modify",
       "note": "verb"
     },
     {
       "id": "714440ec-001f-577b-9afd-dfecd2af58ab",
-      "zh": "西北",
+      "zh": "西北，西北方",
       "en": "northwest",
       "note": "noun"
     },
     {
       "id": "0997f380-4db1-53b1-94e0-bf6d49b1bcd8",
-      "zh": "市郊住宅区",
+      "zh": "市郊住宅区，郊区",
       "en": "suburb",
       "note": "noun"
     },
     {
       "id": "8debbf0c-82da-5776-b360-bd6566f3c84c",
-      "zh": "寡妇",
+      "zh": "寡妇，孀妇",
       "en": "widow",
       "note": "noun"
     },
     {
       "id": "e8761ecc-1b72-5509-a5ad-95df1ce0e58f",
-      "zh": "好奇的",
+      "zh": "好奇的，求知的",
       "en": "curious",
       "note": "adjective"
     },
     {
       "id": "c659458b-d814-5003-a744-90d9a0138db0",
-      "zh": "舰队",
+      "zh": "舰队，港湾，小河",
       "en": "fleet",
       "note": "noun"
     },
     {
       "id": "ba893639-adca-569b-88a8-76e2a965a659",
-      "zh": "喃喃低语",
+      "zh": "喃喃低语，出怨言",
       "en": "mutter",
       "note": "noun"
     },
     {
       "id": "d1fd12a6-7f66-5edb-8261-d7969482794e",
-      "zh": "取消",
+      "zh": "取消，撤消，盖销",
       "en": "cancel",
       "note": "noun"
     },
     {
       "id": "b818aee5-6032-5ed9-b19d-9e2854074d89",
-      "zh": "蜡烛",
+      "zh": "蜡烛，对着光检查",
       "en": "candle",
       "note": "noun"
     },
     {
       "id": "4ac91e67-8b86-52f0-a18b-c721c0a04e35",
-      "zh": "动机",
+      "zh": "动机，目的，主题",
       "en": "motive",
       "note": "noun"
     },
@@ -965,289 +965,289 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "38379e0e-31d4-5f1b-bd38-d0239902130c",
-      "zh": "慷慨的",
+      "zh": "慷慨的，有雅量的",
       "en": "generous",
       "note": "adjective"
     },
     {
       "id": "5f712262-79a0-5f35-b958-c2ef382cd995",
-      "zh": "热带的",
+      "zh": "热带的，热情的",
       "en": "tropical",
       "note": "adjective"
     },
     {
       "id": "fc0a1d7d-29ff-58d8-a158-c14d2441dab6",
-      "zh": "乞求",
+      "zh": "乞求，乞讨，请求",
       "en": "beg",
       "note": "verb"
     },
     {
       "id": "3f4601a3-df1b-56e2-a916-937d520b008a",
-      "zh": "码头",
+      "zh": "码头，船坞，剪短",
       "en": "dock",
       "note": "noun"
     },
     {
       "id": "8fcc6e49-0552-5599-bfdf-e78c2f30c3bd",
-      "zh": "投入于",
+      "zh": "投入于，献身",
       "en": "devote",
       "note": "verb"
     },
     {
       "id": "93a1f201-4fb8-5448-a04a-8d9ef9897937",
-      "zh": "紧握",
+      "zh": "紧握，榨取，佣金",
       "en": "squeeze",
       "note": "noun"
     },
     {
       "id": "e1b69830-d048-58d7-9635-de64e690344e",
-      "zh": "可靠的",
+      "zh": "可靠的，可信赖的",
       "en": "reliable",
       "note": "adjective"
     },
     {
       "id": "7952c706-15f7-5318-9e57-735bb5f9103f",
-      "zh": "太平洋",
+      "zh": "太平洋，太平洋的",
       "en": "pacific",
       "note": "noun"
     },
     {
       "id": "316f9b0c-9f4a-542f-a8fb-f37bd18c1863",
-      "zh": "种类",
+      "zh": "种类，品种，养育",
       "en": "breed",
       "note": "noun"
     },
     {
       "id": "5a157b24-c41e-5ab4-8ad4-6f1cbf2c4c46",
-      "zh": "诽谤",
+      "zh": "诽谤，弄脏",
       "en": "mud",
       "note": "noun"
     },
     {
       "id": "1887e848-35ee-5270-b249-decf18aef960",
-      "zh": "联合",
+      "zh": "联合，接合，混合",
       "en": "unite",
       "note": "verb"
     },
     {
       "id": "663a8eb5-6da3-52c0-a286-5733db4e3880",
-      "zh": "惊骇",
+      "zh": "惊骇，恐怖，惨状",
       "en": "horror",
       "note": "noun"
     },
     {
       "id": "cf8d51cf-44ec-5b2c-8cbb-aad8ab6a0ecc",
-      "zh": "追求",
+      "zh": "追求，狩猎，追逐",
       "en": "chase",
       "note": "noun"
     },
     {
       "id": "3dfc06c4-22ee-5516-a1cc-c9ccb047155c",
-      "zh": "魔术",
+      "zh": "魔术，魔法",
       "en": "magic",
       "note": "noun"
     },
     {
       "id": "e2a96e74-3e0f-5c73-9e49-d79c352c30ce",
-      "zh": "东南",
+      "zh": "东南，东南地区",
       "en": "southeast",
       "note": "noun"
     },
     {
       "id": "7868e057-9b2d-5c5b-baa3-556b25db2c34",
-      "zh": "设计",
+      "zh": "设计，发明，图谋",
       "en": "devise",
       "note": "verb"
     },
     {
       "id": "febbe5bb-d436-5b98-ac9b-c83cb53252d8",
-      "zh": "殖民地",
+      "zh": "殖民地，移民队",
       "en": "colony",
       "note": "noun"
     },
     {
       "id": "41c82a82-2d20-50c3-9b95-40ac4cc82f0f",
-      "zh": "记录",
+      "zh": "记录，圆木，日志",
       "en": "log",
       "note": "noun"
     },
     {
       "id": "f0dfd16b-6edc-5d97-a9cf-c2bc4d600b5b",
-      "zh": "折扣",
+      "zh": "折扣，贴现率",
       "en": "discount",
       "note": "noun"
     },
     {
       "id": "f472d067-b25b-5782-91bc-edd5267f8031",
-      "zh": "非常好的",
+      "zh": "非常好的，极端的",
       "en": "terrific",
       "note": "adjective"
     },
     {
       "id": "fd3867b0-b245-5f0c-ae6e-0efc7149e2e7",
-      "zh": "登记",
+      "zh": "登记，参军，注册",
       "en": "enroll",
       "note": "verb"
     },
     {
       "id": "ad323b80-77f9-5859-879b-eaa790b3375e",
-      "zh": "午夜",
+      "zh": "午夜，子夜，半夜",
       "en": "midnight",
       "note": "noun"
     },
     {
       "id": "a5e97ead-6ed9-56b7-b425-26094adf07b9",
-      "zh": "树干",
+      "zh": "树干，干线，躯干",
       "en": "trunk",
       "note": "noun"
     },
     {
       "id": "a03c0dfc-eda5-5e0b-b4bf-964bb79c93e3",
-      "zh": "不同的",
+      "zh": "不同的，变化多的",
       "en": "diverse",
       "note": "adjective"
     },
     {
       "id": "c6e8182b-d936-50b9-9bb4-1543a01969b8",
-      "zh": "纤维",
+      "zh": "纤维，构造",
       "en": "fibre",
       "note": "noun"
     },
     {
       "id": "f243936d-1986-5ee1-b7e0-17abc6031dc3",
-      "zh": "大西洋",
+      "zh": "大西洋，大西洋的",
       "en": "atlantic",
       "note": "noun"
     },
     {
       "id": "6e940f0f-caa9-5c59-8b81-729bf7beb268",
-      "zh": "进口货",
+      "zh": "进口，输入，含义",
       "en": "import",
       "note": "noun"
     },
     {
       "id": "3be4ad3a-30c4-5666-bf71-3b25b81b4868",
-      "zh": "嫩的",
+      "zh": "嫩的，提供，偿还",
       "en": "tender",
       "note": "adjective"
     },
     {
       "id": "113caa63-d95a-5443-a87e-16d22b3eab2d",
-      "zh": "料想不到的",
+      "zh": "突然的，意外的",
       "en": "unexpected",
       "note": "adjective"
     },
     {
       "id": "7b93be7d-20bf-5d7c-a206-0846ff7ccf13",
-      "zh": "横梁",
+      "zh": "横梁，光线，微笑",
       "en": "beam",
       "note": "noun"
     },
     {
       "id": "52e86a9e-e456-5cba-9d93-6f1d9e9f428d",
-      "zh": "执行",
+      "zh": "执行，实行，完成",
       "en": "execute",
       "note": "verb"
     },
     {
       "id": "53e17b41-2661-5826-967d-511c7e0ddafe",
-      "zh": "食堂",
+      "zh": "食堂，伙食，用膳",
       "en": "mess",
       "note": "noun"
     },
     {
       "id": "f95506b2-e1df-52be-9134-509f60129b1a",
-      "zh": "阴暗",
+      "zh": "阴暗，灯罩，浓淡",
       "en": "shade",
       "note": "noun"
     },
     {
       "id": "c1364428-f50f-55e3-9181-a68f7a5152ab",
-      "zh": "难题",
+      "zh": "难题，迷惑，苦思",
       "en": "puzzle",
       "note": "noun"
     },
     {
       "id": "e8889fdc-1779-5ef4-a3df-e0780b3ee7de",
-      "zh": "大陆",
+      "zh": "大陆，自制的",
       "en": "continent",
       "note": "noun"
     },
     {
       "id": "f50408da-1b03-579b-b5d7-7eb348d46a8d",
-      "zh": "使隔离",
+      "zh": "使隔离，使孤立",
       "en": "isolate",
       "note": "verb"
     },
     {
       "id": "3069678a-9364-5ce3-880b-f0731fd22d94",
-      "zh": "矿工",
+      "zh": "矿工，开矿机",
       "en": "miner",
       "note": "noun"
     },
     {
       "id": "353cbe1b-09b9-51d8-90d9-df0a8bb97ae2",
-      "zh": "做广告",
+      "zh": "做广告，通知",
       "en": "advertise",
       "note": "verb"
     },
     {
       "id": "fbac9698-52b6-5328-853f-3edcd6d210f4",
-      "zh": "限制",
+      "zh": "限制，禁闭，邻接",
       "en": "confine",
       "note": "verb"
     },
     {
       "id": "e1a30556-4deb-520d-977b-e891f94d36d9",
-      "zh": "抽水机",
+      "zh": "抽吸，打气，盘问",
       "en": "pump",
       "note": "noun"
     },
     {
       "id": "65714f87-b657-5965-9e6e-89863e18d22d",
-      "zh": "聪明的",
+      "zh": "聪明的，智能的",
       "en": "intelligent",
       "note": "adjective"
     },
     {
       "id": "db22581b-e226-5f9e-a551-7751fb1e09ee",
-      "zh": "用针缝",
+      "zh": "用针缝，缝纫",
       "en": "needle",
       "note": "noun"
     },
     {
       "id": "d623c5b1-e19c-5399-a867-e9e49c190115",
-      "zh": "热心的",
+      "zh": "热心的，渴望的",
       "en": "eager",
       "note": "adjective"
     },
     {
       "id": "19b12342-95a3-5ed0-8649-1dd494c34dca",
-      "zh": "亲密的",
+      "zh": "暗示，通知，告诉",
       "en": "intimate",
       "note": "adjective"
     },
     {
       "id": "8347d144-8fac-5682-894b-f8ba3fdc1c50",
-      "zh": "销售者",
+      "zh": "销售者，卖方",
       "en": "seller",
       "note": "noun"
     },
     {
       "id": "c3be14ad-610d-5de5-8f38-ee621d7d7867",
-      "zh": "薄的切片",
+      "zh": "薄的切片，一部分",
       "en": "slice",
       "note": "noun"
     },
     {
       "id": "2e848bce-2d4e-5c31-8769-07e014b67458",
-      "zh": "处罚",
+      "zh": "处罚，惩罚",
       "en": "punish",
       "note": "verb"
     },
     {
       "id": "08c6d396-cc69-5b11-89f6-3f243ddf2410",
-      "zh": "幽默",
+      "zh": "幽默，诙谐，情绪",
       "en": "humour",
       "note": "noun"
     },
@@ -1259,217 +1259,217 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "77e21f39-01ea-5ef4-bcaf-9a5a2c42b2c8",
-      "zh": "称赞",
+      "zh": "赞美，称赞，崇拜",
       "en": "praise",
       "note": "noun"
     },
     {
       "id": "3ef1b816-007c-5a7e-a7ef-1939deb709c0",
-      "zh": "皮革",
+      "zh": "皮革，鞭苔，抽打",
       "en": "leather",
       "note": "noun"
     },
     {
       "id": "a783e4ef-a835-5a8f-bb39-ff6a11ea185e",
-      "zh": "汽车",
+      "zh": "汽车，\"本身\"",
       "en": "auto",
       "note": "noun"
     },
     {
       "id": "467c6524-c0fd-5647-b29a-8fca892e2da4",
-      "zh": "羞耻",
+      "zh": "羞耻，羞愧，耻辱",
       "en": "shame",
       "note": "noun"
     },
     {
       "id": "22a6c81f-444b-5945-b56f-8a0e5b0455fb",
-      "zh": "立即",
+      "zh": "立即，瞬间",
       "en": "instant",
       "note": "noun"
     },
     {
       "id": "d246debd-f26e-5376-b68b-4ea6779a48e8",
-      "zh": "小孩",
+      "zh": "小孩，少年，儿童",
       "en": "youngster",
       "note": "noun"
     },
     {
       "id": "aadfa8da-5c1f-5554-90fa-99c5e50f581e",
-      "zh": "组成",
+      "zh": "组成，写作，作曲",
       "en": "compose",
       "note": "verb"
     },
     {
       "id": "0a05400b-f8da-5cdc-9a28-506718c7e7dc",
-      "zh": "显然的",
+      "zh": "显然的，明显的",
       "en": "evident",
       "note": "adjective"
     },
     {
       "id": "194f6909-b96c-53fd-9e7e-369fd6a4e7f6",
-      "zh": "跑步者",
+      "zh": "跑步者，赛跑者",
       "en": "runner",
       "note": "noun"
     },
     {
       "id": "b3dc6a9a-f5cc-58a1-9706-d7e6ef3e2fce",
-      "zh": "简直不",
+      "zh": "简直不，一定不",
       "en": "scarcely",
       "note": "adverb"
     },
     {
       "id": "8139cdb3-fe68-556f-aedc-ad97ef7d3ec9",
-      "zh": "液体",
+      "zh": "液体，分泌液",
       "en": "fluid",
       "note": "noun"
     },
     {
       "id": "89d81857-13da-513d-aa15-e8ab901de649",
-      "zh": "忍受",
+      "zh": "忍受，忍耐，容忍",
       "en": "endure",
       "note": "verb"
     },
     {
       "id": "66a3c2f6-6992-551f-a134-21823f0dba2b",
-      "zh": "回跳",
+      "zh": "回跳，范围，边界",
       "en": "bound",
       "note": "noun"
     },
     {
       "id": "b55f322f-6014-5e13-bb93-fd296fd76268",
-      "zh": "葬礼",
+      "zh": "葬礼，出殡",
       "en": "funeral",
       "note": "noun"
     },
     {
       "id": "a91cae18-d2ca-5648-978b-ddf471ea3ec4",
-      "zh": "检查",
+      "zh": "检查，检阅，检验",
       "en": "inspect",
       "note": "verb"
     },
     {
       "id": "68a431a0-4d47-565d-8480-7e5a846e302c",
-      "zh": "符合",
+      "zh": "符合，通信，相当",
       "en": "correspond",
       "note": "verb"
     },
     {
       "id": "ba8955dc-b13c-5b39-bbff-5f056a2837f1",
-      "zh": "执照",
+      "zh": "执照，特许，许可",
       "en": "license",
       "note": "noun"
     },
     {
       "id": "5fd69480-02c0-52c1-9758-548129d8c357",
-      "zh": "持续时间",
+      "zh": "持续时间，持续",
       "en": "duration",
       "note": "noun"
     },
     {
       "id": "f839f872-1007-5670-beb0-94f88bd614e3",
-      "zh": "车库",
+      "zh": "车库，汽车修理厂",
       "en": "garage",
       "note": "noun"
     },
     {
       "id": "64cb276c-f7b4-5e06-8bbd-9822b6f64f15",
-      "zh": "肺脏",
+      "zh": "肺脏，空地",
       "en": "lung",
       "note": "noun"
     },
     {
       "id": "86d15701-c67a-52f7-9343-a9ece7448427",
-      "zh": "战争",
+      "zh": "战争，武力",
       "en": "sword",
       "note": "noun"
     },
     {
       "id": "b0331aaa-72a4-5aa6-9dbd-d31c0006f500",
-      "zh": "减少",
+      "zh": "减少，减少量",
       "en": "decrease",
       "note": "noun"
     },
     {
       "id": "ce9d1402-91c8-5e1e-ba9d-53135cd88a93",
-      "zh": "圈套",
+      "zh": "圈套，陷阱，诡计",
       "en": "trap",
       "note": "noun"
     },
     {
       "id": "6ccb91da-cfd6-540c-8298-6867ac7c8be6",
-      "zh": "修理",
+      "zh": "修理，补救，修复",
       "en": "repair",
       "note": "noun"
     },
     {
       "id": "789c5c67-7354-5640-9545-68cfc7cbf985",
-      "zh": "钢盔",
+      "zh": "钢盔，防护帽",
       "en": "helmet",
       "note": "noun"
     },
     {
       "id": "d11af8b8-8b1d-58fb-beba-fb4d1254a3e6",
-      "zh": "海军",
+      "zh": "海军，海军人员",
       "en": "navy",
       "note": "noun"
     },
     {
       "id": "5f81f2f8-7678-5f96-8a63-63738a3cd7cb",
-      "zh": "烟草",
+      "zh": "烟草，香烟",
       "en": "tobacco",
       "note": "noun"
     },
     {
       "id": "995a43e3-af7f-5414-86bf-8db07b417641",
-      "zh": "竞赛",
+      "zh": "竞赛，争论，竞争",
       "en": "contest",
       "note": "noun"
     },
     {
       "id": "6dd12c14-e34b-5793-ac95-41ef8f2c4b0f",
-      "zh": "补助金",
+      "zh": "补助金，津贴",
       "en": "subsidy",
       "note": "noun"
     },
     {
       "id": "05f002cf-87e0-5a1a-9a9a-7d2772cc17b6",
-      "zh": "海岸",
+      "zh": "海岸，海滨，支撑",
       "en": "shore",
       "note": "noun"
     },
     {
       "id": "6c57eb38-7711-5dd6-9ad4-d8010492d22a",
-      "zh": "需要",
+      "zh": "需要，必然，必要",
       "en": "necessity",
       "note": "noun"
     },
     {
       "id": "deedcdb1-9a39-5934-8be1-476999080001",
-      "zh": "德行",
+      "zh": "德行，美德，优点",
       "en": "virtue",
       "note": "noun"
     },
     {
       "id": "4289d687-fded-5052-a44e-1a3c266ff835",
-      "zh": "丑陋的",
+      "zh": "丑陋的，邪恶的",
       "en": "ugly",
       "note": "adjective"
     },
     {
       "id": "92473f12-1464-5213-b0b0-bc2c15d87f43",
-      "zh": "户外的",
+      "zh": "户外的，屋外的",
       "en": "outdoor",
       "note": "adjective"
     },
     {
       "id": "e634cc65-65d4-5772-9d94-7427b1f12729",
-      "zh": "勇气",
+      "zh": "勇气，胆量",
       "en": "courage",
       "note": "noun"
     },
     {
       "id": "b09e331e-e05d-5ba5-afe4-06715cedcb24",
-      "zh": "消极的",
+      "zh": "消极的，被动的",
       "en": "passive",
       "note": "adjective"
     },
@@ -1481,7 +1481,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "6b5ac393-e0af-5966-b8da-aab428e39926",
-      "zh": "宝贵的",
+      "zh": "宝贵的，珍贵的",
       "en": "precious",
       "note": "adjective"
     },
@@ -1493,199 +1493,199 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "e0f087a0-edf7-550a-9347-f801ee819fc3",
-      "zh": "相似",
+      "zh": "相似，类似",
       "en": "resemble",
       "note": "verb"
     },
     {
       "id": "1fd02592-107b-5e9e-9731-ea4c53ea216b",
-      "zh": "奇迹",
+      "zh": "奇迹，奇事",
       "en": "miracle",
       "note": "noun"
     },
     {
       "id": "247d444c-67bd-5ae5-99d5-a65f6cdac510",
-      "zh": "坚持",
+      "zh": "坚持，固执，持续",
       "en": "persist",
       "note": "verb"
     },
     {
       "id": "27922be6-83cb-56b4-a385-dc01ea7cdc1a",
-      "zh": "幻影",
+      "zh": "幻影，错觉，幻想",
       "en": "illusion",
       "note": "noun"
     },
     {
       "id": "0ccf2107-5ed9-5d73-a63c-1659fc7ac55e",
-      "zh": "移动",
+      "zh": "移动，移居，迁移",
       "en": "removal",
       "note": "noun"
     },
     {
       "id": "7ac2dacd-1131-5ee5-826b-556ba6f5120d",
-      "zh": "大混乱",
+      "zh": "大混乱，混沌",
       "en": "chaos",
       "note": "noun"
     },
     {
       "id": "90f61d3b-4aa6-58a6-ac35-d68f3509e7ec",
-      "zh": "理性的",
+      "zh": "理性的，合理的",
       "en": "rational",
       "note": "adjective"
     },
     {
       "id": "04750d2c-222c-5467-a269-2c9f4bc107a8",
-      "zh": "生物",
+      "zh": "生物，有机体",
       "en": "organism",
       "note": "noun"
     },
     {
       "id": "f7539ff3-d55f-5481-9ecd-45021199abe1",
-      "zh": "大标题",
+      "zh": "大标题，新闻摘要",
       "en": "headline",
       "note": "noun"
     },
     {
       "id": "0e632549-ef8b-5358-a72a-17dc7b490ddd",
-      "zh": "运河",
+      "zh": "运河，水道，沟渠",
       "en": "canal",
       "note": "noun"
     },
     {
       "id": "369cdb77-254b-52c4-afb2-4676b237778d",
-      "zh": "分类",
+      "zh": "分类，归类，分等",
       "en": "classify",
       "note": "verb"
     },
     {
       "id": "f83147aa-8159-5b22-ab80-b568803d8a8f",
-      "zh": "燕子",
+      "zh": "燕子，吞咽，淹没",
       "en": "swallow",
       "note": "noun"
     },
     {
       "id": "b77b17e3-4f7d-582d-afe6-e72a91fc7b8c",
-      "zh": "属性",
+      "zh": "属性，标志，定语",
       "en": "attribute",
       "note": "noun"
     },
     {
       "id": "a76866a9-22cf-5298-a1ec-328685c8ec99",
-      "zh": "商业",
+      "zh": "商业，商务，贸易",
       "en": "commerce",
       "note": "noun"
     },
     {
       "id": "b8094c40-a51f-5109-a180-dc6beb67e9bb",
-      "zh": "罗马人",
+      "zh": "罗马人，罗马人的",
       "en": "roman",
       "note": "noun"
     },
     {
       "id": "857944d7-76ca-5309-961d-af9411e15d6f",
-      "zh": "枕头",
+      "zh": "枕头，靠垫，枕于",
       "en": "pillow",
       "note": "noun"
     },
     {
       "id": "648ddf3b-81c9-5c8d-a3f8-7c343c98f2fe",
-      "zh": "空闲",
+      "zh": "空闲，闲暇，悠闲",
       "en": "leisure",
       "note": "noun"
     },
     {
       "id": "6900f60d-57fa-590f-8766-49ce77c8f739",
-      "zh": "传达",
+      "zh": "传达，运输，转让",
       "en": "convey",
       "note": "verb"
     },
     {
       "id": "9529765d-e05a-5281-9af7-010d829c7e22",
-      "zh": "温暖",
+      "zh": "温暖，温情，暖和",
       "en": "warmth",
       "note": "noun"
     },
     {
       "id": "4630365d-3021-5c38-aeef-00f1f1a39422",
-      "zh": "线索",
+      "zh": "线索，暗示",
       "en": "clue",
       "note": "noun"
     },
     {
       "id": "f63c527f-9ec8-5379-9d3b-11b1c76bf5d7",
-      "zh": "颗粒",
+      "zh": "颗粒，粒子，质点",
       "en": "particle",
       "note": "noun"
     },
     {
       "id": "7609dadd-2e81-5315-b1cf-63d958958791",
-      "zh": "减轻",
+      "zh": "减轻，救济，解除",
       "en": "relieve",
       "note": "verb"
     },
     {
       "id": "c12124ff-d3cf-5918-94db-990dbb4fe8c9",
-      "zh": "实践",
+      "zh": "实践，履行，实行",
       "en": "fulfil",
       "note": "verb"
     },
     {
       "id": "502012f4-e912-5710-b524-51b322b2d512",
-      "zh": "高兴",
+      "zh": "高兴，愉快，乐于",
       "en": "delight",
       "note": "noun"
     },
     {
       "id": "0cc8feaf-b003-5aad-8663-570a807ed738",
-      "zh": "抽屉",
+      "zh": "抽屉，开票人",
       "en": "drawer",
       "note": "noun"
     },
     {
       "id": "e2f93376-d671-5e38-9c53-0cd5e60f3f4f",
-      "zh": "显示",
+      "zh": "显示，显现，展览",
       "en": "exhibit",
       "note": "noun"
     },
     {
       "id": "d57784e6-447d-576c-984d-e574828558d3",
-      "zh": "继承",
+      "zh": "继承，遗传",
       "en": "inherit",
       "note": "verb"
     },
     {
       "id": "3502fb6d-f871-5975-a01d-5ac0c296593d",
-      "zh": "叹息",
+      "zh": "叹息，渴望",
       "en": "sigh",
       "note": "noun"
     },
     {
       "id": "dd3b4542-bade-57bc-a51d-2ca9a22f6f9f",
-      "zh": "大理石",
+      "zh": "大理石，石弹",
       "en": "marble",
       "note": "noun"
     },
     {
       "id": "798e8579-371b-5447-8525-c894284df70a",
-      "zh": "偏见",
+      "zh": "偏见，成见，侵害",
       "en": "prejudice",
       "note": "noun"
     },
     {
       "id": "68ca2c16-c505-5910-acab-9678b4927bdb",
-      "zh": "发誓",
+      "zh": "发誓，咒骂，诅咒",
       "en": "swear",
       "note": "verb"
     },
     {
       "id": "b12e72b3-c7b3-5abd-9eb9-49117947e6e4",
-      "zh": "图表",
+      "zh": "图表，图解",
       "en": "diagram",
       "note": "noun"
     },
     {
       "id": "0709cf4e-38e4-5f9c-bea2-1e8fc15271be",
-      "zh": "砰然声",
+      "zh": "砰然声，猛然",
       "en": "slam",
       "note": "noun"
     },
@@ -1697,415 +1697,415 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "032a880c-c3da-527e-967b-411d2f24f312",
-      "zh": "把握",
+      "zh": "把握，抓紧，理解",
       "en": "grasp",
       "note": "noun"
     },
     {
       "id": "1d039fdf-5406-52af-98d6-1c7d1c507037",
-      "zh": "混合物",
+      "zh": "院子，化合，和解",
       "en": "compound",
       "note": "noun"
     },
     {
       "id": "4c8cf652-e51e-578f-8670-2d7180ec9ba5",
-      "zh": "使悬浮",
+      "zh": "暂停，中止，推迟",
       "en": "suspend",
       "note": "verb"
     },
     {
       "id": "0e2a9db7-5086-5aa9-83f6-5addab3c7a03",
-      "zh": "饼干",
+      "zh": "饼干，素坯",
       "en": "biscuit",
       "note": "noun"
     },
     {
       "id": "9c87d232-8768-5557-a9e5-9150f6883a06",
-      "zh": "蘑菇形物",
+      "zh": "蘑菇形物，蘑菇",
       "en": "mushroom",
       "note": "noun"
     },
     {
       "id": "a53d410b-25fa-5521-83cc-3ce20581747b",
-      "zh": "妨碍",
+      "zh": "妨碍，冲突，干涉",
       "en": "interfere",
       "note": "verb"
     },
     {
       "id": "cced96af-5a36-540a-a8be-aaf23ec2f23c",
-      "zh": "赤裸的",
+      "zh": "赤裸的，缺少的",
       "en": "bare",
       "note": "adjective"
     },
     {
       "id": "36fc72e9-328b-5903-9c4a-27cf567d19cd",
-      "zh": "培养",
+      "zh": "教育，培养，训练",
       "en": "educate",
       "note": "verb"
     },
     {
       "id": "d2c9092d-bd82-5829-84a4-7a9627464e5a",
-      "zh": "监护人",
+      "zh": "监护人，管理人",
       "en": "keeper",
       "note": "noun"
     },
     {
       "id": "89c360ce-ed5a-51d5-aef5-7617501e8139",
-      "zh": "承认",
+      "zh": "承认，坦白，忏悔",
       "en": "confess",
       "note": "verb"
     },
     {
       "id": "d39371d3-80e3-56d6-9f87-20495e58cb19",
-      "zh": "火鸡",
+      "zh": "火鸡，无用的家伙",
       "en": "turkey",
       "note": "noun"
     },
     {
       "id": "13f0072f-4d51-5972-9f72-60f44038d290",
-      "zh": "神圣的",
+      "zh": "神圣的，庄严的",
       "en": "sacred",
       "note": "adjective"
     },
     {
       "id": "57dc5a8f-e957-5440-8a0f-de80016c904f",
-      "zh": "刺激",
+      "zh": "刺激，激励，鼓舞",
       "en": "stimulate",
       "note": "verb"
     },
     {
       "id": "0149f7c8-a8ec-5ad8-abc9-6fde3bf40b6a",
-      "zh": "平等",
+      "zh": "平等，均匀，相等",
       "en": "equality",
       "note": "noun"
     },
     {
       "id": "1bcf6a2e-747f-5c03-b857-070a0f990dc4",
-      "zh": "不常的",
+      "zh": "不常的，稀少的",
       "en": "seldom",
       "note": "adjective"
     },
     {
       "id": "64d0d89b-b793-54ac-8f47-ac8d58f500dd",
-      "zh": "痛苦的",
+      "zh": "痛苦的，困难的",
       "en": "painful",
       "note": "adjective"
     },
     {
       "id": "15b94c29-3374-5e64-b53e-a197edf1d5dd",
-      "zh": "裂缝",
+      "zh": "裂缝，爆裂，裂开",
       "en": "crack",
       "note": "noun"
     },
     {
       "id": "f4cd1ddd-ab64-5d43-ad93-42afb454957a",
-      "zh": "帆布",
+      "zh": "帆布，画布，油画",
       "en": "canvas",
       "note": "noun"
     },
     {
       "id": "9eb616ad-fdb8-5db6-a1ec-087831779bc7",
-      "zh": "拳头",
+      "zh": "拳头，拳打，紧握",
       "en": "fist",
       "note": "noun"
     },
     {
       "id": "ba382955-aff1-5c43-9e64-a978fc9eb5f6",
-      "zh": "一口",
+      "zh": "一口，刺痛，穿透",
       "en": "bite",
       "note": "noun"
     },
     {
       "id": "da9d750e-2cf1-5ca3-b66e-0d6e1067e2b8",
-      "zh": "消散",
+      "zh": "消散，分散，散播",
       "en": "scatter",
       "note": "noun"
     },
     {
       "id": "619cda97-f6c8-5c59-bbdb-27dfe8620e54",
-      "zh": "浪漫的",
+      "zh": "浪漫的，风流的",
       "en": "romantic",
       "note": "adjective"
     },
     {
       "id": "825e04b3-bda3-5bf2-ada7-cfc534f622df",
-      "zh": "波兰的",
+      "zh": "光泽，优雅，擦亮",
       "en": "polish",
       "note": "adjective"
     },
     {
       "id": "4861b5e0-e352-5554-8b35-adda88d69f31",
-      "zh": "光荣",
+      "zh": "光荣，荣耀，荣誉",
       "en": "glory",
       "note": "noun"
     },
     {
       "id": "ac3b2789-1288-558b-864c-1f3136e2e3dd",
-      "zh": "熔化",
+      "zh": "熔化，溶解，消散",
       "en": "melt",
       "note": "noun"
     },
     {
       "id": "8ef46665-fcd1-5f51-950d-75f03ddb4f92",
-      "zh": "编织",
+      "zh": "编织，结合",
       "en": "knit",
       "note": "verb"
     },
     {
       "id": "c620d5c3-56a2-5ed4-a857-c4d6bbafdd55",
-      "zh": "古典作品",
+      "zh": "古典作品，杰作",
       "en": "classic",
       "note": "noun"
     },
     {
       "id": "2870bc3c-79b0-59dd-84fd-723e4d060ea2",
-      "zh": "一针",
+      "zh": "一针，疼痛，针法",
       "en": "stitch",
       "note": "noun"
     },
     {
       "id": "65cff9cb-f47a-5027-8dab-559461f736d5",
-      "zh": "功绩",
+      "zh": "功绩，勋绩，开发",
       "en": "exploit",
       "note": "noun"
     },
     {
       "id": "55dd3bfd-198e-5c35-b2b1-526c57373b94",
-      "zh": "部分的",
+      "zh": "部分的，偏袒的",
       "en": "partial",
       "note": "adjective"
     },
     {
       "id": "7496e3d4-7a28-50d3-9238-802fe27d15ba",
-      "zh": "松树",
+      "zh": "松树，松木，消瘦",
       "en": "pine",
       "note": "noun"
     },
     {
       "id": "477ab0c8-b3e6-5542-9513-1840b28a7bc0",
-      "zh": "逻辑",
+      "zh": "逻辑，逻辑学",
       "en": "logic",
       "note": "noun"
     },
     {
       "id": "19b5ec5b-5e62-5821-ac9d-274b294c3e15",
-      "zh": "邀请",
+      "zh": "邀请，请柬，引诱",
       "en": "invitation",
       "note": "noun"
     },
     {
       "id": "4551270b-a96d-5f86-9a4e-6b1c27b260ac",
-      "zh": "容器",
+      "zh": "容器，集装箱",
       "en": "container",
       "note": "noun"
     },
     {
       "id": "b8e5f501-eb43-5231-9143-8f9fc080fef9",
-      "zh": "一般",
+      "zh": "一般，普通，通常",
       "en": "commonly",
       "note": "adverb"
     },
     {
       "id": "a24f065d-a21f-50ef-b053-c0cba4180cf1",
-      "zh": "粉末",
+      "zh": "粉末，火药，搽粉",
       "en": "powder",
       "note": "noun"
     },
     {
       "id": "f925f318-d827-5495-bd81-2aa1cf788e2e",
-      "zh": "小包",
+      "zh": "小包，大量，打包",
       "en": "packet",
       "note": "noun"
     },
     {
       "id": "9f0b5160-668c-5419-9899-363e1ddfa03a",
-      "zh": "日光",
+      "zh": "日光，太阳光",
       "en": "sunlight",
       "note": "noun"
     },
     {
       "id": "e2980dfc-70c3-5086-a3bd-df00f06399ec",
-      "zh": "顶点",
+      "zh": "顶点，最高阶层",
       "en": "summit",
       "note": "noun"
     },
     {
       "id": "459b157b-7033-5c88-a580-c328fb8b589e",
-      "zh": "汗水",
+      "zh": "汗水，水珠，焦急",
       "en": "sweat",
       "note": "noun"
     },
     {
       "id": "d37ec2c5-54cb-56d5-b9ee-b0b3a47ba5d9",
-      "zh": "一扭",
+      "zh": "一扭，扭曲，曲折",
       "en": "twist",
       "note": "noun"
     },
     {
       "id": "da950df8-b8d5-5f60-8c49-4a9cb85fab5c",
-      "zh": "锐利地",
+      "zh": "锐利地，严厉地",
       "en": "sharply",
       "note": "adverb"
     },
     {
       "id": "9b44334e-d075-5e05-853d-4a405e967e3f",
-      "zh": "蝙蝠",
+      "zh": "蝙蝠，球棒，眨眼",
       "en": "bat",
       "note": "noun"
     },
     {
       "id": "c56b0631-09a6-5213-a348-240cf89288f3",
-      "zh": "华丽的",
+      "zh": "华丽的，高尚的",
       "en": "magnificent",
       "note": "adjective"
     },
     {
       "id": "eff09ccd-3604-559f-b2ca-2362556b7093",
-      "zh": "移动的",
+      "zh": "移动的，易变的",
       "en": "mobile",
       "note": "adjective"
     },
     {
       "id": "15d1a466-3e4f-5d4a-8bac-a83d2ae72df9",
-      "zh": "柔和地",
+      "zh": "柔和地，静静地",
       "en": "softly",
       "note": "adverb"
     },
     {
       "id": "ae9e8b98-bd91-5ee3-9ec2-25ee71c6709b",
-      "zh": "忠贞",
+      "zh": "忠贞，忠诚，忠实",
       "en": "loyalty",
       "note": "noun"
     },
     {
       "id": "927f2238-fff5-5337-ae04-1b5630d408c3",
-      "zh": "水兵",
+      "zh": "舰队，水兵，海的",
       "en": "marine",
       "note": "noun"
     },
     {
       "id": "21a19b10-b954-5b2a-bf24-dd42610ca15a",
-      "zh": "小部分",
+      "zh": "破片，分数，部分",
       "en": "fraction",
       "note": "noun"
     },
     {
       "id": "82f3f869-bc7d-5ce3-b458-8cfc870547de",
-      "zh": "捕鲸",
+      "zh": "捕鲸，使惨败",
       "en": "whale",
       "note": "noun"
     },
     {
       "id": "838ae00e-d5f9-5680-9103-88f2cd044273",
-      "zh": "排气",
+      "zh": "排气，废气，抽完",
       "en": "exhaust",
       "note": "noun"
     },
     {
       "id": "283ceba3-9662-583a-967d-de88ba85d132",
-      "zh": "恐怖",
+      "zh": "恐怖，惊吓，惊悸",
       "en": "terror",
       "note": "noun"
     },
     {
       "id": "69e48b76-8f11-5dad-a646-a74f66802ac1",
-      "zh": "孤单的",
+      "zh": "孤单的，孤寂的",
       "en": "lonely",
       "note": "adjective"
     },
     {
       "id": "c771b775-1b75-5239-a00b-192623f0d1a2",
-      "zh": "时常发生的",
+      "zh": "频繁的，快速的",
       "en": "frequent",
       "note": "adjective"
     },
     {
       "id": "e3b4867d-e788-5f48-a823-dbdf9c6f4cf6",
-      "zh": "一瞥",
+      "zh": "一瞥，一闪，瞥见",
       "en": "glimpse",
       "note": "noun"
     },
     {
       "id": "482a8ccd-e316-594d-9284-a98e0d2ac679",
-      "zh": "拇指",
+      "zh": "拇指，以拇指拨弄",
       "en": "thumb",
       "note": "noun"
     },
     {
       "id": "2797e71b-24e8-5304-92c5-a352664d64a0",
-      "zh": "硬件",
+      "zh": "硬件，五金器具",
       "en": "hardware",
       "note": "noun"
     },
     {
       "id": "d9db1c1a-ad47-544c-aac0-dce749d303a4",
-      "zh": "内部",
+      "zh": "内部，内政",
       "en": "interior",
       "note": "noun"
     },
     {
       "id": "ee0dd2a9-ef97-5f93-9b2c-2050eec27d2b",
-      "zh": "目录",
+      "zh": "目录，编目录",
       "en": "catalog",
       "note": "noun"
     },
     {
       "id": "f23a95c9-1e12-5f36-a99f-61b900771b7e",
-      "zh": "外科医生",
+      "zh": "外科医生，军医",
       "en": "surgeon",
       "note": "noun"
     },
     {
       "id": "90492e66-c430-5cf3-bcc7-b0e1c0ef4540",
-      "zh": "祝福",
+      "zh": "祝福，祈佑",
       "en": "bless",
       "note": "verb"
     },
     {
       "id": "cd234710-e623-5a49-b277-029881078bec",
-      "zh": "柠檬",
+      "zh": "柠檬，柠檬树",
       "en": "lemon",
       "note": "noun"
     },
     {
       "id": "13e562ce-77c6-571c-8c1c-7ab7fe121f3a",
-      "zh": "忧虑的",
+      "zh": "忧虑的，发愁的",
       "en": "anxious",
       "note": "adjective"
     },
     {
       "id": "d8087299-69db-5384-a7c8-06827bb981cd",
-      "zh": "超过",
+      "zh": "超过，超越，胜过",
       "en": "exceed",
       "note": "verb"
     },
     {
       "id": "98d49ed2-da7a-575c-97b9-52d1455e06cc",
-      "zh": "有系统的",
+      "zh": "有系统的，体系的",
       "en": "systematic",
       "note": "adjective"
     },
     {
       "id": "fe5456a0-6278-549e-81d7-47a02060bfca",
-      "zh": "丑闻",
+      "zh": "丑闻，中伤，耻辱",
       "en": "scandal",
       "note": "noun"
     },
     {
       "id": "33f3ae31-839f-5044-bfc1-7fbd36142144",
-      "zh": "动态的",
+      "zh": "动态的，有活力的",
       "en": "dynamic",
       "note": "adjective"
     },
     {
       "id": "7e9b365c-30c6-56fd-8d92-38b712113633",
-      "zh": "日记",
+      "zh": "日记，杂志，日报",
       "en": "journal",
       "note": "noun"
     },
     {
       "id": "701b72dc-afde-51f7-b914-9b173aadd20d",
-      "zh": "看不见的",
+      "zh": "看不见的，无形的",
       "en": "invisible",
       "note": "adjective"
     },
@@ -2117,7 +2117,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "80ed5f7e-e262-58e8-912b-a709521687fb",
-      "zh": "信封",
+      "zh": "信封，封套，封袋",
       "en": "envelope",
       "note": "noun"
     },
@@ -2129,115 +2129,115 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "0df37648-772e-5dda-a22e-9985acc4653f",
-      "zh": "爬行",
+      "zh": "爬行，匍匐而行",
       "en": "crawl",
       "note": "noun"
     },
     {
       "id": "93700776-d1f0-50bb-8d12-5b34f6fa8f40",
-      "zh": "年长者",
+      "zh": "年长者，老人",
       "en": "elder",
       "note": "noun"
     },
     {
       "id": "f04607be-c848-580d-a66a-f17441e0ada4",
-      "zh": "综合",
+      "zh": "综合，使完整",
       "en": "integrate",
       "note": "verb"
     },
     {
       "id": "c6e825a1-458c-5543-8b04-99e891aa0a8e",
-      "zh": "谦逊的",
+      "zh": "谦逊的，羞怯的",
       "en": "modest",
       "note": "adjective"
     },
     {
       "id": "3492c5f0-8e14-5269-928a-155ca20de3b9",
-      "zh": "确定",
+      "zh": "确定，确实的事情",
       "en": "certainty",
       "note": "noun"
     },
     {
       "id": "47a1f080-ffa3-5980-b75f-267f55c5c93b",
-      "zh": "溢出",
+      "zh": "溢出，溅出，摔下",
       "en": "spill",
       "note": "noun"
     },
     {
       "id": "43393a27-8694-5b74-b393-b98d89171837",
-      "zh": "申请者",
+      "zh": "申请者，申请人",
       "en": "applicant",
       "note": "noun"
     },
     {
       "id": "f882c707-e96d-5b53-9884-f8babbd7110d",
-      "zh": "稻草",
+      "zh": "稻草，麦管，吸管",
       "en": "straw",
       "note": "noun"
     },
     {
       "id": "c6afd9f4-2b00-5dad-a83e-f3452e92fa46",
-      "zh": "爆发",
+      "zh": "爆发，激增，爆炸",
       "en": "explosion",
       "note": "noun"
     },
     {
       "id": "d87e5b6b-b456-5ef1-be0d-7db22e3b8341",
-      "zh": "潮湿",
+      "zh": "潮湿，湿气，抑止",
       "en": "damp",
       "note": "noun"
     },
     {
       "id": "47cd644d-4f34-57a7-a4a4-b095a7098826",
-      "zh": "安乐",
+      "zh": "安乐，安逸，悠闲",
       "en": "ease",
       "note": "noun"
     },
     {
       "id": "dace8423-db88-5f2f-aab6-155d8264a5d1",
-      "zh": "钻进",
+      "zh": "钻进，跳进，跳水",
       "en": "plunge",
       "note": "noun"
     },
     {
       "id": "6e36a9fc-0c30-5055-93dc-019616aaaf59",
-      "zh": "典礼",
+      "zh": "典礼，仪式，礼节",
       "en": "ceremony",
       "note": "noun"
     },
     {
       "id": "8b62a6ec-f2a1-5c68-a664-08b80ccac43a",
-      "zh": "弹力",
+      "zh": "跳跃，弹力，撞击",
       "en": "bounce",
       "note": "noun"
     },
     {
       "id": "2cd72114-144c-5520-9c6e-52bb3e1967d2",
-      "zh": "就是",
+      "zh": "就是，换句话说",
       "en": "namely",
       "note": "adverb"
     },
     {
       "id": "4e12a00f-ceba-55cf-8a84-0b6d0ca85b7c",
-      "zh": "加亮区",
+      "zh": "加亮区，精彩场面",
       "en": "highlight",
       "note": "noun"
     },
     {
       "id": "0baa7f63-21ef-5a66-a0dc-4ed00863147a",
-      "zh": "建筑师",
+      "zh": "建筑师，设计者",
       "en": "architect",
       "note": "noun"
     },
     {
       "id": "ac6e0aae-f9d5-597c-af3e-9ad9c4299f2d",
-      "zh": "狂怒的",
+      "zh": "狂怒的，激烈的",
       "en": "furious",
       "note": "adjective"
     },
     {
       "id": "e6971ffc-3d02-5e7a-8866-1daa656e2d74",
-      "zh": "笞鞭",
+      "zh": "笞鞭，小枝",
       "en": "rod",
       "note": "noun"
     },
@@ -2249,127 +2249,127 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "666dbbe5-c399-56bb-a973-93764718b4f6",
-      "zh": "光亮的",
+      "zh": "光亮的，了不起的",
       "en": "splendid",
       "note": "adjective"
     },
     {
       "id": "0fd77523-603e-53dd-8e6e-ddab2509830c",
-      "zh": "无用的",
+      "zh": "无用的，无效的",
       "en": "useless",
       "note": "adjective"
     },
     {
       "id": "7899832e-a75c-5028-b20e-8c8ce1cab043",
-      "zh": "页边的空白",
+      "zh": "边缘，界限，余裕",
       "en": "margin",
       "note": "noun"
     },
     {
       "id": "afab6b86-eb61-5197-8f2f-e7f30ebe8572",
-      "zh": "中断",
+      "zh": "中断，妨碍，插嘴",
       "en": "interrupt",
       "note": "verb"
     },
     {
       "id": "da825b45-fd3b-5653-a256-36b2b961f155",
-      "zh": "间隔时间",
+      "zh": "间隔时间，其时",
       "en": "meantime",
       "note": "noun"
     },
     {
       "id": "b1e7e4c0-e76b-5f29-9b96-a3d41fed3700",
-      "zh": "宗族",
+      "zh": "宗族，部落",
       "en": "tribe",
       "note": "noun"
     },
     {
       "id": "b77e8dce-5457-5268-9a6c-abf586f764a9",
-      "zh": "昆虫",
+      "zh": "昆虫，卑鄙的人",
       "en": "insect",
       "note": "noun"
     },
     {
       "id": "af41473c-cbd7-5481-8faa-740dcc507ddf",
-      "zh": "管理人",
+      "zh": "管理人，招待员",
       "en": "steward",
       "note": "noun"
     },
     {
       "id": "967cc5b3-6827-5191-a115-7a8584b15506",
-      "zh": "存储器",
+      "zh": "储藏，保管，库存",
       "en": "storage",
       "note": "noun"
     },
     {
       "id": "b24e3e10-4d81-51a7-808f-7118c33fb16e",
-      "zh": "天才",
+      "zh": "天才，天赋，精神",
       "en": "genius",
       "note": "noun"
     },
     {
       "id": "81e51e3e-14f1-5a02-9509-47e470681b2d",
-      "zh": "洪水",
+      "zh": "洪水，涨潮，淹没",
       "en": "flood",
       "note": "noun"
     },
     {
       "id": "60568d6c-b441-57de-8232-3b664e7198c2",
-      "zh": "调味香料",
+      "zh": "滋味，香味，气味",
       "en": "flavour",
       "note": "noun"
     },
     {
       "id": "74b5d8c1-0346-549a-9c20-dc7c84873ee6",
-      "zh": "少数",
+      "zh": "少数，一把",
       "en": "handful",
       "note": "noun"
     },
     {
       "id": "8354e6e4-3ff7-506d-902e-608c8643949a",
-      "zh": "膝盖",
+      "zh": "膝盖，一圈，下摆",
       "en": "lap",
       "note": "noun"
     },
     {
       "id": "0e1dac8a-adce-52cb-8708-e6ec4b648166",
-      "zh": "边界",
+      "zh": "边界，边境，国境",
       "en": "frontier",
       "note": "noun"
     },
     {
       "id": "344e6ab4-ad4b-5df5-8b0b-d1b902a55d6f",
-      "zh": "地平线",
+      "zh": "地平线，眼界",
       "en": "horizon",
       "note": "noun"
     },
     {
       "id": "c55f6072-08be-53ea-abd4-6849d1d2d04b",
-      "zh": "皱眉",
+      "zh": "皱眉，皱眉头",
       "en": "frown",
       "note": "noun"
     },
     {
       "id": "e210cb04-5d31-5185-b72d-287ad5703fb1",
-      "zh": "对手",
+      "zh": "对手，竞争者",
       "en": "rival",
       "note": "noun"
     },
     {
       "id": "2ade897e-1cec-5466-9f70-e2ac6e2fbbea",
-      "zh": "犯罪",
+      "zh": "犯罪，过失，失礼",
       "en": "sin",
       "note": "noun"
     },
     {
       "id": "95a26cd2-97a2-515b-83c4-9b246f1d2419",
-      "zh": "辐射",
+      "zh": "辐射，放射",
       "en": "radiation",
       "note": "noun"
     },
     {
       "id": "f8d29998-8fe3-53f3-ba01-fb58e151ea9e",
-      "zh": "托儿所",
+      "zh": "托儿所，苗圃",
       "en": "nursery",
       "note": "noun"
     },
@@ -2381,109 +2381,109 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "5ac6df13-df1d-598a-b4d5-2905d798cdfb",
-      "zh": "精神",
+      "zh": "精神，勇气，叶脉",
       "en": "nerve",
       "note": "noun"
     },
     {
       "id": "d8b93224-66b7-5164-aa44-022b6fe9a2c5",
-      "zh": "游行",
+      "zh": "游行，炫耀，阅兵",
       "en": "parade",
       "note": "noun"
     },
     {
       "id": "8761c54d-810a-53c8-a249-0a55dbcdad99",
-      "zh": "分配",
+      "zh": "分配，功课，任务",
       "en": "assignment",
       "note": "noun"
     },
     {
       "id": "08e83eb8-3f12-5c24-88bb-ab3f810ed129",
-      "zh": "回声",
+      "zh": "回声，回音，回波",
       "en": "echo",
       "note": "noun"
     },
     {
       "id": "95d7bd54-f0b7-565e-8a95-11f7c8b38b6b",
-      "zh": "倾斜",
+      "zh": "倾斜，斜坡，斜率",
       "en": "slope",
       "note": "noun"
     },
     {
       "id": "bbaba83f-1af3-5c78-8df5-89af65926d60",
-      "zh": "药丸",
+      "zh": "药丸，弹丸，屈辱",
       "en": "pill",
       "note": "noun"
     },
     {
       "id": "249cf62f-4c7a-5878-8339-560972738899",
-      "zh": "同情",
+      "zh": "同情，赞同，怜悯",
       "en": "sympathy",
       "note": "noun"
     },
     {
       "id": "70aed7b7-c774-59c1-be60-50e4383f1f58",
-      "zh": "哗啦声",
+      "zh": "猛撞，崩溃，粗布",
       "en": "crash",
       "note": "noun"
     },
     {
       "id": "66cce1e7-6b74-5fa5-9c6b-781e17fa1554",
-      "zh": "使适应",
+      "zh": "调和，通融，容纳",
       "en": "accommodate",
       "note": "verb"
     },
     {
       "id": "9247e077-f071-5b14-961a-fa9370941d08",
-      "zh": "无处",
+      "zh": "无处，到处都无",
       "en": "nowhere",
       "note": "adverb"
     },
     {
       "id": "94a4113f-e604-5c44-9e80-352ee926b5bf",
-      "zh": "重新开始",
+      "zh": "取回，恢复，摘要",
       "en": "resume",
       "note": "verb"
     },
     {
       "id": "abb48c8c-71e4-523f-841b-e9601700c7fe",
-      "zh": "缺点",
+      "zh": "缺点，不利，坏处",
       "en": "disadvantage",
       "note": "noun"
     },
     {
       "id": "6ad51a7c-9479-5fc4-9f51-4505cf74acb9",
-      "zh": "惊恐",
+      "zh": "惊恐，警报，警钟",
       "en": "alarm",
       "note": "noun"
     },
     {
       "id": "958355d6-fe8e-52a8-919a-dcc1514edc9c",
-      "zh": "火焰",
+      "zh": "火焰，火舌，热情",
       "en": "flame",
       "note": "noun"
     },
     {
       "id": "6bf936a4-262f-5d3a-937b-897217241e2e",
-      "zh": "不确定的",
+      "zh": "不确定的，无常的",
       "en": "uncertain",
       "note": "adjective"
     },
     {
       "id": "ad78b52d-52b4-5efb-8b13-b38549d90069",
-      "zh": "布料",
+      "zh": "布料，织品",
       "en": "cloth",
       "note": "noun"
     },
     {
       "id": "cd5b3303-d6a4-5c83-90b5-471f9d65bc8a",
-      "zh": "缺损",
+      "zh": "缺点，缺损，缺陷",
       "en": "defect",
       "note": "noun"
     },
     {
       "id": "43776648-18c3-5c2f-9a96-e3d2f2b290bc",
-      "zh": "制服",
+      "zh": "制服，统一的",
       "en": "uniform",
       "note": "noun"
     },
@@ -2501,175 +2501,175 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "e62fcd2f-4b70-59a6-bdd9-7c8caa8aa6bb",
-      "zh": "肋条肉",
+      "zh": "排骨，戳记，商标",
       "en": "chop",
       "note": "noun"
     },
     {
       "id": "60df7d71-ca44-5479-906a-486143ea37db",
-      "zh": "神秘的",
+      "zh": "神秘的，难解的",
       "en": "mysterious",
       "note": "adjective"
     },
     {
       "id": "ba72ab1e-abcb-552e-8bb5-a33a6a1dec3a",
-      "zh": "障碍",
+      "zh": "障碍，妨害物",
       "en": "obstacle",
       "note": "noun"
     },
     {
       "id": "85285208-2d00-5275-8393-4277b727911c",
-      "zh": "住宅",
+      "zh": "住宅，居留，驻扎",
       "en": "residence",
       "note": "noun"
     },
     {
       "id": "727e2cdb-cfc6-5a45-8d6b-e84677933798",
-      "zh": "脚后跟",
+      "zh": "后部，倾侧，尾随",
       "en": "heel",
       "note": "noun"
     },
     {
       "id": "2877e579-c8a4-528c-b9ca-11076f75697d",
-      "zh": "穿梭",
+      "zh": "穿梭，梭子",
       "en": "shuttle",
       "note": "noun"
     },
     {
       "id": "c0be3663-df32-5844-8f67-281be88405fe",
-      "zh": "明智的",
+      "zh": "知道，教导，告诉",
       "en": "wise",
       "note": "adjective"
     },
     {
       "id": "a268b59d-b7c8-55a1-a7be-2e929f7ce9c3",
-      "zh": "报酬",
+      "zh": "报酬，酬谢，赏金",
       "en": "reward",
       "note": "noun"
     },
     {
       "id": "7c134649-f1a7-5a09-ae47-ba7e2ab8d3de",
-      "zh": "使特殊化",
+      "zh": "使特殊化，列举",
       "en": "specialize",
       "note": "verb"
     },
     {
       "id": "a049725b-2bc6-5bae-8e3e-c9716f19f367",
-      "zh": "卓越的",
+      "zh": "卓越的，显著的",
       "en": "prominent",
       "note": "adjective"
     },
     {
       "id": "6861b26c-9eb6-584b-aa89-436c45fd755c",
-      "zh": "外壳",
+      "zh": "外壳，蜕皮，剥落",
       "en": "peel",
       "note": "noun"
     },
     {
       "id": "2c7f0bc6-0da1-5c46-a2c8-155f4dba7773",
-      "zh": "迫使",
+      "zh": "强迫，迫使",
       "en": "compel",
       "note": "verb"
     },
     {
       "id": "624f23e8-dc52-5327-9b2b-64686545b65b",
-      "zh": "大堆",
+      "zh": "大堆，大厦，电池",
       "en": "pile",
       "note": "noun"
     },
     {
       "id": "63d83115-64dd-5f6a-b815-eafb6d3efdaf",
-      "zh": "亲爱的",
+      "zh": "亲爱的，可爱的人",
       "en": "darling",
       "note": "noun"
     },
     {
       "id": "58c6b20d-c42f-5f11-833b-cbdaaea98e6a",
-      "zh": "直径",
+      "zh": "直径，直经",
       "en": "diameter",
       "note": "noun"
     },
     {
       "id": "9b775379-8f4f-5d12-8245-77f67ae3012b",
-      "zh": "诙谐",
+      "zh": "幽默，诙谐，心情",
       "en": "humor",
       "note": "noun"
     },
     {
       "id": "7d88b103-f350-5aa3-a04c-5fcad59c929c",
-      "zh": "希腊人",
+      "zh": "希腊人，希腊语",
       "en": "greek",
       "note": "noun"
     },
     {
       "id": "29ef7030-efa5-5348-812c-a7e2c621252e",
-      "zh": "消耗",
+      "zh": "消耗，消费，消灭",
       "en": "consume",
       "note": "verb"
     },
     {
       "id": "5160e1cf-1553-5a25-b86b-cd2f5a832806",
-      "zh": "机械工",
+      "zh": "机械工，技工",
       "en": "mechanic",
       "note": "noun"
     },
     {
       "id": "66903620-dcaf-526b-9c25-31284dfe89ad",
-      "zh": "适度的",
+      "zh": "适度的，稳健的",
       "en": "moderate",
       "note": "adjective"
     },
     {
       "id": "adc7bbaf-63c7-5634-a96b-4a6646b8f26a",
-      "zh": "剂量",
+      "zh": "剂量，给药，医治",
       "en": "dose",
       "note": "noun"
     },
     {
       "id": "ca9d2404-3131-5809-9323-0f5ceb7736a9",
-      "zh": "财富",
+      "zh": "财富，运气，兴隆",
       "en": "fortune",
       "note": "noun"
     },
     {
       "id": "57804f22-a097-5f70-9382-527a73abae53",
-      "zh": "恶意",
+      "zh": "恶意，怨恨，欺侮",
       "en": "spite",
       "note": "noun"
     },
     {
       "id": "5f6efbe6-d11d-5db7-bbd9-2dc04552cf5f",
-      "zh": "商讨",
+      "zh": "商讨，商量，协商",
       "en": "consult",
       "note": "verb"
     },
     {
       "id": "25feef08-00b7-5dd0-a6a9-47b195a1c23d",
-      "zh": "合作",
+      "zh": "合作，协力，配合",
       "en": "cooperate",
       "note": "verb"
     },
     {
       "id": "dd3fe6b8-b284-5103-8452-fa0d0c49b4dc",
-      "zh": "平原",
+      "zh": "平原，草原",
       "en": "plain",
       "note": "noun"
     },
     {
       "id": "dbfa7de7-592f-5242-bacc-d4c30b7260d1",
-      "zh": "安全地",
+      "zh": "安全地，确实地",
       "en": "safely",
       "note": "adverb"
     },
     {
       "id": "6306ec10-ca81-5810-8cca-6efad6c9faab",
-      "zh": "食橱",
+      "zh": "食橱，碗柜",
       "en": "cupboard",
       "note": "noun"
     },
     {
       "id": "5f70d46f-467b-5474-805d-a328af0610c9",
-      "zh": "样品",
+      "zh": "样品，标本，试料",
       "en": "specimen",
       "note": "noun"
     },
@@ -2681,97 +2681,97 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "98b633ed-78aa-566a-b8f0-f1a5c4a38833",
-      "zh": "削弱",
+      "zh": "削弱，减弱，变弱",
       "en": "weaken",
       "note": "verb"
     },
     {
       "id": "463307b2-fe67-5a7c-b5f0-da08320d6a24",
-      "zh": "纯粹地",
+      "zh": "纯粹地，清白地",
       "en": "purely",
       "note": "adverb"
     },
     {
       "id": "1e6a6019-25cd-52ae-aeb5-c86cbb725cdf",
-      "zh": "便士",
+      "zh": "便士，一分，小钱",
       "en": "penny",
       "note": "noun"
     },
     {
       "id": "f7b59167-0f4c-5d9f-8b51-fcd595138b65",
-      "zh": "诱惑",
+      "zh": "诱惑，引诱，吸引",
       "en": "tempt",
       "note": "verb"
     },
     {
       "id": "56f72570-53df-514b-9a6c-58cbbc8ad681",
-      "zh": "透镜",
+      "zh": "透镜，镜头，镜片",
       "en": "lens",
       "note": "noun"
     },
     {
       "id": "b4d750ed-45a5-50d4-9e0e-2acf25156959",
-      "zh": "栅栏",
+      "zh": "障碍，栅栏，势垒",
       "en": "barrier",
       "note": "noun"
     },
     {
       "id": "6b0939ac-5cba-5765-a46c-823f5cc3ae83",
-      "zh": "严厉的",
+      "zh": "严厉的，绝对的",
       "en": "strict",
       "note": "adjective"
     },
     {
       "id": "217d5f22-04f8-5bfe-b4c1-ff7bf6bb9ade",
-      "zh": "祖先",
+      "zh": "祖先，祖宗",
       "en": "ancestor",
       "note": "noun"
     },
     {
       "id": "59751d51-f6a6-5581-bdaf-15d59730a7ee",
-      "zh": "叶片",
+      "zh": "叶片，刀锋，刀口",
       "en": "blade",
       "note": "noun"
     },
     {
       "id": "20544fe0-94b5-53bc-8045-f8c2dbb1b6cd",
-      "zh": "检验",
+      "zh": "检验，检查，视察",
       "en": "inspection",
       "note": "noun"
     },
     {
       "id": "0c3d275b-e68b-5db2-afc3-efc81b0befa6",
-      "zh": "同一的",
+      "zh": "同一的，恒等的",
       "en": "identical",
       "note": "adjective"
     },
     {
       "id": "75986bf9-0a20-56ef-9947-633f8f639372",
-      "zh": "风琴",
+      "zh": "风琴，器官，元件",
       "en": "organ",
       "note": "noun"
     },
     {
       "id": "bf4245dd-5feb-5cd1-aa25-fa47ffbc4c95",
-      "zh": "重复地",
+      "zh": "重复地，再三地",
       "en": "repeatedly",
       "note": "adverb"
     },
     {
       "id": "819e5dd9-aed4-508b-b8bf-9c5028bf47a6",
-      "zh": "标题",
+      "zh": "标题，起始字",
       "en": "heading",
       "note": "noun"
     },
     {
       "id": "aa5c2a15-208d-5f49-aeb7-a4a324fd82cd",
-      "zh": "合乎逻辑的",
+      "zh": "合理的，逻辑的",
       "en": "logical",
       "note": "adjective"
     },
     {
       "id": "c2bf8a56-4121-50be-b6e8-7798e18e7433",
-      "zh": "察看",
+      "zh": "察看，见识，洞察",
       "en": "insight",
       "note": "noun"
     },
@@ -2783,169 +2783,169 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "b6636cba-2ac1-5a06-b249-188d8c2f3cd6",
-      "zh": "易曲的",
+      "zh": "易曲的，灵活的",
       "en": "flexible",
       "note": "adjective"
     },
     {
       "id": "8cb89741-3665-528b-a0cf-c5e434fa9e8c",
-      "zh": "刑罚",
+      "zh": "处罚，刑罚，惩罚",
       "en": "punishment",
       "note": "noun"
     },
     {
       "id": "a507e62a-8208-59fd-ad7b-92de2d0b496f",
-      "zh": "钩状",
+      "zh": "钩状，镰刀，陷阱",
       "en": "hook",
       "note": "noun"
     },
     {
       "id": "77f3eece-20b1-5537-aa96-8367550c1ca2",
-      "zh": "阵雨",
+      "zh": "阵雨，淋浴，一阵",
       "en": "shower",
       "note": "noun"
     },
     {
       "id": "f32bf6a1-fcde-549e-a191-c0a1e1a37aea",
-      "zh": "利益",
+      "zh": "利益，方面",
       "en": "behalf",
       "note": "noun"
     },
     {
       "id": "07e75809-f1b7-5886-bf92-5aa4c11f0c9c",
-      "zh": "溶解",
+      "zh": "溶解，解散",
       "en": "dissolve",
       "note": "verb"
     },
     {
       "id": "5f0f2acc-e500-5f1b-bfe6-ca536cef458a",
-      "zh": "垃圾场",
+      "zh": "倾倒，倾销，转出",
       "en": "dump",
       "note": "noun"
     },
     {
       "id": "ccb3d584-fca0-5060-8706-26832d2287e0",
-      "zh": "集体的",
+      "zh": "集体的，聚集的",
       "en": "collective",
       "note": "adjective"
     },
     {
       "id": "654e0ad4-8cad-5e4b-b88a-8d70eece767a",
-      "zh": "一生",
+      "zh": "一生，终生",
       "en": "lifetime",
       "note": "noun"
     },
     {
       "id": "a4045602-0652-5c1e-ac38-f0e8133537e4",
-      "zh": "铁路",
+      "zh": "铁路，铁路公司",
       "en": "railroad",
       "note": "noun"
     },
     {
       "id": "1b904be4-91d0-5cc5-a9d8-fd2bc53af372",
-      "zh": "澄清",
+      "zh": "澄清，阐明",
       "en": "clarify",
       "note": "verb"
     },
     {
       "id": "7cc91bc7-8ecd-539c-9645-62fd3e5d5b7c",
-      "zh": "毛衣",
+      "zh": "毛衣，毛线衫",
       "en": "sweater",
       "note": "noun"
     },
     {
       "id": "a440a364-c43c-50ce-867d-17655af661fa",
-      "zh": "奴隶的身分",
+      "zh": "奴隶的身分，奴役",
       "en": "slavery",
       "note": "noun"
     },
     {
       "id": "f54e4288-228c-5634-bfb0-c925a8f168cf",
-      "zh": "正确的",
+      "zh": "正确的，精确的",
       "en": "accurate",
       "note": "adjective"
     },
     {
       "id": "21e4421f-424f-56ec-8344-7389417254fa",
-      "zh": "储备品",
+      "zh": "贮量，保留，拘谨",
       "en": "reserve",
       "note": "noun"
     },
     {
       "id": "eabf08a3-43cb-52e5-a265-31ec0efbf4ab",
-      "zh": "电梯",
+      "zh": "电梯，升降机",
       "en": "elevator",
       "note": "noun"
     },
     {
       "id": "6c0838b4-c2e5-5809-801b-236f5235126e",
-      "zh": "释放",
+      "zh": "释放，解放，发出",
       "en": "liberation",
       "note": "noun"
     },
     {
       "id": "137f4bdd-1949-5766-b71d-d2a2d288c2c6",
-      "zh": "英俊的",
+      "zh": "英俊的，大方的",
       "en": "handsome",
       "note": "adjective"
     },
     {
       "id": "cd29070d-35a3-509b-964e-71ecdf6af6b4",
-      "zh": "污秽的",
+      "zh": "污秽的，下流的",
       "en": "nasty",
       "note": "adjective"
     },
     {
       "id": "910affbd-2eda-58be-866b-2463717ba355",
-      "zh": "垂直的",
+      "zh": "垂直的，直立的",
       "en": "vertical",
       "note": "adjective"
     },
     {
       "id": "04a6e47b-7350-5647-a2dd-dbd641e29883",
-      "zh": "收听者",
+      "zh": "收听者，听众",
       "en": "listener",
       "note": "noun"
     },
     {
       "id": "b08e0586-679b-5398-95e5-311a0e2a9a58",
-      "zh": "流体",
+      "zh": "液体，流体，流音",
       "en": "liquid",
       "note": "noun"
     },
     {
       "id": "3104cf89-ec26-59ec-97ee-f90aa8439bbf",
-      "zh": "大小",
+      "zh": "大小，体积，大块",
       "en": "bulk",
       "note": "noun"
     },
     {
       "id": "9590dcfc-156e-5867-865b-efdcfac28f8e",
-      "zh": "温和的",
+      "zh": "温和的，温柔的",
       "en": "mild",
       "note": "adjective"
     },
     {
       "id": "e82b9d6d-1fd8-5dfc-92b1-d825a71e78cf",
-      "zh": "缺席的",
+      "zh": "缺席的，不在的",
       "en": "absent",
       "note": "adjective"
     },
     {
       "id": "39996cf0-1697-5cc3-b12a-4e2535fff678",
-      "zh": "细致优雅的",
+      "zh": "微妙的，美味的",
       "en": "delicate",
       "note": "adjective"
     },
     {
       "id": "9a04f6c5-4d3c-569d-a2b6-fe225a51ebbb",
-      "zh": "天使",
+      "zh": "天使，守护神",
       "en": "angel",
       "note": "noun"
     },
     {
       "id": "a811b4e9-5bbb-5be2-8139-38c981439342",
-      "zh": "大街",
+      "zh": "大街，途径",
       "en": "avenue",
       "note": "noun"
     },
@@ -2957,49 +2957,49 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "504de4df-6f22-529a-b10f-362169edfca0",
-      "zh": "平民",
+      "zh": "平民，民法专家",
       "en": "civilian",
       "note": "noun"
     },
     {
       "id": "32001c00-8e41-544d-8978-9ffd20ce4d5b",
-      "zh": "悲痛地",
+      "zh": "悲痛地，悲惨地",
       "en": "sadly",
       "note": "adverb"
     },
     {
       "id": "c0640fbf-6888-5617-a2b7-9c3d012762a5",
-      "zh": "起反应",
+      "zh": "起反应，起作用",
       "en": "react",
       "note": "verb"
     },
     {
       "id": "224eeed0-4160-5272-9ae3-25fb7357f2ce",
-      "zh": "耳语",
+      "zh": "耳语，密谈，谣传",
       "en": "whisper",
       "note": "noun"
     },
     {
       "id": "1e406b0e-5e39-5ba6-bcf3-57ec19ee97b3",
-      "zh": "小说",
+      "zh": "小说，捏造，拟制",
       "en": "fiction",
       "note": "noun"
     },
     {
       "id": "1464cce4-d748-53ab-8f95-2596834dc3da",
-      "zh": "印象",
+      "zh": "印象，特征，印记",
       "en": "impress",
       "note": "noun"
     },
     {
       "id": "c97942d1-1121-5ef8-b270-0e7ddc8e7f64",
-      "zh": "海军的",
+      "zh": "海军的，军舰的",
       "en": "naval",
       "note": "adjective"
     },
     {
       "id": "230e3ca2-2293-5185-a48b-259e5797230b",
-      "zh": "听写",
+      "zh": "听写，口述，口授",
       "en": "dictate",
       "note": "verb"
     }
@@ -3007,25 +3007,25 @@ export const QUESTION_BANKS = {
   "cet6": [
     {
       "id": "e8714f8c-0bbe-56ee-9de4-fb93a05bfc06",
-      "zh": "超时",
+      "zh": "超时，加班",
       "en": "overtime",
       "note": "noun"
     },
     {
       "id": "82fd9f6d-3e2d-5fc3-99a9-627716ad0106",
-      "zh": "湿气",
+      "zh": "湿气，潮湿，湿度",
       "en": "humidity",
       "note": "noun"
     },
     {
       "id": "c2897101-d989-5e5a-9994-78f107930361",
-      "zh": "不介意的",
+      "zh": "不介意的，大意的",
       "en": "reckless",
       "note": "adjective"
     },
     {
       "id": "76232ff7-47b0-5745-9137-9d26e8532eae",
-      "zh": "模拟",
+      "zh": "模拟，假装，模仿",
       "en": "simulate",
       "note": "verb"
     },
@@ -3037,25 +3037,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "d9121b88-86bc-5791-9d62-2f02b06bc5e5",
-      "zh": "增高",
+      "zh": "增高，提高，加强",
       "en": "heighten",
       "note": "verb"
     },
     {
       "id": "90fea8c3-cd90-5046-8bd9-a49ea5e36170",
-      "zh": "病人",
+      "zh": "病人，残废者",
       "en": "invalid",
       "note": "noun"
     },
     {
       "id": "a625c33f-2986-5e75-9e79-e480aaadfc24",
-      "zh": "摩擦",
+      "zh": "摩擦，摩擦治疗",
       "en": "friction",
       "note": "noun"
     },
     {
       "id": "b6a61ff0-c78a-52d2-85fc-a15716893fd2",
-      "zh": "决定了",
+      "zh": "坚决，明显，显然",
       "en": "decidedly",
       "note": "adverb"
     },
@@ -3067,13 +3067,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "da2b5f20-273a-5d63-9fe4-38aff3f5bc45",
-      "zh": "暖气装置",
+      "zh": "暖气装置，散热器",
       "en": "radiator",
       "note": "noun"
     },
     {
       "id": "b5d9982b-3a4f-5d09-bb63-1eac2c92db2c",
-      "zh": "试验",
+      "zh": "试验，试验性的",
       "en": "tentative",
       "note": "noun"
     },
@@ -3085,19 +3085,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "9d61215f-8640-5c15-9f38-710fed0ec6a7",
-      "zh": "危及",
+      "zh": "危及，使危险",
       "en": "endanger",
       "note": "verb"
     },
     {
       "id": "30293b46-79e4-5706-a1e0-0074eacc307a",
-      "zh": "最适条件",
+      "zh": "最适条件，最优的",
       "en": "optimum",
       "note": "noun"
     },
     {
       "id": "85d0aeb3-b9ae-56b3-b71a-09643ce402b5",
-      "zh": "高地",
+      "zh": "高地，高原，平顶",
       "en": "plateau",
       "note": "noun"
     },
@@ -3109,7 +3109,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "143313e0-44c5-5473-abaf-1bfe47ec58e0",
-      "zh": "顽固的",
+      "zh": "顽固的，不听话的",
       "en": "stubborn",
       "note": "adjective"
     },
@@ -3121,91 +3121,91 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "658172f9-4a70-5b09-a3cc-1f668abce4f8",
-      "zh": "蒸气",
+      "zh": "蒸气，蒸发，吹牛",
       "en": "vapour",
       "note": "noun"
     },
     {
       "id": "f7da6317-cc06-52b2-af59-8fd563136c25",
-      "zh": "征服",
+      "zh": "征服，优势，精通",
       "en": "mastery",
       "note": "noun"
     },
     {
       "id": "8e47dec4-27fe-5b43-824e-1cdf16fbb056",
-      "zh": "根除",
+      "zh": "根除，扑灭，根绝",
       "en": "eradicate",
       "note": "verb"
     },
     {
       "id": "4b24139b-dbc5-545c-aec5-10cde2f322dd",
-      "zh": "海的",
+      "zh": "海的，海上的",
       "en": "maritime",
       "note": "adjective"
     },
     {
       "id": "b528997e-fbbd-54af-9b66-9d453641a239",
-      "zh": "脂肪",
+      "zh": "脂肪，兽脂，油脂",
       "en": "grease",
       "note": "noun"
     },
     {
       "id": "e837a5a4-df2c-5821-b11f-d24d2341c051",
-      "zh": "危害",
+      "zh": "危害，使受危困",
       "en": "jeopardize",
       "note": "verb"
     },
     {
       "id": "c4a4f4e3-2d2d-5d37-b562-d3e14dc2b636",
-      "zh": "交替的",
+      "zh": "交替的，轮流的",
       "en": "alternate",
       "note": "adjective"
     },
     {
       "id": "d9b17b02-8dd1-5d69-b74a-411321211bd5",
-      "zh": "耻辱",
+      "zh": "耻辱，不名誉",
       "en": "disgrace",
       "note": "noun"
     },
     {
       "id": "51fac135-188f-5449-9f69-acc2cfbb7203",
-      "zh": "订正",
+      "zh": "订正，矫正，改正",
       "en": "rectify",
       "note": "verb"
     },
     {
       "id": "4fdef8da-80f8-55e9-acad-d84cd1446015",
-      "zh": "单一化",
+      "zh": "单一化，简单化",
       "en": "simplify",
       "note": "verb"
     },
     {
       "id": "94667f13-f785-518b-9c4f-53cea9c36e96",
-      "zh": "多数",
+      "zh": "多数，群众",
       "en": "multitude",
       "note": "noun"
     },
     {
       "id": "c8feb30d-66ad-584b-9a71-85e8da7ac65f",
-      "zh": "年轻的",
+      "zh": "年轻的，青年的",
       "en": "youthful",
       "note": "adjective"
     },
     {
       "id": "f6c1f418-5891-58a6-bcb3-ca372016cf2d",
-      "zh": "记号",
+      "zh": "记号，符号表示法",
       "en": "notation",
       "note": "noun"
     },
     {
       "id": "0d56c661-d642-5a11-b68c-1e087e76a9a4",
-      "zh": "巨人般的",
+      "zh": "巨人般的，巨大的",
       "en": "gigantic",
       "note": "adjective"
     },
     {
       "id": "4bdcce14-85b8-5bc4-b1b6-4d09dca82577",
-      "zh": "附近",
+      "zh": "附近，邻近，近处",
       "en": "vicinity",
       "note": "noun"
     },
@@ -3217,13 +3217,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "04bcbf94-e332-58a8-9172-cb45cd0af2a9",
-      "zh": "残渣的",
+      "zh": "残渣，剩余，余数",
       "en": "residual",
       "note": "adjective"
     },
     {
       "id": "9ddfa5bf-56bb-5572-8595-1e69189fe213",
-      "zh": "派遣",
+      "zh": "派遣，急件，调度",
       "en": "dispatch",
       "note": "verb"
     },
@@ -3235,49 +3235,49 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "67155902-5d6d-59bf-baa6-9306068a6da3",
-      "zh": "黄瓜",
+      "zh": "黄瓜，胡瓜",
       "en": "cucumber",
       "note": "noun"
     },
     {
       "id": "c3139443-5277-542c-948a-ac66a24261a9",
-      "zh": "降落伞",
+      "zh": "降落伞，跳伞",
       "en": "parachute",
       "note": "noun"
     },
     {
       "id": "e1b95746-543c-5084-a4e5-30a1bab59098",
-      "zh": "再现",
+      "zh": "再现，反复，循环",
       "en": "recurrence",
       "note": "noun"
     },
     {
       "id": "44af4bfa-7ffd-5cab-984f-1bf85ca8735d",
-      "zh": "突起",
+      "zh": "突起，突出，显著",
       "en": "prominence",
       "note": "noun"
     },
     {
       "id": "1cad2aa1-b626-52f2-8c05-cb5af7ee61c6",
-      "zh": "有秩序的",
+      "zh": "有秩序的，整齐的",
       "en": "orderly",
       "note": "adjective"
     },
     {
       "id": "2d8417e3-a7c1-5411-aea8-8196c10ca61d",
-      "zh": "可怜的",
+      "zh": "可怜的，不幸的",
       "en": "wretched",
       "note": "adjective"
     },
     {
       "id": "8ef241c8-0547-5710-bab0-d77bc7fdceb0",
-      "zh": "衬里",
+      "zh": "衬里，内层，衬垫",
       "en": "lining",
       "note": "noun"
     },
     {
       "id": "325b1ff5-3083-5e0d-a24a-48790bd8751a",
-      "zh": "皱纹",
+      "zh": "皱纹，妙计，方法",
       "en": "wrinkle",
       "note": "noun"
     },
@@ -3289,43 +3289,43 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "88ba53d1-f724-56fc-864a-a4c45948c31f",
-      "zh": "计算",
+      "zh": "计算，估算",
       "en": "compute",
       "note": "verb"
     },
     {
       "id": "5302dff0-5efc-558b-8f32-0ccf1b21f260",
-      "zh": "元首",
+      "zh": "元首，独立国",
       "en": "sovereign",
       "note": "noun"
     },
     {
       "id": "44f2b033-6ac2-549a-ad5d-20fb40423190",
-      "zh": "胶囊",
+      "zh": "胶囊，蒴果，瓶帽",
       "en": "capsule",
       "note": "noun"
     },
     {
       "id": "13e86745-a4a5-5db9-9ce5-f05e9f1f7764",
-      "zh": "喇叭",
+      "zh": "喇叭，小号，吹嘘",
       "en": "trumpet",
       "note": "noun"
     },
     {
       "id": "147b21e0-d420-5ad1-af42-bdd5c2d9265b",
-      "zh": "烈士",
+      "zh": "烈士，受苦者",
       "en": "martyr",
       "note": "noun"
     },
     {
       "id": "b386ab80-f441-5fc2-b382-04624cd82a49",
-      "zh": "百叶窗",
+      "zh": "百叶窗，关闭物",
       "en": "shutter",
       "note": "noun"
     },
     {
       "id": "6da6dec1-4da5-59b7-a34c-9e165466f0d0",
-      "zh": "挫折",
+      "zh": "挫折，退步，逆流",
       "en": "setback",
       "note": "noun"
     },
@@ -3337,91 +3337,91 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "3e1c5b64-0e24-529e-8422-d4b573fad023",
-      "zh": "怨言",
+      "zh": "怨言，满腹牢骚",
       "en": "grumble",
       "note": "noun"
     },
     {
       "id": "cdb0a234-3f3a-59d8-a07a-3db79dda2e2b",
-      "zh": "蜜饯",
+      "zh": "蜜饯，果酱，保存",
       "en": "conserve",
       "note": "noun"
     },
     {
       "id": "cbbdd8e0-a895-5c2d-a00c-f77141fd9ed3",
-      "zh": "无知识的",
+      "zh": "无知识的，无知的",
       "en": "ignorant",
       "note": "adjective"
     },
     {
       "id": "f89bc14b-1e5c-5fd1-aa49-ffdfdacf7039",
-      "zh": "巾帼英雄",
+      "zh": "巾帼英雄，烈妇",
       "en": "heroine",
       "note": "noun"
     },
     {
       "id": "76ee3abd-f6e0-5794-b6ea-260593a60c66",
-      "zh": "金属的",
+      "zh": "金属的，含金属的",
       "en": "metallic",
       "note": "adjective"
     },
     {
       "id": "17409dab-f849-52c9-9a51-cfd12d873eef",
-      "zh": "重复的话",
+      "zh": "叠句，副歌，节制",
       "en": "refrain",
       "note": "noun"
     },
     {
       "id": "958ce32f-ea04-5875-be08-f6ec8eefea16",
-      "zh": "不吉利的",
+      "zh": "不吉利的，不祥的",
       "en": "unlucky",
       "note": "adjective"
     },
     {
       "id": "0bd75181-e1d3-5e09-aece-a4600a21e8bb",
-      "zh": "沉浸",
+      "zh": "沉浸，使陷入",
       "en": "immerse",
       "note": "verb"
     },
     {
       "id": "3134df2f-247c-5bc0-9278-f0f5c66f8475",
-      "zh": "瓷器",
+      "zh": "瓷器，瓷制的",
       "en": "porcelain",
       "note": "noun"
     },
     {
       "id": "f2243856-595a-5572-9abf-e0558cf6c668",
-      "zh": "多才多艺的",
+      "zh": "万用的，万向的",
       "en": "versatile",
       "note": "adjective"
     },
     {
       "id": "1ac7acf6-b899-5782-aab0-64be8bc6099d",
-      "zh": "回顾",
+      "zh": "回顾，追忆，回溯",
       "en": "retrospect",
       "note": "noun"
     },
     {
       "id": "1295fc07-0804-5656-912b-a35d3aa27042",
-      "zh": "不幸",
+      "zh": "不幸，灾祸",
       "en": "misfortune",
       "note": "noun"
     },
     {
       "id": "6520e703-5934-58a8-a106-fcca2e275135",
-      "zh": "威胁",
+      "zh": "威胁，胁迫，威吓",
       "en": "menace",
       "note": "noun"
     },
     {
       "id": "7545c04a-7194-5e87-af65-6e0a6548135c",
-      "zh": "无情的",
+      "zh": "无情的，残忍的",
       "en": "ruthless",
       "note": "adjective"
     },
     {
       "id": "9d13e69f-081e-5538-8ded-6e8b84ae3d67",
-      "zh": "弹药筒",
+      "zh": "弹药筒，弹药",
       "en": "cartridge",
       "note": "noun"
     },
@@ -3433,49 +3433,49 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "e9d87243-bcbf-55ca-8bfa-3dbb4908d71c",
-      "zh": "向岸",
+      "zh": "向岸，在岸上",
       "en": "ashore",
       "note": "adverb"
     },
     {
       "id": "cc305624-18e9-5772-a69c-6b8e571b8c19",
-      "zh": "辨别",
+      "zh": "辨别，看清楚",
       "en": "discern",
       "note": "verb"
     },
     {
       "id": "4735d6f9-8d0a-50e6-8dc4-fa6508c4d540",
-      "zh": "偷运",
+      "zh": "偷运，走私，私运",
       "en": "smuggle",
       "note": "verb"
     },
     {
       "id": "40989e18-2d60-5c71-b9a4-28ea5b1aee54",
-      "zh": "渴望",
+      "zh": "渴望，热望，憧憬",
       "en": "longing",
       "note": "noun"
     },
     {
       "id": "a9d893cb-15c4-54a8-99f5-5be2048ca7f4",
-      "zh": "杰作",
+      "zh": "杰作，名著",
       "en": "masterpiece",
       "note": "noun"
     },
     {
       "id": "6e8aa536-88f4-508f-a92b-1f9d19529168",
-      "zh": "延长",
+      "zh": "延长，拖延，拖长",
       "en": "prolong",
       "note": "verb"
     },
     {
       "id": "e5073cc6-c56f-5c7d-9416-6d87b1787ad7",
-      "zh": "元帅",
+      "zh": "元帅，整理，引领",
       "en": "marshal",
       "note": "noun"
     },
     {
       "id": "0f99430e-55c4-5754-9215-fba685eb3314",
-      "zh": "使看得见",
+      "zh": "想象，设想，显形",
       "en": "visualize",
       "note": "verb"
     },
@@ -3487,19 +3487,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "93619518-cb44-55f8-b98a-36da2ef7d304",
-      "zh": "忍耐",
+      "zh": "忍耐，忍耐力",
       "en": "endurance",
       "note": "noun"
     },
     {
       "id": "27bd0073-a1cd-5c8e-b6f5-4fba66554312",
-      "zh": "无瑕疵的",
+      "zh": "无瑕疵的，不锈的",
       "en": "stainless",
       "note": "adjective"
     },
     {
       "id": "3e1f5aec-081a-5049-bf04-9218799d02a6",
-      "zh": "城堡",
+      "zh": "城堡，要塞",
       "en": "fortress",
       "note": "noun"
     },
@@ -3511,7 +3511,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "a4509106-a410-5c41-9e73-b8668e7c65cd",
-      "zh": "一致",
+      "zh": "一致，和谐",
       "en": "accordance",
       "note": "noun"
     },
@@ -3529,19 +3529,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "32209ed4-bca7-5e42-a58c-80cc5b923754",
-      "zh": "松鼠",
+      "zh": "松鼠，松鼠毛皮",
       "en": "squirrel",
       "note": "noun"
     },
     {
       "id": "3fc389c8-260b-5ba6-9648-95939c7ea66a",
-      "zh": "及时的",
+      "zh": "及时的，适时的",
       "en": "timely",
       "note": "adjective"
     },
     {
       "id": "99750a7c-cd7e-5372-bdb7-3c15200a1e50",
-      "zh": "口红",
+      "zh": "口红，唇膏",
       "en": "lipstick",
       "note": "noun"
     },
@@ -3559,25 +3559,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "6891031f-7a37-596e-b9e9-c8158513e03c",
-      "zh": "青肿",
+      "zh": "青肿，挫伤，擦伤",
       "en": "bruise",
       "note": "noun"
     },
     {
       "id": "7013769f-9ad0-5480-b6a1-ef6fb9d6637b",
-      "zh": "使困窘",
+      "zh": "使困窘，阻碍",
       "en": "embarrass",
       "note": "verb"
     },
     {
       "id": "e8d233ec-778c-5e98-aa66-140202a2edbc",
-      "zh": "半岛",
+      "zh": "半岛，突出的地方",
       "en": "peninsula",
       "note": "noun"
     },
     {
       "id": "73409c99-6f31-5474-b421-27f26b9e5a9f",
-      "zh": "摇篮",
+      "zh": "摇篮，抚育，刈割",
       "en": "cradle",
       "note": "noun"
     },
@@ -3589,61 +3589,61 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "3c69bf50-cad7-5eee-97e5-46f716bf2bc1",
-      "zh": "震动的",
+      "zh": "震动的，摇晃的",
       "en": "shaky",
       "note": "adjective"
     },
     {
       "id": "8e93aff5-d57a-537f-b5d6-ee980e33904f",
-      "zh": "迂回的",
+      "zh": "迂回的，委婉的",
       "en": "roundabout",
       "note": "adjective"
     },
     {
       "id": "1cd81bba-c0d1-59ad-bfa2-f33576176694",
-      "zh": "火炉",
+      "zh": "火炉，烧火的人",
       "en": "burner",
       "note": "noun"
     },
     {
       "id": "a937ea99-8c9a-5c68-bee0-7a928ec36d96",
-      "zh": "共鸣",
+      "zh": "共鸣，回声，反响",
       "en": "resonance",
       "note": "noun"
     },
     {
       "id": "25d81706-5a9f-53ef-9cc7-965765e4efc7",
-      "zh": "长命",
+      "zh": "长命，长寿，寿命",
       "en": "longevity",
       "note": "noun"
     },
     {
       "id": "14301711-53dd-50c3-9066-f8d04140ad77",
-      "zh": "陶瓷的",
+      "zh": "陶瓷的，陶瓷制品",
       "en": "ceramic",
       "note": "adjective"
     },
     {
       "id": "38a1754f-5484-51e3-9540-45b6a4efcabc",
-      "zh": "厌恶",
+      "zh": "厌恶，嫌恶",
       "en": "disgust",
       "note": "noun"
     },
     {
       "id": "4fee205d-d3d2-581a-9bd7-de5e1f88aefd",
-      "zh": "天线",
+      "zh": "天线，触须，触角",
       "en": "antenna",
       "note": "noun"
     },
     {
       "id": "c186e7dd-efd1-5927-88d0-a4e6f65c69f5",
-      "zh": "年代记",
+      "zh": "年代记，记录",
       "en": "chronicle",
       "note": "noun"
     },
     {
       "id": "0a124f99-35ee-53a8-815a-52c50dea8478",
-      "zh": "光亮",
+      "zh": "光亮，明亮，聪明",
       "en": "brightness",
       "note": "noun"
     },
@@ -3655,19 +3655,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "117f5995-c679-55eb-b42a-224f1c69fa81",
-      "zh": "吠声",
+      "zh": "吠声，怒吠，咆哮",
       "en": "growl",
       "note": "noun"
     },
     {
       "id": "d462dbdb-08a7-5337-b0dd-008ce629c593",
-      "zh": "错误的",
+      "zh": "错误的，不准确的",
       "en": "inaccurate",
       "note": "adjective"
     },
     {
       "id": "162b65a6-5660-5dbd-9c8f-9ef64e673063",
-      "zh": "点缀品",
+      "zh": "装饰，点缀品",
       "en": "ornament",
       "note": "noun"
     },
@@ -3679,25 +3679,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "8ac6aa77-6538-58b3-aaff-67c082d9b9fb",
-      "zh": "正午",
+      "zh": "正午，中午",
       "en": "midday",
       "note": "noun"
     },
     {
       "id": "993df26b-881d-5b7b-8a9b-dd9067b6620f",
-      "zh": "闪耀",
+      "zh": "闪耀，火花，活力",
       "en": "sparkle",
       "note": "noun"
     },
     {
       "id": "3071f3bd-cf66-5bdf-ba53-3b82ae3801f6",
-      "zh": "气质",
+      "zh": "气质，性格，性情",
       "en": "temperament",
       "note": "noun"
     },
     {
       "id": "490f4c92-7af6-5250-8a7a-446cb3b6109d",
-      "zh": "涟波",
+      "zh": "涟波，涟漪，波纹",
       "en": "ripple",
       "note": "noun"
     },
@@ -3709,7 +3709,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "487148cc-bb09-5a15-a327-9af572592adc",
-      "zh": "楼层",
+      "zh": "楼层，层楼",
       "en": "storey",
       "note": "noun"
     },
@@ -3721,19 +3721,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "54f3fb43-e5d5-538b-9330-650cb11a7628",
-      "zh": "结果实的",
+      "zh": "结果实的，多实的",
       "en": "fruitful",
       "note": "adjective"
     },
     {
       "id": "2ecf0a44-c17b-5fd4-b74e-00583fef4df8",
-      "zh": "螺旋形之物",
+      "zh": "螺旋形之物，螺线",
       "en": "spiral",
       "note": "noun"
     },
     {
       "id": "85179572-b8c7-54b1-9c7d-07f9758a602f",
-      "zh": "摆动",
+      "zh": "摆动，拍打，飘动",
       "en": "flap",
       "note": "noun"
     },
@@ -3745,49 +3745,49 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "06d44430-82be-5923-b8d2-f6eb55e38af9",
-      "zh": "退税",
+      "zh": "缺点，退税，退款",
       "en": "drawback",
       "note": "noun"
     },
     {
       "id": "ae2991ef-161f-57ea-9898-1ebfe588d610",
-      "zh": "诚实的",
+      "zh": "诚实的，正直的",
       "en": "sincere",
       "note": "adjective"
     },
     {
       "id": "ff533637-dc94-5e8e-81e4-c94c37875e48",
-      "zh": "阴谋",
+      "zh": "阴谋，密谋，私通",
       "en": "intrigue",
       "note": "noun"
     },
     {
       "id": "34808fb0-c360-553a-acd1-0d29132a8033",
-      "zh": "困乏的",
+      "zh": "困乏的，欲睡的",
       "en": "sleepy",
       "note": "adjective"
     },
     {
       "id": "437ba20a-3971-5779-8df8-a4d120471498",
-      "zh": "持矛者",
+      "zh": "持矛者，嫩枝",
       "en": "spear",
       "note": "noun"
     },
     {
       "id": "8038ce08-d1c5-57a2-8f41-f7e4733def9d",
-      "zh": "胡桃",
+      "zh": "胡桃，胡桃木",
       "en": "walnut",
       "note": "noun"
     },
     {
       "id": "7222c643-c32b-501e-a6bd-2b56a1cfe0f5",
-      "zh": "安慰",
+      "zh": "安慰，藉慰",
       "en": "console",
       "note": "verb"
     },
     {
       "id": "b2243048-4f65-5d5e-8a33-1620cfdaeddc",
-      "zh": "变浓",
+      "zh": "变浓，变厚，加强",
       "en": "thicken",
       "note": "verb"
     },
@@ -3799,91 +3799,91 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "9b2b5958-18fd-5a5d-9c0a-4c012c023c5f",
-      "zh": "回旋",
+      "zh": "回旋，旋转，急走",
       "en": "whirl",
       "note": "noun"
     },
     {
       "id": "5984696c-bbde-5427-b1ce-af281ed29d4f",
-      "zh": "满口",
+      "zh": "一口，满口",
       "en": "mouthful",
       "note": "noun"
     },
     {
       "id": "ae7599d0-8a25-50b9-bcb9-cd11c8189df8",
-      "zh": "杂乱一团",
+      "zh": "混乱，拥挤，乱堆",
       "en": "huddle",
       "note": "noun"
     },
     {
       "id": "2b8b5200-5d77-5858-a895-2d60b79b2aba",
-      "zh": "不育的",
+      "zh": "不育的，贫瘠的",
       "en": "barren",
       "note": "adjective"
     },
     {
       "id": "85e2e471-f3a1-54b9-a5d7-be32b792c424",
-      "zh": "反驳",
+      "zh": "反驳，顶嘴，回嘴",
       "en": "retort",
       "note": "noun"
     },
     {
       "id": "d80ac65e-9d52-553f-aba1-07f06d8a6f42",
-      "zh": "易碎的",
+      "zh": "易碎的，脆弱的",
       "en": "brittle",
       "note": "adjective"
     },
     {
       "id": "3700d26a-1667-548b-84ae-c42d3752ed42",
-      "zh": "严酷的",
+      "zh": "严厉的，严酷的",
       "en": "rigorous",
       "note": "adjective"
     },
     {
       "id": "73a138c2-625d-57c2-9c7f-2c9650390c9a",
-      "zh": "使麻痹",
+      "zh": "使麻痹，使瘫痪",
       "en": "paralyse",
       "note": "verb"
     },
     {
       "id": "9dfee28e-8390-5b38-8e4f-5ce93ed1453f",
-      "zh": "孵化",
+      "zh": "孵化，舱口，孵出",
       "en": "hatch",
       "note": "noun"
     },
     {
       "id": "3242f168-ed5e-5db6-9208-606c0ad136db",
-      "zh": "漠不关心的",
+      "zh": "中立的，中性的",
       "en": "indifferent",
       "note": "adjective"
     },
     {
       "id": "8902a322-a633-5ecd-a7d9-c508960d04a1",
-      "zh": "运动员",
+      "zh": "运动员，冒险家",
       "en": "sportsman",
       "note": "noun"
     },
     {
       "id": "123a02a8-b68a-5371-ae32-736e4819a998",
-      "zh": "破产者",
+      "zh": "破产者，破产的",
       "en": "bankrupt",
       "note": "noun"
     },
     {
       "id": "1b0112b4-2d75-57d9-8265-0e9ee4711aa9",
-      "zh": "户外",
+      "zh": "户外，野外活动",
       "en": "outdoors",
       "note": "noun"
     },
     {
       "id": "587f8fbf-64c1-5aae-bbd5-94a02b6b0e8a",
-      "zh": "可以忽略的",
+      "zh": "不足取的，无用的",
       "en": "negligible",
       "note": "adjective"
     },
     {
       "id": "5265427c-995e-5578-9f01-336d297e6fd0",
-      "zh": "日食",
+      "zh": "日食，月食，消失",
       "en": "eclipse",
       "note": "noun"
     },
@@ -3895,7 +3895,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "48d50cb4-5727-564e-bce0-07518968cf10",
-      "zh": "持续不断的",
+      "zh": "继续的，连续的",
       "en": "continual",
       "note": "adjective"
     },
@@ -3907,109 +3907,109 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "61d0eb88-2d6b-5840-9d01-3803b63dc3ba",
-      "zh": "航行",
+      "zh": "航行，航海，导航",
       "en": "navigation",
       "note": "noun"
     },
     {
       "id": "6d5ebe48-c7e8-56a3-b085-653d9850dc4b",
-      "zh": "蹲着的",
+      "zh": "蹲下，蹲坐，蹲伏",
       "en": "squat",
       "note": "noun"
     },
     {
       "id": "0e35dd14-6ccf-51b8-b1e4-da081dc2f62f",
-      "zh": "汉堡",
+      "zh": "汉堡，肉饼",
       "en": "hamburger",
       "note": "noun"
     },
     {
       "id": "6a47a9ea-8f2a-5321-a320-dcb33787e51d",
-      "zh": "水壶",
+      "zh": "水壶，军中俱乐部",
       "en": "canteen",
       "note": "noun"
     },
     {
       "id": "eb8f2b5f-5357-5699-89d7-1c3300c10c24",
-      "zh": "凤梨",
+      "zh": "凤梨，菠萝，波萝",
       "en": "pineapple",
       "note": "noun"
     },
     {
       "id": "c2c34285-7e63-53cb-ada8-aa9605a1d056",
-      "zh": "驿马",
+      "zh": "驿马，替班，中继",
       "en": "relay",
       "note": "noun"
     },
     {
       "id": "df9c524b-a417-55fa-99b0-b37872f0c43c",
-      "zh": "强烈的",
+      "zh": "强烈的，活泼的",
       "en": "brisk",
       "note": "adjective"
     },
     {
       "id": "3e8fa983-50c3-55ae-af87-c419321bbb7f",
-      "zh": "停留",
+      "zh": "停留，遵守，居留",
       "en": "abide",
       "note": "verb"
     },
     {
       "id": "3ca9c90b-9d0f-577a-9116-e9a9626fb13a",
-      "zh": "烟火具",
+      "zh": "烟火具，烟火",
       "en": "firework",
       "note": "noun"
     },
     {
       "id": "c8705c69-0fc7-5a90-bd0a-41f4776c1676",
-      "zh": "持久的",
+      "zh": "持久的，耐用的",
       "en": "durable",
       "note": "adjective"
     },
     {
       "id": "c7b2db88-e3af-5de7-a47b-eadfb6e920cf",
-      "zh": "单数",
+      "zh": "单数，异常的",
       "en": "singular",
       "note": "noun"
     },
     {
       "id": "ba501b1d-65a6-5f33-919b-7283725f0e19",
-      "zh": "弄短",
+      "zh": "弄短，缩短，减少",
       "en": "shorten",
       "note": "verb"
     },
     {
       "id": "a6e1bc2a-97ee-589d-a209-cd45a2f2e45d",
-      "zh": "俘虏",
+      "zh": "俘虏，迷恋者",
       "en": "captive",
       "note": "noun"
     },
     {
       "id": "ae4b93d9-ca41-5aa0-a458-98c8019809aa",
-      "zh": "慷慨",
+      "zh": "慷慨，宽大",
       "en": "generosity",
       "note": "noun"
     },
     {
       "id": "c75f05b8-bfbc-51ec-b569-67bc35d4f93a",
-      "zh": "未醉的",
+      "zh": "未醉的，稳重的",
       "en": "sober",
       "note": "adjective"
     },
     {
       "id": "b278538a-2679-5ed0-a232-63956b0ee420",
-      "zh": "解放",
+      "zh": "解放，释放，释出",
       "en": "liberate",
       "note": "verb"
     },
     {
       "id": "3405bcb8-6047-543b-b1e9-a9af95ff7a79",
-      "zh": "眨眼",
+      "zh": "眨眼，瞬间，闪烁",
       "en": "wink",
       "note": "noun"
     },
     {
       "id": "9d76fc8f-ff06-587e-9010-9670f153cb8f",
-      "zh": "成直角的",
+      "zh": "成直角的，矩形的",
       "en": "rectangular",
       "note": "adjective"
     },
@@ -4021,19 +4021,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "e2431db9-4510-5c5b-a4b3-9271fe88ffb7",
-      "zh": "纬度",
+      "zh": "纬度，范围，伟度",
       "en": "latitude",
       "note": "noun"
     },
     {
       "id": "4913d13e-607a-5205-aa48-ba08e8996414",
-      "zh": "战胜",
+      "zh": "战胜，征服，赢得",
       "en": "conquest",
       "note": "noun"
     },
     {
       "id": "7aa1e48d-f329-5f2c-ac5e-44ef0ccf88df",
-      "zh": "聚合",
+      "zh": "聚合，集中于一点",
       "en": "converge",
       "note": "verb"
     },
@@ -4045,19 +4045,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "93804751-48af-5583-9ea4-7b640123daba",
-      "zh": "队列",
+      "zh": "队列，结盟，校正",
       "en": "alignment",
       "note": "noun"
     },
     {
       "id": "cb0db112-023a-5f59-a67e-3bab4d775146",
-      "zh": "每年的",
+      "zh": "每年的，一年一次",
       "en": "yearly",
       "note": "adjective"
     },
     {
       "id": "c376912f-4a86-5b23-bac3-502c96ffbd54",
-      "zh": "奉承",
+      "zh": "奉承，阿谀",
       "en": "flatter",
       "note": "verb"
     },
@@ -4069,271 +4069,271 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "a6abd070-1307-5ecf-ba1d-927cc539676d",
-      "zh": "累积的",
+      "zh": "累积的，蓄积的",
       "en": "cumulative",
       "note": "adjective"
     },
     {
       "id": "cc06cc14-6e0a-5dc7-b878-b5270b8d7a43",
-      "zh": "宽度",
+      "zh": "宽度，违背，违犯",
       "en": "breadth",
       "note": "noun"
     },
     {
       "id": "77d9e0dc-a5bd-5570-b627-a78aee8d6a7c",
-      "zh": "小心",
+      "zh": "小心，谨防",
       "en": "beware",
       "note": "verb"
     },
     {
       "id": "6752b4bb-8511-5f59-8330-13c1782097e3",
-      "zh": "克服",
+      "zh": "克服，征服，战胜",
       "en": "conquer",
       "note": "verb"
     },
     {
       "id": "c7717ee5-d7e8-5bb0-8307-94f04924b775",
-      "zh": "饿死",
+      "zh": "饿死，挨饿",
       "en": "starve",
       "note": "verb"
     },
     {
       "id": "f2a022f8-6948-508c-8050-61b34560a47e",
-      "zh": "令人愉快的",
+      "zh": "同意的，佳适的",
       "en": "agreeable",
       "note": "adjective"
     },
     {
       "id": "8aad2c90-0141-5bd1-90fa-4c1448e5843f",
-      "zh": "模仿",
+      "zh": "模仿，效法，冒充",
       "en": "imitation",
       "note": "noun"
     },
     {
       "id": "90b58a14-df66-5f27-9428-2c417901e00b",
-      "zh": "窃贼",
+      "zh": "窃贼，夜盗",
       "en": "burglar",
       "note": "noun"
     },
     {
       "id": "d0f2d634-96e4-5fdf-8d1f-a53820c05ad3",
-      "zh": "旋转",
+      "zh": "旋转，反复考虑",
       "en": "revolve",
       "note": "verb"
     },
     {
       "id": "99e9411c-00eb-58bb-841c-761737488d98",
-      "zh": "忽视",
+      "zh": "忽视，漠视，不顾",
       "en": "disregard",
       "note": "noun"
     },
     {
       "id": "4e00b5ae-a07a-5915-904b-8cad9a69969e",
-      "zh": "牧羊人",
+      "zh": "牧师，看守，领导",
       "en": "shepherd",
       "note": "noun"
     },
     {
       "id": "e5d68236-93a6-530c-b756-c0ab74d8f9b8",
-      "zh": "踏板",
+      "zh": "踏板，脚的，骑车",
       "en": "pedal",
       "note": "noun"
     },
     {
       "id": "ec9f61ed-9a3f-58b0-8f79-afb74441c66c",
-      "zh": "毛织品",
+      "zh": "毛织品，羊毛制的",
       "en": "woollen",
       "note": "noun"
     },
     {
       "id": "0acefd34-e96b-5246-9f6c-c3f459f8ce52",
-      "zh": "召集",
+      "zh": "集合，召集，召唤",
       "en": "convene",
       "note": "verb"
     },
     {
       "id": "06ca0670-32bb-5717-8d71-a40bb7bdd17b",
-      "zh": "不合适的",
+      "zh": "不合适的，错误的",
       "en": "improper",
       "note": "adjective"
     },
     {
       "id": "ff47fdd7-85c6-5bfc-8aad-df483cbcd598",
-      "zh": "滑的",
+      "zh": "滑的，光滑的",
       "en": "slippery",
       "note": "adjective"
     },
     {
       "id": "a42f5f2b-128b-52cc-8800-fb491c77bdcb",
-      "zh": "拖鞋",
+      "zh": "拖鞋，制轮器",
       "en": "slipper",
       "note": "noun"
     },
     {
       "id": "16a113f3-a9aa-571b-b0a8-8aafd5cc7e33",
-      "zh": "冲淡",
+      "zh": "冲淡，稀释，淡的",
       "en": "dilute",
       "note": "verb"
     },
     {
       "id": "71bd3c26-e758-528c-befc-acc6c8c22d90",
-      "zh": "竹子",
+      "zh": "竹子，竹类",
       "en": "bamboo",
       "note": "noun"
     },
     {
       "id": "b625b963-6f6f-57e4-a88d-98976a4a385b",
-      "zh": "珍爱",
+      "zh": "珍爱，怀有，爱护",
       "en": "cherish",
       "note": "verb"
     },
     {
       "id": "5005f519-cfb6-561f-8817-602ad5cbe3c0",
-      "zh": "坚持的",
+      "zh": "坚持的，迫切的",
       "en": "insistent",
       "note": "adjective"
     },
     {
       "id": "1a8f3097-3568-57dc-b293-27afea2403c4",
-      "zh": "直觉",
+      "zh": "直觉，直觉的知识",
       "en": "intuition",
       "note": "noun"
     },
     {
       "id": "06513749-cdf9-5177-bbd3-be74bca0f9a2",
-      "zh": "不连续的",
+      "zh": "不连续的，离散的",
       "en": "discrete",
       "note": "adjective"
     },
     {
       "id": "4e363566-8974-5f84-aa9e-5c88432a359d",
-      "zh": "拱顶",
+      "zh": "拱顶，穹窿，跳跃",
       "en": "vault",
       "note": "noun"
     },
     {
       "id": "b7c179c7-183d-5d6e-a833-356b5c334730",
-      "zh": "归纳法",
+      "zh": "感应，就职，入门",
       "en": "induction",
       "note": "noun"
     },
     {
       "id": "6d7f1f7c-dcf9-5f9f-ae32-fb81e920d757",
-      "zh": "脸红",
+      "zh": "脸红，羞愧",
       "en": "blush",
       "note": "verb"
     },
     {
       "id": "a1436a14-9733-54b3-97ff-284651e26ed4",
-      "zh": "大胆的",
+      "zh": "勇敢的，大胆的",
       "en": "courageous",
       "note": "adjective"
     },
     {
       "id": "515692f6-bdeb-56f9-9a82-2c5d3358734c",
-      "zh": "动员",
+      "zh": "动员，调动",
       "en": "mobilize",
       "note": "verb"
     },
     {
       "id": "c9ad5541-c84d-5d7a-9994-9d7bbfd0c78d",
-      "zh": "脆弱的",
+      "zh": "脆弱的，虚弱的",
       "en": "frail",
       "note": "adjective"
     },
     {
       "id": "7f60fdae-61d5-567e-9afd-457790dbfebe",
-      "zh": "拴紧",
+      "zh": "拴紧，使固定",
       "en": "fasten",
       "note": "verb"
     },
     {
       "id": "9ad802fb-3c10-5383-907d-9023b36395eb",
-      "zh": "新奇",
+      "zh": "新奇，新鲜",
       "en": "novelty",
       "note": "noun"
     },
     {
       "id": "d9904616-bbaf-5d9c-8b1b-6adbd4bc7187",
-      "zh": "想念",
+      "zh": "渴望，想念，怀念",
       "en": "yearn",
       "note": "verb"
     },
     {
       "id": "047a6a33-bc2c-58b0-ad6d-e5a6d5e47f54",
-      "zh": "使缓和",
+      "zh": "减轻，使缓和",
       "en": "alleviate",
       "note": "verb"
     },
     {
       "id": "0d8b1bc0-62ce-5ccc-8a23-6dde8736ff8f",
-      "zh": "使下狱",
+      "zh": "关闭，拘禁，限制",
       "en": "imprison",
       "note": "verb"
     },
     {
       "id": "d0231e38-bb6a-5b37-81dd-fee8eda29b4f",
-      "zh": "嘉奖",
+      "zh": "嘉奖，委托给",
       "en": "commend",
       "note": "verb"
     },
     {
       "id": "8e83061c-0f3b-535d-a3c6-ec12b509e4cf",
-      "zh": "能实行的",
+      "zh": "能实行的，可行的",
       "en": "feasible",
       "note": "adjective"
     },
     {
       "id": "7acfd7d0-b55e-5f2f-b335-dc59d80658f1",
-      "zh": "理解",
+      "zh": "理解，包括",
       "en": "comprehend",
       "note": "verb"
     },
     {
       "id": "8f712f38-3e92-5a39-8433-be49c22e9d0c",
-      "zh": "最佳的",
+      "zh": "最佳的，最理想的",
       "en": "optimal",
       "note": "adjective"
     },
     {
       "id": "2e12df54-b133-5f76-ad5c-6e27b18a17e4",
-      "zh": "船员",
+      "zh": "船员，海员，水兵",
       "en": "seaman",
       "note": "noun"
     },
     {
       "id": "aa1d25f8-c374-5a92-8ae3-ab04620f3da8",
-      "zh": "坦克手",
+      "zh": "油船，油槽，槽车",
       "en": "tanker",
       "note": "noun"
     },
     {
       "id": "e6e00c16-bab9-5010-a4fc-b25bcce1311c",
-      "zh": "下雨的",
+      "zh": "下雨的，多雨的",
       "en": "rainy",
       "note": "adjective"
     },
     {
       "id": "0aad67d1-fde9-516e-bb71-a0ff973e0e15",
-      "zh": "后面的",
+      "zh": "后面的，阻碍",
       "en": "hinder",
       "note": "adjective"
     },
     {
       "id": "6d3d810d-f3d1-5706-8f49-e493ba2292c3",
-      "zh": "可繁殖的",
+      "zh": "可繁殖的，肥沃的",
       "en": "fertile",
       "note": "adjective"
     },
     {
       "id": "a16536ee-76bf-526c-ab29-a9c963fe6ca6",
-      "zh": "少量",
+      "zh": "少量，收缩，挤压",
       "en": "pinch",
       "note": "noun"
     },
     {
       "id": "441b8892-2d65-5b18-8059-58ad11b153fd",
-      "zh": "绪言",
+      "zh": "绪言，前言，作序",
       "en": "preface",
       "note": "noun"
     },
@@ -4345,7 +4345,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "9b90acf0-9a8f-57bf-bb45-94e2f817255f",
-      "zh": "怀疑论的",
+      "zh": "怀疑论的，怀疑的",
       "en": "sceptical",
       "note": "adjective"
     },
@@ -4357,13 +4357,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "202b014b-e362-5322-bdb5-d3accf91f749",
-      "zh": "自大的",
+      "zh": "自大的，傲慢的",
       "en": "arrogant",
       "note": "adjective"
     },
     {
       "id": "57ce1449-bb1a-592e-ad9a-bb6bdf6a02de",
-      "zh": "滑翔员",
+      "zh": "滑翔员，滑翔机",
       "en": "glider",
       "note": "noun"
     },
@@ -4375,43 +4375,43 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "93e6456e-35d0-58cc-85ea-a1f7d248de7b",
-      "zh": "增强",
+      "zh": "增强，放大，扩大",
       "en": "amplify",
       "note": "verb"
     },
     {
       "id": "db36ad34-9571-5d12-a400-53151b924c0e",
-      "zh": "女侍者",
+      "zh": "女侍者，女服务员",
       "en": "waitress",
       "note": "noun"
     },
     {
       "id": "aaa02ede-1063-5e9f-9283-1feb0601a681",
-      "zh": "移置",
+      "zh": "移置，替换，转移",
       "en": "displace",
       "note": "verb"
     },
     {
       "id": "99d7f4fa-ada4-551e-b3e7-3b4293e87feb",
-      "zh": "潜伏性的",
+      "zh": "潜伏性的，隐藏的",
       "en": "latent",
       "note": "adjective"
     },
     {
       "id": "8d7ff143-3685-53aa-b4a8-367cb15276f4",
-      "zh": "不稳的",
+      "zh": "不稳的，易怒的",
       "en": "crank",
       "note": "adjective"
     },
     {
       "id": "9e96e9f9-57cf-5e05-a996-2dd607ab6332",
-      "zh": "图谋",
+      "zh": "发明，设计，图谋",
       "en": "contrive",
       "note": "verb"
     },
     {
       "id": "3000a8eb-4317-5ad9-89b0-865b11e6da74",
-      "zh": "穿透",
+      "zh": "穿透，渗透，侵入",
       "en": "penetration",
       "note": "noun"
     },
@@ -4423,43 +4423,43 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "602c44c0-88c2-555d-94e3-91a2c712f9f2",
-      "zh": "无价值的",
+      "zh": "无价值的，无益的",
       "en": "worthless",
       "note": "adjective"
     },
     {
       "id": "eb4a2bad-837c-57aa-bf93-b191db4cc536",
-      "zh": "碰撞",
+      "zh": "碰撞，互撞，抵触",
       "en": "collide",
       "note": "verb"
     },
     {
       "id": "e3c681ca-17e1-5b8c-8ea8-713872ea0a2f",
-      "zh": "吃草",
+      "zh": "吃草，放牧，擦伤",
       "en": "graze",
       "note": "noun"
     },
     {
       "id": "278dfae9-1372-55e2-9d57-28c4e538753f",
-      "zh": "不雅观的",
+      "zh": "笨拙的，不雅观的",
       "en": "clumsy",
       "note": "adjective"
     },
     {
       "id": "e6d14098-afc5-5e64-9469-e51f0854c2b7",
-      "zh": "数字的",
+      "zh": "数字的，数值的",
       "en": "numerical",
       "note": "adjective"
     },
     {
       "id": "5bd9dc20-1320-5a5f-970b-2f574dde9451",
-      "zh": "最初的",
+      "zh": "最初的，最重要的",
       "en": "foremost",
       "note": "adjective"
     },
     {
       "id": "cfbae1b2-da23-50e3-afb1-f4cfcc0461dc",
-      "zh": "收割",
+      "zh": "收割，收获，获得",
       "en": "reap",
       "note": "verb"
     },
@@ -4471,19 +4471,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "3b5e1ec5-4cd3-51eb-b5cd-17cf3fc41a49",
-      "zh": "女神",
+      "zh": "女神，美女",
       "en": "goddess",
       "note": "noun"
     },
     {
       "id": "f3d91010-63e2-55e6-aa7d-c889f96fa1e8",
-      "zh": "使变硬",
+      "zh": "使变硬，使僵硬",
       "en": "stiffen",
       "note": "verb"
     },
     {
       "id": "d4592f64-ff15-5af9-90b0-66aa51b482c7",
-      "zh": "向旁边",
+      "zh": "向旁边，向侧面地",
       "en": "sideways",
       "note": "adverb"
     },
@@ -4501,115 +4501,115 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "7948da46-d57c-5f8b-a93c-bbe400f0749d",
-      "zh": "无限的",
+      "zh": "无限的，无条件的",
       "en": "unlimited",
       "note": "adjective"
     },
     {
       "id": "6613fc7f-d123-5da6-b832-1250f0c59c04",
-      "zh": "犁过的地",
+      "zh": "犁过的地，开路",
       "en": "plough",
       "note": "noun"
     },
     {
       "id": "dc99d415-9804-51c3-9ccd-a237e4708307",
-      "zh": "零售商",
+      "zh": "零售商，店主",
       "en": "shopkeeper",
       "note": "noun"
     },
     {
       "id": "9f0e732c-3196-5bbe-9da7-1cf058f24d6f",
-      "zh": "字母",
+      "zh": "字母，字母表",
       "en": "alphabet",
       "note": "noun"
     },
     {
       "id": "3e34ad9d-1abc-594a-9fd4-0ed98baa17e7",
-      "zh": "发明家",
+      "zh": "发明家，发明人",
       "en": "inventor",
       "note": "noun"
     },
     {
       "id": "27383f7a-5a01-5745-9632-5b19e0a35e14",
-      "zh": "日出",
+      "zh": "日出，黎明，拂晓",
       "en": "sunrise",
       "note": "noun"
     },
     {
       "id": "0b0171a8-a553-5e38-a419-b71ca03201fe",
-      "zh": "贫民区",
+      "zh": "排水沟，贫民区",
       "en": "gutter",
       "note": "noun"
     },
     {
       "id": "cd0993cd-87a1-56f7-a567-0365526f4255",
-      "zh": "牵引器",
+      "zh": "牵引器，拖拉机",
       "en": "tractor",
       "note": "noun"
     },
     {
       "id": "717a5264-e275-538f-835b-8d5349e871dd",
-      "zh": "普遍的",
+      "zh": "普遍的，流行的",
       "en": "prevalent",
       "note": "adjective"
     },
     {
       "id": "18c1e013-f5ba-5a5f-907b-efe042df104f",
-      "zh": "赌博",
+      "zh": "赌博，冒险",
       "en": "gamble",
       "note": "noun"
     },
     {
       "id": "ad91c83d-1a48-5eec-954f-fb374a5861b5",
-      "zh": "表示尊敬的",
+      "zh": "有礼貌的，谦恭的",
       "en": "respectful",
       "note": "adjective"
     },
     {
       "id": "96a6a561-d949-5d56-b00b-fb03025ad93c",
-      "zh": "动力",
+      "zh": "动力，动量，冲动",
       "en": "impetus",
       "note": "noun"
     },
     {
       "id": "33f569e3-70c1-553e-a9dc-ea82e83edda4",
-      "zh": "难得的",
+      "zh": "难得的，稀罕的",
       "en": "scarce",
       "note": "adjective"
     },
     {
       "id": "f2579ef5-1a50-5a06-87b2-ee84cad55df0",
-      "zh": "文摘",
+      "zh": "文摘，消化，理解",
       "en": "digest",
       "note": "noun"
     },
     {
       "id": "e720230a-798c-5d51-98de-c07880f737ef",
-      "zh": "短处",
+      "zh": "缺点，短处",
       "en": "shortcoming",
       "note": "noun"
     },
     {
       "id": "9d600a4a-d939-568a-a5e6-5944f9de6222",
-      "zh": "窟窿",
+      "zh": "窟窿，山谷，空的",
       "en": "hollow",
       "note": "noun"
     },
     {
       "id": "15667cb0-bf90-5739-b504-1e4befefc590",
-      "zh": "亲切的",
+      "zh": "亲切的，慈善的",
       "en": "gracious",
       "note": "adjective"
     },
     {
       "id": "968a7728-136e-55b5-bd93-aa59d156c8bc",
-      "zh": "接近",
+      "zh": "接近，亲近",
       "en": "proximity",
       "note": "noun"
     },
     {
       "id": "04b27838-9b97-537d-8d15-d11b78defffb",
-      "zh": "小册子",
+      "zh": "小册子，活页文选",
       "en": "pamphlet",
       "note": "noun"
     },
@@ -4621,25 +4621,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "89451911-e15f-5216-84e9-58672ba636b6",
-      "zh": "歇斯底里症",
+      "zh": "歇斯底里症，癔病",
       "en": "hysteria",
       "note": "noun"
     },
     {
       "id": "fe2cc62a-d0bf-5af2-8135-12fc3ad750c5",
-      "zh": "马具",
+      "zh": "马具，甲胄，驾驭",
       "en": "harness",
       "note": "noun"
     },
     {
       "id": "dd51b92c-64b1-58fe-afa4-943c603475f3",
-      "zh": "行李",
+      "zh": "行李，皮箱",
       "en": "luggage",
       "note": "noun"
     },
     {
       "id": "dbbd35f6-f850-55b9-817e-d21db339fd31",
-      "zh": "别号",
+      "zh": "别号，绰号",
       "en": "surname",
       "note": "noun"
     },
@@ -4657,121 +4657,121 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "7cbbffb5-962e-56da-b51f-942bc44e1109",
-      "zh": "吵架",
+      "zh": "吵架，反目，怨言",
       "en": "quarrel",
       "note": "noun"
     },
     {
       "id": "c5e0c651-0c74-5734-903a-f2d4baead976",
-      "zh": "多风的",
+      "zh": "多风的，风强的",
       "en": "windy",
       "note": "adjective"
     },
     {
       "id": "59985b52-786b-57b5-bceb-4ef2b59e6586",
-      "zh": "用正餐",
+      "zh": "用正餐，进餐",
       "en": "dine",
       "note": "verb"
     },
     {
       "id": "b4d08a06-9c25-5bd6-ac24-25556de17114",
-      "zh": "溢值",
+      "zh": "溢值，超值，泛滥",
       "en": "overflow",
       "note": "noun"
     },
     {
       "id": "392d0dba-5bbc-51ee-9a4c-34fc2734bc24",
-      "zh": "懒惰的",
+      "zh": "闲散，浪费，空转",
       "en": "idle",
       "note": "adjective"
     },
     {
       "id": "f0afef3d-5e96-54a2-89fb-ee2af30ff595",
-      "zh": "蒸发",
+      "zh": "蒸发，失去水分",
       "en": "evaporate",
       "note": "verb"
     },
     {
       "id": "6f129648-52d9-5dd0-b294-a9b5bcdbd1ba",
-      "zh": "淫秽的",
+      "zh": "淫秽的，猥亵的",
       "en": "obscene",
       "note": "adjective"
     },
     {
       "id": "1da4d4ab-0e13-57eb-a79e-7bc428013688",
-      "zh": "周长",
+      "zh": "周长，周界，边缘",
       "en": "perimeter",
       "note": "noun"
     },
     {
       "id": "8c987149-d083-5df9-9d22-4b1d564b0a8f",
-      "zh": "毁灭",
+      "zh": "毁灭，丧生，凋谢",
       "en": "perish",
       "note": "verb"
     },
     {
       "id": "b588525e-4947-563a-9f81-8c54a86667cc",
-      "zh": "推翻",
+      "zh": "推翻，瓦解，倾覆",
       "en": "overthrow",
       "note": "noun"
     },
     {
       "id": "b4a2a399-9019-5cdf-a31f-5e4ab1c4fe7a",
-      "zh": "次等的",
+      "zh": "部下，次品，下标",
       "en": "inferior",
       "note": "adjective"
     },
     {
       "id": "77dc6f6d-3298-56ae-b9ea-9ab96af9b74d",
-      "zh": "强壮的",
+      "zh": "强壮的，有力的",
       "en": "muscular",
       "note": "adjective"
     },
     {
       "id": "fac53419-82cb-5480-9b8a-d37d4f1ecba3",
-      "zh": "适当的",
+      "zh": "适当的，明智的",
       "en": "advisable",
       "note": "adjective"
     },
     {
       "id": "c3786e8e-c825-596b-b77c-f9ac59695ceb",
-      "zh": "归因于",
+      "zh": "归因于，归咎于",
       "en": "ascribe",
       "note": "verb"
     },
     {
       "id": "1bff4376-16cf-5d7a-ad39-9203f87802a2",
-      "zh": "下等的",
+      "zh": "粗糙的，下等的",
       "en": "coarse",
       "note": "adjective"
     },
     {
       "id": "68b4ffe7-2d75-5f5c-a387-847f0a15c947",
-      "zh": "外部",
+      "zh": "外部，表面，外貌",
       "en": "exterior",
       "note": "noun"
     },
     {
       "id": "10fda8a9-efda-51b2-a80d-53ee4e896ddd",
-      "zh": "栗子",
+      "zh": "栗子，栗树，栗色",
       "en": "chestnut",
       "note": "noun"
     },
     {
       "id": "1d4843a8-5316-5736-b255-0c4a5561c19f",
-      "zh": "缩小",
+      "zh": "减少，缩小，减轻",
       "en": "lessen",
       "note": "verb"
     },
     {
       "id": "c4b9362f-2f00-5778-80e4-89296da7699b",
-      "zh": "裤子",
+      "zh": "裤子，长裤",
       "en": "pants",
       "note": "noun"
     },
     {
       "id": "d6ef1784-1935-5f75-9607-3fdecd057205",
-      "zh": "狂暴的",
+      "zh": "狂暴的，骚乱的",
       "en": "turbulent",
       "note": "adjective"
     },
@@ -4783,49 +4783,49 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "169f66b5-ea65-540f-9e19-17e1174be2ef",
-      "zh": "激烈的",
+      "zh": "激烈的，峻泻药",
       "en": "drastic",
       "note": "adjective"
     },
     {
       "id": "dd29e6bd-ceee-5464-9486-ee0870c33aad",
-      "zh": "跛者",
+      "zh": "跛者，残废，使跛",
       "en": "cripple",
       "note": "noun"
     },
     {
       "id": "58d161ba-9b4a-59dc-8b1c-37e18af9cecf",
-      "zh": "分散",
+      "zh": "分散，传播，散开",
       "en": "disperse",
       "note": "verb"
     },
     {
       "id": "ec98add4-5207-5eea-9275-13931013bb72",
-      "zh": "被剥夺法律保护的人",
+      "zh": "罪犯，不法之徒",
       "en": "outlaw",
       "note": "noun"
     },
     {
       "id": "3eccaa59-846d-5c6e-92cc-4b43ae080c5f",
-      "zh": "激怒",
+      "zh": "激怒，使发怒",
       "en": "irritate",
       "note": "verb"
     },
     {
       "id": "e9fa4395-0c8a-58a5-a12c-06ffe789ea7e",
-      "zh": "细软",
+      "zh": "细软，精致，娇气",
       "en": "delicacy",
       "note": "noun"
     },
     {
       "id": "a3dfd5cd-db01-5c94-a4a2-478697d184a7",
-      "zh": "球拍",
+      "zh": "球拍，喧闹",
       "en": "racket",
       "note": "noun"
     },
     {
       "id": "e93067df-d531-5e05-ae1c-384c19a72672",
-      "zh": "旅行者",
+      "zh": "旅行者，朝圣者",
       "en": "pilgrim",
       "note": "noun"
     },
@@ -4837,25 +4837,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "279559c1-9f5b-5bb0-929b-73a90f84c9cf",
-      "zh": "抑沉的",
+      "zh": "抑沉的，忧闷的",
       "en": "gloomy",
       "note": "adjective"
     },
     {
       "id": "23f61a1f-dc15-54ea-8bb0-5c9f239a1666",
-      "zh": "剩余",
+      "zh": "剩余，零料，遗迹",
       "en": "remnant",
       "note": "noun"
     },
     {
       "id": "d23b1f98-1fa8-5791-98e7-456de5f91d25",
-      "zh": "点亮",
+      "zh": "照亮，点亮，减轻",
       "en": "lighten",
       "note": "verb"
     },
     {
       "id": "2b166697-5b59-5124-9408-8d5184cf632e",
-      "zh": "周日",
+      "zh": "周日，平日",
       "en": "weekday",
       "note": "noun"
     },
@@ -4867,55 +4867,55 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "ea8b4a6d-a8d7-5476-a4a8-2a43bf0f10e9",
-      "zh": "母性",
+      "zh": "母性，怀孕",
       "en": "maternity",
       "note": "noun"
     },
     {
       "id": "bb303226-e221-5bec-9551-0358c3aa5c9a",
-      "zh": "木材",
+      "zh": "木材，废物，乱堆",
       "en": "lumber",
       "note": "noun"
     },
     {
       "id": "72260367-3c61-5238-919d-6a9f5d15ff60",
-      "zh": "佝偻",
+      "zh": "佝偻，屈从，弯腰",
       "en": "stoop",
       "note": "noun"
     },
     {
       "id": "71719e76-b46f-5025-9255-81ae37098509",
-      "zh": "周期的",
+      "zh": "周期的，定期的",
       "en": "periodic",
       "note": "adjective"
     },
     {
       "id": "19901ff4-f919-5888-bbd5-c0f1264bef69",
-      "zh": "骚动",
+      "zh": "骚动，混乱",
       "en": "turmoil",
       "note": "noun"
     },
     {
       "id": "075edb61-9e8e-50ca-8451-0e6e8ab23b54",
-      "zh": "交换",
+      "zh": "交换，折偿，减轻",
       "en": "commute",
       "note": "verb"
     },
     {
       "id": "989ac8cc-d393-5d53-b184-fd0f4ea31383",
-      "zh": "在其中",
+      "zh": "在其中，在那里",
       "en": "therein",
       "note": "adverb"
     },
     {
       "id": "f456e3cb-3abf-5998-9034-b045ce1aba32",
-      "zh": "免职",
+      "zh": "免职，作证，沉淀",
       "en": "deposition",
       "note": "noun"
     },
     {
       "id": "2971c080-ec40-50de-90f1-6c45d04d9f63",
-      "zh": "污染",
+      "zh": "污染，弄脏，玷污",
       "en": "pollute",
       "note": "verb"
     },
@@ -4927,67 +4927,67 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "8d759a0e-9695-5bdf-8c4c-971fc2bf9b1c",
-      "zh": "重叠",
+      "zh": "重叠，重复，迭盖",
       "en": "overlap",
       "note": "noun"
     },
     {
       "id": "6f0c79a1-74b2-518c-9fe2-55c7a3406c94",
-      "zh": "扭转力",
+      "zh": "扭转力，转矩",
       "en": "torque",
       "note": "noun"
     },
     {
       "id": "8a3e7735-0782-5ded-a4c8-39138fd6873e",
-      "zh": "损害",
+      "zh": "损害，伤害，灾祸",
       "en": "mischief",
       "note": "noun"
     },
     {
       "id": "5c06dfd3-f48c-5281-81fd-0c45bb5312bf",
-      "zh": "触媒",
+      "zh": "触媒，接触剂",
       "en": "catalyst",
       "note": "noun"
     },
     {
       "id": "c9029049-d0f8-5ebd-8aff-81681f9a22c7",
-      "zh": "与...抵触",
+      "zh": "反驳",
       "en": "contradict",
       "note": "verb"
     },
     {
       "id": "5e777ed7-8e89-5bad-b306-28280ea173c5",
-      "zh": "加长",
+      "zh": "加长，使延长",
       "en": "lengthen",
       "note": "verb"
     },
     {
       "id": "f11475e9-2529-5a3e-b652-49c89aee4e3c",
-      "zh": "抵抗者",
+      "zh": "抵抗者，反抗者",
       "en": "resistant",
       "note": "noun"
     },
     {
       "id": "e630e796-1ada-5d94-ab7e-f15fa68206b9",
-      "zh": "消遣",
+      "zh": "消遣，娱乐",
       "en": "amuse",
       "note": "verb"
     },
     {
       "id": "9ea5121d-c22e-5ad1-9e43-b2317ca66d3d",
-      "zh": "辞别",
+      "zh": "辞别，再见，再会",
       "en": "farewell",
       "note": "noun"
     },
     {
       "id": "d8370d90-bdf2-5f3f-ac4b-8050c546f5de",
-      "zh": "使恶化",
+      "zh": "使恶化，使更严重",
       "en": "aggravate",
       "note": "verb"
     },
     {
       "id": "d31f4fad-e3cf-55d9-b2f1-b5fb5b0982d7",
-      "zh": "说服",
+      "zh": "说服，信念，派别",
       "en": "persuasion",
       "note": "noun"
     },
@@ -4999,37 +4999,37 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "d4a859df-4b44-5cb1-8e32-6ac50b1a2dab",
-      "zh": "悲哀的",
+      "zh": "悲哀的，可怜的",
       "en": "pathetic",
       "note": "adjective"
     },
     {
       "id": "f8246467-711c-5382-a688-c8d1fb2ed63b",
-      "zh": "用力擦洗",
+      "zh": "矮树，矮人，擦掉",
       "en": "scrub",
       "note": "noun"
     },
     {
       "id": "a689f857-3807-56ae-9c39-1d977312a65f",
-      "zh": "衰退",
+      "zh": "衰退，下降趋势",
       "en": "downturn",
       "note": "noun"
     },
     {
       "id": "279d9175-aebe-57a4-b793-fa9410b4e1df",
-      "zh": "欺骗",
+      "zh": "欺骗，行骗",
       "en": "deceive",
       "note": "verb"
     },
     {
       "id": "4c04b8ac-eaa1-593e-8653-eda9e855d3d9",
-      "zh": "地质学",
+      "zh": "地质学，地质情况",
       "en": "geology",
       "note": "noun"
     },
     {
       "id": "abf56b6c-b01b-50ce-b06e-b073b93727d5",
-      "zh": "救火队员",
+      "zh": "救火队员，司炉",
       "en": "fireman",
       "note": "noun"
     },
@@ -5041,115 +5041,115 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "6f429f8c-0cd2-54ba-a9be-9e24bc53ef5f",
-      "zh": "询问",
+      "zh": "询问，问明，查究",
       "en": "inquire",
       "note": "verb"
     },
     {
       "id": "325b73af-1a8e-581d-9da4-b1c039e22eee",
-      "zh": "怪人",
+      "zh": "怪人，偏心圆",
       "en": "eccentric",
       "note": "noun"
     },
     {
       "id": "40c3b2c9-022f-5aa8-9abd-ed0077a3482c",
-      "zh": "蜜月",
+      "zh": "蜜月，蜜月假期",
       "en": "honeymoon",
       "note": "noun"
     },
     {
       "id": "1820f17f-30b1-5e1d-9c7e-8a977f2dea9f",
-      "zh": "灯笼",
+      "zh": "灯笼，提灯",
       "en": "lantern",
       "note": "noun"
     },
     {
       "id": "0160018b-6ec5-5634-838b-b91e029e18ce",
-      "zh": "热的",
+      "zh": "热的，热量的",
       "en": "thermal",
       "note": "adjective"
     },
     {
       "id": "8ad6f36b-96d4-5fb0-adc5-02a958548f80",
-      "zh": "超越",
+      "zh": "超越，胜过",
       "en": "transcend",
       "note": "verb"
     },
     {
       "id": "a069c8ac-74a2-5155-b4e2-b009cb3658e9",
-      "zh": "快乐的",
+      "zh": "快乐的，愉快的",
       "en": "merry",
       "note": "adjective"
     },
     {
       "id": "2954e9d7-a2c5-52c1-bb74-297f3502e8eb",
-      "zh": "使者",
+      "zh": "使者，先驱，预报",
       "en": "herald",
       "note": "noun"
     },
     {
       "id": "df1d63bb-1a5b-563e-b146-9eeab65565b4",
-      "zh": "内心的",
+      "zh": "内心的，向内的",
       "en": "inward",
       "note": "adjective"
     },
     {
       "id": "a1fd3e4f-e3ea-5c00-8db8-0c86a83eb018",
-      "zh": "到绝顶",
+      "zh": "到绝顶，达于极点",
       "en": "culminate",
       "note": "verb"
     },
     {
       "id": "0805522f-556e-5ab0-b5e7-bfd80257a339",
-      "zh": "预言",
+      "zh": "预言，预言能力",
       "en": "prophecy",
       "note": "noun"
     },
     {
       "id": "53a64b72-dbec-565f-89a0-c0e1df40e25d",
-      "zh": "滑动",
+      "zh": "滑动，滑过，流水",
       "en": "glide",
       "note": "noun"
     },
     {
       "id": "006ca5fc-3bfe-5371-b612-9e38d758e7c1",
-      "zh": "残杀",
+      "zh": "残杀，屠杀，杀戮",
       "en": "slaughter",
       "note": "noun"
     },
     {
       "id": "14037707-619e-5325-a558-07209ca3cf5a",
-      "zh": "艰难",
+      "zh": "艰难，辛苦，苦难",
       "en": "hardship",
       "note": "noun"
     },
     {
       "id": "cfb1c36e-0479-52bd-b23b-3787b7682caf",
-      "zh": "遵照",
+      "zh": "遵照，适合，一致",
       "en": "conformity",
       "note": "noun"
     },
     {
       "id": "31050d12-4ee0-5010-8ebc-8659f5306072",
-      "zh": "使活跃",
+      "zh": "使活跃，激励",
       "en": "energize",
       "note": "verb"
     },
     {
       "id": "fbecaa06-7a00-5202-bf25-4e0bdeebc81e",
-      "zh": "副本",
+      "zh": "副本，复本，复制",
       "en": "duplicate",
       "note": "noun"
     },
     {
       "id": "ee23fa08-d952-5a6f-b1ef-14f722fefaf3",
-      "zh": "发光的",
+      "zh": "发光的，明亮的",
       "en": "radiant",
       "note": "adjective"
     },
     {
       "id": "21ef57a4-34c5-5c51-aae6-b7b53217d68e",
-      "zh": "熔炉",
+      "zh": "火炉，熔炉，考验",
       "en": "furnace",
       "note": "noun"
     },
@@ -5161,175 +5161,175 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "e1e051d7-3b7b-573b-bb8e-820ef8c22a73",
-      "zh": "坚实的脚步声",
+      "zh": "践踏，步行，流浪",
       "en": "tramp",
       "note": "noun"
     },
     {
       "id": "14f84914-362a-5883-882f-1d7a216b141f",
-      "zh": "想像的",
+      "zh": "想像的，虚构的",
       "en": "imaginary",
       "note": "adjective"
     },
     {
       "id": "ec407fda-e1d2-5697-9078-5672d526ff5d",
-      "zh": "圣经",
+      "zh": "圣经，圣经的一节",
       "en": "scripture",
       "note": "noun"
     },
     {
       "id": "fb9c9220-4967-57b3-874e-c1202af10aff",
-      "zh": "公鸡",
+      "zh": "公鸡，雄禽，龙头",
       "en": "cock",
       "note": "noun"
     },
     {
       "id": "c551956a-3bf4-57a3-b835-a0d5cf7e49b0",
-      "zh": "绰号",
+      "zh": "绰号，昵称",
       "en": "nickname",
       "note": "noun"
     },
     {
       "id": "37db8830-2c2f-5a1c-932c-39f3be8da332",
-      "zh": "注入",
+      "zh": "注入，泡制，浸渍",
       "en": "infusion",
       "note": "noun"
     },
     {
       "id": "0ff919d2-9705-5367-ac00-367e9c10fe57",
-      "zh": "使逆行",
+      "zh": "胜过，推敲，鞭打",
       "en": "thrash",
       "note": "verb"
     },
     {
       "id": "3db1471b-f2fd-5433-971b-c86f1c7367b8",
-      "zh": "铲子",
+      "zh": "铲子，铲刀，黑桃",
       "en": "spade",
       "note": "noun"
     },
     {
       "id": "8b6afa15-030f-52c9-8afe-781069dff7d3",
-      "zh": "沉思",
+      "zh": "沉思，冥想",
       "en": "muse",
       "note": "noun"
     },
     {
       "id": "e8819380-6418-5d7a-9165-44117dd6e391",
-      "zh": "步道",
+      "zh": "步道，人行道",
       "en": "footpath",
       "note": "noun"
     },
     {
       "id": "0daadbf0-ca46-5273-ba0e-56f8d462c6bf",
-      "zh": "审慎的",
+      "zh": "审慎的，精明的",
       "en": "prudent",
       "note": "adjective"
     },
     {
       "id": "fb935826-8933-5ffd-84b0-00eb74edaa6d",
-      "zh": "废止",
+      "zh": "废止，撤消，放弃",
       "en": "repeal",
       "note": "noun"
     },
     {
       "id": "9171131e-1ad9-5af4-94f1-f54489161ad6",
-      "zh": "魅力",
+      "zh": "魅力，魔法，迷惑",
       "en": "glamour",
       "note": "noun"
     },
     {
       "id": "dfc67ed6-ea50-59d7-bcf0-df26a9ce1aa0",
-      "zh": "柳树",
+      "zh": "柳树，柳木制品",
       "en": "willow",
       "note": "noun"
     },
     {
       "id": "01908198-06c8-5034-854c-e4c967e5de8a",
-      "zh": "疏散",
+      "zh": "疏散，撤出，排泄",
       "en": "evacuate",
       "note": "verb"
     },
     {
       "id": "83c6267c-4e20-5952-b7b0-e296bba6a9d8",
-      "zh": "恐惧",
+      "zh": "恐惧，可怕的人",
       "en": "dread",
       "note": "noun"
     },
     {
       "id": "9aa11411-74ef-56d7-9bd1-accb6eacac38",
-      "zh": "甜蜜",
+      "zh": "甜蜜，芳香，美妙",
       "en": "sweetness",
       "note": "noun"
     },
     {
       "id": "d7fbd76f-891c-5ff0-b404-e81911fc7111",
-      "zh": "猎犬",
+      "zh": "猎犬，追捕，激励",
       "en": "hound",
       "note": "noun"
     },
     {
       "id": "27ddbbad-e827-535f-8c75-f4b88d111ae1",
-      "zh": "大楼管理员",
+      "zh": "大楼管理员，门房",
       "en": "porter",
       "note": "noun"
     },
     {
       "id": "7e57c3ed-c243-5ae3-8c05-2472b6d9cd47",
-      "zh": "啼叫",
+      "zh": "啼叫，乌鸦，鸡鸣",
       "en": "crow",
       "note": "noun"
     },
     {
       "id": "39a91871-e76c-5e74-9abe-2ff767f0ee1b",
-      "zh": "振动",
+      "zh": "振动，颤动",
       "en": "vibration",
       "note": "noun"
     },
     {
       "id": "9b027a12-8d63-5e24-a317-1fee9ad74bbe",
-      "zh": "分析的",
+      "zh": "分析的，解析的",
       "en": "analytical",
       "note": "adjective"
     },
     {
       "id": "219685f6-0e16-5a6b-9ec2-d650b59ee099",
-      "zh": "洗头",
+      "zh": "洗头，洗发剂",
       "en": "shampoo",
       "note": "noun"
     },
     {
       "id": "6f36deff-6103-5c01-9618-ed2ec70f76db",
-      "zh": "告发",
+      "zh": "告发，抨击，谴责",
       "en": "denounce",
       "note": "verb"
     },
     {
       "id": "6b93f4ed-9d76-585c-8ece-c26c6e23a4a1",
-      "zh": "强盗",
+      "zh": "强盗，盗贼",
       "en": "robber",
       "note": "noun"
     },
     {
       "id": "16c2692c-0d54-53a5-a1b8-2a96917ddc43",
-      "zh": "芬香的",
+      "zh": "芬香的，馥郁的",
       "en": "fragrant",
       "note": "adjective"
     },
     {
       "id": "67f5bb31-ddde-57bb-875c-19e7324b4888",
-      "zh": "可实行的",
+      "zh": "可实行的，可做的",
       "en": "practicable",
       "note": "adjective"
     },
     {
       "id": "64f2bf59-de63-554f-a0c7-7a83486ff69f",
-      "zh": "点燃",
+      "zh": "点燃，使灼热",
       "en": "ignite",
       "note": "verb"
     },
     {
       "id": "5ae4fc4f-ffc8-503d-8b1c-3ce74d6f0028",
-      "zh": "无意中听到",
+      "zh": "无意中听到，偷听",
       "en": "overhear",
       "note": "verb"
     },
@@ -5341,55 +5341,55 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "2fe1230a-052b-5c26-84dc-2d48ac245836",
-      "zh": "跟着发生",
+      "zh": "跟着发生，继起",
       "en": "ensue",
       "note": "verb"
     },
     {
       "id": "ddeb2504-74cb-513e-97ab-10a8c97b230b",
-      "zh": "吞食",
+      "zh": "吞食，挥霍，吞没",
       "en": "devour",
       "note": "verb"
     },
     {
       "id": "df47acc7-83cd-551f-9e48-ccb2f095ad2a",
-      "zh": "热爱",
+      "zh": "热爱，投入",
       "en": "devotion",
       "note": "noun"
     },
     {
       "id": "483f237c-5d34-5a3d-bbd0-0b47dc5a36c8",
-      "zh": "适当地",
+      "zh": "适当地，适度地",
       "en": "moderately",
       "note": "adverb"
     },
     {
       "id": "341915e1-b7ef-5a6a-946f-5cb00c1b16fb",
-      "zh": "有限的",
+      "zh": "有限的，有穷的",
       "en": "finite",
       "note": "adjective"
     },
     {
       "id": "2db21a5b-842e-5385-b2bc-3b7aee20186d",
-      "zh": "洗脸盆",
+      "zh": "洗脸盆，厕所",
       "en": "lavatory",
       "note": "noun"
     },
     {
       "id": "0a36beea-828b-5590-b89d-b82c72df98c9",
-      "zh": "清洗",
+      "zh": "清洗，染发，漂清",
       "en": "rinse",
       "note": "noun"
     },
     {
       "id": "eaab4eeb-1047-5cde-ab93-c7a1c8c48bca",
-      "zh": "牙科医生",
+      "zh": "牙科医生，牙医师",
       "en": "dentist",
       "note": "noun"
     },
     {
       "id": "3188e824-0c51-5be1-9d8a-d4eb074a8be6",
-      "zh": "居间的",
+      "zh": "斡旋，调停，调解",
       "en": "mediate",
       "note": "adjective"
     },
@@ -5401,61 +5401,61 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "3e018ea8-ddce-59ce-9b43-38ce9b03ecc9",
-      "zh": "毫米",
+      "zh": "毫米，公厘",
       "en": "millimetre",
       "note": "noun"
     },
     {
       "id": "d2daa4bf-0cdc-52a6-8a55-73ae06ae96c2",
-      "zh": "背离",
+      "zh": "背离，偏差，误差",
       "en": "deviation",
       "note": "noun"
     },
     {
       "id": "4e21d782-e2dc-53c0-a8fc-6dd945f85882",
-      "zh": "季度的",
+      "zh": "季度的，按季度的",
       "en": "quarterly",
       "note": "adjective"
     },
     {
       "id": "347832d8-f5a8-5c4f-ae88-b3f930b66609",
-      "zh": "交响乐",
+      "zh": "交响乐，交响曲",
       "en": "symphony",
       "note": "noun"
     },
     {
       "id": "a67d2aea-eb0c-5e96-bd93-37798b73be25",
-      "zh": "推论出",
+      "zh": "推论出，推断",
       "en": "infer",
       "note": "verb"
     },
     {
       "id": "e533c87d-cd49-5baa-8882-8ec209131ccb",
-      "zh": "授予",
+      "zh": "授予，使用，贮藏",
       "en": "bestow",
       "note": "verb"
     },
     {
       "id": "6da91d6e-980a-5e82-9c6c-9e3dde869efa",
-      "zh": "点心",
+      "zh": "点心，精神爽快",
       "en": "refreshment",
       "note": "noun"
     },
     {
       "id": "51098391-0aa6-5ff2-a04a-b796417d252a",
-      "zh": "大群",
+      "zh": "大群，蜂群，分群",
       "en": "swarm",
       "note": "noun"
     },
     {
       "id": "2312ae14-c420-568a-a9e8-6022e1f5f55f",
-      "zh": "厘米",
+      "zh": "厘米，公分",
       "en": "centimetre",
       "note": "noun"
     },
     {
       "id": "ce45cbd3-504c-5f0f-bae0-ff27eccee497",
-      "zh": "杜鹃鸟",
+      "zh": "杜鹃鸟，布谷鸟",
       "en": "cuckoo",
       "note": "noun"
     },
@@ -5467,97 +5467,97 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "b31dc3cd-e178-523a-b861-de757a47c6db",
-      "zh": "扩大",
+      "zh": "扩大，增大，详述",
       "en": "enlarge",
       "note": "verb"
     },
     {
       "id": "22e2e46d-0429-55c0-9d79-fda612b3776f",
-      "zh": "冰冻",
+      "zh": "冰冻，冷漠，冻结",
       "en": "frost",
       "note": "noun"
     },
     {
       "id": "0dc91e98-344a-5c08-b928-1ef03861a86b",
-      "zh": "捐赠",
+      "zh": "捐赠，捐助，赋予",
       "en": "endow",
       "note": "verb"
     },
     {
       "id": "31530e56-c7ae-5a04-9653-0637a563f7b1",
-      "zh": "裁缝",
+      "zh": "裁缝，缝制，制作",
       "en": "tailor",
       "note": "noun"
     },
     {
       "id": "604679e4-9b89-5f21-9ae1-1dff36229de2",
-      "zh": "永久的",
+      "zh": "永久的，不断的",
       "en": "perpetual",
       "note": "adjective"
     },
     {
       "id": "f9d1f439-c31f-5086-b1c1-4c61f0af6fcf",
-      "zh": "睡衣裤",
+      "zh": "睡衣裤，宽松裤",
       "en": "pyjamas",
       "note": "noun"
     },
     {
       "id": "40239e7c-8c80-542d-84df-e077e6bde81a",
-      "zh": "飞溅",
+      "zh": "飞溅，污点，色斑",
       "en": "splash",
       "note": "noun"
     },
     {
       "id": "31f2b26f-2696-5814-ba3c-728d137a432d",
-      "zh": "弥漫",
+      "zh": "弥漫，渗透，充满",
       "en": "permeate",
       "note": "verb"
     },
     {
       "id": "b12ba3b0-676d-59e0-b7a0-086ac27fbf4c",
-      "zh": "垫子",
+      "zh": "垫子，缓冲，掩盖",
       "en": "cushion",
       "note": "noun"
     },
     {
       "id": "d4603576-a31c-5c78-8d07-ce4a95e9b2c3",
-      "zh": "精致的",
+      "zh": "精致的，细腻的",
       "en": "exquisite",
       "note": "adjective"
     },
     {
       "id": "e4f7c317-efff-52b0-bab6-ad01db78c31d",
-      "zh": "工匠",
+      "zh": "工匠，商人，店主",
       "en": "tradesman",
       "note": "noun"
     },
     {
       "id": "bf63dd13-7fc7-56dc-8856-aceb4d079775",
-      "zh": "嘲笑",
+      "zh": "嘲笑，戏弄，模仿",
       "en": "mock",
       "note": "noun"
     },
     {
       "id": "cbcba3b7-e4f1-5404-a3bc-e3ee8a09e6b5",
-      "zh": "流氓",
+      "zh": "流氓，歹徒，暴徒",
       "en": "gangster",
       "note": "noun"
     },
     {
       "id": "8f467129-2910-50c1-ab76-b75218bf8ec9",
-      "zh": "定金",
+      "zh": "定金，诚挚，认真",
       "en": "earnest",
       "note": "noun"
     },
     {
       "id": "d872c2d8-f35e-5703-a207-675422178712",
-      "zh": "拳曲的",
+      "zh": "拳曲的，卷毛的",
       "en": "curly",
       "note": "adjective"
     },
     {
       "id": "d8316b5c-729a-5b74-a0c0-5ddcef7cc117",
-      "zh": "愚弄",
+      "zh": "嘲笑，愚弄，笑柄",
       "en": "ridicule",
       "note": "noun"
     },
@@ -5569,31 +5569,31 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "a77d1225-ca8b-5fbc-aa86-417cff678a00",
-      "zh": "护送者",
+      "zh": "护送者，护卫者",
       "en": "escort",
       "note": "noun"
     },
     {
       "id": "cfdc5273-c746-503c-9659-540d8dc1f234",
-      "zh": "对称",
+      "zh": "对称，匀称",
       "en": "symmetry",
       "note": "noun"
     },
     {
       "id": "11dcb418-450b-5ba6-b7cf-fda7a97e1e33",
-      "zh": "装船",
+      "zh": "装船，出货，运送",
       "en": "shipment",
       "note": "noun"
     },
     {
       "id": "7c69796b-85eb-5cbb-9b0c-35d9095131b4",
-      "zh": "殖民地居民",
+      "zh": "殖民地居民，移民",
       "en": "colonist",
       "note": "noun"
     },
     {
       "id": "872c4583-fd6d-5b9a-a5e2-08da0047870c",
-      "zh": "逐字的",
+      "zh": "逐字的，字面上的",
       "en": "literal",
       "note": "adjective"
     },
@@ -5605,67 +5605,67 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "9812f260-5469-523b-a65a-ce6066c984de",
-      "zh": "复仇",
+      "zh": "复仇，报仇",
       "en": "vengeance",
       "note": "noun"
     },
     {
       "id": "c312e0c1-b0db-5ac1-8ec8-aabba74a4d5f",
-      "zh": "降格",
+      "zh": "降格，堕落，退化",
       "en": "degradation",
       "note": "noun"
     },
     {
       "id": "956ddf15-cc93-5d8a-ab44-01895b316f75",
-      "zh": "成功的",
+      "zh": "成功的，繁盛的",
       "en": "prosperous",
       "note": "adjective"
     },
     {
       "id": "af7a12aa-b85e-5689-a67d-a1d75016d8cd",
-      "zh": "免疫",
+      "zh": "免疫，免疫性",
       "en": "immunity",
       "note": "noun"
     },
     {
       "id": "3e9e1e8f-2315-59b7-ba9d-babf9718194b",
-      "zh": "激动",
+      "zh": "激动，焦虑，煽动",
       "en": "agitation",
       "note": "noun"
     },
     {
       "id": "ea623d0d-0503-5687-90a3-0af567223b2a",
-      "zh": "使认识",
+      "zh": "使认识，介绍",
       "en": "acquaint",
       "note": "verb"
     },
     {
       "id": "45198619-d848-53e9-8f67-ddd955712599",
-      "zh": "失事",
+      "zh": "失事，残骸，破坏",
       "en": "wreck",
       "note": "noun"
     },
     {
       "id": "a3188170-ff65-5d98-ae0c-4c0ca403e475",
-      "zh": "注定",
+      "zh": "注定，预定",
       "en": "destine",
       "note": "verb"
     },
     {
       "id": "3090d90c-b2ef-509a-8f54-03e3167727fc",
-      "zh": "镍币",
+      "zh": "镍币，五分镍币",
       "en": "nickel",
       "note": "noun"
     },
     {
       "id": "f0e59dfb-6069-5029-86a7-6f0fa373b8ea",
-      "zh": "分裂的",
+      "zh": "分裂的，破坏的",
       "en": "disruptive",
       "note": "adjective"
     },
     {
       "id": "0d3a2245-8471-5191-91db-ecaa6ac15e6b",
-      "zh": "宽容的",
+      "zh": "宽容的，容忍的",
       "en": "tolerant",
       "note": "adjective"
     },
@@ -5677,97 +5677,97 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "49b82d18-87e2-501a-9236-1709526515dd",
-      "zh": "面团",
+      "zh": "面团，面食，浆糊",
       "en": "paste",
       "note": "noun"
     },
     {
       "id": "001bf8a7-1504-5616-b1c0-a99de6816d1d",
-      "zh": "纯净",
+      "zh": "纯净，纯正，纯粹",
       "en": "purity",
       "note": "noun"
     },
     {
       "id": "876dce6f-c988-56e3-be14-b2732a878ea0",
-      "zh": "蜗牛",
+      "zh": "蜗牛，蜗形凸轮",
       "en": "snail",
       "note": "noun"
     },
     {
       "id": "8079ea66-f8e5-577d-848d-2ac4b1467ca3",
-      "zh": "类似的",
+      "zh": "类似的，相似的",
       "en": "analogous",
       "note": "adjective"
     },
     {
       "id": "d13405f9-2db5-5182-9398-85a33b9a8f3a",
-      "zh": "压缩",
+      "zh": "压缩，压紧",
       "en": "compress",
       "note": "verb"
     },
     {
       "id": "e8299d55-beb2-5048-ac67-1d3e3df5a0dc",
-      "zh": "顽皮的",
+      "zh": "顽皮的，没规矩的",
       "en": "naughty",
       "note": "adjective"
     },
     {
       "id": "9d80d98c-c7e0-5888-81b0-839dca072300",
-      "zh": "石灰石",
+      "zh": "石灰石，石灰岩",
       "en": "limestone",
       "note": "noun"
     },
     {
       "id": "f668d877-1ce9-5e68-b726-7a8eaf98d64c",
-      "zh": "强制",
+      "zh": "强制，施恩惠于",
       "en": "oblige",
       "note": "verb"
     },
     {
       "id": "155bf8e1-ecef-5e62-8a03-091aecb05467",
-      "zh": "不明确的",
+      "zh": "不明确的，暧昧的",
       "en": "ambiguous",
       "note": "adjective"
     },
     {
       "id": "c17c1de7-2a86-56e5-bf18-4240412cd437",
-      "zh": "用发光信号发出",
+      "zh": "闪光，闪耀",
       "en": "flare",
       "note": "noun"
     },
     {
       "id": "549662c6-4e6a-55a5-8e44-7b5dbde527ad",
-      "zh": "散失",
+      "zh": "散失，驱散，浪费",
       "en": "dissipate",
       "note": "verb"
     },
     {
       "id": "25d3c3f8-0288-5f80-afbe-a0ec3be7a60e",
-      "zh": "赶上",
+      "zh": "赶上，压倒，代替",
       "en": "overtake",
       "note": "verb"
     },
     {
       "id": "3885cefd-f96a-5449-ba1b-94f32a34ba94",
-      "zh": "上升",
+      "zh": "上升，追溯，登高",
       "en": "ascend",
       "note": "verb"
     },
     {
       "id": "0f7e3a6a-c5bf-5a93-bcd4-fc0e66eba8a5",
-      "zh": "预言者",
+      "zh": "预言者，先知",
       "en": "prophet",
       "note": "noun"
     },
     {
       "id": "81d27c95-7cbe-5f2f-b11f-9481ef740763",
-      "zh": "鼓翼",
+      "zh": "摆动，鼓翼，烦扰",
       "en": "flutter",
       "note": "noun"
     },
     {
       "id": "97a616de-150c-5ce9-8c6e-42b55b9b12dd",
-      "zh": "弯曲的",
+      "zh": "弯曲的，歪的",
       "en": "crooked",
       "note": "adjective"
     },
@@ -5779,103 +5779,103 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "0388d557-55cd-5aec-a91e-ad0d536db536",
-      "zh": "残酷",
+      "zh": "残酷，野蛮，残忍",
       "en": "cruelty",
       "note": "noun"
     },
     {
       "id": "a2e136ee-73a3-5605-827f-78555e08bcd3",
-      "zh": "转开",
+      "zh": "转开，避免，防止",
       "en": "avert",
       "note": "verb"
     },
     {
       "id": "69f22a9f-df22-526e-905f-695600c40f6d",
-      "zh": "倾斜度",
+      "zh": "梯度，坡度，斜率",
       "en": "gradient",
       "note": "noun"
     },
     {
       "id": "d1960b77-c256-5839-85d8-7af091f75362",
-      "zh": "海边的",
+      "zh": "海边的，海滨的",
       "en": "seaside",
       "note": "adjective"
     },
     {
       "id": "abb55819-62fa-5511-b357-85883c1c6d3a",
-      "zh": "统一",
+      "zh": "统一，使成一体",
       "en": "unify",
       "note": "verb"
     },
     {
       "id": "26db9da9-f458-59b1-95a9-41fdd9784759",
-      "zh": "效法",
+      "zh": "模仿，效法，仿造",
       "en": "imitate",
       "note": "verb"
     },
     {
       "id": "4a468f02-f0a3-5aa8-a852-d8bd7bdfba8a",
-      "zh": "意外的",
+      "zh": "意外的，偶然的",
       "en": "accidental",
       "note": "adjective"
     },
     {
       "id": "c04b905c-3eb1-515f-962e-12122c295e26",
-      "zh": "人类",
+      "zh": "生物，人类",
       "en": "mortal",
       "note": "noun"
     },
     {
       "id": "477dcd6f-21f5-502d-a656-02daa7bf906c",
-      "zh": "未付款的",
+      "zh": "未付款的，未付的",
       "en": "unpaid",
       "note": "adjective"
     },
     {
       "id": "c1e66e88-d813-59df-b2ec-f977a1c2010c",
-      "zh": "广大的",
+      "zh": "广大的，宽广的",
       "en": "spacious",
       "note": "adjective"
     },
     {
       "id": "ce9abe2b-e2d0-558c-a062-38b15c22384a",
-      "zh": "芦苇",
+      "zh": "芦苇，芦笛，簧舌",
       "en": "reed",
       "note": "noun"
     },
     {
       "id": "c92f5d17-29d4-59fa-9810-d8b257ae65cd",
-      "zh": "薄荷",
+      "zh": "薄荷，巨额，铸造",
       "en": "mint",
       "note": "noun"
     },
     {
       "id": "2b28788d-f324-522f-a927-dbd9bdf9217d",
-      "zh": "未开化的",
+      "zh": "未开化的，野蛮的",
       "en": "savage",
       "note": "adjective"
     },
     {
       "id": "40b679b8-328c-52a8-9d42-f857d3d7e1d3",
-      "zh": "文具",
+      "zh": "文具，信纸",
       "en": "stationery",
       "note": "noun"
     },
     {
       "id": "709ec217-883c-53eb-8ce5-36f8e3cfdf39",
-      "zh": "弄污",
+      "zh": "弄污，弄脏，污染",
       "en": "contaminate",
       "note": "verb"
     },
     {
       "id": "45672368-51e5-5ca9-8717-5fd11bee6fe2",
-      "zh": "使分离",
+      "zh": "分遣，摘下，分离",
       "en": "detach",
       "note": "verb"
     },
     {
       "id": "34643d2c-775d-5c7f-801c-ed3b67eefbde",
-      "zh": "针的",
+      "zh": "针的，尖刺的",
       "en": "spinal",
       "note": "adjective"
     },
@@ -5887,67 +5887,67 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "f11d0f11-f228-5264-a5cf-b13584d5af07",
-      "zh": "清扫",
+      "zh": "清扫，空地，结算",
       "en": "clearing",
       "note": "noun"
     },
     {
       "id": "2d8b83d7-becb-58ec-a326-0946daf45494",
-      "zh": "捐献",
+      "zh": "捐献，签署，赞成",
       "en": "subscribe",
       "note": "verb"
     },
     {
       "id": "07e019c4-fb0b-5144-be19-c4982e1a35c2",
-      "zh": "推论",
+      "zh": "推论，推断，推出",
       "en": "deduce",
       "note": "verb"
     },
     {
       "id": "5184ef4a-e01c-5ac7-95c5-58ab35ec83a2",
-      "zh": "腐败的",
+      "zh": "腐蚀，腐烂，堕落",
       "en": "corrupt",
       "note": "adjective"
     },
     {
       "id": "14e684b8-dc76-5fba-9cbb-fd6d63a34bfd",
-      "zh": "预见",
+      "zh": "预见，预知",
       "en": "foresee",
       "note": "verb"
     },
     {
       "id": "dda9cde0-b4fb-5697-8859-868deafab09b",
-      "zh": "电报",
+      "zh": "电报，一封电报",
       "en": "telegram",
       "note": "noun"
     },
     {
       "id": "e9345012-46b1-5c5b-8211-1ec69abd514f",
-      "zh": "驳船",
+      "zh": "驳船，蹒跚，闯入",
       "en": "barge",
       "note": "noun"
     },
     {
       "id": "837ec6e8-5347-5795-8531-92657bb68b0d",
-      "zh": "开垦",
+      "zh": "开垦，改造，感化",
       "en": "reclaim",
       "note": "verb"
     },
     {
       "id": "8a3850af-94a2-5633-925a-912b8dfb7a26",
-      "zh": "雷声",
+      "zh": "雷声，打雷，怒喝",
       "en": "thunder",
       "note": "noun"
     },
     {
       "id": "f1d6c59d-5f04-57ce-9547-fffcfb97d932",
-      "zh": "理发",
+      "zh": "理发，发式",
       "en": "haircut",
       "note": "noun"
     },
     {
       "id": "338178a2-7c5e-5a7e-bc2a-6a1a594f00fc",
-      "zh": "放射",
+      "zh": "放射，散发，辐射",
       "en": "radiate",
       "note": "verb"
     },
@@ -5959,49 +5959,49 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "1c4d90d9-ef40-5ac4-8d73-096de615d5a4",
-      "zh": "逝去",
+      "zh": "逝去，过去",
       "en": "elapse",
       "note": "verb"
     },
     {
       "id": "e2f23251-aa6a-5783-95fa-02caadfc5bb2",
-      "zh": "调遣",
+      "zh": "调遣，演习，策略",
       "en": "manoeuvre",
       "note": "noun"
     },
     {
       "id": "40144dcd-c536-5d0d-9b84-fa6956fff040",
-      "zh": "裁剪者",
+      "zh": "裁剪者，切割者",
       "en": "cutter",
       "note": "noun"
     },
     {
       "id": "508bc983-555d-52ec-9dbc-1f6ef7dda92f",
-      "zh": "长袜",
+      "zh": "长袜，马足水肿",
       "en": "stocking",
       "note": "noun"
     },
     {
       "id": "f2dfad6c-39a7-51cc-a2b1-bf3efcc266b8",
-      "zh": "肥料",
+      "zh": "肥料，促进发展者",
       "en": "fertilizer",
       "note": "noun"
     },
     {
       "id": "6a93d75f-95e3-53f7-9a22-d5a670182275",
-      "zh": "使多样化",
+      "zh": "使多样化，使变化",
       "en": "diversify",
       "note": "verb"
     },
     {
       "id": "2e09e865-03a4-503c-bc70-207bde46e480",
-      "zh": "精明的",
+      "zh": "精明的，锐利的",
       "en": "shrewd",
       "note": "adjective"
     },
     {
       "id": "cf1ea006-1879-514d-96ff-372ce84ac7cd",
-      "zh": "相关的",
+      "zh": "相关的，中肯的",
       "en": "pertinent",
       "note": "adjective"
     }
@@ -6009,13 +6009,13 @@ export const QUESTION_BANKS = {
   "tem8": [
     {
       "id": "f26eb8fc-a9de-5dfd-a7dc-233bbe1842f5",
-      "zh": "照耀",
+      "zh": "照耀，启发，放射",
       "en": "irradiate",
       "note": "verb"
     },
     {
       "id": "218e18ef-dfdc-5215-a22d-33f46b0149b6",
-      "zh": "易怒的",
+      "zh": "易怒的，暴躁的",
       "en": "irascible",
       "note": "adjective"
     },
@@ -6027,55 +6027,55 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "bf856071-6057-5951-b3aa-9d90ee554f4b",
-      "zh": "赔偿",
+      "zh": "赔偿，补偿，保护",
       "en": "indemnify",
       "note": "verb"
     },
     {
       "id": "2ab4afa3-4276-54a7-801d-ecf48cb2156b",
-      "zh": "脑室",
+      "zh": "脑室，心室",
       "en": "ventricle",
       "note": "noun"
     },
     {
       "id": "544a913b-effe-5abf-aa48-efb29195a1a5",
-      "zh": "引渡",
+      "zh": "引渡，获取的引渡",
       "en": "extradite",
       "note": "verb"
     },
     {
       "id": "dd50d10a-604d-5711-b126-737221fc692c",
-      "zh": "驼背",
+      "zh": "驼背，脊柱后突",
       "en": "hunchback",
       "note": "noun"
     },
     {
       "id": "ac8485ae-3021-562c-bf28-ea69e4fb3a68",
-      "zh": "亚磷的",
+      "zh": "亚磷的，含磷的",
       "en": "phosphorous",
       "note": "adjective"
     },
     {
       "id": "5523a40a-9fd6-5fb6-af68-8f4c6b72ef0e",
-      "zh": "秘密的",
+      "zh": "秘密的，低手的",
       "en": "underhand",
       "note": "adjective"
     },
     {
       "id": "83043059-9e72-5716-85ce-2a080668e5d0",
-      "zh": "逐渐消失的",
+      "zh": "短暂的，易消灭的",
       "en": "evanescent",
       "note": "adjective"
     },
     {
       "id": "ebf442e6-003e-5564-8994-31688461d120",
-      "zh": "不歪的",
+      "zh": "不歪的，不走歪的",
       "en": "unswerving",
       "note": "adjective"
     },
     {
       "id": "a04d9a6f-4186-5d41-aa44-d82638f32239",
-      "zh": "抽出器",
+      "zh": "抽出器，拔取的人",
       "en": "extractor",
       "note": "noun"
     },
@@ -6093,7 +6093,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "9fcedc31-2d69-5520-be07-8459f65816d9",
-      "zh": "支配地位",
+      "zh": "支配地位，优势",
       "en": "ascendant",
       "note": "noun"
     },
@@ -6105,37 +6105,37 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "170fe95d-5255-5185-b27d-52e9a39fd3bd",
-      "zh": "美化",
+      "zh": "美化，变美，修饰",
       "en": "beautify",
       "note": "verb"
     },
     {
       "id": "01fee7c7-952b-52e0-8b01-6c6af349c45c",
-      "zh": "仓库",
+      "zh": "仓库，贮藏所",
       "en": "depository",
       "note": "noun"
     },
     {
       "id": "c1e018c6-90a6-5bcc-9bec-a8e409ec0679",
-      "zh": "快乐论",
+      "zh": "快乐论，享乐主义",
       "en": "hedonism",
       "note": "noun"
     },
     {
       "id": "55f1d43d-af16-50a7-809d-16bb936d802e",
-      "zh": "低能的",
+      "zh": "低能的，愚钝的",
       "en": "imbecile",
       "note": "adjective"
     },
     {
       "id": "14f97f16-4fb8-5251-afa5-459995efcd06",
-      "zh": "烦燥的",
+      "zh": "烦燥的，焦噪的",
       "en": "fretful",
       "note": "adjective"
     },
     {
       "id": "52930ba2-4299-58b6-a63e-964a1c0cfa4e",
-      "zh": "无自信",
+      "zh": "无自信，畏缩",
       "en": "diffidence",
       "note": "noun"
     },
@@ -6153,49 +6153,49 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "aeed70c6-430e-5e71-9701-8ebfb65c6b77",
-      "zh": "奥妙的",
+      "zh": "奥妙的，密封的",
       "en": "hermetic",
       "note": "adjective"
     },
     {
       "id": "0bd69604-ec70-5302-a33b-933eb977dd45",
-      "zh": "忧郁的",
+      "zh": "悲哀的，忧郁的",
       "en": "doleful",
       "note": "adjective"
     },
     {
       "id": "d441a5bf-4d66-55d4-aa99-1575fbfdcba7",
-      "zh": "偏心",
+      "zh": "偏心，偏颇，癖好",
       "en": "partiality",
       "note": "noun"
     },
     {
       "id": "3bc2a68f-ae4a-5e28-be19-db503d212e43",
-      "zh": "使困惑",
+      "zh": "使困惑，打乱",
       "en": "disconcert",
       "note": "verb"
     },
     {
       "id": "55d2d360-1411-5ef7-ad26-bceec38e6031",
-      "zh": "预备演员",
+      "zh": "预备演员，替角",
       "en": "understudy",
       "note": "noun"
     },
     {
       "id": "56d5515f-1c57-5067-855e-5ad9e4a726e1",
-      "zh": "头靠",
+      "zh": "头靠，弹性头垫",
       "en": "headrest",
       "note": "noun"
     },
     {
       "id": "539ef5b3-6fa3-5688-8360-405c65066567",
-      "zh": "梦想",
+      "zh": "梦想，幻想",
       "en": "fantasise",
       "note": "verb"
     },
     {
       "id": "7899a95c-6988-5c56-b241-70a1642f1a15",
-      "zh": "铤而走险的人",
+      "zh": "蛮勇的人，蛮勇的",
       "en": "daredevil",
       "note": "noun"
     },
@@ -6213,25 +6213,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "c68d02d7-27e2-5fc6-ab62-05f699ff2527",
-      "zh": "概要的",
+      "zh": "概要的，天气的",
       "en": "synoptic",
       "note": "adjective"
     },
     {
       "id": "d3ec5d98-22c6-5191-a743-cfa08ce1c144",
-      "zh": "坏人似的",
+      "zh": "坏人似的，恶棍的",
       "en": "villainous",
       "note": "adjective"
     },
     {
       "id": "a9617552-5e53-5bb4-9305-d9192ada3304",
-      "zh": "领导人地位",
+      "zh": "领导人地位，能力",
       "en": "headship",
       "note": "noun"
     },
     {
       "id": "404787f3-3d40-57c4-915d-1203f507ff39",
-      "zh": "确实性",
+      "zh": "确实性，确信",
       "en": "certitude",
       "note": "noun"
     },
@@ -6243,25 +6243,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "e9b07d05-c7a3-5e93-bcd9-8e7591d61c1b",
-      "zh": "盗用",
+      "zh": "盗用，挪用，贪污",
       "en": "embezzle",
       "note": "verb"
     },
     {
       "id": "93315a6a-cb35-5442-a326-ae2948d66db3",
-      "zh": "轻易放弃的人",
+      "zh": "懦夫，马蹄疽",
       "en": "quitter",
       "note": "noun"
     },
     {
       "id": "e913fa10-e816-55d9-81f3-5514a111e0b4",
-      "zh": "突然说出",
+      "zh": "射出，射精，精液",
       "en": "ejaculate",
       "note": "verb"
     },
     {
       "id": "6c6fa634-786e-54cc-a5ed-42144d81731b",
-      "zh": "事先的考虑",
+      "zh": "深虑，先见，预谋",
       "en": "forethought",
       "note": "noun"
     },
@@ -6279,7 +6279,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "c084727d-b610-5c5d-89ae-6f5d81b43ded",
-      "zh": "爱批判的",
+      "zh": "爱批判的，挑剔的",
       "en": "censorious",
       "note": "adjective"
     },
@@ -6291,31 +6291,31 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "38205a31-ecb4-5c35-ac64-b611f6c7d1bb",
-      "zh": "轻薄",
+      "zh": "轻薄，轻率",
       "en": "frivolity",
       "note": "noun"
     },
     {
       "id": "24a9d35a-c4c9-5a5d-b7c1-f5b5b39788be",
-      "zh": "悲伤的",
+      "zh": "悲伤的，悲哀的",
       "en": "woeful",
       "note": "adjective"
     },
     {
       "id": "c51da041-87c5-5b17-b507-47a54dc6e128",
-      "zh": "定界限",
+      "zh": "定界限，划界",
       "en": "delimit",
       "note": "verb"
     },
     {
       "id": "952f8fe1-5262-58f8-9f3b-8bea6d1be6d7",
-      "zh": "使人误解的",
+      "zh": "谬误的，不合理的",
       "en": "fallacious",
       "note": "adjective"
     },
     {
       "id": "e183c217-bd0e-52f9-bbf1-3afc33b879c2",
-      "zh": "亚硫的",
+      "zh": "亚硫的，恶毒的",
       "en": "sulphurous",
       "note": "adjective"
     },
@@ -6327,25 +6327,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "2f979ff1-04c2-503d-af80-603f05e7ac8c",
-      "zh": "前滩",
+      "zh": "前滩，海滩",
       "en": "foreshore",
       "note": "noun"
     },
     {
       "id": "199210b4-7a27-5829-aea0-565fe9a94213",
-      "zh": "仲裁",
+      "zh": "仲裁，公断",
       "en": "arbitrate",
       "note": "verb"
     },
     {
       "id": "2e8e6fe7-7963-5168-b62d-9d2fbc37f910",
-      "zh": "流沙",
+      "zh": "流沙，流沙区",
       "en": "quicksand",
       "note": "noun"
     },
     {
       "id": "7ff385dc-d2d2-5801-92bc-c66b32683148",
-      "zh": "草书的",
+      "zh": "草书的，草书体的",
       "en": "cursive",
       "note": "adjective"
     },
@@ -6369,7 +6369,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "409703bf-8f5f-558d-b3df-35a32750b6c2",
-      "zh": "肥大的",
+      "zh": "肥大的，肥胖的",
       "en": "corpulent",
       "note": "adjective"
     },
@@ -6381,7 +6381,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "428e31d4-fcb5-51db-b2f2-f6226b75574d",
-      "zh": "隐秘不明的",
+      "zh": "将来的，隐蔽的",
       "en": "ulterior",
       "note": "adjective"
     },
@@ -6393,67 +6393,67 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "3bf8bdf6-e588-5b72-b352-83ecf9395183",
-      "zh": "关在栏中",
+      "zh": "拘留，充公，扣押",
       "en": "impound",
       "note": "verb"
     },
     {
       "id": "8e7d3706-e1b3-50de-b2ac-b612748d0346",
-      "zh": "高龄",
+      "zh": "高龄，老迈，衰老",
       "en": "senility",
       "note": "noun"
     },
     {
       "id": "a0b3ba09-3998-56c1-a438-0ca27373639e",
-      "zh": "正直的",
+      "zh": "正直的，坦率的",
       "en": "upfront",
       "note": "adjective"
     },
     {
       "id": "f895dccf-04fd-5443-8076-ae80d41efb83",
-      "zh": "细鳞大马哈鱼",
+      "zh": "驼背",
       "en": "humpback",
       "note": "noun"
     },
     {
       "id": "3bea7ac0-a9b5-5712-9777-1a7431e559ac",
-      "zh": "霹雳",
+      "zh": "雷声，霹雳",
       "en": "thunderclap",
       "note": "noun"
     },
     {
       "id": "63b0d764-7f49-5e15-a174-996b41f3b09a",
-      "zh": "演讲",
+      "zh": "演讲，热烈讨论",
       "en": "harangue",
       "note": "noun"
     },
     {
       "id": "c20893c2-e7b3-50c3-abc2-65b605cfd542",
-      "zh": "出身高贵",
+      "zh": "出身高贵，绅士们",
       "en": "gentility",
       "note": "noun"
     },
     {
       "id": "90ea38bb-8a5e-51be-be5e-5cd7dc5fd204",
-      "zh": "良心的责备",
+      "zh": "良心的责备，后悔",
       "en": "compunction",
       "note": "noun"
     },
     {
       "id": "8d060899-aa3c-5163-a7e1-b34deb3a6096",
-      "zh": "轻率的",
+      "zh": "轻率的，鲁莽的",
       "en": "imprudent",
       "note": "adjective"
     },
     {
       "id": "27028281-ce69-590d-83ae-47b58bb30cc5",
-      "zh": "冲动的",
+      "zh": "冲动的，猛烈的",
       "en": "impetuous",
       "note": "adjective"
     },
     {
       "id": "df7fff79-df50-58be-8232-55f4bf826a59",
-      "zh": "贬值",
+      "zh": "贬值，降价，贬低",
       "en": "depreciate",
       "note": "verb"
     },
@@ -6471,7 +6471,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "deee5abc-48e9-5872-b093-ece64ca043c1",
-      "zh": "辛辣地",
+      "zh": "辛辣地，刻薄地",
       "en": "tartly",
       "note": "adverb"
     },
@@ -6483,13 +6483,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "360db875-d1d9-573b-943a-3902de0849a5",
-      "zh": "恼怒",
+      "zh": "恼怒，烦恼，苦闷",
       "en": "vexation",
       "note": "noun"
     },
     {
       "id": "c05dcf33-fb6c-5118-8c80-a6f77411cd88",
-      "zh": "和睦",
+      "zh": "一致，和睦，协定",
       "en": "concord",
       "note": "noun"
     },
@@ -6501,37 +6501,37 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "3f40829c-54d1-5605-9b13-54542c38bfaa",
-      "zh": "轻浮的",
+      "zh": "轻浮的，轻狂的",
       "en": "flighty",
       "note": "adjective"
     },
     {
       "id": "4823a379-7fc7-569d-a433-2d8a0228f78c",
-      "zh": "混入",
+      "zh": "混入，渗入，掺杂",
       "en": "intermingle",
       "note": "verb"
     },
     {
       "id": "db193002-36a1-5085-a1f1-c0aad65dafcb",
-      "zh": "弓锯",
+      "zh": "弓锯，钢锯",
       "en": "hacksaw",
       "note": "noun"
     },
     {
       "id": "25d20b26-ba38-59ba-91b8-39862a3ababe",
-      "zh": "击退",
+      "zh": "击退，反感，排斥",
       "en": "repulsion",
       "note": "noun"
     },
     {
       "id": "f2acc044-45dd-5b04-8f86-5dfff0a08a13",
-      "zh": "战术家",
+      "zh": "战术家，谋士",
       "en": "tactician",
       "note": "noun"
     },
     {
       "id": "f18ccdb7-b105-557a-be35-96af8f37c320",
-      "zh": "全知的",
+      "zh": "全知的，上帝",
       "en": "omniscient",
       "note": "adjective"
     },
@@ -6543,7 +6543,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "a90b1cf1-558b-5eca-a0d2-e5759de10336",
-      "zh": "序数",
+      "zh": "序数，顺序的",
       "en": "ordinal",
       "note": "noun"
     },
@@ -6561,31 +6561,31 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "c9fb341c-8a5a-5f5d-81a0-02b38672524a",
-      "zh": "假音",
+      "zh": "假音，假声歌手",
       "en": "falsetto",
       "note": "noun"
     },
     {
       "id": "bfc420cb-8709-5111-9573-d8333757e94c",
-      "zh": "天生的",
+      "zh": "天生的，先天的",
       "en": "inborn",
       "note": "adjective"
     },
     {
       "id": "e364e724-e836-5bb4-a437-87ef30f0bbb6",
-      "zh": "小商人",
+      "zh": "贩卖，叫卖，还价",
       "en": "huckster",
       "note": "noun"
     },
     {
       "id": "47c9ea53-fb0d-5070-af88-9889e99519f1",
-      "zh": "从事破坏活动者",
+      "zh": "破坏者，破坏份子",
       "en": "saboteur",
       "note": "noun"
     },
     {
       "id": "ecd9e997-c41f-5c6d-8db3-184f8c0798c0",
-      "zh": "有礼貌的",
+      "zh": "有礼貌的，高雅的",
       "en": "decorous",
       "note": "adjective"
     },
@@ -6597,7 +6597,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "9557d8ff-9569-5ab6-a14b-0c6fff917c4a",
-      "zh": "演员的",
+      "zh": "演员的，演剧的",
       "en": "histrionic",
       "note": "adjective"
     },
@@ -6609,7 +6609,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "05fbc0d5-92fe-56d9-893d-c6061baea571",
-      "zh": "发声",
+      "zh": "发声，元音化",
       "en": "vocalization",
       "note": "noun"
     },
@@ -6621,19 +6621,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "a4edd23b-7bd1-5ef5-8075-17c286c77b86",
-      "zh": "引起反感的",
+      "zh": "不公平的，诽谤的",
       "en": "invidious",
       "note": "adjective"
     },
     {
       "id": "8358b4c1-9106-5184-a281-3c2685d72baf",
-      "zh": "刚愎的",
+      "zh": "顽固的，刚愎的",
       "en": "headstrong",
       "note": "adjective"
     },
     {
       "id": "6d77371d-eefb-527e-b117-90f510a1e4e3",
-      "zh": "使用过于频繁的",
+      "zh": "常见的，陈腐的",
       "en": "hackneyed",
       "note": "adjective"
     },
@@ -6645,7 +6645,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "0a66b041-9bb0-5800-8dcf-46ff038f14f8",
-      "zh": "暗地里",
+      "zh": "暗地里，悄悄地",
       "en": "stealthily",
       "note": "adverb"
     },
@@ -6657,37 +6657,37 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "697189ea-40a7-56f3-bd62-8335735ec504",
-      "zh": "养驯",
+      "zh": "养驯，引进，教化",
       "en": "domesticate",
       "note": "verb"
     },
     {
       "id": "a5a70183-1c3e-5683-877b-a5d10b796a00",
-      "zh": "火把",
+      "zh": "火把，煽动叛乱者",
       "en": "firebrand",
       "note": "noun"
     },
     {
       "id": "cb2a27ac-db1d-56c2-a735-b1637d6f8924",
-      "zh": "嬉戏",
+      "zh": "嬉戏，嬉戏的",
       "en": "frolic",
       "note": "noun"
     },
     {
       "id": "fb1e8978-840f-54cf-b1d9-818fee108b41",
-      "zh": "经验主义",
+      "zh": "经验主义，经验论",
       "en": "empiricism",
       "note": "noun"
     },
     {
       "id": "0a926d8a-70c2-5f8a-b610-d3066c069596",
-      "zh": "易燃的",
+      "zh": "易燃的，燃烧性的",
       "en": "combustible",
       "note": "adjective"
     },
     {
       "id": "a0cd3b63-fcdc-556c-82ec-fca973d92807",
-      "zh": "灵巧的",
+      "zh": "灵巧的，敏捷的",
       "en": "adroit",
       "note": "adjective"
     },
@@ -6699,13 +6699,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "a6985b80-4de6-5c59-8d7a-263542cde5ea",
-      "zh": "青贮饲料",
+      "zh": "青贮饲料，青贮",
       "en": "silage",
       "note": "noun"
     },
     {
       "id": "81a52448-ec2c-5b5c-b606-91f562875a13",
-      "zh": "联盟",
+      "zh": "联盟，邦联，共谋",
       "en": "confederacy",
       "note": "noun"
     },
@@ -6717,13 +6717,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "2067a43c-2fea-5bf9-a4e5-34e4a09cb367",
-      "zh": "牙科",
+      "zh": "牙科，牙科学",
       "en": "dentistry",
       "note": "noun"
     },
     {
       "id": "3ede6976-fb5e-5f71-a8e6-398c36c8272a",
-      "zh": "水位标志",
+      "zh": "水位标志，水印",
       "en": "watermark",
       "note": "noun"
     },
@@ -6735,19 +6735,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "6253e6a6-39a8-5e79-bee4-59e2629094a4",
-      "zh": "萨梯",
+      "zh": "萨梯，好色之徒",
       "en": "satyr",
       "note": "noun"
     },
     {
       "id": "7d10b766-eabc-5880-aa98-afd4e4c4f8af",
-      "zh": "代理人的任命",
+      "zh": "代表团，委派",
       "en": "deputation",
       "note": "noun"
     },
     {
       "id": "4590febf-35df-5d29-859a-4f968faa5bea",
-      "zh": "鱼叉",
+      "zh": "鱼叉，用鱼叉叉",
       "en": "harpoon",
       "note": "noun"
     },
@@ -6759,61 +6759,61 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "520aeb7b-38fe-5507-bfdc-13947a4ffc65",
-      "zh": "缩写",
+      "zh": "缩写，缩短",
       "en": "abbreviate",
       "note": "verb"
     },
     {
       "id": "38330505-4851-57a9-9f69-64a8afccd558",
-      "zh": "自我中心癖",
+      "zh": "自我中心癖，自负",
       "en": "egotism",
       "note": "noun"
     },
     {
       "id": "be937d57-b937-50f6-a3b9-9243f3a14407",
-      "zh": "有先见之明的",
+      "zh": "有远虑的，节俭的",
       "en": "provident",
       "note": "adjective"
     },
     {
       "id": "abd44e49-b036-509d-88e1-2231031fd35c",
-      "zh": "自言自语",
+      "zh": "自言自语，独白",
       "en": "soliloquy",
       "note": "noun"
     },
     {
       "id": "63e0c4c8-24e7-5854-9128-2ef2ff0aa10c",
-      "zh": "夺取",
+      "zh": "夺取，掠夺",
       "en": "despoil",
       "note": "verb"
     },
     {
       "id": "66cac67a-b931-5389-964d-86d4f918f1d7",
-      "zh": "头饰",
+      "zh": "头饰，井架，头网",
       "en": "headgear",
       "note": "noun"
     },
     {
       "id": "21c03603-f42a-572b-a7bd-7dc6cfffe2d4",
-      "zh": "不对称的",
+      "zh": "不对称的，偏位的",
       "en": "asymmetric",
       "note": "adjective"
     },
     {
       "id": "10ac4b58-6f71-5316-bbc5-657042f68f3d",
-      "zh": "给与报酬",
+      "zh": "给与报酬，赔偿",
       "en": "remunerate",
       "note": "verb"
     },
     {
       "id": "0ebf8c33-14c4-5afa-a00f-cc27279117de",
-      "zh": "尊敬",
+      "zh": "尊敬，崇敬，崇拜",
       "en": "venerate",
       "note": "verb"
     },
     {
       "id": "de198d38-1b24-585c-bfc9-a177726fcf0b",
-      "zh": "有害的",
+      "zh": "有害的，不公正的",
       "en": "injurious",
       "note": "adjective"
     },
@@ -6825,91 +6825,91 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "fdf8cb57-d488-5c32-9629-24293f5437ea",
-      "zh": "作成花圈",
+      "zh": "环绕，盘绕，扭曲",
       "en": "wreathe",
       "note": "verb"
     },
     {
       "id": "3fbecb13-cb44-5a91-bc6c-c83c259eaf1e",
-      "zh": "遮眼",
+      "zh": "遮眼，蒙蔽，欺骗",
       "en": "hoodwink",
       "note": "verb"
     },
     {
       "id": "a3a0f951-ca95-5ef0-a032-4fb6f559fe9d",
-      "zh": "驯服的",
+      "zh": "驯服的，易加工的",
       "en": "tractable",
       "note": "adjective"
     },
     {
       "id": "ad601c79-d25c-5e2c-b20e-c3752833a340",
-      "zh": "独裁",
+      "zh": "独裁，专制",
       "en": "despotism",
       "note": "noun"
     },
     {
       "id": "7ce57405-3973-5658-a6b5-fab6458bc31f",
-      "zh": "虚伪",
+      "zh": "虚伪，错误，谎言",
       "en": "falsity",
       "note": "noun"
     },
     {
       "id": "3e7563a1-d7ac-5faf-b033-a5902d2169c2",
-      "zh": "波动的",
+      "zh": "波动的，起伏的",
       "en": "undulate",
       "note": "adjective"
     },
     {
       "id": "01178816-7d98-59f3-a6b1-768a7aeae50a",
-      "zh": "跋扈",
+      "zh": "跋扈，作威作福",
       "en": "domineer",
       "note": "verb"
     },
     {
       "id": "3540d7e2-643a-5921-b0a3-4146946c9bcf",
-      "zh": "复生的",
+      "zh": "复生的，复活的",
       "en": "resurgent",
       "note": "adjective"
     },
     {
       "id": "6aead976-745f-5f18-92dd-090f24b303a6",
-      "zh": "有向上打开的后门的汽车",
+      "zh": "掀背车",
       "en": "hatchback",
       "note": "noun"
     },
     {
       "id": "e88bf8f6-d284-566c-a921-3df33196f1fc",
-      "zh": "毛细管",
+      "zh": "毛细管，毛状的",
       "en": "capillary",
       "note": "noun"
     },
     {
       "id": "3691ccf8-2ea1-5e0a-a9c7-a2b265e67f3d",
-      "zh": "玻璃纤维",
+      "zh": "玻璃纤维，玻璃丝",
       "en": "fibreglass",
       "note": "noun"
     },
     {
       "id": "b5de2e3b-5150-5edf-9c94-42ebfcffdac8",
-      "zh": "意义不明确的",
+      "zh": "双关的，两可的",
       "en": "equivocal",
       "note": "adjective"
     },
     {
       "id": "da8ca8d0-7879-5a0c-b0a9-827f728a3aaa",
-      "zh": "灰黄色的",
+      "zh": "灰黄色的，土色的",
       "en": "sallow",
       "note": "adjective"
     },
     {
       "id": "0b636b36-fb79-528a-b3de-b494f7c80c5b",
-      "zh": "吸取",
+      "zh": "吸取，吸入",
       "en": "imbibe",
       "note": "verb"
     },
     {
       "id": "f60fb427-75fc-5248-8dff-35415fb86428",
-      "zh": "底缘",
+      "zh": "底缘，底边",
       "en": "hemline",
       "note": "noun"
     },
@@ -6921,31 +6921,31 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "3be58171-eb38-5915-bf68-35cc5748a99d",
-      "zh": "照字面的",
+      "zh": "逐字的，照字面的",
       "en": "verbatim",
       "note": "adjective"
     },
     {
       "id": "8abd8cc4-486d-5382-b003-3f0b291fbf3d",
-      "zh": "慷慨陈词",
+      "zh": "慷慨陈词，演讲",
       "en": "declaim",
       "note": "verb"
     },
     {
       "id": "eb0c19ab-78d9-5d04-a9f2-a33ba4fb137e",
-      "zh": "铁饼",
+      "zh": "铁饼，掷铁饼比赛",
       "en": "discus",
       "note": "noun"
     },
     {
       "id": "4719fdac-5ed1-572c-a41e-761108c31b30",
-      "zh": "业余爱好者",
+      "zh": "外行的，浅薄的",
       "en": "dilettante",
       "note": "noun"
     },
     {
       "id": "fdd84ef0-ea7c-5e09-85f8-07beac81630c",
-      "zh": "军刀",
+      "zh": "军刀，骑兵",
       "en": "sabre",
       "note": "noun"
     },
@@ -6975,7 +6975,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "45df750a-0e34-54bf-8e24-b27a7b4d5c35",
-      "zh": "体现",
+      "zh": "体现，使具体化",
       "en": "incarnate",
       "note": "verb"
     },
@@ -6987,25 +6987,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "6a353f6b-41b1-5a50-a6ee-957073de208f",
-      "zh": "脚背",
+      "zh": "脚背，背部，足背",
       "en": "instep",
       "note": "noun"
     },
     {
       "id": "43cb5d2e-ff04-5368-8f94-735a74c2e385",
-      "zh": "欠慎重的",
+      "zh": "轻率的，欠慎重的",
       "en": "indiscreet",
       "note": "adjective"
     },
     {
       "id": "5ea37abf-a8ee-5592-b787-a69cae5ba30a",
-      "zh": "获暴利的人",
+      "zh": "获暴利的人，奸商",
       "en": "profiteer",
       "note": "noun"
     },
     {
       "id": "bb03506e-4c12-5584-b613-1c1fc0360def",
-      "zh": "继承遗产或爵位的寡妇",
+      "zh": "贵妇遗孀",
       "en": "dowager",
       "note": "noun"
     },
@@ -7017,43 +7017,43 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "9507d19b-d4f0-5f31-b003-b3e6923b07f7",
-      "zh": "显影液槽",
+      "zh": "显影液槽，浸染工",
       "en": "dipper",
       "note": "noun"
     },
     {
       "id": "1f869b7c-bad4-51a4-9f13-fb77cdaf025b",
-      "zh": "诘问",
+      "zh": "诘问，以麻梳梳理",
       "en": "heckle",
       "note": "verb"
     },
     {
       "id": "86109325-01c3-5099-9f89-3263914ec56b",
-      "zh": "四角形",
+      "zh": "四角形，四边形",
       "en": "quadrangle",
       "note": "noun"
     },
     {
       "id": "250e57bd-a922-5f84-8949-efaa7bc94c26",
-      "zh": "抹去",
+      "zh": "抹去，消除，忘却",
       "en": "efface",
       "note": "verb"
     },
     {
       "id": "0b8cb273-4bbd-5435-a49a-572b5df1b206",
-      "zh": "无端畏惧和憎恨外国人",
+      "zh": "仇外，排外恐惧",
       "en": "xenophobia",
       "note": "noun"
     },
     {
       "id": "a9e53958-c914-506f-be68-809355593bb5",
-      "zh": "写上比实际早的日期",
+      "zh": "回溯，倒填",
       "en": "backdate",
       "note": "verb"
     },
     {
       "id": "fa3ef829-9c11-5862-aec1-2c4fb6b5cf35",
-      "zh": "病理学的",
+      "zh": "病理学的，病理的",
       "en": "pathologic",
       "note": "adjective"
     },
@@ -7065,13 +7065,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "9490a9dd-124b-5113-b9d4-40657c1e2161",
-      "zh": "痘疮",
+      "zh": "痘疮，麻子",
       "en": "pockmark",
       "note": "noun"
     },
     {
       "id": "5aa73af1-b31d-5424-9fd0-88d55f495bc0",
-      "zh": "不适宜的",
+      "zh": "不合适的",
       "en": "unseemly",
       "note": "adjective"
     },
@@ -7089,49 +7089,49 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "a75b00f9-ebaa-5118-8ba9-7f9f7c7ff0b2",
-      "zh": "软弱的",
+      "zh": "软弱的，没气力的",
       "en": "flaccid",
       "note": "adjective"
     },
     {
       "id": "201d716b-1b63-5bf1-bdce-4c97097d4eaa",
-      "zh": "计算的",
+      "zh": "计算的，计算",
       "en": "calculating",
       "note": "adjective"
     },
     {
       "id": "2aeccb80-53b6-59d8-a374-a1e6c94030f6",
-      "zh": "思想偏狭顽固的",
+      "zh": "死板的，量小的",
       "en": "hidebound",
       "note": "adjective"
     },
     {
       "id": "059a0df0-eb3b-59a8-aea3-42c685414755",
-      "zh": "蹒跚地走",
+      "zh": "蹒跚地走，蹒跚",
       "en": "shamble",
       "note": "verb"
     },
     {
       "id": "03c9c669-66ed-518e-9bed-a220c13c11c6",
-      "zh": "使...惊讶得发呆",
+      "zh": "惊呆，使愕然",
       "en": "dumbfound",
       "note": "verb"
     },
     {
       "id": "365a840a-ed43-584e-adbd-b845ce8bec29",
-      "zh": "连结",
+      "zh": "连结，连锁，相关",
       "en": "interlock",
       "note": "verb"
     },
     {
       "id": "7fd350ce-6f84-53ae-b27c-d4079caf53ea",
-      "zh": "遗传",
+      "zh": "遗传，形质遗传",
       "en": "heredity",
       "note": "noun"
     },
     {
       "id": "2266eb2a-f176-5467-bcd7-a0036b871411",
-      "zh": "假的",
+      "zh": "假的，冒充的",
       "en": "pseudo",
       "note": "adjective"
     },
@@ -7143,7 +7143,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "4c5f7fef-ced0-5e5d-856f-43f9198bc6c1",
-      "zh": "爱好学问的",
+      "zh": "用功的，勤学的",
       "en": "studious",
       "note": "adjective"
     },
@@ -7155,19 +7155,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "ec3033b3-348a-5110-84ad-e3aaa48c3f70",
-      "zh": "严肃",
+      "zh": "严肃，一本正经",
       "en": "solemnity",
       "note": "noun"
     },
     {
       "id": "3707b0b2-9d75-5a44-a769-669436059f00",
-      "zh": "碎冰船",
+      "zh": "碎冰船，破冰设备",
       "en": "icebreaker",
       "note": "noun"
     },
     {
       "id": "f99a17f8-f659-5264-a278-ed5d38fab8ff",
-      "zh": "氯化氢的",
+      "zh": "氯化氢的，盐酸的",
       "en": "hydrochloric",
       "note": "adjective"
     },
@@ -7179,43 +7179,43 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "c531b482-0405-5721-8b47-be0388a46e27",
-      "zh": "温室",
+      "zh": "温室，温床，浴室",
       "en": "hothouse",
       "note": "noun"
     },
     {
       "id": "4c7d72e8-f39d-562b-aed0-239fd030c411",
-      "zh": "灰白的",
+      "zh": "灰白的，陈旧的",
       "en": "hoary",
       "note": "adjective"
     },
     {
       "id": "6f39a9ec-17c4-549c-8dfd-3205f4ec9e63",
-      "zh": "轻盈地",
+      "zh": "轻盈地，快活地",
       "en": "airily",
       "note": "adverb"
     },
     {
       "id": "08a5e976-a5a4-5541-ac33-47a011123056",
-      "zh": "强夺",
+      "zh": "强夺，夺走，强奸",
       "en": "ravish",
       "note": "verb"
     },
     {
       "id": "83da860f-c81a-5d6f-8193-ea1ac596706d",
-      "zh": "用声音",
+      "zh": "用声音，用口头",
       "en": "vocally",
       "note": "adverb"
     },
     {
       "id": "6c0b2da7-dc2f-5c0e-9e7c-1b3552abdaeb",
-      "zh": "静电的",
+      "zh": "静电的，静电学的",
       "en": "electrostatic",
       "note": "adjective"
     },
     {
       "id": "499d65a1-fc00-5fbb-9fbf-9ee7d830faf2",
-      "zh": "蜂巢",
+      "zh": "蜂巢，蜂房，蜂窝",
       "en": "honeycomb",
       "note": "noun"
     },
@@ -7227,25 +7227,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "13aea2c4-8215-56fa-9af0-835c72be2f69",
-      "zh": "使变形",
+      "zh": "使变形，使改观",
       "en": "transfigure",
       "note": "verb"
     },
     {
       "id": "0c368925-d55f-576c-ad1b-ba1cc302a0a9",
-      "zh": "暗中的",
+      "zh": "秘密的，暗中的",
       "en": "surreptitious",
       "note": "adjective"
     },
     {
       "id": "acf60c65-157b-5ba9-a86d-17a094db8cef",
-      "zh": "手背拍",
+      "zh": "手背拍，反手抽击",
       "en": "backhand",
       "note": "noun"
     },
     {
       "id": "e2cf42e2-4fe3-5e97-880f-ab99d95d6311",
-      "zh": "不喜欢",
+      "zh": "冷待，失宠，不利",
       "en": "disfavour",
       "note": "verb"
     },
@@ -7263,37 +7263,37 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "e275f33a-a3ad-542a-aac8-e0456d2df871",
-      "zh": "准许入学",
+      "zh": "准许入学，录取",
       "en": "matriculate",
       "note": "verb"
     },
     {
       "id": "37e6981c-87a8-5c37-ad6f-3c284b02e369",
-      "zh": "脱臼",
+      "zh": "脱臼，弄乱",
       "en": "dislocate",
       "note": "verb"
     },
     {
       "id": "4bf0000e-c2ba-5f01-a21b-6957005a6726",
-      "zh": "麻疯病",
+      "zh": "麻疯病，腐败",
       "en": "leprosy",
       "note": "noun"
     },
     {
       "id": "40426eb8-54c3-585c-a0d7-a0c67deedc3d",
-      "zh": "使神圣",
+      "zh": "使神圣，奉献给神",
       "en": "sanctify",
       "note": "verb"
     },
     {
       "id": "8d5a602d-82b2-5983-91f5-ed2fcbc33378",
-      "zh": "鱼贩",
+      "zh": "鱼贩，鱼商",
       "en": "fishmonger",
       "note": "noun"
     },
     {
       "id": "39a381a2-edaa-5211-9ea0-e3d596dd63bc",
-      "zh": "绊跌者",
+      "zh": "绊跌者，旅行者",
       "en": "tripper",
       "note": "noun"
     },
@@ -7305,13 +7305,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "d1248835-0f77-5d75-87ce-d890b594e87b",
-      "zh": "连累",
+      "zh": "连累，控告",
       "en": "incriminate",
       "note": "verb"
     },
     {
       "id": "1b49f128-dbe9-52c3-86a6-d3c221b16e6e",
-      "zh": "可拉长的",
+      "zh": "可拉长的，张力的",
       "en": "tensile",
       "note": "adjective"
     },
@@ -7323,31 +7323,31 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "81b24eda-d61e-56b2-89c8-eb375c85f5e1",
-      "zh": "无政府的",
+      "zh": "无政府的，反常的",
       "en": "anarchic",
       "note": "adjective"
     },
     {
       "id": "e207fa87-72c0-53dd-bb8f-a6e6c6d8bf55",
-      "zh": "子女的",
+      "zh": "子女的，孝顺的",
       "en": "filial",
       "note": "adjective"
     },
     {
       "id": "ad1a3a66-ae89-5398-85e2-da3735c2675a",
-      "zh": "弄脏",
+      "zh": "弄脏，污损，败坏",
       "en": "defile",
       "note": "verb"
     },
     {
       "id": "8b297d51-db43-51c4-9119-42d3e6951af5",
-      "zh": "正直",
+      "zh": "正直，纯正，正确",
       "en": "rectitude",
       "note": "noun"
     },
     {
       "id": "859c5e3d-19a3-577b-9f28-df0ad9b9a91e",
-      "zh": "授予爵位",
+      "zh": "授予爵位，使高贵",
       "en": "ennoble",
       "note": "verb"
     },
@@ -7359,7 +7359,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "609a66ce-cb00-5e1b-8936-45c9f3de4a8e",
-      "zh": "性爱的",
+      "zh": "性爱的，性交的",
       "en": "venereal",
       "note": "adjective"
     },
@@ -7371,13 +7371,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "708c4d4f-fe26-5a59-8517-d1d33b43a698",
-      "zh": "使迎合",
+      "zh": "使迎合，使讨好",
       "en": "ingratiate",
       "note": "verb"
     },
     {
       "id": "15623c32-f4f0-59b1-b4f2-d991f8f5ecec",
-      "zh": "七嘴八嘴地说",
+      "zh": "急促地说，废话",
       "en": "gabble",
       "note": "verb"
     },
@@ -7389,7 +7389,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "a4d3d71a-1957-543e-84e4-28f42f8ecca5",
-      "zh": "内脏",
+      "zh": "内脏，内容",
       "en": "viscera",
       "note": "noun"
     },
@@ -7401,7 +7401,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "eaf1e357-8316-50f3-b731-7932250e5edb",
-      "zh": "马夫",
+      "zh": "马夫，仆役",
       "en": "footman",
       "note": "noun"
     },
@@ -7413,13 +7413,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "bc1fb059-244b-539c-978b-4f6dc90af959",
-      "zh": "优点",
+      "zh": "优点，阁下",
       "en": "excellency",
       "note": "noun"
     },
     {
       "id": "b0606a03-78e3-5e49-8d59-3a511e64255d",
-      "zh": "斗士",
+      "zh": "斗士，斗剑者",
       "en": "gladiator",
       "note": "noun"
     },
@@ -7431,19 +7431,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "b8fa8301-5fb5-5f0c-8776-2ef504303908",
-      "zh": "坦白的",
+      "zh": "坦白的，正直的",
       "en": "ingenuous",
       "note": "adjective"
     },
     {
       "id": "b134d39a-7b9a-552e-9e1d-9e70be4857a6",
-      "zh": "博学的",
+      "zh": "博学的，博学者",
       "en": "erudite",
       "note": "adjective"
     },
     {
       "id": "2b843b89-00b2-564d-869c-c83670e7041d",
-      "zh": "个性内向者",
+      "zh": "内陷，内省，内弯",
       "en": "introvert",
       "note": "noun"
     },
@@ -7467,19 +7467,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "8a842d3d-b227-51e0-b594-89e815d69017",
-      "zh": "想要的",
+      "zh": "想要的，想望的",
       "en": "desirous",
       "note": "adjective"
     },
     {
       "id": "1153dce1-9126-53d8-b9e7-9808c79b3848",
-      "zh": "凸版印刷术",
+      "zh": "凸版印刷术，排印",
       "en": "typography",
       "note": "noun"
     },
     {
       "id": "28cf79e3-8ad4-561b-8e75-a9ec6dced400",
-      "zh": "经久不衰的",
+      "zh": "可靠的，无穷尽的",
       "en": "unfailing",
       "note": "adjective"
     },
@@ -7491,13 +7491,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "4f690543-67fc-5e4a-9839-108dba2c71fa",
-      "zh": "正式请求",
+      "zh": "申请，需要，征用",
       "en": "requisition",
       "note": "noun"
     },
     {
       "id": "dbf2539c-0bc8-5ecc-b039-78de6a8abac2",
-      "zh": "弹道学",
+      "zh": "弹道学，发射学",
       "en": "ballistics",
       "note": "noun"
     },
@@ -7509,13 +7509,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "031641b7-5bfd-58c7-8b37-0b50ca59002a",
-      "zh": "侮慢无礼的人",
+      "zh": "粗野的，无礼的",
       "en": "insolent",
       "note": "noun"
     },
     {
       "id": "32e297d5-b873-5079-a5a1-55247b368d1b",
-      "zh": "粗野的",
+      "zh": "笨拙的，粗野的",
       "en": "uncouth",
       "note": "adjective"
     },
@@ -7533,19 +7533,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "9b111334-93c6-564c-bdb7-bbaab48e70cb",
-      "zh": "吸墨纸",
+      "zh": "吸墨纸，记事簿",
       "en": "blotter",
       "note": "noun"
     },
     {
       "id": "20eb005f-186f-5c5a-b51a-b55210cc85b0",
-      "zh": "说话猥亵的",
+      "zh": "下流的，粗俗的",
       "en": "ribald",
       "note": "adjective"
     },
     {
       "id": "ec98a6d0-90d7-5283-8c02-97d91ddd0165",
-      "zh": "重要人士",
+      "zh": "显要，名士，人物",
       "en": "personage",
       "note": "noun"
     },
@@ -7557,7 +7557,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "a48d988c-983f-59fa-80c0-52d192e235e3",
-      "zh": "根深的",
+      "zh": "根深的，成癖的",
       "en": "inveterate",
       "note": "adjective"
     },
@@ -7569,7 +7569,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "2d9ca117-3ca0-5c05-b88d-58d66b6abee5",
-      "zh": "音节主音",
+      "zh": "音节主音，音节的",
       "en": "syllabic",
       "note": "noun"
     },
@@ -7581,19 +7581,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "2ef4528d-05c3-51a5-b3cd-2aea3a6b798e",
-      "zh": "生殖的",
+      "zh": "生殖的，生产的",
       "en": "generative",
       "note": "adjective"
     },
     {
       "id": "11c40450-41d4-51e3-930a-94f8df8911ab",
-      "zh": "定色剂",
+      "zh": "定色剂，定影剂",
       "en": "fixer",
       "note": "noun"
     },
     {
       "id": "4e05c0cf-eeb5-51f1-a900-7e6fc19b85fa",
-      "zh": "异教徒",
+      "zh": "异教徒，异族人",
       "en": "heathen",
       "note": "noun"
     },
@@ -7605,37 +7605,37 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "f10c7ffa-3df9-5c8e-8baa-8d3bf280039d",
-      "zh": "非现世的",
+      "zh": "非现世的，超凡的",
       "en": "unworldly",
       "note": "adjective"
     },
     {
       "id": "1282a7c0-7854-53f3-a1fc-049b1991ebc6",
-      "zh": "勤勉的",
+      "zh": "勤勉的，刻苦的",
       "en": "assiduous",
       "note": "adjective"
     },
     {
       "id": "071152a5-8583-5472-8863-180a14871a4c",
-      "zh": "乞讨",
+      "zh": "乞讨，搜寻",
       "en": "scrounge",
       "note": "verb"
     },
     {
       "id": "277c9b41-b38f-5ae0-a97a-bb5bd67a7edf",
-      "zh": "神志昏迷的",
+      "zh": "发狂的，谵妄的",
       "en": "delirious",
       "note": "adjective"
     },
     {
       "id": "9738899a-4bb2-527c-a6e5-7aa601b0394d",
-      "zh": "白色涂料",
+      "zh": "白色涂料，粉饰",
       "en": "whitewash",
       "note": "noun"
     },
     {
       "id": "aafcb1b3-19ec-580d-a32b-0c463e003ecf",
-      "zh": "无自信的",
+      "zh": "无自信的，羞怯的",
       "en": "diffident",
       "note": "adjective"
     },
@@ -7653,19 +7653,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "1a9df5c8-f785-5422-905b-cf8222462659",
-      "zh": "不敬畏神的",
+      "zh": "邪恶的，可怕地",
       "en": "ungodly",
       "note": "adjective"
     },
     {
       "id": "3ca6a7ff-c801-53ca-bf97-24f9bb4a647e",
-      "zh": "残暴的",
+      "zh": "残暴的，凶恶的",
       "en": "atrocious",
       "note": "adjective"
     },
     {
       "id": "92afff0c-289f-55cf-b771-812ed3a571ec",
-      "zh": "没礼貌的",
+      "zh": "轻率的，没礼貌的",
       "en": "flippant",
       "note": "adjective"
     },
@@ -7683,31 +7683,31 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "2314f298-55f6-5091-b628-d8d83c17081e",
-      "zh": "声明不赞成",
+      "zh": "声明不赞成，抗议",
       "en": "deprecate",
       "note": "verb"
     },
     {
       "id": "7b4b24a5-911d-51bf-a151-2c53b763361d",
-      "zh": "焚尸炉",
+      "zh": "焚尸炉，火葬场",
       "en": "crematorium",
       "note": "noun"
     },
     {
       "id": "fcb1928f-9463-5483-a73c-53564d7602fd",
-      "zh": "戏弄的",
+      "zh": "戏弄的，探询的",
       "en": "quizzical",
       "note": "adjective"
     },
     {
       "id": "c552cdaf-9634-5880-9c67-25f8534bcecb",
-      "zh": "痛打",
+      "zh": "痛打，严惩",
       "en": "trounce",
       "note": "verb"
     },
     {
       "id": "1a090b7e-7e76-5f88-90cb-df5470dd46a5",
-      "zh": "使减弱",
+      "zh": "使减弱，使麻木",
       "en": "deaden",
       "note": "verb"
     },
@@ -7719,7 +7719,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "a413aa4a-0a9c-5bb6-9e0c-886061587c02",
-      "zh": "野兽的",
+      "zh": "野兽的，残忍的",
       "en": "beastly",
       "note": "adjective"
     },
@@ -7731,7 +7731,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "e162c319-b93a-5664-9ab1-a6be2ffe1679",
-      "zh": "乱跳",
+      "zh": "乱跳，欢闹，活跃",
       "en": "frisk",
       "note": "noun"
     },
@@ -7743,13 +7743,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "2993df68-c1a0-5924-82dc-a1cd90ad2e02",
-      "zh": "狭小空间",
+      "zh": "狭小空间，鸡笼",
       "en": "coop",
       "note": "noun"
     },
     {
       "id": "2b362179-489f-5fd6-a8e6-dd719890770f",
-      "zh": "倔强的",
+      "zh": "易怒的，倔强的",
       "en": "fractious",
       "note": "adjective"
     },
@@ -7761,25 +7761,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "e959409b-9fb1-5930-8181-2c6359cffc66",
-      "zh": "骗取",
+      "zh": "欺骗，骗取，浪费",
       "en": "diddle",
       "note": "verb"
     },
     {
       "id": "eca48329-e0f0-5b0a-892d-fc1a7ead7fb0",
-      "zh": "安顿下来",
+      "zh": "安顿下来，安置",
       "en": "ensconce",
       "note": "verb"
     },
     {
       "id": "b839ae79-22f4-5028-b1b8-af7f5dbce3ef",
-      "zh": "出其不意地",
+      "zh": "出其不意地，不料",
       "en": "unawares",
       "note": "adverb"
     },
     {
       "id": "96adae39-b7ea-56fd-9e7c-820f332fa3b3",
-      "zh": "跳水者",
+      "zh": "跳水者，潜水者",
       "en": "plunger",
       "note": "noun"
     },
@@ -7791,19 +7791,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "479fa39f-a178-5852-baf1-c04ec0199fe9",
-      "zh": "调换",
+      "zh": "调换，换位，移项",
       "en": "transposition",
       "note": "noun"
     },
     {
       "id": "7eebf722-2b5d-55a1-9984-cb5726ec4bb5",
-      "zh": "杂务工",
+      "zh": "杂务工，手巧的人",
       "en": "handyman",
       "note": "noun"
     },
     {
       "id": "1d290609-d8c6-5455-b7e5-3297bd6d983c",
-      "zh": "瘦弱的",
+      "zh": "瘦弱的，衰弱的",
       "en": "emaciated",
       "note": "adjective"
     },
@@ -7815,7 +7815,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "5f9307b8-22ea-5b21-bdf5-4ba54e14856d",
-      "zh": "急促而不清楚地说话",
+      "zh": "胡言，急促说话",
       "en": "gibber",
       "note": "verb"
     },
@@ -7827,13 +7827,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "a0ed3faf-7af1-50c4-8003-12ea9dc8c83d",
-      "zh": "变形的",
+      "zh": "变形的，畸形的",
       "en": "malformed",
       "note": "adjective"
     },
     {
       "id": "a7e199d7-e13f-5940-b418-7e873d7e4875",
-      "zh": "顶点的",
+      "zh": "顶点的，高潮的",
       "en": "climactic",
       "note": "adjective"
     },
@@ -7851,37 +7851,37 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "8093b94a-4db3-592d-9afa-0cdc91ef7ea2",
-      "zh": "妨害",
+      "zh": "妨害，阻塞，拖累",
       "en": "encumber",
       "note": "verb"
     },
     {
       "id": "e00c48ae-94eb-56cc-8b8c-40090b4a487a",
-      "zh": "冶金学",
+      "zh": "冶金学，冶金术",
       "en": "metallurgy",
       "note": "noun"
     },
     {
       "id": "e15bf28e-50fb-50d0-b321-c018846296a6",
-      "zh": "音系学",
+      "zh": "音系学，语音学",
       "en": "phonology",
       "note": "noun"
     },
     {
       "id": "0394f9d0-f05b-5e45-89eb-5af55b9a3d21",
-      "zh": "一夫一妻制",
+      "zh": "一夫一妻制，单配",
       "en": "monogamy",
       "note": "noun"
     },
     {
       "id": "4e48b24a-a4bb-5868-a38a-7e3ab3bf1f2f",
-      "zh": "代理的",
+      "zh": "代理的，代用的",
       "en": "vicarious",
       "note": "adjective"
     },
     {
       "id": "80a7c66f-545f-547c-9b5b-633d3ffb5147",
-      "zh": "虚弱",
+      "zh": "虚弱，病身，疾病",
       "en": "infirmity",
       "note": "noun"
     },
@@ -7899,7 +7899,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "d7a72642-34e0-5e7d-b186-81722c2107cf",
-      "zh": "口号",
+      "zh": "口号，标语",
       "en": "catchword",
       "note": "noun"
     },
@@ -7911,25 +7911,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "832b5f06-913c-504e-a96e-33df9f658c49",
-      "zh": "混杂语言",
+      "zh": "混杂语言，事务",
       "en": "pidgin",
       "note": "noun"
     },
     {
       "id": "8b3f56e9-8e3a-501a-b8be-f24e4d0ddbc2",
-      "zh": "为装上垫",
+      "zh": "为装上垫，装饰",
       "en": "upholster",
       "note": "verb"
     },
     {
       "id": "db75a247-d5de-516c-997c-27b6f7c6dd15",
-      "zh": "接触的",
+      "zh": "接触的，正切的",
       "en": "tangent",
       "note": "adjective"
     },
     {
       "id": "0b086f1b-6268-532f-937b-b2c1671a7c91",
-      "zh": "皮下的",
+      "zh": "皮下的，真皮的",
       "en": "hypodermic",
       "note": "adjective"
     },
@@ -7953,7 +7953,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "8ffc6087-75ab-5c15-9977-f2b970b5cb6e",
-      "zh": "窃笑",
+      "zh": "窃笑，暗笑",
       "en": "snigger",
       "note": "verb"
     },
@@ -7965,67 +7965,67 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "75ed456f-f5ac-5566-8efd-68d4c8576e71",
-      "zh": "使残缺",
+      "zh": "使残缺，使变形",
       "en": "deform",
       "note": "verb"
     },
     {
       "id": "20de53d2-d8cd-52de-91da-dd0d58d31033",
-      "zh": "极端明显的",
+      "zh": "公然的，现行的",
       "en": "flagrant",
       "note": "adjective"
     },
     {
       "id": "c7a70152-fbce-5f68-9457-b908026547b1",
-      "zh": "起重机",
+      "zh": "起重机，小偷",
       "en": "derrick",
       "note": "noun"
     },
     {
       "id": "68ffd681-fc32-55a6-968e-d3e6a5131c57",
-      "zh": "使复员",
+      "zh": "使复员，使退伍",
       "en": "demobilize",
       "note": "verb"
     },
     {
       "id": "53d2cf3c-1d11-59c6-be01-17d48be5c074",
-      "zh": "收缩",
+      "zh": "收缩，减低，起皱",
       "en": "shrinkage",
       "note": "noun"
     },
     {
       "id": "4f7af38f-7918-57dc-96e2-17fffbc10eb7",
-      "zh": "调解",
+      "zh": "仲裁，调解，说情",
       "en": "intercession",
       "note": "noun"
     },
     {
       "id": "2649f657-b895-5b68-81d7-d92a08882aef",
-      "zh": "斑纹的",
+      "zh": "斑纹的，花斑的",
       "en": "dappled",
       "note": "adjective"
     },
     {
       "id": "dedfdf5b-8b6c-5e90-867e-c0e181dac630",
-      "zh": "虐待狂",
+      "zh": "虐待狂，施虐欲",
       "en": "sadism",
       "note": "noun"
     },
     {
       "id": "3eda012c-3779-5910-b6da-492176bff63a",
-      "zh": "晒热的",
+      "zh": "晒热的，酷热的",
       "en": "torrid",
       "note": "adjective"
     },
     {
       "id": "daa04865-d02a-5cb5-bbf6-e54c9898ad29",
-      "zh": "贬低",
+      "zh": "贬低，降低",
       "en": "debase",
       "note": "verb"
     },
     {
       "id": "eb2e7844-6f25-5952-99d8-95643828d654",
-      "zh": "小调",
+      "zh": "小调，小曲",
       "en": "ditty",
       "note": "noun"
     },
@@ -8037,7 +8037,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "de0dbff7-fc54-5dc1-86d6-5f1da08cc399",
-      "zh": "流动性",
+      "zh": "流质，流状，流度",
       "en": "fluidity",
       "note": "noun"
     },
@@ -8049,13 +8049,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "4b2664ca-16a8-5fc4-bc1b-a733ed774d27",
-      "zh": "春天的",
+      "zh": "春天的，和煦的",
       "en": "vernal",
       "note": "adjective"
     },
     {
       "id": "585ce61f-126e-564d-834e-492448e15485",
-      "zh": "奴隶的",
+      "zh": "奴隶的，奴性的",
       "en": "servile",
       "note": "adjective"
     },
@@ -8067,19 +8067,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "f92b2fca-4b98-5d81-bb1e-2db32baeada6",
-      "zh": "装饰表面的",
+      "zh": "铺张的，夸示的",
       "en": "ostentatious",
       "note": "adjective"
     },
     {
       "id": "4b0c7c65-bb4f-5aa5-a75d-3ecf11666ea3",
-      "zh": "烧成灰",
+      "zh": "烧成灰，火葬",
       "en": "cremate",
       "note": "verb"
     },
     {
       "id": "62596a24-73f1-5df2-8bbe-561736ffe1cd",
-      "zh": "归航",
+      "zh": "归航，有返回性的",
       "en": "homing",
       "note": "noun"
     },
@@ -8097,13 +8097,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "7e71a2cf-2207-58d4-b75b-f09509d336b0",
-      "zh": "偏爱",
+      "zh": "偏爱，徇私，宠信",
       "en": "favouritism",
       "note": "noun"
     },
     {
       "id": "f4e5b61e-83af-54c0-83d0-3c6e86c84542",
-      "zh": "颗粒的",
+      "zh": "颗粒的，粒状的",
       "en": "granular",
       "note": "adjective"
     },
@@ -8115,19 +8115,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "d3c783dc-a4a9-5240-8f11-d97ed3a70c39",
-      "zh": "矮胖的",
+      "zh": "矮胖的，粗短的",
       "en": "dumpy",
       "note": "adjective"
     },
     {
       "id": "fd8e9244-9b8a-56c9-9051-83d1adcea547",
-      "zh": "欧美人",
+      "zh": "欧美人，西方人",
       "en": "occidental",
       "note": "noun"
     },
     {
       "id": "46b2df84-2d70-522c-98a9-62d763543a8f",
-      "zh": "使通俗化",
+      "zh": "使通俗化，使普及",
       "en": "popularise",
       "note": "verb"
     },
@@ -8139,19 +8139,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "41fb64fd-fe17-5901-b91d-6043bd4f47b9",
-      "zh": "洗脑",
+      "zh": "洗脑，对人洗脑",
       "en": "brainwash",
       "note": "noun"
     },
     {
       "id": "1e08794f-cda1-54a0-82e4-552b19def11a",
-      "zh": "昼夜平分点",
+      "zh": "昼夜平分点，春分",
       "en": "equinox",
       "note": "noun"
     },
     {
       "id": "6c8c4089-ff6b-5dd0-8315-81d37db97e86",
-      "zh": "切断",
+      "zh": "切断，使残废",
       "en": "mutilate",
       "note": "verb"
     },
@@ -8163,31 +8163,31 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "758d1c01-fa86-50ef-8599-9a575c54eb0e",
-      "zh": "懦弱的",
+      "zh": "懦弱的，羞怯的",
       "en": "sheepish",
       "note": "adjective"
     },
     {
       "id": "0c2ad89f-9e9c-5085-aa69-1ed2ac8e7c6f",
-      "zh": "阴间的",
+      "zh": "阴间的，恶魔的",
       "en": "infernal",
       "note": "adjective"
     },
     {
       "id": "e053ccdc-c97b-5293-ba1e-ac300d21fa76",
-      "zh": "浪费",
+      "zh": "浪费，细切，剁碎",
       "en": "fritter",
       "note": "verb"
     },
     {
       "id": "5f6eba38-3a02-531a-a1bc-8323094b7a30",
-      "zh": "脚的动作",
+      "zh": "脚的动作，脚力",
       "en": "footwork",
       "note": "noun"
     },
     {
       "id": "c996a16f-2744-5b64-a5af-cb5e233a8436",
-      "zh": "不真实",
+      "zh": "不真实，虚假",
       "en": "untruth",
       "note": "noun"
     },
@@ -8205,97 +8205,97 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "6fe3b6bb-486a-55ac-b62c-33805ecda642",
-      "zh": "繁茂的",
+      "zh": "繁茂的，丰富的",
       "en": "luxuriant",
       "note": "adjective"
     },
     {
       "id": "0a230b3a-30f5-51d2-acca-bbb4f06e7dd6",
-      "zh": "冻伤",
+      "zh": "冻伤，冻疮",
       "en": "frostbite",
       "note": "noun"
     },
     {
       "id": "b14b4255-9a1e-5ab7-9087-59fbb82d4d39",
-      "zh": "撇去浮沫的器具",
+      "zh": "浏览者，剪嘴鸥",
       "en": "skimmer",
       "note": "noun"
     },
     {
       "id": "c844f3bd-0154-54bf-9e58-9e298c8cdc8d",
-      "zh": "根深蒂固的",
+      "zh": "彻底的，深染的",
       "en": "ingrained",
       "note": "adjective"
     },
     {
       "id": "2215f292-3070-5beb-8ea0-283773965d27",
-      "zh": "绞刑吏",
+      "zh": "绞刑吏，刽子手",
       "en": "hangman",
       "note": "noun"
     },
     {
       "id": "a040f5d9-2c3a-5d61-b2fb-b6bb18f35d0d",
-      "zh": "轻率",
+      "zh": "轻率，轻浮",
       "en": "levity",
       "note": "noun"
     },
     {
       "id": "1341c81c-a07d-515a-bb0a-114432f6b6d6",
-      "zh": "责备",
+      "zh": "责备，责骂，非难",
       "en": "reprove",
       "note": "verb"
     },
     {
       "id": "66b44168-9d0c-5230-9572-8bd43a727312",
-      "zh": "忠实追随者",
+      "zh": "党羽，亲信，心腹",
       "en": "henchman",
       "note": "noun"
     },
     {
       "id": "cddbac5d-91c9-5bf0-aae5-f4c8c6e581a6",
-      "zh": "预尝",
+      "zh": "预尝，先试，先尝",
       "en": "foretaste",
       "note": "verb"
     },
     {
       "id": "3952151a-bf31-59be-9350-537e7c3fc2c5",
-      "zh": "服从",
+      "zh": "征服，服从，隶属",
       "en": "subjection",
       "note": "noun"
     },
     {
       "id": "63a1d479-22c3-5064-b624-8a024359a954",
-      "zh": "把...当偶像崇拜",
+      "zh": "偶像化，崇拜",
       "en": "idolise",
       "note": "verb"
     },
     {
       "id": "dbfa8ff8-29b4-5361-8a12-ae991d838c4e",
-      "zh": "无效的",
+      "zh": "无效的，无能的",
       "en": "feckless",
       "note": "adjective"
     },
     {
       "id": "cfdddce9-688b-5219-933e-1d4b4139a1ef",
-      "zh": "使饱足",
+      "zh": "使饱足，使厌腻",
       "en": "satiate",
       "note": "verb"
     },
     {
       "id": "5c1c4dda-0ec6-50e7-9d8f-a8adfc27f098",
-      "zh": "辩驳",
+      "zh": "反驳，辩驳",
       "en": "refutation",
       "note": "noun"
     },
     {
       "id": "bbb89fd4-64ca-58a9-bd48-f1360c4c8eb5",
-      "zh": "粗俗",
+      "zh": "粗俗，粗鄙，粗话",
       "en": "vulgarity",
       "note": "noun"
     },
     {
       "id": "03f006e7-dcdd-55e9-b3ee-f1cd02da8120",
-      "zh": "宽大的",
+      "zh": "慷慨的，宽大的",
       "en": "bountiful",
       "note": "adjective"
     },
@@ -8307,7 +8307,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "17100d00-c8fb-5ea1-88f2-efe535de3661",
-      "zh": "人力车",
+      "zh": "人力车，黄包车",
       "en": "rickshaw",
       "note": "noun"
     },
@@ -8343,7 +8343,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "7080e949-f03a-5e6d-b9ad-65c6c4628223",
-      "zh": "气象学",
+      "zh": "气象学，气象状态",
       "en": "meteorology",
       "note": "noun"
     },
@@ -8355,25 +8355,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "b0826d76-bc85-541b-b2e5-b54d52d9a6fd",
-      "zh": "反复无常",
+      "zh": "反复无常，多变",
       "en": "caprice",
       "note": "noun"
     },
     {
       "id": "365388a2-deb0-5ce6-9f29-d082b95c2cfe",
-      "zh": "硬卖给",
+      "zh": "硬卖给，偷偷插入",
       "en": "foist",
       "note": "verb"
     },
     {
       "id": "a5ce3abc-dec5-57f3-9d0c-6af7376c7790",
-      "zh": "婴儿的",
+      "zh": "婴儿的，幼稚的",
       "en": "infantile",
       "note": "adjective"
     },
     {
       "id": "baa17a40-cdd5-5399-9013-1e1bba1d7ff3",
-      "zh": "使怀孕",
+      "zh": "使怀孕，使肥沃",
       "en": "impregnate",
       "note": "verb"
     },
@@ -8385,49 +8385,49 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "c7813de1-783d-57bc-8314-d83cdb8edbf9",
-      "zh": "无痛的",
+      "zh": "懒惰的，无痛的",
       "en": "indolent",
       "note": "adjective"
     },
     {
       "id": "bb6d7862-ecf1-5202-b98f-83d2b225748c",
-      "zh": "不整齐的",
+      "zh": "不整齐的，未决的",
       "en": "unsettled",
       "note": "adjective"
     },
     {
       "id": "7ecd2ed8-061e-5b49-bd36-5408ec1dedbe",
-      "zh": "柔弱的",
+      "zh": "柔弱的，女人气的",
       "en": "effeminate",
       "note": "adjective"
     },
     {
       "id": "a77f9b74-a0ee-5336-bc75-11b32daa40a8",
-      "zh": "细查",
+      "zh": "细查，讨论，游说",
       "en": "canvass",
       "note": "noun"
     },
     {
       "id": "35983fac-750e-5a29-9ce9-73c6a140e159",
-      "zh": "变形",
+      "zh": "变形，变化，演变",
       "en": "transmutation",
       "note": "noun"
     },
     {
       "id": "d444d2ef-2234-5495-ad0d-b434f41c4240",
-      "zh": "热忱",
+      "zh": "热忱，热情，情欲",
       "en": "ardour",
       "note": "noun"
     },
     {
       "id": "48619c4b-53b2-5740-b060-a467bfa1df9c",
-      "zh": "波纹",
+      "zh": "波纹，使皱，使缩",
       "en": "crinkle",
       "note": "noun"
     },
     {
       "id": "864c1fb1-f306-53e9-94d0-84f2ee5a3c4b",
-      "zh": "飞轮",
+      "zh": "飞轮，惯性轮",
       "en": "flywheel",
       "note": "noun"
     },
@@ -8439,13 +8439,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "912a2217-6aa2-57a4-a28a-2ccfb22512b6",
-      "zh": "笨蛋",
+      "zh": "笨蛋，傻子",
       "en": "simpleton",
       "note": "noun"
     },
     {
       "id": "5161538a-3e93-5d77-ac52-5b818a7973f0",
-      "zh": "印地语的",
+      "zh": "印地语的，印地语",
       "en": "hindi",
       "note": "adjective"
     },
@@ -8457,13 +8457,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "e21175b8-ef22-5339-918b-fed182e61948",
-      "zh": "展出品",
+      "zh": "展出品，样品",
       "en": "showpiece",
       "note": "noun"
     },
     {
       "id": "814d40c4-f848-5449-957c-d7f4c41ce288",
-      "zh": "惊人的",
+      "zh": "惊人的，巨大的",
       "en": "stupendous",
       "note": "adjective"
     },
@@ -8481,31 +8481,31 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "35a7b7c4-d3bc-5ab9-b13b-6caf50650059",
-      "zh": "闯入者",
+      "zh": "闯入者，好事者",
       "en": "interloper",
       "note": "noun"
     },
     {
       "id": "2f6ff61d-5663-5caf-b5da-8c0fdc77c2d7",
-      "zh": "成层",
+      "zh": "成层，分层",
       "en": "stratify",
       "note": "verb"
     },
     {
       "id": "880806d4-73db-57d1-9b42-fac22e0d8729",
-      "zh": "食人者",
+      "zh": "食人者，食同类的",
       "en": "cannibal",
       "note": "noun"
     },
     {
       "id": "8ebab585-2524-5742-ac29-20fef0126b40",
-      "zh": "在其上",
+      "zh": "因此，由此，随即",
       "en": "thereupon",
       "note": "adverb"
     },
     {
       "id": "5b569aea-2372-5e7b-8fc7-2e12faa8dc61",
-      "zh": "不满之声",
+      "zh": "不满之声，嘘声",
       "en": "catcall",
       "note": "noun"
     },
@@ -8517,37 +8517,37 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "5abc2420-f68b-5139-bd8e-c2268f6d92f5",
-      "zh": "少女",
+      "zh": "少女，闺女",
       "en": "damsel",
       "note": "noun"
     },
     {
       "id": "cef15bd8-372b-5b86-8089-9f8003c151a2",
-      "zh": "打败",
+      "zh": "打败，征服，克服",
       "en": "vanquish",
       "note": "verb"
     },
     {
       "id": "caaeecba-0a21-5498-ad8d-dc11d57455f6",
-      "zh": "烧焦",
+      "zh": "烧焦，烤焦",
       "en": "singe",
       "note": "verb"
     },
     {
       "id": "73e19bf8-9522-5ff2-ad67-a3fab4dd46ce",
-      "zh": "发行",
+      "zh": "发行，发布，发给",
       "en": "issuance",
       "note": "noun"
     },
     {
       "id": "36fea563-1513-5eca-a2ba-6b45cb3a414a",
-      "zh": "偏离正路的",
+      "zh": "畸变的，异常的",
       "en": "aberrant",
       "note": "adjective"
     },
     {
       "id": "ced5b6b9-6e02-573f-8735-26b4c5450444",
-      "zh": "生产量",
+      "zh": "生产量，通过量",
       "en": "throughput",
       "note": "noun"
     },
@@ -8565,55 +8565,55 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "6eddc2ae-81cf-5b17-a8e7-d1d36ab608fa",
-      "zh": "冒名顶替者",
+      "zh": "冒名顶替者，骗子",
       "en": "impostor",
       "note": "noun"
     },
     {
       "id": "4e677fcf-2426-5bee-bef6-88d1518a0033",
-      "zh": "水门",
+      "zh": "水门，水闸",
       "en": "floodgate",
       "note": "noun"
     },
     {
       "id": "88895693-f282-5799-be08-61e7cff67738",
-      "zh": "剥夺",
+      "zh": "剥夺，没收，征用",
       "en": "expropriate",
       "note": "verb"
     },
     {
       "id": "461473e8-b749-5ed0-b1ad-88bbb6a74d7f",
-      "zh": "奴隶状态",
+      "zh": "惩役，苦役，劳役",
       "en": "servitude",
       "note": "noun"
     },
     {
       "id": "009e6104-f9f0-5a1f-bc26-9f0444a4fb21",
-      "zh": "给水栓",
+      "zh": "给水栓，水龙头",
       "en": "hydrant",
       "note": "noun"
     },
     {
       "id": "b0280547-6563-5220-9d54-dcb5dc213970",
-      "zh": "抱怨的",
+      "zh": "抱怨的，易怒的",
       "en": "querulous",
       "note": "adjective"
     },
     {
       "id": "2f3779ff-b777-5bf7-be66-e0ff6cf294af",
-      "zh": "枯叶色的",
+      "zh": "枯叶色的，简朴的",
       "en": "russet",
       "note": "adjective"
     },
     {
       "id": "e0d950e2-da1c-5e89-8dc7-59baf04ac0d0",
-      "zh": "浑浊的",
+      "zh": "浑浊的，污浊的",
       "en": "turbid",
       "note": "adjective"
     },
     {
       "id": "57938fba-09a8-594c-a922-11c95dcd0cdd",
-      "zh": "拉小提琴的",
+      "zh": "微小的，无用的",
       "en": "fiddling",
       "note": "adjective"
     },
@@ -8625,61 +8625,61 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "c68cbccf-8109-5678-9d3d-72791d958e80",
-      "zh": "中伤",
+      "zh": "中伤，飞溅，少量",
       "en": "spatter",
       "note": "verb"
     },
     {
       "id": "bb6a0434-01b9-52f2-882b-db74b7258900",
-      "zh": "同此",
+      "zh": "同此，用此方法",
       "en": "herewith",
       "note": "adverb"
     },
     {
       "id": "fa93a32f-7591-5a49-b790-1926f23016fe",
-      "zh": "过冬",
+      "zh": "过冬，冬眠，避寒",
       "en": "hibernate",
       "note": "verb"
     },
     {
       "id": "005a1b2b-ee1e-5105-b4dc-176dfdafc38b",
-      "zh": "逢迎的",
+      "zh": "逢迎的，迎合的",
       "en": "ingratiating",
       "note": "adjective"
     },
     {
       "id": "4a693038-501a-5ae5-afe0-087e598d2e85",
-      "zh": "切割",
+      "zh": "切割，雕刻",
       "en": "incise",
       "note": "verb"
     },
     {
       "id": "85ad64ef-e902-5d68-9a20-e97fcd75abbd",
-      "zh": "小丘",
+      "zh": "小丘，小高处",
       "en": "hillock",
       "note": "noun"
     },
     {
       "id": "cb5c4951-ec86-58c2-9b29-379b1bcd4ebd",
-      "zh": "发颤音",
+      "zh": "发颤音，颤抖",
       "en": "quaver",
       "note": "verb"
     },
     {
       "id": "06b36c3e-14aa-559e-8bd5-218e91f32dff",
-      "zh": "安抚",
+      "zh": "安抚，说服，调和",
       "en": "conciliate",
       "note": "verb"
     },
     {
       "id": "6788a6e9-084b-5fc2-8d76-1dd6b1effd53",
-      "zh": "破坏名誉",
+      "zh": "诽谤，中伤",
       "en": "defame",
       "note": "verb"
     },
     {
       "id": "18064ce2-1fa7-5d60-943a-830e028eb992",
-      "zh": "掺杂",
+      "zh": "掺杂，掺假的",
       "en": "adulterate",
       "note": "verb"
     },
@@ -8691,43 +8691,43 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "8d9ef6d8-f745-5467-92d6-c549ddd45d03",
-      "zh": "痛心的",
+      "zh": "痛心的，悲惨的",
       "en": "harrowing",
       "note": "adjective"
     },
     {
       "id": "4d5f15b0-e662-5a76-bc5c-6704d3387bad",
-      "zh": "星占",
+      "zh": "星占，算命天宫图",
       "en": "horoscope",
       "note": "noun"
     },
     {
       "id": "2c8a8bd8-dbb1-50ab-bdea-e7fb9f0cc994",
-      "zh": "卑贱的",
+      "zh": "卑贱的，卑鄙的",
       "en": "ignoble",
       "note": "adjective"
     },
     {
       "id": "4dca8518-2259-5ccd-859c-67642d87e661",
-      "zh": "难取悦的",
+      "zh": "难取悦的，挑剔的",
       "en": "fastidious",
       "note": "adjective"
     },
     {
       "id": "87b6f1f0-a2eb-59f0-944a-52c5840f6966",
-      "zh": "走向岔道",
+      "zh": "走向岔道，离题",
       "en": "digress",
       "note": "verb"
     },
     {
       "id": "2bbe135a-fe9a-56b7-af7b-56fde2c0b62a",
-      "zh": "咆哮者",
+      "zh": "咆哮者，号哭的人",
       "en": "howler",
       "note": "noun"
     },
     {
       "id": "3de991e2-d0c2-5208-9a4a-08accfe3b076",
-      "zh": "使插入",
+      "zh": "使插入，使干涉",
       "en": "interpose",
       "note": "verb"
     },
@@ -8739,13 +8739,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "2cad05f5-6864-5d19-a887-c89618177ad9",
-      "zh": "教训",
+      "zh": "教训，教导，灌输",
       "en": "indoctrinate",
       "note": "verb"
     },
     {
       "id": "dfec9607-1428-5c61-b66c-1f3ba37028cb",
-      "zh": "射手",
+      "zh": "射手，狙击兵",
       "en": "marksman",
       "note": "noun"
     },
@@ -8757,31 +8757,31 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "9d73bdde-2c1e-5a90-b299-3edd58b69de6",
-      "zh": "在附近的",
+      "zh": "在附近的，近于",
       "en": "nigh",
       "note": "adjective"
     },
     {
       "id": "14231a2e-07ef-5775-a1e3-ceef042a33a8",
-      "zh": "敏锐的",
+      "zh": "敏锐的，机敏的",
       "en": "incisive",
       "note": "adjective"
     },
     {
       "id": "ff3b1565-bb6f-50bb-b3a8-5651d7a9ab4f",
-      "zh": "星号",
+      "zh": "星号，星号通配符",
       "en": "asterisk",
       "note": "noun"
     },
     {
       "id": "ca689515-902e-5dd0-acdb-01acfd80fc54",
-      "zh": "克制",
+      "zh": "忍耐，克制，容忍",
       "en": "forbear",
       "note": "verb"
     },
     {
       "id": "282b7dae-a9a3-56cc-8d18-ba8854f83f83",
-      "zh": "学者",
+      "zh": "学者，专家",
       "en": "savant",
       "note": "noun"
     },
@@ -8793,43 +8793,43 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "83e989b8-7520-5461-bfcc-d36bfd05c48c",
-      "zh": "瞻养费",
+      "zh": "瞻养费，生活费",
       "en": "alimony",
       "note": "noun"
     },
     {
       "id": "8ea402f8-33ca-5f88-8acd-dfc50aa9f35a",
-      "zh": "空运",
+      "zh": "空运，空中补给线",
       "en": "airlift",
       "note": "noun"
     },
     {
       "id": "db664f2c-244f-5130-ab7c-1bf1040a79a5",
-      "zh": "不名誉",
+      "zh": "耻辱，奸污，拒收",
       "en": "dishonour",
       "note": "noun"
     },
     {
       "id": "735ae7ad-b4cc-53d5-8c53-c36c947cf879",
-      "zh": "同上",
+      "zh": "同上，同上符号",
       "en": "ditto",
       "note": "noun"
     },
     {
       "id": "01d813f6-b690-5c3e-9e0f-577d2a9976c4",
-      "zh": "木兰",
+      "zh": "木兰，浅桃红色",
       "en": "magnolia",
       "note": "noun"
     },
     {
       "id": "ccfd6ac6-7b4f-5d05-b1a7-37a3578eee98",
-      "zh": "精萃",
+      "zh": "精萃，精华，典范",
       "en": "quintessence",
       "note": "noun"
     },
     {
       "id": "3c1c00db-a205-5797-a791-91b8685bf1e9",
-      "zh": "脚镣",
+      "zh": "脚镣，羁绊，束缚",
       "en": "fetter",
       "note": "noun"
     },
@@ -8841,25 +8841,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "ffda586e-52c2-5b4c-ad36-0a0f2828f4b7",
-      "zh": "镊子",
+      "zh": "镊子，钳子",
       "en": "forceps",
       "note": "noun"
     },
     {
       "id": "77a26c0b-e663-5cf0-a30c-29e7cb07bf91",
-      "zh": "惊跑",
+      "zh": "惊跑，蜂拥",
       "en": "stampede",
       "note": "verb"
     },
     {
       "id": "3c71cd35-02e6-5185-a55a-7a8904368b65",
-      "zh": "欠考虑的",
+      "zh": "轻率的，欠考虑的",
       "en": "harebrained",
       "note": "adjective"
     },
     {
       "id": "86a84498-c48d-5f7b-b368-a72fe460d2a8",
-      "zh": "有用的",
+      "zh": "有用的，耐用的",
       "en": "serviceable",
       "note": "adjective"
     },
@@ -8871,73 +8871,73 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "2b1124f1-8623-56f4-bd7e-cd27762d9c2b",
-      "zh": "占星术",
+      "zh": "占星术，占星学",
       "en": "astrology",
       "note": "noun"
     },
     {
       "id": "9693a9d6-f888-5383-bed0-e401c60bdce5",
-      "zh": "生殖力旺盛的",
+      "zh": "多产的，丰饶的",
       "en": "fecund",
       "note": "adjective"
     },
     {
       "id": "2acffa56-8669-5c3f-9b07-97f5ebb6cc8b",
-      "zh": "徒手画的",
+      "zh": "徒手画的，手画线",
       "en": "freehand",
       "note": "adjective"
     },
     {
       "id": "ccc65045-f1de-5277-86c0-3330ee7d30ff",
-      "zh": "闲荡",
+      "zh": "闲荡，虚度，徘徊",
       "en": "loiter",
       "note": "verb"
     },
     {
       "id": "9164e9c2-0963-5845-98e4-fc8e1764be7e",
-      "zh": "不懈的",
+      "zh": "不懈的，不断的",
       "en": "unremitting",
       "note": "adjective"
     },
     {
       "id": "d9dde01a-b3a5-5c62-a136-381fa525d950",
-      "zh": "非正统的",
+      "zh": "非正统的，异端的",
       "en": "heterodox",
       "note": "adjective"
     },
     {
       "id": "3f80b7ed-8222-5099-909b-d929a920a463",
-      "zh": "小夜曲",
+      "zh": "小夜曲，唱小夜曲",
       "en": "serenade",
       "note": "noun"
     },
     {
       "id": "bf1fca5c-ca1c-53ca-8910-dcf14760dd91",
-      "zh": "埋葬",
+      "zh": "埋葬，土葬",
       "en": "interment",
       "note": "noun"
     },
     {
       "id": "a0710ed5-802a-52fd-82f6-a6df0d2bdcb8",
-      "zh": "部下",
+      "zh": "部下，下手，下属",
       "en": "underling",
       "note": "noun"
     },
     {
       "id": "63900e03-52fc-5266-8f77-8ca22dd81abd",
-      "zh": "人面兽心的人",
+      "zh": "乡愚，粗汉",
       "en": "yahoo",
       "note": "noun"
     },
     {
       "id": "662f457f-ab5d-59ca-970b-97337b4a437c",
-      "zh": "过度的",
+      "zh": "过度的，紊乱的",
       "en": "inordinate",
       "note": "adjective"
     },
     {
       "id": "c4fc749d-27bb-5eed-8eed-c409436bb386",
-      "zh": "偿付能力",
+      "zh": "偿付能力，溶解力",
       "en": "solvency",
       "note": "noun"
     },
@@ -8949,49 +8949,49 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "8f190c8a-6a6a-53d5-baaa-9f565c0d293f",
-      "zh": "即时的",
+      "zh": "即时的，即席的",
       "en": "offhand",
       "note": "adjective"
     },
     {
       "id": "39ab0568-462c-5c07-aac4-d484a0299b43",
-      "zh": "共谋",
+      "zh": "共谋，串通，勾结",
       "en": "collude",
       "note": "verb"
     },
     {
       "id": "feefc2fb-f736-5e4b-849a-8734d769a423",
-      "zh": "敌意",
+      "zh": "敌意，深仇",
       "en": "rancour",
       "note": "noun"
     },
     {
       "id": "c0055c9e-7771-5277-b773-7f1257a46c75",
-      "zh": "愤怒的",
+      "zh": "愤怒的，激怒了的",
       "en": "incensed",
       "note": "adjective"
     },
     {
       "id": "f60d5d65-e3b9-5b22-a60f-8f05cc94f38c",
-      "zh": "喉咙的",
+      "zh": "喉咙的，咽喉的",
       "en": "guttural",
       "note": "adjective"
     },
     {
       "id": "20f7c8ba-80f7-53e2-8d78-86dfa39b5914",
-      "zh": "图章",
+      "zh": "图章，盖章于",
       "en": "signet",
       "note": "noun"
     },
     {
       "id": "5ffdfc20-c930-575f-b9cd-5cc5a6c2a06f",
-      "zh": "麻痹的",
+      "zh": "麻痹的，患麻痹的",
       "en": "paralytic",
       "note": "adjective"
     },
     {
       "id": "2b40d62e-b891-5116-9d49-81431bc4e096",
-      "zh": "流浪者",
+      "zh": "流浪者，浪子",
       "en": "vagabond",
       "note": "noun"
     },
@@ -9011,31 +9011,31 @@ export const QUESTION_BANKS = {
   "ielts": [
     {
       "id": "265f75aa-8a06-5de0-a262-a89361bba9c1",
-      "zh": "挖空",
+      "zh": "挖空，挖出，凿通",
       "en": "excavate",
       "note": "verb"
     },
     {
       "id": "67837ebf-5c7d-5044-87e9-08d5ebf0de4d",
-      "zh": "蔑视",
+      "zh": "蔑视，挑战，藐视",
       "en": "defiance",
       "note": "noun"
     },
     {
       "id": "bf0e69f7-4b56-5d89-bc99-57f917f50347",
-      "zh": "减去",
+      "zh": "减去，扣掉，减少",
       "en": "subtract",
       "note": "verb"
     },
     {
       "id": "29af0137-5f96-5520-a384-6aa3ca880e75",
-      "zh": "偷懒的",
+      "zh": "偷懒的，懒惰的",
       "en": "sluggish",
       "note": "adjective"
     },
     {
       "id": "fee8e3aa-885e-5204-a255-42c530930944",
-      "zh": "获得",
+      "zh": "获得，取得，导致",
       "en": "procure",
       "note": "verb"
     },
@@ -9047,37 +9047,37 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "63fe4ab3-d5fc-5d1b-b81b-df00e57e7ddb",
-      "zh": "牵引",
+      "zh": "牵引，牵引力",
       "en": "traction",
       "note": "noun"
     },
     {
       "id": "80e28312-b920-5d5b-a275-7b2d4e12a5e4",
-      "zh": "降雨",
+      "zh": "降雨，降雨量",
       "en": "rainfall",
       "note": "noun"
     },
     {
       "id": "343c9a23-af9e-5f31-801f-eaa353d84abe",
-      "zh": "逐出",
+      "zh": "逐出，开除，驱逐",
       "en": "expulsion",
       "note": "noun"
     },
     {
       "id": "4f15059b-3f13-5be5-957c-b503a45b9ffd",
-      "zh": "明亮的",
+      "zh": "发光的",
       "en": "luminous",
       "note": "adjective"
     },
     {
       "id": "a07efc7f-0e19-556b-b1cb-75101b9f77a6",
-      "zh": "大官",
+      "zh": "大官，巨头，权贵",
       "en": "magnate",
       "note": "noun"
     },
     {
       "id": "60e5004b-096d-57e8-8618-9fbc90b32e2a",
-      "zh": "微生物",
+      "zh": "微生物，细菌",
       "en": "microbe",
       "note": "noun"
     },
@@ -9089,49 +9089,49 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "0c2adcb3-b91d-5742-87df-206c572f9b17",
-      "zh": "麻痹",
+      "zh": "麻痹，停顿，瘫痪",
       "en": "paralysis",
       "note": "noun"
     },
     {
       "id": "cbc7812f-2f8a-50be-af61-78605704c6c6",
-      "zh": "轶事",
+      "zh": "轶事，奇闻",
       "en": "anecdote",
       "note": "noun"
     },
     {
       "id": "bd885302-104d-5d5f-ab01-7ff15a280b39",
-      "zh": "独白",
+      "zh": "独白，独脚戏",
       "en": "monologue",
       "note": "noun"
     },
     {
       "id": "493e8658-2ddb-5dc1-9b25-45d5464cec13",
-      "zh": "游览",
+      "zh": "游览，游览的",
       "en": "touring",
       "note": "noun"
     },
     {
       "id": "6aa65b46-6a77-595f-ae38-2e69237067bc",
-      "zh": "悲悼",
+      "zh": "悲悼，哀叹",
       "en": "deplore",
       "note": "verb"
     },
     {
       "id": "ba75ec9a-b579-57de-b0da-f76608967ab5",
-      "zh": "温和",
+      "zh": "温和，缓和，减轻",
       "en": "mitigate",
       "note": "verb"
     },
     {
       "id": "4a52a3a7-2545-5ee9-9a82-350cee71817c",
-      "zh": "耗尽",
+      "zh": "耗尽，排除，减少",
       "en": "deplete",
       "note": "verb"
     },
     {
       "id": "64b08939-8d09-5c43-ad66-12558adf69c4",
-      "zh": "职业",
+      "zh": "职业，天命，天职",
       "en": "vocation",
       "note": "noun"
     },
@@ -9143,13 +9143,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "66493cf6-e321-5f90-9949-60a9ef9e4cde",
-      "zh": "旧式的",
+      "zh": "旧式的，落伍的",
       "en": "outdated",
       "note": "adjective"
     },
     {
       "id": "9e9338a9-4d95-5050-9c5f-1c243bee1ce2",
-      "zh": "率直的",
+      "zh": "率直的，完全的",
       "en": "outright",
       "note": "adjective"
     },
@@ -9161,7 +9161,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "3bb82fe5-a836-5c13-98b7-89878e6dab4e",
-      "zh": "雪崩",
+      "zh": "雪崩，山崩，大量",
       "en": "avalanche",
       "note": "noun"
     },
@@ -9173,37 +9173,37 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "1342202d-cbff-5610-8fca-aaa7ac5eff82",
-      "zh": "阻隔",
+      "zh": "阻隔，妨碍，阻塞",
       "en": "obstruct",
       "note": "verb"
     },
     {
       "id": "ec93240a-f710-565c-9697-4e913663d519",
-      "zh": "制造",
+      "zh": "制造，建造，装配",
       "en": "fabricate",
       "note": "verb"
     },
     {
       "id": "6d086cc0-33ce-5ddf-8e8e-1b0e4a6c6b8f",
-      "zh": "懊悔",
+      "zh": "懊悔，自责，同情",
       "en": "remorse",
       "note": "noun"
     },
     {
       "id": "27db0fdd-8175-57b1-83c1-be4989f6bfb8",
-      "zh": "出纳员",
+      "zh": "出纳员，司库",
       "en": "cashier",
       "note": "noun"
     },
     {
       "id": "a4aec062-a144-5b7f-b7be-564a7bf6436e",
-      "zh": "花束",
+      "zh": "花束，酒香",
       "en": "bouquet",
       "note": "noun"
     },
     {
       "id": "1689321c-caa7-55d1-95d8-7c5cf52c0eba",
-      "zh": "商定的",
+      "zh": "商定的，协定的",
       "en": "concerted",
       "note": "adjective"
     },
@@ -9221,103 +9221,103 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "094141eb-c1ec-5e83-bafd-5ee4749710d3",
-      "zh": "旅行的",
+      "zh": "旅行的，旅行用的",
       "en": "traveling",
       "note": "adjective"
     },
     {
       "id": "020b45e6-aa54-5b45-98b6-e1a494b4411e",
-      "zh": "忠实",
+      "zh": "忠实，诚实，忠诚",
       "en": "fidelity",
       "note": "noun"
     },
     {
       "id": "c5eb501c-fa1b-5c04-b003-39fcdfc7cea3",
-      "zh": "海上救助",
+      "zh": "抢救，打捞，营救",
       "en": "salvage",
       "note": "noun"
     },
     {
       "id": "f6799029-47f6-5157-93e6-d24736beeba0",
-      "zh": "阐述",
+      "zh": "阐述，讲解，说明",
       "en": "exposition",
       "note": "noun"
     },
     {
       "id": "b89c2702-4d76-59b1-b47b-6d72fe9c474f",
-      "zh": "任务",
+      "zh": "任务，差使，使命",
       "en": "errand",
       "note": "noun"
     },
     {
       "id": "bc08f7a3-00a9-5ef5-856b-e00c886cfb63",
-      "zh": "疾驰的",
+      "zh": "疾驰的，短暂的",
       "en": "fleeting",
       "note": "adjective"
     },
     {
       "id": "35d1d05f-414c-583c-9b81-20c8e6cd8817",
-      "zh": "英里数",
+      "zh": "英里数，运费",
       "en": "mileage",
       "note": "noun"
     },
     {
       "id": "32b0ed84-cc49-5b3a-add1-0297507bbe5c",
-      "zh": "卫生的",
+      "zh": "卫生的，公共厕所",
       "en": "sanitary",
       "note": "adjective"
     },
     {
       "id": "8787935e-0438-5b4b-9337-de2e7c93ab3a",
-      "zh": "优先",
+      "zh": "优先，居先",
       "en": "precedence",
       "note": "noun"
     },
     {
       "id": "534b49a3-99fa-5294-9e30-c4b393897110",
-      "zh": "大约的",
+      "zh": "大约的，接近的",
       "en": "approximate",
       "note": "adjective"
     },
     {
       "id": "3ef8bc39-789c-5291-ba5d-85cd96c74070",
-      "zh": "路障",
+      "zh": "路障，障碍，阻碍",
       "en": "barricade",
       "note": "noun"
     },
     {
       "id": "a69dac70-c24a-530a-830d-95657d599363",
-      "zh": "爬行动物",
+      "zh": "爬行动物，爬虫",
       "en": "reptile",
       "note": "noun"
     },
     {
       "id": "c0c5ea8b-6d7e-550c-a716-686c1817ff69",
-      "zh": "公尺的",
+      "zh": "公尺的，公制的",
       "en": "metric",
       "note": "adjective"
     },
     {
       "id": "5e0b8ad2-4a65-5921-a029-12b816605f2b",
-      "zh": "反胃",
+      "zh": "反胃，晕船，恶心",
       "en": "nausea",
       "note": "noun"
     },
     {
       "id": "72a82fcd-0485-5f11-8ec5-f0fb49e718e2",
-      "zh": "老练的",
+      "zh": "熟练的，老练的",
       "en": "adept",
       "note": "adjective"
     },
     {
       "id": "86a405b8-6211-58ce-8515-2202cee7035a",
-      "zh": "速度",
+      "zh": "速度，节奏，一着",
       "en": "tempo",
       "note": "noun"
     },
     {
       "id": "ad806361-44ba-5c7c-83c9-61b81c5676f3",
-      "zh": "缠结",
+      "zh": "缠结，困惑，纠纷",
       "en": "tangle",
       "note": "noun"
     },
@@ -9329,31 +9329,31 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "936bb26d-06bf-59c3-80be-d972e589e880",
-      "zh": "阐明",
+      "zh": "阐明，解决，解开",
       "en": "unravel",
       "note": "verb"
     },
     {
       "id": "1a5418f1-876b-50d5-be0f-9bf99a8cccf2",
-      "zh": "使绝缘",
+      "zh": "使绝缘，隔离",
       "en": "insulate",
       "note": "verb"
     },
     {
       "id": "35d655b2-bb55-51f8-aa87-640401022b32",
-      "zh": "细流",
+      "zh": "细流，细细地流",
       "en": "trickle",
       "note": "noun"
     },
     {
       "id": "a09394cb-165a-5ec3-8a15-f757272f73d5",
-      "zh": "第三的",
+      "zh": "第三的，第三位的",
       "en": "tertiary",
       "note": "adjective"
     },
     {
       "id": "f4c74d1b-84e0-5b5e-8f6f-c645d816ffcd",
-      "zh": "说明",
+      "zh": "说明，字幕，标题",
       "en": "caption",
       "note": "noun"
     },
@@ -9365,97 +9365,97 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "0247cabd-89d8-5119-8e8d-ab713da91339",
-      "zh": "译解",
+      "zh": "译解，解释",
       "en": "decipher",
       "note": "verb"
     },
     {
       "id": "42a5b92c-36dc-51f0-b264-dfc10ba01062",
-      "zh": "分解检查",
+      "zh": "分解检查，翻修",
       "en": "overhaul",
       "note": "verb"
     },
     {
       "id": "fa74d30f-84fd-5171-8ae8-c90bc01d7ac0",
-      "zh": "使喘不过气",
+      "zh": "闷熄，忍住，抑制",
       "en": "smother",
       "note": "verb"
     },
     {
       "id": "0671babe-c233-5fe2-b005-dda8ad2c155e",
-      "zh": "怠工",
+      "zh": "怠工，破坏，妨害",
       "en": "sabotage",
       "note": "noun"
     },
     {
       "id": "3c649f4d-773a-51d9-aaf9-754bd9c42502",
-      "zh": "偶尔发生的",
+      "zh": "分散的，散在的",
       "en": "sporadic",
       "note": "adjective"
     },
     {
       "id": "895d55e7-8ad2-5532-9e6e-d29edbdb2c5c",
-      "zh": "颤动",
+      "zh": "振动，颤动，激动",
       "en": "vibrate",
       "note": "verb"
     },
     {
       "id": "c4991881-79d4-5267-a440-1ee66c02f1a6",
-      "zh": "给予",
+      "zh": "给予，传授，告知",
       "en": "impart",
       "note": "verb"
     },
     {
       "id": "e41d6d61-a47c-5f73-b2e5-fe6f08591f47",
-      "zh": "宽大",
+      "zh": "慷慨，宽大，礼物",
       "en": "bounty",
       "note": "noun"
     },
     {
       "id": "0d79a17e-848e-50bd-bbef-f8a659c9342c",
-      "zh": "食品",
+      "zh": "食品，食物",
       "en": "edible",
       "note": "noun"
     },
     {
       "id": "e0c2af69-4a68-520a-8fe6-2cc96426f6db",
-      "zh": "规定",
+      "zh": "规定，保证",
       "en": "stipulate",
       "note": "verb"
     },
     {
       "id": "4a3a719d-4cd8-526f-a14b-62671a559dd5",
-      "zh": "使丢脸",
+      "zh": "使丢脸，使蒙羞",
       "en": "humiliate",
       "note": "verb"
     },
     {
       "id": "495418d4-c923-5bd1-a0f9-6ccee4d9982a",
-      "zh": "愤慨的",
+      "zh": "愤怒的，愤慨的",
       "en": "indignant",
       "note": "adjective"
     },
     {
       "id": "165d74a1-9a2d-58af-bebf-faef08605846",
-      "zh": "绷带",
+      "zh": "绷带，帘布筒",
       "en": "bandage",
       "note": "noun"
     },
     {
       "id": "eda29e82-bf17-57c1-b35e-bc9ab127c2a4",
-      "zh": "觉醒",
+      "zh": "觉醒，奋起，干杯",
       "en": "rouse",
       "note": "noun"
     },
     {
       "id": "b656f60a-2a14-572d-9825-fe87bec9c3ff",
-      "zh": "缩减",
+      "zh": "缩减，剥夺，简略",
       "en": "curtail",
       "note": "verb"
     },
     {
       "id": "af0424f6-48aa-598d-bdb6-1186232a7e48",
-      "zh": "听得见的",
+      "zh": "听得见的，可闻的",
       "en": "audible",
       "note": "adjective"
     },
@@ -9467,19 +9467,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "eee427c5-5491-5579-9bcd-b3c4ddeea8e4",
-      "zh": "企业联合",
+      "zh": "企业联合，辛迪加",
       "en": "syndicate",
       "note": "noun"
     },
     {
       "id": "a000afb6-d8b5-50aa-b775-c82f0856fa41",
-      "zh": "合金",
+      "zh": "合金，减低成色",
       "en": "alloy",
       "note": "noun"
     },
     {
       "id": "895858a6-f83a-505e-b03b-679638a028ae",
-      "zh": "无视",
+      "zh": "推翻，无视，制服",
       "en": "override",
       "note": "verb"
     },
@@ -9491,7 +9491,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "ede08a3b-c1f1-5d93-b798-c4b8cdd57533",
-      "zh": "松紧带",
+      "zh": "松紧带，橡皮筋",
       "en": "elastic",
       "note": "noun"
     },
@@ -9503,91 +9503,91 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "635c8f43-cb78-5682-85ab-7036e704938b",
-      "zh": "极小之物",
+      "zh": "针尖，刺穿，强调",
       "en": "pinpoint",
       "note": "noun"
     },
     {
       "id": "68581002-430b-5462-a80e-7dda9bb79afb",
-      "zh": "选集",
+      "zh": "选集，诗选",
       "en": "anthology",
       "note": "noun"
     },
     {
       "id": "8bf2f6a2-3117-57a1-8c56-a38a987b3e9e",
-      "zh": "半透明的",
+      "zh": "半透明的，透明的",
       "en": "translucent",
       "note": "adjective"
     },
     {
       "id": "cb809a8d-dfe4-5fa9-86b7-604ddae7e7b4",
-      "zh": "海峡",
+      "zh": "海峡，困境",
       "en": "strait",
       "note": "noun"
     },
     {
       "id": "5a3bdd98-7877-531f-8b75-6dae826d98d2",
-      "zh": "重大的",
+      "zh": "重大的，重要的",
       "en": "momentous",
       "note": "adjective"
     },
     {
       "id": "d9df6358-8f1a-5e4b-87a0-a2079f4f90ea",
-      "zh": "鄙弃",
+      "zh": "蔑视，鄙弃",
       "en": "disdain",
       "note": "noun"
     },
     {
       "id": "bb648413-45f2-5c47-908b-1ad7b242b296",
-      "zh": "一丝不苟的",
+      "zh": "精确的，过细的",
       "en": "meticulous",
       "note": "adjective"
     },
     {
       "id": "f3799dee-6a14-5681-962e-49f4dcb67092",
-      "zh": "圣歌",
+      "zh": "圣歌，赞美诗",
       "en": "anthem",
       "note": "noun"
     },
     {
       "id": "e3bd62fb-c768-503a-a432-dd90f0d6af11",
-      "zh": "互惠的",
+      "zh": "互惠的，相互的",
       "en": "reciprocal",
       "note": "adjective"
     },
     {
       "id": "1e6be55f-0d7f-5767-bdcc-c5950b7af465",
-      "zh": "稀疏的",
+      "zh": "稀疏的，稀薄的",
       "en": "sparse",
       "note": "adjective"
     },
     {
       "id": "f9e5a3e3-fb31-56e1-a15f-f7870b34b10a",
-      "zh": "外围",
+      "zh": "外围，圆周，外周",
       "en": "periphery",
       "note": "noun"
     },
     {
       "id": "87f41062-eedc-5966-8b0f-0cd19c9a6f18",
-      "zh": "邮资",
+      "zh": "邮资，邮费",
       "en": "postage",
       "note": "noun"
     },
     {
       "id": "0f84c60b-37e4-5f7c-bdf7-90723d0b7919",
-      "zh": "素食者",
+      "zh": "素食者，食草动物",
       "en": "vegetarian",
       "note": "noun"
     },
     {
       "id": "115e8a94-1130-5b60-a07e-2f5bb21a8cd3",
-      "zh": "巨大的",
+      "zh": "巨大的，畸形的",
       "en": "monstrous",
       "note": "adjective"
     },
     {
       "id": "e4bc6952-dd0f-5852-8ca2-d9211b64354b",
-      "zh": "睡眠状态的",
+      "zh": "静止的，休眠的",
       "en": "dormant",
       "note": "adjective"
     },
@@ -9599,25 +9599,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "8d22d02a-a5ef-5759-8874-43c0ae0347f3",
-      "zh": "灿烂",
+      "zh": "灿烂，闪烁，辉耀",
       "en": "glitter",
       "note": "noun"
     },
     {
       "id": "d9f098aa-078f-558e-b2b6-7deb751c68a6",
-      "zh": "口渴",
+      "zh": "口渴，渴望",
       "en": "thirst",
       "note": "noun"
     },
     {
       "id": "65833503-3eff-5af9-a2ca-89580d0f28e9",
-      "zh": "脸上发红",
+      "zh": "脸上发红，发热的",
       "en": "hectic",
       "note": "adjective"
     },
     {
       "id": "880e965a-a4d3-54a5-80c1-85f065db74c8",
-      "zh": "色素",
+      "zh": "色素，色质，颜料",
       "en": "pigment",
       "note": "noun"
     },
@@ -9629,97 +9629,97 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "344e888b-b290-5ea0-a120-edfa9689e66c",
-      "zh": "可笑的",
+      "zh": "可笑的，滑稽的",
       "en": "ludicrous",
       "note": "adjective"
     },
     {
       "id": "19a40994-f175-5fc5-ba19-0640a7ee5ac6",
-      "zh": "跛足的",
+      "zh": "跛足的，僵痛的",
       "en": "lame",
       "note": "adjective"
     },
     {
       "id": "38101dfe-4ff3-5e1b-bd23-5d19f9741050",
-      "zh": "不动的",
+      "zh": "不动的，静止的",
       "en": "stationary",
       "note": "adjective"
     },
     {
       "id": "fb57c023-1b31-5a06-b4a5-0aa35d9083f0",
-      "zh": "盛会",
+      "zh": "盛会，游行，虚饰",
       "en": "pageant",
       "note": "noun"
     },
     {
       "id": "08755a1a-1c4b-5aa0-b554-4194653a8e45",
-      "zh": "新陈代谢",
+      "zh": "新陈代谢，变态",
       "en": "metabolism",
       "note": "noun"
     },
     {
       "id": "b035d1b3-6c52-5118-b40e-15f325eff365",
-      "zh": "女房东",
+      "zh": "女房东，女地主",
       "en": "landlady",
       "note": "noun"
     },
     {
       "id": "4d13f086-1e75-57c7-85b1-da223e4e100d",
-      "zh": "酿造酒",
+      "zh": "酿造酒，酝酿",
       "en": "brew",
       "note": "noun"
     },
     {
       "id": "a3f247d5-1943-5ba7-8cae-33713b9bcc90",
-      "zh": "猖獗的",
+      "zh": "猖獗的，蔓生的",
       "en": "rampant",
       "note": "adjective"
     },
     {
       "id": "57936b8a-e695-5f75-9eb1-8a40143f2614",
-      "zh": "可允许的",
+      "zh": "可允许的，容许",
       "en": "permissible",
       "note": "adjective"
     },
     {
       "id": "c4c1c1d9-ae9c-5b8a-981a-bec8a6a09cae",
-      "zh": "跛行",
+      "zh": "跛行，柔软的",
       "en": "limp",
       "note": "noun"
     },
     {
       "id": "867dcca4-ea2d-52b4-b5a4-4d2e1a239fae",
-      "zh": "前奏",
+      "zh": "前奏，序幕，序诗",
       "en": "prelude",
       "note": "noun"
     },
     {
       "id": "cb3a7d04-d920-50de-a2fa-c57685215bb6",
-      "zh": "散播",
+      "zh": "散播，传播",
       "en": "diffuse",
       "note": "verb"
     },
     {
       "id": "f9626596-3454-54c6-af98-4da6c68333e2",
-      "zh": "使苦恼",
+      "zh": "使苦恼，折磨",
       "en": "afflict",
       "note": "verb"
     },
     {
       "id": "18aad96c-9ca5-5795-a8b1-3d79f12784b0",
-      "zh": "古怪的人",
+      "zh": "古怪的人，奇怪的",
       "en": "erratic",
       "note": "noun"
     },
     {
       "id": "32171c8d-643a-5c65-a158-8c2944ee4080",
-      "zh": "弄乱",
+      "zh": "弄乱，使混乱",
       "en": "disarray",
       "note": "verb"
     },
     {
       "id": "380bc162-4b7a-52a0-bdd8-bd1bd2c52d0a",
-      "zh": "资质",
+      "zh": "资质，才能",
       "en": "aptitude",
       "note": "noun"
     },
@@ -9731,193 +9731,193 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "33dbc1f8-0a33-562b-922d-63bd895fea1b",
-      "zh": "破坏",
+      "zh": "破坏，侵犯，违反",
       "en": "infringe",
       "note": "verb"
     },
     {
       "id": "ac94179f-78c6-5257-9321-97ac007b3ccc",
-      "zh": "悬疑",
+      "zh": "悬疑，焦虑，悬念",
       "en": "suspense",
       "note": "noun"
     },
     {
       "id": "c4112e82-4ae9-5be7-a840-28e76e2a7358",
-      "zh": "家事",
+      "zh": "家事，家政，持家",
       "en": "housekeeping",
       "note": "noun"
     },
     {
       "id": "c36761ad-8472-556b-9921-a546ec81f9b7",
-      "zh": "注意的",
+      "zh": "注意的，留心的",
       "en": "attentive",
       "note": "adjective"
     },
     {
       "id": "bab1b957-6077-5df8-bdcf-1969038eebf7",
-      "zh": "有生殖力的",
+      "zh": "多产的，丰富的",
       "en": "prolific",
       "note": "adjective"
     },
     {
       "id": "6e478256-86de-5be5-8bb5-f9dc61a9cb8f",
-      "zh": "狂热者",
+      "zh": "狂热者，盲信",
       "en": "fanatic",
       "note": "noun"
     },
     {
       "id": "beb3481b-821a-513c-abe5-bc8e246ca69d",
-      "zh": "行礼",
+      "zh": "行礼，致意，问候",
       "en": "salute",
       "note": "verb"
     },
     {
       "id": "a3856f31-4bcd-547b-8b7a-40828967fbbf",
-      "zh": "分割",
+      "zh": "分割，隔墙，区分",
       "en": "partition",
       "note": "noun"
     },
     {
       "id": "add9e660-3cca-5fb1-8066-ead1ab5810bb",
-      "zh": "缓冲器",
+      "zh": "缓冲器，满杯",
       "en": "bumper",
       "note": "noun"
     },
     {
       "id": "84fce671-e057-5bde-93ee-d578b403b0ed",
-      "zh": "逐放",
+      "zh": "逐放，放逐，喷射",
       "en": "eject",
       "note": "verb"
     },
     {
       "id": "055ba6af-4a10-50c7-80f3-ba2136f03d0e",
-      "zh": "困惑",
+      "zh": "困惑，为难，迷惑",
       "en": "baffle",
       "note": "verb"
     },
     {
       "id": "869d29f3-c68e-5dab-ac7e-2c7117ce4fce",
-      "zh": "启发",
+      "zh": "教育，启发，启蒙",
       "en": "enlighten",
       "note": "verb"
     },
     {
       "id": "dcb8d692-a46c-54e1-b055-bd16502aeeeb",
-      "zh": "雕刻品",
+      "zh": "雕刻品，雕刻",
       "en": "carving",
       "note": "noun"
     },
     {
       "id": "686a2000-414f-5861-b426-0621a52029de",
-      "zh": "盐的",
+      "zh": "盐的，盐湖，盐田",
       "en": "saline",
       "note": "adjective"
     },
     {
       "id": "9fc417ba-c226-55c6-b32c-c343296e2f75",
-      "zh": "修剪",
+      "zh": "修剪，切变，剥夺",
       "en": "shear",
       "note": "noun"
     },
     {
       "id": "6f295940-5c77-55b9-acca-6b02594e1574",
-      "zh": "蔓延",
+      "zh": "蔓延，蹂躏，超过",
       "en": "overrun",
       "note": "noun"
     },
     {
       "id": "02421c32-59be-5053-a9c7-1030dc8f1665",
-      "zh": "一般化",
+      "zh": "一般化，概括",
       "en": "generalize",
       "note": "verb"
     },
     {
       "id": "5e7e6042-30f8-5fc5-b7ea-47ea248b6166",
-      "zh": "投币口",
+      "zh": "裂缝，切开，扯裂",
       "en": "slit",
       "note": "noun"
     },
     {
       "id": "1c1b06ef-850a-5cb8-8e0c-8d5cd636f714",
-      "zh": "越过",
+      "zh": "越过，横贯，屏障",
       "en": "traverse",
       "note": "noun"
     },
     {
       "id": "ddb0564e-7220-5e99-ac3d-18f5847e6436",
-      "zh": "使人痛苦的东西",
+      "zh": "苦痛，纠缠，歪曲",
       "en": "torment",
       "note": "noun"
     },
     {
       "id": "f517e657-b7c6-525e-8c62-cce6396729a3",
-      "zh": "单方面的",
+      "zh": "单方面的，单边的",
       "en": "unilateral",
       "note": "adjective"
     },
     {
       "id": "7deae505-0bb6-5c71-bf03-61bd71b90fa2",
-      "zh": "哈欠",
+      "zh": "哈欠，打哈欠",
       "en": "yawn",
       "note": "noun"
     },
     {
       "id": "e2d4f0ea-e5bb-54e5-900c-a3676df4a1b9",
-      "zh": "个别指导",
+      "zh": "个别指导，论文",
       "en": "tutorial",
       "note": "noun"
     },
     {
       "id": "c3713e3c-dd83-5a66-a16c-40fe060987b4",
-      "zh": "俗人",
+      "zh": "俗人，凡人，外行",
       "en": "layman",
       "note": "noun"
     },
     {
       "id": "72d9b17d-a55f-538f-855b-6b0ab8ec4910",
-      "zh": "晕眩的",
+      "zh": "晕眩的，使晕眩",
       "en": "dizzy",
       "note": "adjective"
     },
     {
       "id": "fc1d0fc5-6430-5ace-a89a-d2f445e2a638",
-      "zh": "尖叫",
+      "zh": "尖叫，倒彩，喊价",
       "en": "outcry",
       "note": "noun"
     },
     {
       "id": "e10fc64a-c25f-5b6c-aca4-ff4b0958ca30",
-      "zh": "狡猾的",
+      "zh": "狡猾的，巧妙的",
       "en": "cunning",
       "note": "adjective"
     },
     {
       "id": "b0fc5be6-d422-52a3-a8ca-085f2cf4f74b",
-      "zh": "有效的",
+      "zh": "有效的，显著的",
       "en": "telling",
       "note": "adjective"
     },
     {
       "id": "ba71f198-d0ab-5d97-b7c7-bc33f3e8d7b4",
-      "zh": "罢黜",
+      "zh": "逐出，罢黜，剥夺",
       "en": "oust",
       "note": "verb"
     },
     {
       "id": "2ab24f83-75e5-5961-a081-ef53ade07f80",
-      "zh": "占主导地位的",
+      "zh": "卓越的，占优势的",
       "en": "predominant",
       "note": "adjective"
     },
     {
       "id": "76d916da-a6c4-5ea1-8aae-c87ce99a15f6",
-      "zh": "质问",
+      "zh": "质问，讯问，审问",
       "en": "interrogate",
       "note": "verb"
     },
     {
       "id": "9aaa2a06-4af2-5d3e-9bec-105b71433581",
-      "zh": "尊重",
+      "zh": "尊敬，尊重，认为",
       "en": "esteem",
       "note": "noun"
     },
@@ -9929,7 +9929,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "35d57be8-fa31-5bea-9bf7-6b376853bc14",
-      "zh": "从属于",
+      "zh": "关于，涉及，附属",
       "en": "pertain",
       "note": "verb"
     },
@@ -9941,43 +9941,43 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "acbeb0e7-e544-5f57-988a-b5bb262670e5",
-      "zh": "考虑",
+      "zh": "考虑，计划，沉思",
       "en": "meditate",
       "note": "verb"
     },
     {
       "id": "ae59d8d9-eb5e-5fe0-bd56-142e8893c467",
-      "zh": "清洁剂",
+      "zh": "清洁剂，洗涤剂",
       "en": "detergent",
       "note": "noun"
     },
     {
       "id": "16cde157-0416-54ac-8e8d-1669bf4e4c00",
-      "zh": "不好不坏的",
+      "zh": "不好不坏的，通常",
       "en": "mediocre",
       "note": "adjective"
     },
     {
       "id": "a78f9417-5ee4-54da-b993-48ee25c3a43c",
-      "zh": "没收物",
+      "zh": "罚金，丧失，没收",
       "en": "forfeit",
       "note": "noun"
     },
     {
       "id": "0f9fd130-8df8-5978-a287-0d9141c934aa",
-      "zh": "乖张的",
+      "zh": "乖张的，歪曲的",
       "en": "perverse",
       "note": "adjective"
     },
     {
       "id": "561596ac-4129-585b-b928-45e31f4b4a28",
-      "zh": "大错",
+      "zh": "大错，失策，犯错",
       "en": "blunder",
       "note": "noun"
     },
     {
       "id": "14ca00ac-81d0-54f4-92b4-0f26a46bacda",
-      "zh": "无论如何",
+      "zh": "无论如何，至少",
       "en": "anyhow",
       "note": "adverb"
     },
@@ -9989,37 +9989,37 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "a0165371-9bc6-5a29-9a46-810e0df45ccf",
-      "zh": "灾难",
+      "zh": "灾难，不幸事件",
       "en": "calamity",
       "note": "noun"
     },
     {
       "id": "ea519c0a-b284-5693-9f2c-535384107e9a",
-      "zh": "烦躁",
+      "zh": "烦躁，磨损，焦急",
       "en": "fret",
       "note": "noun"
     },
     {
       "id": "eb438642-705a-5565-8992-a207f57ae059",
-      "zh": "看门狗",
+      "zh": "看门狗，监察人",
       "en": "watchdog",
       "note": "noun"
     },
     {
       "id": "86d2c0f9-31d6-5158-8ac1-d30414861eb9",
-      "zh": "喝彩",
+      "zh": "喝彩，欢呼，赞同",
       "en": "acclaim",
       "note": "noun"
     },
     {
       "id": "f2e65958-9955-5703-9ed6-5a81492f7532",
-      "zh": "融解",
+      "zh": "融解，融化，解冻",
       "en": "thaw",
       "note": "noun"
     },
     {
       "id": "c62f85b7-e07b-55ca-a4f8-7881831e0659",
-      "zh": "期刊",
+      "zh": "期刊，定期出版的",
       "en": "periodical",
       "note": "noun"
     },
@@ -10031,43 +10031,43 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "36ad87cc-0c1f-59db-be61-1e6b46ba593c",
-      "zh": "粪肥",
+      "zh": "肥料，粪肥",
       "en": "manure",
       "note": "noun"
     },
     {
       "id": "574c1a45-ba1c-5ed3-ac76-cf44b2403220",
-      "zh": "不稳定的",
+      "zh": "不稳定的，不安的",
       "en": "precarious",
       "note": "adjective"
     },
     {
       "id": "f9bcb9ba-0656-5224-8427-71e8802fc769",
-      "zh": "雄辩的",
+      "zh": "雄辩的，有口才的",
       "en": "eloquent",
       "note": "adjective"
     },
     {
       "id": "1006f7dc-f7c2-5529-8d88-02d5efe18c6a",
-      "zh": "娱乐",
+      "zh": "消遣，娱乐，游戏",
       "en": "pastime",
       "note": "noun"
     },
     {
       "id": "d126bc5b-8574-56f9-a228-3cc179ca3225",
-      "zh": "起义",
+      "zh": "起义，升起，暴动",
       "en": "uprising",
       "note": "noun"
     },
     {
       "id": "5c53f038-8342-5170-9369-e3b8312a4654",
-      "zh": "卷轴",
+      "zh": "卷轴，画卷，名册",
       "en": "scroll",
       "note": "noun"
     },
     {
       "id": "b03c55a1-4dad-5764-8047-9ad815ee1cd3",
-      "zh": "流利的",
+      "zh": "流利的，流畅的",
       "en": "fluent",
       "note": "adjective"
     },
@@ -10079,109 +10079,109 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "1561a137-6e86-558c-9f0a-ec46696d999a",
-      "zh": "放弃",
+      "zh": "放弃，撤回，停止",
       "en": "relinquish",
       "note": "verb"
     },
     {
       "id": "14b2d500-002c-54a4-8da9-215f9e7e5b7c",
-      "zh": "尖的",
+      "zh": "尖的，有尖顶的",
       "en": "pointed",
       "note": "adjective"
     },
     {
       "id": "dce9de8d-954a-5368-8657-10fcaeaee18c",
-      "zh": "疟疾",
+      "zh": "疟疾，瘴气",
       "en": "malaria",
       "note": "noun"
     },
     {
       "id": "bc85612f-f2fc-5a94-8b08-d278aa67f3ec",
-      "zh": "变动",
+      "zh": "变动，起伏，动摇",
       "en": "fluctuate",
       "note": "verb"
     },
     {
       "id": "22dcab75-961b-55f0-af8f-64690e16f60b",
-      "zh": "无条件的",
+      "zh": "无条件的，绝对的",
       "en": "unconditional",
       "note": "adjective"
     },
     {
       "id": "da712f81-fa2a-53b3-8188-afe856f727bf",
-      "zh": "熄灭",
+      "zh": "熄灭，压制，消灭",
       "en": "extinguish",
       "note": "verb"
     },
     {
       "id": "1b6545c4-6614-5a16-b391-62328d79f619",
-      "zh": "听力",
+      "zh": "听力，试听",
       "en": "audition",
       "note": "noun"
     },
     {
       "id": "251c38f4-cb07-55e9-a95e-33e076246ba5",
-      "zh": "脱离",
+      "zh": "脱离，偏离",
       "en": "deviate",
       "note": "verb"
     },
     {
       "id": "43dfb1f8-5ee8-5904-8e1b-a5898b20e5e2",
-      "zh": "不和",
+      "zh": "不和，封地，争执",
       "en": "feud",
       "note": "noun"
     },
     {
       "id": "a66ec901-3595-56cb-a3a6-b248dac8da75",
-      "zh": "宏伟的",
+      "zh": "宏伟的，庄严的",
       "en": "majestic",
       "note": "adjective"
     },
     {
       "id": "9adc2909-2402-5e6e-a245-58614c3d4eb1",
-      "zh": "芬芳",
+      "zh": "芬芳，香味",
       "en": "fragrance",
       "note": "noun"
     },
     {
       "id": "1d86a35d-d683-5141-a77c-24550f930b69",
-      "zh": "古体的",
+      "zh": "古体的，过时的",
       "en": "archaic",
       "note": "adjective"
     },
     {
       "id": "af10c46c-3353-5839-b1c6-7e85785d5665",
-      "zh": "挖苦",
+      "zh": "挖苦，讽刺",
       "en": "sarcasm",
       "note": "noun"
     },
     {
       "id": "1c880fb1-f87a-57cb-b680-a7ab07d46520",
-      "zh": "浏览",
+      "zh": "浏览，吃草",
       "en": "browse",
       "note": "verb"
     },
     {
       "id": "15d07868-8006-5f16-9f14-05c6fa099de0",
-      "zh": "增加",
+      "zh": "增加，增长，增量",
       "en": "augment",
       "note": "verb"
     },
     {
       "id": "69f91ad9-5a36-593e-a2ef-06bc92b41f72",
-      "zh": "节俭的",
+      "zh": "节俭的，经济的",
       "en": "economical",
       "note": "adjective"
     },
     {
       "id": "97f9c46d-8d60-5fd6-b0c7-b9f8c6a3b1c1",
-      "zh": "伸开手足躺",
+      "zh": "爬行，蔓生，蔓延",
       "en": "sprawl",
       "note": "verb"
     },
     {
       "id": "8d3cadb4-3ec8-5dd9-915b-606d92aa4714",
-      "zh": "公正的",
+      "zh": "公正的，正义的",
       "en": "righteous",
       "note": "adjective"
     },
@@ -10193,97 +10193,97 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "ed528681-0ee8-5ff5-a76d-2cdabbaf8a41",
-      "zh": "伸出",
+      "zh": "伸出，突出",
       "en": "protrude",
       "note": "verb"
     },
     {
       "id": "6ce64987-b8b2-58e5-a72e-bb441caacbe2",
-      "zh": "使清爽的",
+      "zh": "使清爽的，爽快的",
       "en": "refreshing",
       "note": "adjective"
     },
     {
       "id": "a9bc2813-ec37-530a-a13e-a772935ef680",
-      "zh": "弄皱",
+      "zh": "弄皱，压皱，崩溃",
       "en": "crumple",
       "note": "verb"
     },
     {
       "id": "4a2d8dff-6934-58de-a899-3daabfd08b76",
-      "zh": "抢夺",
+      "zh": "抢夺，掠夺，抢劫",
       "en": "plunder",
       "note": "noun"
     },
     {
       "id": "2643379c-db85-598f-ae15-094b680420d8",
-      "zh": "短距离赛跑",
+      "zh": "短距离赛跑，冲刺",
       "en": "sprint",
       "note": "noun"
     },
     {
       "id": "05b39c0d-cb7e-5f8a-8769-28c0f1ea592f",
-      "zh": "统治",
+      "zh": "统治，威压，打败",
       "en": "overrule",
       "note": "verb"
     },
     {
       "id": "f94fb4d5-780d-5cf0-9576-257f7f65b220",
-      "zh": "代理",
+      "zh": "代理，代理人",
       "en": "proxy",
       "note": "noun"
     },
     {
       "id": "b2a8abb9-be80-5e4a-ad76-c12a7ca62c08",
-      "zh": "匆匆的",
+      "zh": "匆匆的，轻率的",
       "en": "hasty",
       "note": "adjective"
     },
     {
       "id": "62f52ee1-7490-5f57-8f0e-86f32d06a582",
-      "zh": "麻木的",
+      "zh": "麻木的，使麻木",
       "en": "numb",
       "note": "adjective"
     },
     {
       "id": "a0a9a52a-a603-5962-a294-29ac6160eb18",
-      "zh": "荒废的",
+      "zh": "荒废的，成废物的",
       "en": "obsolete",
       "note": "adjective"
     },
     {
       "id": "9f97a856-c7de-5432-abef-47d872f84f0e",
-      "zh": "干扰",
+      "zh": "妨碍，干扰，调戏",
       "en": "molest",
       "note": "verb"
     },
     {
       "id": "2246a27f-1600-5cd7-b44d-70957fac8186",
-      "zh": "突然的",
+      "zh": "突然的，唐突的",
       "en": "abrupt",
       "note": "adjective"
     },
     {
       "id": "2953b80d-8d49-51ec-93be-66be5ea05b7b",
-      "zh": "升高",
+      "zh": "升高，推动，升起",
       "en": "hoist",
       "note": "noun"
     },
     {
       "id": "ccf47057-d746-5a2d-a248-fecfb42c581b",
-      "zh": "遗忘的",
+      "zh": "遗忘的，健忘的",
       "en": "oblivious",
       "note": "adjective"
     },
     {
       "id": "14f761ca-ca1e-56d2-991e-f46a9c2a5d58",
-      "zh": "匆忙",
+      "zh": "匆忙，急忙",
       "en": "haste",
       "note": "noun"
     },
     {
       "id": "821b9438-cc26-51b6-ace8-a429119b313c",
-      "zh": "放大",
+      "zh": "放大，扩大，赞美",
       "en": "magnify",
       "note": "verb"
     },
@@ -10295,31 +10295,31 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "54e0025e-3066-52b8-a5e1-7a4491771f84",
-      "zh": "门厅",
+      "zh": "门厅，入门大堂",
       "en": "foyer",
       "note": "noun"
     },
     {
       "id": "76c19a8a-caaa-5036-b019-3061d948f396",
-      "zh": "礼仪",
+      "zh": "礼仪，礼节，成规",
       "en": "etiquette",
       "note": "noun"
     },
     {
       "id": "9125c529-8a2e-5573-a4a6-90f549170b97",
-      "zh": "简洁的",
+      "zh": "简洁的，简明的",
       "en": "concise",
       "note": "adjective"
     },
     {
       "id": "c8ef604d-a6de-5168-906c-982a87d2627d",
-      "zh": "移居",
+      "zh": "移居，移民",
       "en": "emigrate",
       "note": "verb"
     },
     {
       "id": "b1657a84-4a77-5f65-8162-34dd5f7087c9",
-      "zh": "残忍的",
+      "zh": "残忍的，凶猛的",
       "en": "ferocious",
       "note": "adjective"
     },
@@ -10331,7 +10331,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "2f5a82ce-2f88-5efc-b744-14d5f484a13e",
-      "zh": "追过",
+      "zh": "追过，胜过，凌驾",
       "en": "outstrip",
       "note": "verb"
     },
@@ -10343,37 +10343,37 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "e8832629-ce7e-58ba-b107-8e2fdff299dc",
-      "zh": "骨髓",
+      "zh": "骨髓，精华，活力",
       "en": "marrow",
       "note": "noun"
     },
     {
       "id": "c1c5497c-3c39-5598-8aee-7d647e7a6fd0",
-      "zh": "滋养",
+      "zh": "滋养，使健壮",
       "en": "nourish",
       "note": "verb"
     },
     {
       "id": "89ea8d15-0cf9-5c71-b0c1-ed0181cdd06e",
-      "zh": "同种的",
+      "zh": "同种的，同质的",
       "en": "homogeneous",
       "note": "adjective"
     },
     {
       "id": "61f34d81-9114-525c-adfb-53639b2d1c5f",
-      "zh": "论文",
+      "zh": "论文，专著",
       "en": "treatise",
       "note": "noun"
     },
     {
       "id": "3d5e5cf0-65f2-53d0-aa70-07b7dec2ee3b",
-      "zh": "付还",
+      "zh": "付还，偿还，赔偿",
       "en": "reimburse",
       "note": "verb"
     },
     {
       "id": "33514a39-b471-572d-bd82-0986e08121cf",
-      "zh": "悲观",
+      "zh": "悲观，悲观情绪",
       "en": "pessimism",
       "note": "noun"
     },
@@ -10385,211 +10385,211 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "ec82e022-0d73-5fcd-9217-a1359877edf0",
-      "zh": "急躁的",
+      "zh": "易怒的，急躁的",
       "en": "irritable",
       "note": "adjective"
     },
     {
       "id": "cc65c4cf-b048-540b-8095-d3fd886b4c54",
-      "zh": "使沮丧",
+      "zh": "压低，降低，推下",
       "en": "depress",
       "note": "verb"
     },
     {
       "id": "be16b89e-c9d0-5cd1-94d0-0333ccf0d0a3",
-      "zh": "流出",
+      "zh": "流出，涨潮，变迁",
       "en": "flux",
       "note": "noun"
     },
     {
       "id": "914315ef-db37-5845-8da5-26535e081aa0",
-      "zh": "粗俗的",
+      "zh": "粗俗的，庸俗的",
       "en": "vulgar",
       "note": "adjective"
     },
     {
       "id": "299d7043-c10a-5a22-af3b-516e13437e51",
-      "zh": "极限",
+      "zh": "极限，最大限度",
       "en": "utmost",
       "note": "noun"
     },
     {
       "id": "51414072-9044-53d0-8e49-0e0e8fb69676",
-      "zh": "偏执狂",
+      "zh": "偏执狂，多疑症",
       "en": "paranoia",
       "note": "noun"
     },
     {
       "id": "6abdbc5c-6aba-5d89-9a4c-3b6344234551",
-      "zh": "一百年",
+      "zh": "一百年，一百年的",
       "en": "centenary",
       "note": "noun"
     },
     {
       "id": "9161cbbb-a349-511c-8133-77ac62c5c89c",
-      "zh": "少量食物",
+      "zh": "少量食物，细咬",
       "en": "nibble",
       "note": "noun"
     },
     {
       "id": "49868a3e-d223-5903-b13d-8a4f50a0ff95",
-      "zh": "原始的",
+      "zh": "原始的，土著的",
       "en": "aboriginal",
       "note": "adjective"
     },
     {
       "id": "137b13af-15dc-5b1f-855f-0e8af754bb91",
-      "zh": "使同化",
+      "zh": "使同化，吸收",
       "en": "assimilate",
       "note": "verb"
     },
     {
       "id": "5e8aa9a3-65e9-5655-a347-d04623a15601",
-      "zh": "惰性的",
+      "zh": "惰性的，迟钝的",
       "en": "inert",
       "note": "adjective"
     },
     {
       "id": "24d8ac02-d981-5f0c-a2e1-311f9fb2cc3b",
-      "zh": "推进",
+      "zh": "推进，推进力",
       "en": "propulsion",
       "note": "noun"
     },
     {
       "id": "a79d13a2-f17d-54ba-9421-6e2c8392e58b",
-      "zh": "好骂街的人",
+      "zh": "好骂街的人，责骂",
       "en": "scold",
       "note": "noun"
     },
     {
       "id": "ce8a3cd6-a853-5db8-8ade-66f8a799e094",
-      "zh": "谈话",
+      "zh": "谈话，演说",
       "en": "speaking",
       "note": "noun"
     },
     {
       "id": "56a8803c-018e-536d-9358-1aae596f09cd",
-      "zh": "有恶意的",
+      "zh": "有恶意的，恶性的",
       "en": "malignant",
       "note": "adjective"
     },
     {
       "id": "78cc5100-b708-5435-bae6-2bbc827f5780",
-      "zh": "特权",
+      "zh": "特权，君权，职权",
       "en": "prerogative",
       "note": "noun"
     },
     {
       "id": "21ec56c7-5c10-5f19-aeb8-dad659353b6c",
-      "zh": "光束",
+      "zh": "光束，微光，反光",
       "en": "gleam",
       "note": "noun"
     },
     {
       "id": "79e9de26-9b9a-5091-96d6-c921f28f42f2",
-      "zh": "不新鲜的",
+      "zh": "不新鲜的，陈腐的",
       "en": "stale",
       "note": "noun"
     },
     {
       "id": "364edb58-f897-55e2-b6b5-83aeef7c539f",
-      "zh": "控诉者",
+      "zh": "控诉者，指责者",
       "en": "accuser",
       "note": "noun"
     },
     {
       "id": "e9b87d1f-7e8a-5535-a1f1-1d715b9716d8",
-      "zh": "使服从",
+      "zh": "压制，减弱，抑制",
       "en": "subdue",
       "note": "verb"
     },
     {
       "id": "76a4d355-98c4-5a6a-94ab-157c829b8bf0",
-      "zh": "炉格",
+      "zh": "炉格，炉篦，炉栅",
       "en": "grate",
       "note": "noun"
     },
     {
       "id": "148e9d0a-916e-5ddf-a740-f5e5810ced3c",
-      "zh": "衰微",
+      "zh": "减少，衰微，败落",
       "en": "wane",
       "note": "noun"
     },
     {
       "id": "c2ac11f9-6164-5224-991c-d1760b4df335",
-      "zh": "送快信的人",
+      "zh": "送快信的人，信使",
       "en": "courier",
       "note": "noun"
     },
     {
       "id": "59b7a7c9-1419-5fc1-96c2-4f6e8fee08af",
-      "zh": "长方形",
+      "zh": "长方形，矩形",
       "en": "rectangle",
       "note": "noun"
     },
     {
       "id": "5f228730-ab4e-57a9-a447-26915481fc1d",
-      "zh": "近郊",
+      "zh": "近郊，市郊",
       "en": "outskirts",
       "note": "noun"
     },
     {
       "id": "6e1031f5-e05b-5153-9085-c6dbf63ce39e",
-      "zh": "灵敏的",
+      "zh": "灵敏的，精巧的",
       "en": "ingenious",
       "note": "adjective"
     },
     {
       "id": "58cbc513-d6ac-5670-a973-26687406305c",
-      "zh": "损害物",
+      "zh": "损害，伤害，危害",
       "en": "detriment",
       "note": "noun"
     },
     {
       "id": "d9fa22d4-5b56-54d4-a3d4-b941c5968776",
-      "zh": "偿还",
+      "zh": "偿还，付还，归还",
       "en": "refund",
       "note": "noun"
     },
     {
       "id": "ed8daa4e-3a43-58e6-9f18-6fa1da86d8b7",
-      "zh": "轻蔑",
+      "zh": "轻蔑，藐视，嘲笑",
       "en": "scorn",
       "note": "noun"
     },
     {
       "id": "7496e2f9-c64f-575d-83bc-37c8cf856c4c",
-      "zh": "邻接",
+      "zh": "邻接，毗连",
       "en": "adjoin",
       "note": "verb"
     },
     {
       "id": "f06e8197-3524-53f0-8d2a-8c696ce8dbb7",
-      "zh": "大方的",
+      "zh": "大方的，丰富的",
       "en": "lavish",
       "note": "adjective"
     },
     {
       "id": "16c0f682-bd4a-565d-bfc6-73073b2f8d78",
-      "zh": "信任状",
+      "zh": "国书，文件，证书",
       "en": "credentials",
       "note": "noun"
     },
     {
       "id": "a9d9ced4-855b-58e5-81b9-1da851c5660d",
-      "zh": "衣衫褴褛的",
+      "zh": "不协调的，粗糙的",
       "en": "ragged",
       "note": "adjective"
     },
     {
       "id": "92db9ce6-cda3-54c4-b56f-e455c39d0074",
-      "zh": "不充分的",
+      "zh": "减少，吝啬，限制",
       "en": "scant",
       "note": "adjective"
     },
     {
       "id": "32860097-5c56-56c5-9a7a-4d675f70597e",
-      "zh": "全景",
+      "zh": "全景，全貌，概论",
       "en": "panorama",
       "note": "noun"
     },
@@ -10601,25 +10601,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "1a7aa259-e62c-58a1-a5de-af9e079781cf",
-      "zh": "分离的",
+      "zh": "分离，隔离，分凝",
       "en": "segregate",
       "note": "adjective"
     },
     {
       "id": "298edfc1-158d-54c8-a129-40ee611a239e",
-      "zh": "放血",
+      "zh": "消耗，耗尽，放血",
       "en": "depletion",
       "note": "noun"
     },
     {
       "id": "2fed4aa8-a27e-5d51-bc14-e63bffe7cacd",
-      "zh": "叛逆者",
+      "zh": "叛逆者，叛国者",
       "en": "traitor",
       "note": "noun"
     },
     {
       "id": "a4486d0f-cd63-5930-aece-5d549a6995b8",
-      "zh": "间歇的",
+      "zh": "间歇的，间断的",
       "en": "intermittent",
       "note": "adjective"
     },
@@ -10631,67 +10631,67 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "184f78f7-10c8-529e-a280-c915b770036b",
-      "zh": "细颈瓶",
+      "zh": "细颈瓶，烧瓶",
       "en": "flask",
       "note": "noun"
     },
     {
       "id": "6382e751-7752-5a0d-8477-9e3e5053e408",
-      "zh": "涌出",
+      "zh": "涌出，迸出",
       "en": "gush",
       "note": "noun"
     },
     {
       "id": "f7a43676-16f2-5112-ba50-5766e6a5aff8",
-      "zh": "繁殖",
+      "zh": "繁殖，传播，传送",
       "en": "propagate",
       "note": "verb"
     },
     {
       "id": "e49e30ff-82c2-57a6-a35d-cd16dba422a2",
-      "zh": "热烈欢迎",
+      "zh": "热烈欢迎，大喝采",
       "en": "ovation",
       "note": "noun"
     },
     {
       "id": "d260b4d8-6c4e-554c-801d-f9fa81d308a1",
-      "zh": "绿洲",
+      "zh": "绿洲，舒适的地方",
       "en": "oasis",
       "note": "noun"
     },
     {
       "id": "7adc43c0-feb4-5178-8e35-5700b7936e54",
-      "zh": "观察",
+      "zh": "观察，遵守，仪式",
       "en": "observance",
       "note": "noun"
     },
     {
       "id": "9ef81be5-e5c8-5c78-856f-b5839d060e66",
-      "zh": "畸形人",
+      "zh": "畸形人，畸形物",
       "en": "freak",
       "note": "noun"
     },
     {
       "id": "b1143dd7-9088-5e10-bb6d-28cce271812d",
-      "zh": "净化",
+      "zh": "净化，清除，泻药",
       "en": "purge",
       "note": "noun"
     },
     {
       "id": "cd8f94ff-0400-5afe-976b-7c6a937ef2bb",
-      "zh": "搀杂",
+      "zh": "搀杂，混杂，搞乱",
       "en": "jumble",
       "note": "verb"
     },
     {
       "id": "e3a48dcb-bee3-5c69-abe4-3306dd6d9170",
-      "zh": "斜坡",
+      "zh": "倾斜，斜坡，斜面",
       "en": "incline",
       "note": "noun"
     },
     {
       "id": "5b8239a3-cc67-533c-ab00-b2ef0f8dc1b9",
-      "zh": "砂砾",
+      "zh": "砂砾，粗砂石",
       "en": "grit",
       "note": "noun"
     },
@@ -10703,25 +10703,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "22007464-269e-5a3b-8464-0faa5741130e",
-      "zh": "膨胀",
+      "zh": "膨胀，凸出",
       "en": "bulge",
       "note": "noun"
     },
     {
       "id": "8d5d7932-0760-5c5b-a555-9fe950143442",
-      "zh": "小尖塔",
+      "zh": "尖峰，高峰，极点",
       "en": "pinnacle",
       "note": "noun"
     },
     {
       "id": "b1e5c7a1-36c0-5326-a4c7-09b0af52f90b",
-      "zh": "常年的",
+      "zh": "常年的，长期的",
       "en": "perennial",
       "note": "adjective"
     },
     {
       "id": "d809ce66-0878-5f09-83d2-8703a5e93239",
-      "zh": "过期的",
+      "zh": "过期的，未兑的",
       "en": "overdue",
       "note": "adjective"
     },
@@ -10733,91 +10733,91 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "9762c001-6bda-5819-aa1d-ad70bbbee691",
-      "zh": "转移",
+      "zh": "转移，使偏斜",
       "en": "deflect",
       "note": "verb"
     },
     {
       "id": "9417400f-b598-503f-9af7-a44c843f182d",
-      "zh": "汽船",
+      "zh": "汽船，蒸汽机",
       "en": "steamer",
       "note": "noun"
     },
     {
       "id": "bd885a2c-98f0-50d6-a856-06a7eeb83536",
-      "zh": "支流的",
+      "zh": "支流的，纳贡的",
       "en": "tributary",
       "note": "adjective"
     },
     {
       "id": "44d734fd-b56b-5e1d-ba54-e045c1ffe64c",
-      "zh": "注册",
+      "zh": "登记，注册，入伍",
       "en": "enrolment",
       "note": "noun"
     },
     {
       "id": "a786dc08-75e6-58b2-b559-3379c2acaf2d",
-      "zh": "计划人",
+      "zh": "计划人，发起人",
       "en": "projector",
       "note": "noun"
     },
     {
       "id": "dfcf185b-16bd-523c-8bdd-47b4356ccf33",
-      "zh": "突然一阵",
+      "zh": "突然一阵，趣味",
       "en": "gust",
       "note": "noun"
     },
     {
       "id": "a492bdc6-e885-5640-9f98-7bb77fecfa0a",
-      "zh": "推迟",
+      "zh": "推迟，延期，听从",
       "en": "defer",
       "note": "verb"
     },
     {
       "id": "224b00e3-ada8-554a-aa37-b139805ab8bc",
-      "zh": "震动",
+      "zh": "震动，颤抖，箭袋",
       "en": "quiver",
       "note": "noun"
     },
     {
       "id": "ad579c60-5a91-5934-91b3-c947e9177169",
-      "zh": "瘦的",
+      "zh": "瘦的，不毛的",
       "en": "meagre",
       "note": "adjective"
     },
     {
       "id": "b2d52563-6974-5fac-9263-245ed1834cad",
-      "zh": "核心",
+      "zh": "核心，中心，精髓",
       "en": "kernel",
       "note": "noun"
     },
     {
       "id": "e964ee5a-5888-5a33-b366-c4e7c70cb760",
-      "zh": "奋发的",
+      "zh": "奋发的，费劲的",
       "en": "strenuous",
       "note": "adjective"
     },
     {
       "id": "02d62125-aecc-5c03-8a5f-8f2e4e1332a4",
-      "zh": "激动的",
+      "zh": "热心的，激动的",
       "en": "ardent",
       "note": "adjective"
     },
     {
       "id": "f1c284cd-bd32-55c6-9ab6-fc0dee23b910",
-      "zh": "惨白的",
+      "zh": "可怕的，惨白的",
       "en": "ghastly",
       "note": "adjective"
     },
     {
       "id": "062a7e34-49d9-5b95-8bd3-81c82cdd9e91",
-      "zh": "兴趣",
+      "zh": "兴趣，热情，风味",
       "en": "zest",
       "note": "noun"
     },
     {
       "id": "88600066-fecf-5ecb-b7ab-41ed8dd22ee8",
-      "zh": "保险丝",
+      "zh": "保险丝，导火线",
       "en": "fuse",
       "note": "noun"
     },
@@ -10829,61 +10829,61 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "731e8013-f2c2-50b3-8ebc-08feb30f8183",
-      "zh": "逐退",
+      "zh": "逐退，抵制，抗御",
       "en": "repel",
       "note": "verb"
     },
     {
       "id": "7fa956fb-399c-548c-b373-463bec25a93c",
-      "zh": "赎金",
+      "zh": "赎金，赎身，赎回",
       "en": "ransom",
       "note": "noun"
     },
     {
       "id": "7906c628-d078-5ae3-ba24-a0a951f8eff3",
-      "zh": "紫外线的",
+      "zh": "紫外线的，紫外线",
       "en": "ultraviolet",
       "note": "adjective"
     },
     {
       "id": "a4ac9378-20c4-5c18-a2ac-32178dea20f4",
-      "zh": "不透明物",
+      "zh": "不透明物，阴暗的",
       "en": "opaque",
       "note": "noun"
     },
     {
       "id": "502fdb3b-a79e-55ff-826e-c494efc61cc2",
-      "zh": "守卫",
+      "zh": "守卫，门警，幽门",
       "en": "janitor",
       "note": "noun"
     },
     {
       "id": "491ab0c0-903a-570d-87ad-29db4adcfa55",
-      "zh": "不流动的",
+      "zh": "不流动的，停滞的",
       "en": "stagnant",
       "note": "adjective"
     },
     {
       "id": "c6ecee17-e1b2-5a56-9bdd-0e5fa016006a",
-      "zh": "使中立",
+      "zh": "使中立，使中和",
       "en": "neutralize",
       "note": "verb"
     },
     {
       "id": "2ff1e085-c6bd-5753-ab64-0f28582f2bf5",
-      "zh": "喧闹",
+      "zh": "喧闹，裙撑，奔忙",
       "en": "bustle",
       "note": "noun"
     },
     {
       "id": "d7cc44dc-a5c7-5331-8341-a5e6fc2d3a91",
-      "zh": "代替",
+      "zh": "代替，取代，接替",
       "en": "supersede",
       "note": "verb"
     },
     {
       "id": "59f1d500-fecf-552c-830a-18a47a17f07c",
-      "zh": "食篮",
+      "zh": "食篮，食盒，阻碍",
       "en": "hamper",
       "note": "noun"
     },
@@ -10895,25 +10895,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "0684ae9b-04ad-5efa-9ced-0e2fa5f47ffb",
-      "zh": "语音的",
+      "zh": "语音的，语音学的",
       "en": "phonetic",
       "note": "adjective"
     },
     {
       "id": "969d16a4-54d3-5f15-9c1d-99967389d0f0",
-      "zh": "闪烁",
+      "zh": "闪烁，闪耀，瞬息",
       "en": "twinkle",
       "note": "noun"
     },
     {
       "id": "43a631a0-5603-52f1-bee0-49466bdc2ee2",
-      "zh": "舞厅",
+      "zh": "舞厅，跳舞场",
       "en": "ballroom",
       "note": "noun"
     },
     {
       "id": "d6509fe2-d56c-5c57-9896-e7422a49d585",
-      "zh": "疑虑",
+      "zh": "疑虑，不安，害怕",
       "en": "misgiving",
       "note": "noun"
     },
@@ -10931,31 +10931,31 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "1641345a-6503-5b86-8e06-f68b0425fbad",
-      "zh": "误用",
+      "zh": "误用，滥用，虐待",
       "en": "misuse",
       "note": "noun"
     },
     {
       "id": "af834ab8-bf6f-561e-816a-f778a2f6069e",
-      "zh": "一伙",
+      "zh": "一伙，巡回演出",
       "en": "troupe",
       "note": "noun"
     },
     {
       "id": "df5f7ae4-10a2-504c-b7d7-2e7ac4baf5c6",
-      "zh": "丰富的",
+      "zh": "繁茂的",
       "en": "exuberant",
       "note": "adjective"
     },
     {
       "id": "ece8c973-5166-5c97-8030-7fe1206eb6bb",
-      "zh": "徒然的",
+      "zh": "无价值的，徒然的",
       "en": "vain",
       "note": "adjective"
     },
     {
       "id": "c529188b-d626-5964-9c24-cfe8fa40d01b",
-      "zh": "使实体化",
+      "zh": "使实体化，证实",
       "en": "substantiate",
       "note": "verb"
     },
@@ -10967,49 +10967,49 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "7c134698-8eb9-515e-95b9-34ac8a9359ce",
-      "zh": "期待",
+      "zh": "期待，嘱望，希望",
       "en": "expectancy",
       "note": "noun"
     },
     {
       "id": "27f5050d-73d2-5aea-adfd-9128d96670db",
-      "zh": "孜孜不倦",
+      "zh": "坚持，孜孜不倦",
       "en": "persevere",
       "note": "verb"
     },
     {
       "id": "c0cb3c37-091f-5cbd-9795-5ecbcbcf9ea7",
-      "zh": "钟摆",
+      "zh": "钟摆，摇锤",
       "en": "pendulum",
       "note": "noun"
     },
     {
       "id": "2fd967a3-1afb-51ca-8f91-fe402435568f",
-      "zh": "使欢喜",
+      "zh": "欣喜，高兴，庆祝",
       "en": "rejoice",
       "note": "verb"
     },
     {
       "id": "330c8d2f-727e-5f94-bd16-922c2bd5157a",
-      "zh": "使渗透",
+      "zh": "使渗透，浸透",
       "en": "saturate",
       "note": "verb"
     },
     {
       "id": "419c2103-f8e6-5376-929f-384fa5cc5cff",
-      "zh": "即席创作",
+      "zh": "即席创作，临时做",
       "en": "improvise",
       "note": "verb"
     },
     {
       "id": "68c37e4b-1ed4-5c25-9b03-62cc670784fe",
-      "zh": "虔诚",
+      "zh": "虔诚，孝敬",
       "en": "piety",
       "note": "noun"
     },
     {
       "id": "02add089-b270-5188-b8a7-97d0e77f1cb7",
-      "zh": "使浸水",
+      "zh": "使浸水，使陷入",
       "en": "submerge",
       "note": "verb"
     },
@@ -11021,49 +11021,49 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "db2a5e6c-a9be-5ac4-8184-f535be038d96",
-      "zh": "保护",
+      "zh": "击退，保护，供养",
       "en": "fend",
       "note": "verb"
     },
     {
       "id": "f3698b87-2df7-59d1-8c2e-014d6fdcd81f",
-      "zh": "熄灭的",
+      "zh": "熄灭的，灭绝的",
       "en": "extinct",
       "note": "adjective"
     },
     {
       "id": "47c40cd1-8744-5054-a348-07c1d8b7d896",
-      "zh": "扣除",
+      "zh": "扣除，减去，折扣",
       "en": "deduct",
       "note": "verb"
     },
     {
       "id": "800cd9e2-f82a-5387-8aa3-1d2ebdf699de",
-      "zh": "奔流",
+      "zh": "奔流，倾注，迸发",
       "en": "torrent",
       "note": "noun"
     },
     {
       "id": "d31231a5-ea3d-5bfa-b787-f8cc8d994dca",
-      "zh": "服从的",
+      "zh": "服从的，顺从的",
       "en": "obedient",
       "note": "adjective"
     },
     {
       "id": "fdd9f3bc-2e1d-58f3-805f-5ebdcd078efe",
-      "zh": "品德高尚的",
+      "zh": "公正的，贞洁的",
       "en": "virtuous",
       "note": "adjective"
     },
     {
       "id": "057146b1-f5a0-5c02-a493-51e689ec422b",
-      "zh": "南极的",
+      "zh": "南极的，南极地区",
       "en": "antarctic",
       "note": "adjective"
     },
     {
       "id": "81953cfa-2d1a-5bb4-be29-2ae21ac48fe1",
-      "zh": "虚荣心",
+      "zh": "虚无，自负，空虚",
       "en": "vanity",
       "note": "noun"
     },
@@ -11081,61 +11081,61 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "15a7c4fa-bd1a-5c7d-ac97-96430a42148a",
-      "zh": "皱褶",
+      "zh": "皱褶，波纹，生气",
       "en": "ruffle",
       "note": "noun"
     },
     {
       "id": "0fd2c74f-5891-5a4d-9051-d2bbfc09be16",
-      "zh": "书架",
+      "zh": "书架，书柜",
       "en": "bookcase",
       "note": "noun"
     },
     {
       "id": "019f2a5a-71ea-57fc-ade8-da5802e230e7",
-      "zh": "辩护",
+      "zh": "辩护，维护，辩解",
       "en": "vindicate",
       "note": "verb"
     },
     {
       "id": "a1765440-3d72-5fa8-bfcd-5746413c9654",
-      "zh": "弹回",
+      "zh": "弹回，回弹，弹性",
       "en": "resilience",
       "note": "noun"
     },
     {
       "id": "004fd508-9640-5d2f-995b-7cfeb84ca8db",
-      "zh": "使失去能力",
+      "zh": "使失去能力，禁止",
       "en": "disable",
       "note": "verb"
     },
     {
       "id": "1155bc51-72af-5dc1-8ce8-122dfb7519cc",
-      "zh": "划桨",
+      "zh": "划桨，戏水，涉水",
       "en": "paddle",
       "note": "noun"
     },
     {
       "id": "568c61a1-8ddd-5894-b407-222e626afc52",
-      "zh": "高的",
+      "zh": "高的，傲慢的",
       "en": "lofty",
       "note": "adjective"
     },
     {
       "id": "02eead79-1837-5995-8990-62a60169f532",
-      "zh": "种子",
+      "zh": "细菌，种子，根源",
       "en": "germ",
       "note": "noun"
     },
     {
       "id": "26608193-5467-552e-954e-8433633fa416",
-      "zh": "先驱",
+      "zh": "先驱，前兆",
       "en": "forerunner",
       "note": "noun"
     },
     {
       "id": "5e201aba-5a93-5005-aa15-690b9c9a1d18",
-      "zh": "驱散",
+      "zh": "驱散，驱逐",
       "en": "dispel",
       "note": "verb"
     },
@@ -11147,7 +11147,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "ed5e2b8b-63e8-54a1-abfc-91a4c6d6de7c",
-      "zh": "有节制的",
+      "zh": "温和的，适度的",
       "en": "temperate",
       "note": "adjective"
     },
@@ -11159,49 +11159,49 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "e8bfb54d-4a2e-59ff-bc67-eba9386c5145",
-      "zh": "失败",
+      "zh": "失败，误送，流产",
       "en": "miscarriage",
       "note": "noun"
     },
     {
       "id": "2843c817-982f-56b6-b4dd-46533c7f5340",
-      "zh": "警觉的",
+      "zh": "警觉的，警戒的",
       "en": "vigilant",
       "note": "adjective"
     },
     {
       "id": "80c3c725-016d-572c-b6d1-b83b63d79680",
-      "zh": "贿赂",
+      "zh": "贿赂，收买，行贿",
       "en": "bribe",
       "note": "noun"
     },
     {
       "id": "9c049fed-b6f2-5ab3-b215-df65379203a0",
-      "zh": "屠夫",
+      "zh": "屠夫，肉商，小贩",
       "en": "butcher",
       "note": "noun"
     },
     {
       "id": "9cc19fd5-ed02-5d33-85fe-6ec985bdf28f",
-      "zh": "尾部",
+      "zh": "尾部，船尾",
       "en": "stern",
       "note": "noun"
     },
     {
       "id": "8dd1d38c-1403-5c8b-89b8-f784879f3712",
-      "zh": "奇异事物",
+      "zh": "奇异事物，惊异于",
       "en": "marvel",
       "note": "noun"
     },
     {
       "id": "ae1c93c7-acc5-525c-8108-4d02e2989c51",
-      "zh": "微弱的",
+      "zh": "微弱的，衰弱的",
       "en": "feeble",
       "note": "adjective"
     },
     {
       "id": "702bd32b-98af-5ee5-b726-592f3e75e66a",
-      "zh": "失眠症",
+      "zh": "失眠症，失眠",
       "en": "insomnia",
       "note": "noun"
     },
@@ -11213,85 +11213,85 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "1c807ad7-543e-5c8f-aa32-b2ac6e0eed69",
-      "zh": "肤色",
+      "zh": "肤色，情况，局面",
       "en": "complexion",
       "note": "noun"
     },
     {
       "id": "6b74248c-dd4b-5e18-b088-944358473aed",
-      "zh": "寻常事",
+      "zh": "寻常事，老生常谈",
       "en": "commonplace",
       "note": "noun"
     },
     {
       "id": "c2544f55-b8a0-55d8-a8e6-54d234ab16c3",
-      "zh": "退学学生",
+      "zh": "退学学生，离去",
       "en": "dropout",
       "note": "noun"
     },
     {
       "id": "5aa43167-e4df-5ae6-981b-b55e936707a5",
-      "zh": "医院",
+      "zh": "医院，养老院",
       "en": "infirmary",
       "note": "noun"
     },
     {
       "id": "73cab433-a5c7-57af-acb2-4501e3919ac0",
-      "zh": "萌芽",
+      "zh": "萌芽，长芽，抽条",
       "en": "sprout",
       "note": "noun"
     },
     {
       "id": "9924b8df-08d7-5571-bfbc-fc6877230827",
-      "zh": "漂白",
+      "zh": "漂白，变白",
       "en": "bleach",
       "note": "verb"
     },
     {
       "id": "64f25b7c-6bef-5d52-8ee0-10e364d14336",
-      "zh": "崇拜",
+      "zh": "崇拜，爱慕，喜爱",
       "en": "adore",
       "note": "verb"
     },
     {
       "id": "c537992b-fa91-5292-bb06-dfe05bae27b5",
-      "zh": "寄宿处",
+      "zh": "寄宿，提起，住所",
       "en": "lodging",
       "note": "noun"
     },
     {
       "id": "61273496-93f4-5206-abf4-167a735d9ea1",
-      "zh": "大破坏",
+      "zh": "大破坏，蹂躏",
       "en": "havoc",
       "note": "noun"
     },
     {
       "id": "5029f478-a473-5eeb-b607-e57eecbe8451",
-      "zh": "生锈",
+      "zh": "生锈，衰退，腐蚀",
       "en": "rust",
       "note": "noun"
     },
     {
       "id": "933413b1-c349-5d62-9b10-8d4c2de71e17",
-      "zh": "现象的",
+      "zh": "现象的，能知觉的",
       "en": "phenomenal",
       "note": "adjective"
     },
     {
       "id": "453543fe-a65f-5f87-a2ef-05d0b354bfe6",
-      "zh": "免税者",
+      "zh": "免税者，免除的",
       "en": "exempt",
       "note": "noun"
     },
     {
       "id": "ac83e928-cbd0-5bbf-b438-0030ca82df9b",
-      "zh": "审查",
+      "zh": "审查，鉴定",
       "en": "checkup",
       "note": "noun"
     },
     {
       "id": "9c9cab32-9ddb-50bf-8f19-f2885297d683",
-      "zh": "温度计",
+      "zh": "温度计，体温计",
       "en": "thermometer",
       "note": "noun"
     },
@@ -11303,49 +11303,49 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "6253836e-1435-598c-9def-96b588283e60",
-      "zh": "蓄意害人",
+      "zh": "恶意，怨恨，预谋",
       "en": "malice",
       "note": "noun"
     },
     {
       "id": "c4d6be8a-302d-5e72-b136-3d5acc75c5a1",
-      "zh": "使悲伤",
+      "zh": "使悲伤，悲痛",
       "en": "grieve",
       "note": "verb"
     },
     {
       "id": "774a3ca9-0f0a-5507-9cef-9c861e8a51eb",
-      "zh": "停战",
+      "zh": "停战，休战，休止",
       "en": "truce",
       "note": "noun"
     },
     {
       "id": "b4c4abae-60c0-5cdf-938d-dfc1575c28f5",
-      "zh": "听众席",
+      "zh": "听众席，礼堂",
       "en": "auditorium",
       "note": "noun"
     },
     {
       "id": "007fd444-548f-5eca-b127-5d1ad158e766",
-      "zh": "令人难忘的",
+      "zh": "壮丽的，威风的",
       "en": "imposing",
       "note": "adjective"
     },
     {
       "id": "db3fc672-79b0-5b0a-844d-aaeb7c29beda",
-      "zh": "恢复原状",
+      "zh": "恢复原状，修复",
       "en": "rehabilitate",
       "note": "verb"
     },
     {
       "id": "4e9663ad-724d-565a-bcc0-b3a12acc614b",
-      "zh": "检阅",
+      "zh": "召集，集合，检阅",
       "en": "muster",
       "note": "noun"
     },
     {
       "id": "676eb207-1fb5-5729-b44d-c858a51f024b",
-      "zh": "活塞",
+      "zh": "活塞，活塞阀键",
       "en": "piston",
       "note": "noun"
     },
@@ -11357,73 +11357,73 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "312916a1-ed27-5817-81d1-e34be2c5c66b",
-      "zh": "长处",
+      "zh": "长处，特长，拿手",
       "en": "forte",
       "note": "noun"
     },
     {
       "id": "094131fe-eeac-58d5-8313-1e848d909388",
-      "zh": "征服者",
+      "zh": "征服者，胜利者",
       "en": "conqueror",
       "note": "noun"
     },
     {
       "id": "e6132586-4108-59b5-8173-823c8d13253d",
-      "zh": "不安静的",
+      "zh": "不安静的，慌张的",
       "en": "restless",
       "note": "adjective"
     },
     {
       "id": "3a1b12cb-4923-552f-ae1d-e6853a0f45a5",
-      "zh": "福布斯（美国出版及媒体集团）",
+      "zh": "福布斯",
       "en": "forbes",
       "note": "noun"
     },
     {
       "id": "54fd6e2f-e7b9-5daf-bebe-9e1a4b08b2cd",
-      "zh": "补药",
+      "zh": "补药，滋补的",
       "en": "tonic",
       "note": "noun"
     },
     {
       "id": "ebe3e720-eb87-5da1-980c-0445b08703aa",
-      "zh": "挥发性的",
+      "zh": "挥发性的，可变的",
       "en": "volatile",
       "note": "adjective"
     },
     {
       "id": "0053cef7-c2da-54d7-b397-79184ed4354d",
-      "zh": "麻醉药",
+      "zh": "麻醉药，镇静剂",
       "en": "narcotic",
       "note": "noun"
     },
     {
       "id": "7fe35016-e491-53d3-acbe-791e9d2a824d",
-      "zh": "偶然性",
+      "zh": "偶然性，偶然事件",
       "en": "haphazard",
       "note": "noun"
     },
     {
       "id": "7e3da4b8-9bd7-5755-855d-2b9da29fcdea",
-      "zh": "衰落",
+      "zh": "减少，缩小，衰落",
       "en": "dwindle",
       "note": "verb"
     },
     {
       "id": "41048b1a-f816-52e4-9979-3495fe5799fb",
-      "zh": "低劣的",
+      "zh": "低劣的，破旧的",
       "en": "shabby",
       "note": "adjective"
     },
     {
       "id": "3b73e17b-5ec6-5631-bca5-a946737a01aa",
-      "zh": "光彩",
+      "zh": "光彩，假象，注释",
       "en": "gloss",
       "note": "noun"
     },
     {
       "id": "d4088a24-2f19-5e30-a656-2e90e89ad0ad",
-      "zh": "震摇",
+      "zh": "震摇，摇动，颠簸",
       "en": "jolt",
       "note": "noun"
     },
@@ -11435,79 +11435,79 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "3c04b9b8-e71f-591d-8e8d-c29d57f77f8d",
-      "zh": "立志于",
+      "zh": "渴望，立志于",
       "en": "aspire",
       "note": "verb"
     },
     {
       "id": "5a09d2da-a640-58e2-8afb-87dd88a213e4",
-      "zh": "刻痕",
+      "zh": "刻痕，等级，峡谷",
       "en": "notch",
       "note": "noun"
     },
     {
       "id": "92596ffd-b562-59d3-ad97-b5e48a59578c",
-      "zh": "地球上的人",
+      "zh": "地球的，陆生的",
       "en": "terrestrial",
       "note": "noun"
     },
     {
       "id": "49b2e128-c8c4-57f3-9be8-1a3cedb40e07",
-      "zh": "堕落的",
+      "zh": "堕落的，退化",
       "en": "degenerate",
       "note": "adjective"
     },
     {
       "id": "d5799c55-168c-5532-a120-c3fdb183c2a6",
-      "zh": "压迫",
+      "zh": "压迫，压抑",
       "en": "oppress",
       "note": "verb"
     },
     {
       "id": "70fc7283-ea7f-5554-8af0-4f57540b4d62",
-      "zh": "分摊指定",
+      "zh": "分配，配给，规定",
       "en": "allot",
       "note": "verb"
     },
     {
       "id": "455df205-b046-56e4-a1d6-0d9c2df1813c",
-      "zh": "刺痛",
+      "zh": "刺痛，刺激，讽刺",
       "en": "sting",
       "note": "noun"
     },
     {
       "id": "ae3743e0-46e2-5095-9a37-4ba802e123b5",
-      "zh": "爱炫耀的",
+      "zh": "爱炫耀的，虚夸的",
       "en": "pompous",
       "note": "adjective"
     },
     {
       "id": "3478b30c-6830-500b-8fd5-8f013217f5eb",
-      "zh": "极端地",
+      "zh": "极端地，极度地",
       "en": "exceedingly",
       "note": "adverb"
     },
     {
       "id": "76ec7f7e-e77e-552f-af38-97ce97972769",
-      "zh": "激励",
+      "zh": "刺激，激励，引诱",
       "en": "incite",
       "note": "verb"
     },
     {
       "id": "4f147580-0221-5fe9-85cb-69008a053c27",
-      "zh": "时尚",
+      "zh": "时尚，时髦，流行",
       "en": "vogue",
       "note": "noun"
     },
     {
       "id": "1dbf2799-334e-593b-a04a-d7d9e677a4c3",
-      "zh": "健身房",
+      "zh": "健身房，体育馆",
       "en": "gymnasium",
       "note": "noun"
     },
     {
       "id": "e227ff22-d608-51dc-af91-0be162dcc3f5",
-      "zh": "炫耀",
+      "zh": "炫耀，飘扬",
       "en": "flaunt",
       "note": "noun"
     },
@@ -11519,91 +11519,91 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "48c2a854-c4d2-58d8-88de-dbbb9546d7c9",
-      "zh": "自动化",
+      "zh": "自动化，自动操作",
       "en": "automation",
       "note": "noun"
     },
     {
       "id": "feb2362d-3733-523c-95e5-ee433d9ec873",
-      "zh": "流入",
+      "zh": "流入，河口，汇集",
       "en": "influx",
       "note": "noun"
     },
     {
       "id": "d4435701-b617-5268-a68d-5b52d9daba24",
-      "zh": "密封套",
+      "zh": "密封套，衬片",
       "en": "gland",
       "note": "noun"
     },
     {
       "id": "0d62b77d-ce7d-5f49-9979-0b830a5feee5",
-      "zh": "回收利用",
+      "zh": "回收利用，再利用",
       "en": "recycled",
       "note": "verb"
     },
     {
       "id": "80923156-db93-52ac-820c-59f60353c2de",
-      "zh": "触须",
+      "zh": "触须，触手，触角",
       "en": "tentacle",
       "note": "noun"
     },
     {
       "id": "f3255379-2098-5017-943a-cddcdc573d1d",
-      "zh": "命令",
+      "zh": "命令，必要的事",
       "en": "imperative",
       "note": "noun"
     },
     {
       "id": "912159cd-5dc1-58da-9704-902fee07574f",
-      "zh": "自此以后",
+      "zh": "自此以后，今后",
       "en": "henceforth",
       "note": "adverb"
     },
     {
       "id": "f8cec385-4d6b-5a8a-b830-93d84075528f",
-      "zh": "动摇",
+      "zh": "动摇，踌躇，摇摆",
       "en": "waver",
       "note": "noun"
     },
     {
       "id": "455425a1-7dbc-5d71-9cca-8fb76eba0c1d",
-      "zh": "驱逐",
+      "zh": "驱逐，消除，流放",
       "en": "banish",
       "note": "verb"
     },
     {
       "id": "ddc90e21-df71-5cf6-87f1-48076190a853",
-      "zh": "海面的",
+      "zh": "海面的，近海的",
       "en": "offshore",
       "note": "adjective"
     },
     {
       "id": "a630f211-7ed1-5172-aacb-96f811bea7c9",
-      "zh": "摘要",
+      "zh": "摘要，提纲，要目",
       "en": "syllabus",
       "note": "noun"
     },
     {
       "id": "66685fc3-5658-5d2e-b53c-790edff4d544",
-      "zh": "笨重的",
+      "zh": "笨重的，麻烦的",
       "en": "cumbersome",
       "note": "adjective"
     },
     {
       "id": "bd2db0cf-6234-5565-ada7-57ba73a3286b",
-      "zh": "显赫的",
+      "zh": "显赫的，杰出的",
       "en": "eminent",
       "note": "adjective"
     },
     {
       "id": "5d7398b4-4586-5fd5-9f19-d78d27237b1c",
-      "zh": "皱痕",
+      "zh": "皱痕，折痕",
       "en": "crease",
       "note": "noun"
     },
     {
       "id": "c4b805c2-7438-5dba-8e3f-28df166d9fee",
-      "zh": "未说过的",
+      "zh": "未说过的，无限的",
       "en": "untold",
       "note": "adjective"
     },
@@ -11621,103 +11621,103 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "0eeaacab-216b-522a-a5c8-59e8f97b9694",
-      "zh": "旅程",
+      "zh": "旅程，旅行指南",
       "en": "itinerary",
       "note": "noun"
     },
     {
       "id": "e117ffb4-1ac6-53db-b6b7-973f1c18618d",
-      "zh": "费力的",
+      "zh": "费力的，努力的",
       "en": "arduous",
       "note": "adjective"
     },
     {
       "id": "8e0d4cbc-37bd-5f31-8744-e5aa1cae2f68",
-      "zh": "地图集",
+      "zh": "地图集，图表集",
       "en": "atlas",
       "note": "noun"
     },
     {
       "id": "de7e2647-4604-5f8b-8b6f-504a3aec419d",
-      "zh": "花费",
+      "zh": "花费，消耗，用光",
       "en": "expend",
       "note": "verb"
     },
     {
       "id": "ae4ce5f3-8407-50ae-b580-79a888e8be00",
-      "zh": "明显的",
+      "zh": "明显的，公然的",
       "en": "overt",
       "note": "adjective"
     },
     {
       "id": "09678129-87d0-5258-b003-cb681a0ba095",
-      "zh": "水生动物",
+      "zh": "水生动物，水生的",
       "en": "aquatic",
       "note": "noun"
     },
     {
       "id": "6526fe4a-ad03-5419-a18f-f4b2b6e92840",
-      "zh": "微光",
+      "zh": "微光，闪光，闪烁",
       "en": "shimmer",
       "note": "noun"
     },
     {
       "id": "a52c4352-9ccf-521e-974c-64822baac8d4",
-      "zh": "践踏",
+      "zh": "践踏，蹂躏，无视",
       "en": "trample",
       "note": "noun"
     },
     {
       "id": "e67dc012-05c0-5a93-add6-847dcf6d28b3",
-      "zh": "扳钳",
+      "zh": "扳钳，扳手，扭伤",
       "en": "wrench",
       "note": "noun"
     },
     {
       "id": "acdd8bf5-d522-59e3-aedd-37c01684f2d2",
-      "zh": "恸哭",
+      "zh": "恸哭，哀号，嚎啕",
       "en": "wail",
       "note": "noun"
     },
     {
       "id": "b103acf7-2902-536e-beae-09b0f2514262",
-      "zh": "惯性",
+      "zh": "惯性，惰性，迟钝",
       "en": "inertia",
       "note": "noun"
     },
     {
       "id": "2e4c9a07-71c5-54f3-b00a-735f7055a5f0",
-      "zh": "柔顺的",
+      "zh": "驯养，驯服，制服",
       "en": "tame",
       "note": "adjective"
     },
     {
       "id": "0cdca877-2351-5c38-8ec0-cec7a91a6e13",
-      "zh": "爱国心",
+      "zh": "爱国心，爱国精神",
       "en": "patriotism",
       "note": "noun"
     },
     {
       "id": "ce9f8e0c-0257-5b57-85bb-a26bf35abb5b",
-      "zh": "损毁",
+      "zh": "损毁，损伤，糟蹋",
       "en": "mar",
       "note": "verb"
     },
     {
       "id": "92bc554c-7227-5781-a200-267a8207b42d",
-      "zh": "保存性的",
+      "zh": "保存性的，温室",
       "en": "conservatory",
       "note": "adjective"
     },
     {
       "id": "6a484ae3-9f81-505c-be59-108e3a5c1bdb",
-      "zh": "寄生生物",
+      "zh": "寄生生物，寄生虫",
       "en": "parasite",
       "note": "noun"
     },
     {
       "id": "3ea5d1d2-667e-5a7c-bb4b-54aa2969b211",
-      "zh": "设要塞于",
+      "zh": "设要塞于，加强",
       "en": "fortify",
       "note": "verb"
     },
@@ -11729,7 +11729,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "2fa1bd94-13f8-50c0-bed8-ef130cc12aa6",
-      "zh": "使疏远",
+      "zh": "离间，转让，让与",
       "en": "alienate",
       "note": "verb"
     },
@@ -11747,13 +11747,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "1b0e49a1-6f36-5a12-811c-2d19dbfd27a2",
-      "zh": "铺位",
+      "zh": "铺位，废话，逃走",
       "en": "bunk",
       "note": "noun"
     },
     {
       "id": "0b67a645-4e4a-57cf-9115-c2a4072f4209",
-      "zh": "沉淀",
+      "zh": "沉淀，沉降，平息",
       "en": "subside",
       "note": "verb"
     },
@@ -11765,19 +11765,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "ceb3d189-031e-5be7-9fae-89c398d56500",
-      "zh": "增值",
+      "zh": "增加，增值，盈余",
       "en": "increment",
       "note": "noun"
     },
     {
       "id": "d0194d7b-eb3c-5119-88ca-bc5c6c0059bb",
-      "zh": "使凋谢",
+      "zh": "使凋谢，使消亡",
       "en": "wither",
       "note": "verb"
     },
     {
       "id": "d6d83c05-7452-5abf-94b0-eefdccfbb521",
-      "zh": "释义",
+      "zh": "释义，解述，改写",
       "en": "paraphrase",
       "note": "noun"
     },
@@ -11789,61 +11789,61 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "62d657a1-76e7-5569-9e78-f1d851ba4742",
-      "zh": "狂乱的",
+      "zh": "狂乱的，疯狂的",
       "en": "frantic",
       "note": "adjective"
     },
     {
       "id": "104ae516-bf60-5053-a493-687ad78cf29b",
-      "zh": "巨像似的",
+      "zh": "巨大的，巨像似的",
       "en": "colossal",
       "note": "adjective"
     },
     {
       "id": "db77834c-4ef2-5091-aacd-eecda416780e",
-      "zh": "对立",
+      "zh": "对立，敌对，敌意",
       "en": "antagonism",
       "note": "noun"
     },
     {
       "id": "8467fe0c-812b-5f08-a9fa-6b07eaf0a461",
-      "zh": "义务的",
+      "zh": "义务的，必须的",
       "en": "obligatory",
       "note": "adjective"
     },
     {
       "id": "382e056f-33ec-5539-bf62-bab955693fae",
-      "zh": "首长",
+      "zh": "首长，最高当局",
       "en": "paramount",
       "note": "noun"
     },
     {
       "id": "3ecb6ca6-9281-575a-84c3-86c186844488",
-      "zh": "弥漫于",
+      "zh": "弥漫于，遍及于",
       "en": "pervade",
       "note": "verb"
     },
     {
       "id": "fe8f6edb-cfd4-59fc-88cf-0c01c75667ab",
-      "zh": "赶出",
+      "zh": "逐出，赶出，驱逐",
       "en": "evict",
       "note": "verb"
     },
     {
       "id": "0cb258b7-a84c-5946-ad99-f9622e7d0d3f",
-      "zh": "粉碎",
+      "zh": "粉碎，瓦解，崩溃",
       "en": "crumble",
       "note": "verb"
     },
     {
       "id": "2600ba74-93ee-5970-b65d-937e26c6528f",
-      "zh": "拥挤",
+      "zh": "拥挤，充血，拥塞",
       "en": "congestion",
       "note": "noun"
     },
     {
       "id": "f6373eae-ccb4-5cbe-a3de-1f205f24b5fb",
-      "zh": "决心的",
+      "zh": "弯曲的，决心的",
       "en": "bent",
       "note": "adjective"
     },
@@ -11855,49 +11855,49 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "6b9cad66-b10a-5349-a8aa-e652726061ae",
-      "zh": "东方人",
+      "zh": "东方人，亚洲人",
       "en": "oriental",
       "note": "noun"
     },
     {
       "id": "020aa196-5765-58d6-b684-2d1fbbc285b3",
-      "zh": "使纠缠",
+      "zh": "使纠缠，卷入",
       "en": "entangle",
       "note": "verb"
     },
     {
       "id": "23d72f8d-1f52-5a5e-9812-989a5cbc4b57",
-      "zh": "软木塞",
+      "zh": "软木塞，软木树",
       "en": "cork",
       "note": "noun"
     },
     {
       "id": "f8826008-8837-5a32-a8b0-ec1cc4ecb636",
-      "zh": "可容忍的",
+      "zh": "可容忍的，可以的",
       "en": "tolerable",
       "note": "adjective"
     },
     {
       "id": "61c128f3-2a8b-51df-9f39-3e17b72dd5b2",
-      "zh": "饮料",
+      "zh": "饮料，咖啡",
       "en": "beverage",
       "note": "noun"
     },
     {
       "id": "e185fc74-b4f6-5625-bec5-ea523efad9e3",
-      "zh": "向后退",
+      "zh": "退却，收回，降低",
       "en": "recede",
       "note": "verb"
     },
     {
       "id": "03ba545a-1b86-55b5-b489-ae9c1cea8b8c",
-      "zh": "漏斗",
+      "zh": "漏斗，烟囱",
       "en": "funnel",
       "note": "noun"
     },
     {
       "id": "2098a131-320c-5d4f-bd0d-ab9784a83514",
-      "zh": "乡愁",
+      "zh": "乡愁，向往过去",
       "en": "nostalgia",
       "note": "noun"
     },
@@ -11909,13 +11909,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "7602dbe6-e613-5541-bcae-c2c8a2af1e9f",
-      "zh": "调合",
+      "zh": "调合，捏造，编造",
       "en": "concoct",
       "note": "verb"
     },
     {
       "id": "68e81028-12ce-575f-ad5b-6f30a622d6b1",
-      "zh": "讨论会",
+      "zh": "讨论会，座谈会",
       "en": "symposium",
       "note": "noun"
     },
@@ -11927,25 +11927,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "3193c655-6018-59d2-8fe4-d4ccbadef910",
-      "zh": "被抛弃了的",
+      "zh": "无主的，遗弃物",
       "en": "derelict",
       "note": "adjective"
     },
     {
       "id": "02bdfc13-ddc6-5ea8-9a4b-bc2999bcd7a6",
-      "zh": "掠夺者",
+      "zh": "清嗓，咳嗽，捕捉",
       "en": "hawk",
       "note": "noun"
     },
     {
       "id": "21546373-d027-578a-b62d-8363729dbcc5",
-      "zh": "模糊的",
+      "zh": "模糊的，不确定的",
       "en": "indefinite",
       "note": "adjective"
     },
     {
       "id": "2d42fb67-3287-51b6-84e0-1b83bd52466f",
-      "zh": "贪婪的",
+      "zh": "贪婪的，贪得的",
       "en": "greedy",
       "note": "adjective"
     },
@@ -11957,7 +11957,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "582188d6-2e65-544f-882f-34c4880fc3a0",
-      "zh": "僵局",
+      "zh": "僵局，停顿，死锁",
       "en": "deadlock",
       "note": "noun"
     },
@@ -11969,43 +11969,43 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "3f57f866-a365-5439-bb88-a668850b29a5",
-      "zh": "交付",
+      "zh": "交付，储蓄，委托",
       "en": "consign",
       "note": "verb"
     },
     {
       "id": "82601fee-340a-50f1-80c9-8b9a315d4c0f",
-      "zh": "包含的",
+      "zh": "包含的，包括的",
       "en": "inclusive",
       "note": "adjective"
     },
     {
       "id": "e4146a91-b3b4-5565-935d-9eb9ae1cfa39",
-      "zh": "班机",
+      "zh": "班机，衬里，衬垫",
       "en": "liner",
       "note": "noun"
     },
     {
       "id": "50647f3a-92a7-5bb2-bf7b-23412515be4b",
-      "zh": "沮丧",
+      "zh": "沮丧，使惊愕",
       "en": "dismay",
       "note": "noun"
     },
     {
       "id": "72ee33a5-93c1-5ddc-a55a-c59924ad6bf3",
-      "zh": "恶兆的",
+      "zh": "恶兆的，不吉利的",
       "en": "ominous",
       "note": "adjective"
     },
     {
       "id": "75ca30a2-e5e0-5d5b-91dc-0c645cef2fa1",
-      "zh": "皮带扣",
+      "zh": "扣子，扣住，屈服",
       "en": "buckle",
       "note": "noun"
     },
     {
       "id": "30747344-40c4-5335-a114-a54ac8d19d0c",
-      "zh": "撇取浮沫",
+      "zh": "略读，掠过，擦过",
       "en": "skim",
       "note": "verb"
     }
@@ -12013,19 +12013,19 @@ export const QUESTION_BANKS = {
   "toefl": [
     {
       "id": "0c42ff36-de8f-575f-8b1f-1fe21edc82e2",
-      "zh": "磁性",
+      "zh": "磁性，吸引力",
       "en": "magnetism",
       "note": "noun"
     },
     {
       "id": "698a0e4b-da82-5fa1-a4ef-525fa5da3ff8",
-      "zh": "分解",
+      "zh": "分解，腐烂",
       "en": "decompose",
       "note": "verb"
     },
     {
       "id": "f935cda8-3895-5021-ae26-86947b96b52f",
-      "zh": "把...供祭祀用",
+      "zh": "奉献，使神圣",
       "en": "consecrate",
       "note": "verb"
     },
@@ -12037,7 +12037,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "05a58147-8af2-58f8-b63a-f72902f9a35b",
-      "zh": "坚定的",
+      "zh": "坚定的，踏实的",
       "en": "steadfast",
       "note": "adjective"
     },
@@ -12049,43 +12049,43 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "0adbacee-d24f-5865-b6ab-74d2a29e5946",
-      "zh": "口琴",
+      "zh": "口琴，玻璃钟琴",
       "en": "harmonica",
       "note": "noun"
     },
     {
       "id": "86384675-bb2b-5ed4-870c-fba28701767b",
-      "zh": "灌溉",
+      "zh": "灌溉，冲洗伤口",
       "en": "irrigate",
       "note": "verb"
     },
     {
       "id": "03bc9196-4af7-5798-993c-093efdd35b05",
-      "zh": "使改变信仰的人",
+      "zh": "炼钢炉，吹风转炉",
       "en": "converter",
       "note": "noun"
     },
     {
       "id": "24a3fa22-338c-5d47-ab1b-399e30580f5f",
-      "zh": "丧失名誉",
+      "zh": "丧失名誉，坏名声",
       "en": "disrepute",
       "note": "noun"
     },
     {
       "id": "9ac19891-93a9-55e7-94c8-8f667f0a4d82",
-      "zh": "使解脱",
+      "zh": "使解脱，救出",
       "en": "extricate",
       "note": "verb"
     },
     {
       "id": "dabc6207-8d71-5e82-a3d0-4266102a3d50",
-      "zh": "贬损",
+      "zh": "蔑视，贬损，轻视",
       "en": "disparage",
       "note": "verb"
     },
     {
       "id": "12679d12-3829-5682-adf8-4fd138c69039",
-      "zh": "鲁莽的",
+      "zh": "大胆的，鲁莽的",
       "en": "audacious",
       "note": "adjective"
     },
@@ -12097,7 +12097,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "64f1869e-39e4-5ee5-9ca8-165b4023ec25",
-      "zh": "装载过多",
+      "zh": "装载过多，超载",
       "en": "surcharge",
       "note": "noun"
     },
@@ -12109,19 +12109,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "e5a21795-f512-5498-8024-15d730ee3c3c",
-      "zh": "嘲笑的",
+      "zh": "嘲笑的，冷笑的",
       "en": "sardonic",
       "note": "adjective"
     },
     {
       "id": "db537a2b-0e43-525b-94b9-0bdab3df756e",
-      "zh": "手风琴",
+      "zh": "手风琴，可折叠的",
       "en": "accordion",
       "note": "noun"
     },
     {
       "id": "a4836968-34ed-50e3-a016-4fcdc53f2a10",
-      "zh": "配偶",
+      "zh": "配偶，夫妻，陪伴",
       "en": "consort",
       "note": "noun"
     },
@@ -12133,31 +12133,31 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "923f5052-2fff-5bd4-aa84-3bc02e45f87e",
-      "zh": "非常",
+      "zh": "非常，可怕地",
       "en": "dreadfully",
       "note": "adverb"
     },
     {
       "id": "01477fb4-0f80-5a13-8e70-c5862996813e",
-      "zh": "消灭",
+      "zh": "消灭，废止",
       "en": "annihilate",
       "note": "verb"
     },
     {
       "id": "cb020b5a-e69a-544c-bf1e-c14a14d1492a",
-      "zh": "码尺",
+      "zh": "码尺，准绳，尺度",
       "en": "yardstick",
       "note": "noun"
     },
     {
       "id": "db01457c-1fee-5ddd-98b4-235896019c51",
-      "zh": "最深处的",
+      "zh": "内心的，秘密的",
       "en": "innermost",
       "note": "adjective"
     },
     {
       "id": "47e16a43-b16d-5883-b7e0-a68c68efc8d0",
-      "zh": "崇高地",
+      "zh": "崇高地，至上地",
       "en": "supremely",
       "note": "adverb"
     },
@@ -12169,31 +12169,31 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "4b8d2a20-2ab4-5b97-b386-7f0c8f5d5262",
-      "zh": "不断的",
+      "zh": "不断的，不绝的",
       "en": "incessant",
       "note": "adjective"
     },
     {
       "id": "7e4175f3-8efd-5825-b981-276b93780219",
-      "zh": "部门的",
+      "zh": "部分的，部门的",
       "en": "sectional",
       "note": "adjective"
     },
     {
       "id": "66504fcd-aa4a-5237-b3b2-4ec6d9444ebc",
-      "zh": "不许",
+      "zh": "不许，不准，驳回",
       "en": "disallow",
       "note": "verb"
     },
     {
       "id": "6828b46e-9fa1-5eaf-bd43-094938844657",
-      "zh": "起初的",
+      "zh": "起初的，发端的",
       "en": "incipient",
       "note": "adjective"
     },
     {
       "id": "b666b0ad-b48a-5dd6-a670-0b4af3ce8582",
-      "zh": "预先阻止",
+      "zh": "预先阻止，垄断",
       "en": "forestall",
       "note": "verb"
     },
@@ -12205,13 +12205,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "f827a068-6b7c-54fc-bbb3-4f1079084494",
-      "zh": "疲倦的",
+      "zh": "疲倦的，无力的",
       "en": "languid",
       "note": "adjective"
     },
     {
       "id": "a89c9b2d-c08d-50b1-abbd-1a07235bf09d",
-      "zh": "调整",
+      "zh": "调整，控制，转调",
       "en": "modulate",
       "note": "verb"
     },
@@ -12223,73 +12223,73 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "82474ab9-1abe-5d47-aa63-6d1ee07693bc",
-      "zh": "交战的",
+      "zh": "好战的，交战的",
       "en": "belligerent",
       "note": "adjective"
     },
     {
       "id": "2f72725e-1a9f-5b85-adb3-8aec1c054c0c",
-      "zh": "权宜之计",
+      "zh": "权宜之计，权宜的",
       "en": "expedient",
       "note": "noun"
     },
     {
       "id": "5c11e0f4-eae4-5dfd-86f2-d3bcccb7f458",
-      "zh": "不变的",
+      "zh": "不动的，不变的",
       "en": "immobile",
       "note": "adjective"
     },
     {
       "id": "6399121f-32f9-56f1-93d3-383725d8b6b9",
-      "zh": "没有偏见的",
+      "zh": "无偏见的，公平的",
       "en": "unbiased",
       "note": "adjective"
     },
     {
       "id": "3e99ab3d-b045-587f-85ea-6ad41e41a12e",
-      "zh": "节欲",
+      "zh": "节欲，戒酒，禁酒",
       "en": "temperance",
       "note": "noun"
     },
     {
       "id": "1a0b5f4c-124a-565a-a654-cd7167ca3756",
-      "zh": "无被选任资格的",
+      "zh": "不适任的，无益的",
       "en": "ineligible",
       "note": "adjective"
     },
     {
       "id": "45ce5c8a-a4af-5438-a974-e549fef5fb6d",
-      "zh": "紧握的",
+      "zh": "紧握的，固执的",
       "en": "tenacious",
       "note": "adjective"
     },
     {
       "id": "2b8f9239-62b7-54e9-aea9-121285148dc6",
-      "zh": "侵害者",
+      "zh": "侵害者，违反者",
       "en": "trespasser",
       "note": "noun"
     },
     {
       "id": "24b9d7ce-abae-5e74-b504-668f58bb1851",
-      "zh": "兄弟的",
+      "zh": "兄弟的，兄弟似的",
       "en": "fraternal",
       "note": "adjective"
     },
     {
       "id": "deef9af4-a087-577e-b659-9e292adbd589",
-      "zh": "清道夫",
+      "zh": "清道夫，清扫工",
       "en": "scavenger",
       "note": "noun"
     },
     {
       "id": "f51300f6-08ac-5d06-8236-e1cf95206e84",
-      "zh": "申斥",
+      "zh": "责备，耻辱，申斥",
       "en": "reproach",
       "note": "noun"
     },
     {
       "id": "c52a5e05-87ff-548e-996c-a05b9baf0aae",
-      "zh": "漂流木",
+      "zh": "漂流木，浮木",
       "en": "driftwood",
       "note": "noun"
     },
@@ -12301,19 +12301,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "cae888db-f2ac-5e9f-b17d-27c0d4ebc477",
-      "zh": "投弃",
+      "zh": "投弃，投弃货物",
       "en": "jettison",
       "note": "noun"
     },
     {
       "id": "e1db74bc-34f6-5b21-ab0a-2ec2e6c6d95b",
-      "zh": "使同步",
+      "zh": "使同步，使合拍",
       "en": "synchronize",
       "note": "verb"
     },
     {
       "id": "5cf2807f-29a1-54c8-8bcb-83ce298daffe",
-      "zh": "统治的",
+      "zh": "统治的，在位的",
       "en": "reigning",
       "note": "adjective"
     },
@@ -12325,73 +12325,73 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "627b3155-483d-59d4-bd81-70edfa028375",
-      "zh": "移民",
+      "zh": "移民，侨民",
       "en": "emigrant",
       "note": "noun"
     },
     {
       "id": "8b800c00-f035-5036-8bdd-65018626af22",
-      "zh": "和蔼可亲的",
+      "zh": "友善的，亲切的",
       "en": "affable",
       "note": "adjective"
     },
     {
       "id": "6c7f692e-4257-534b-9d20-2f20c1621043",
-      "zh": "陈旧的",
+      "zh": "陈旧的，过时的",
       "en": "antiquated",
       "note": "adjective"
     },
     {
       "id": "bec4c78e-920b-5d54-aff1-fa135e780058",
-      "zh": "逐渐削薄",
+      "zh": "削整，削弱，削减",
       "en": "whittle",
       "note": "verb"
     },
     {
       "id": "9e1ed8e2-e1c9-53e7-9133-d129bdf5f228",
-      "zh": "使再生",
+      "zh": "重建，革新，新生",
       "en": "regenerate",
       "note": "verb"
     },
     {
       "id": "cedba321-e7b0-5925-b24e-5e1a74ae2d34",
-      "zh": "过高的",
+      "zh": "过度的，过高的",
       "en": "exorbitant",
       "note": "adjective"
     },
     {
       "id": "570eb4b6-e995-5a1e-bda5-40ee87205c4e",
-      "zh": "惩罚",
+      "zh": "惩罚，苛评，修订",
       "en": "castigate",
       "note": "verb"
     },
     {
       "id": "23fff9bb-5992-5be4-bd95-a15c742072e4",
-      "zh": "口径测定",
+      "zh": "口径测定，刻度",
       "en": "calibration",
       "note": "noun"
     },
     {
       "id": "3277cee9-bec4-5fd7-878a-ea3627d8da2a",
-      "zh": "再点火",
+      "zh": "再点火，重新激起",
       "en": "rekindle",
       "note": "verb"
     },
     {
       "id": "b756ab4e-2604-5f4c-9d08-87a1506691cf",
-      "zh": "碎片的",
+      "zh": "碎片的，碎屑的",
       "en": "fragmentary",
       "note": "adjective"
     },
     {
       "id": "9559055c-03dc-567b-b4bb-737ebf364466",
-      "zh": "光明",
+      "zh": "光明，光辉，光度",
       "en": "luminosity",
       "note": "noun"
     },
     {
       "id": "ade82c25-7037-5a76-a72b-071811fb60c6",
-      "zh": "累赘的",
+      "zh": "累赘的，恼人的",
       "en": "burdensome",
       "note": "adjective"
     },
@@ -12403,7 +12403,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "48c0a0b3-b021-58c2-af60-4987e78a1d86",
-      "zh": "抗菌剂",
+      "zh": "抗菌剂，防腐剂",
       "en": "antiseptic",
       "note": "noun"
     },
@@ -12415,31 +12415,31 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "10d02307-f076-533b-a6b1-4aeca77cf347",
-      "zh": "奢侈的",
+      "zh": "奢侈的，华丽的",
       "en": "sumptuous",
       "note": "adjective"
     },
     {
       "id": "cdc0eabc-7c2a-58b5-909d-ceb8536877a6",
-      "zh": "巴结",
+      "zh": "巴结，暗示",
       "en": "insinuate",
       "note": "verb"
     },
     {
       "id": "262db85e-b987-521e-9046-8e77c30e67ca",
-      "zh": "存放者",
+      "zh": "存放者，存款人",
       "en": "depositor",
       "note": "noun"
     },
     {
       "id": "199148a1-d717-5363-9737-5457acff8d19",
-      "zh": "共栖的",
+      "zh": "共栖的，共生的",
       "en": "symbiotic",
       "note": "adjective"
     },
     {
       "id": "21108884-4ec5-5ffd-8c25-9e8c7076f66b",
-      "zh": "分摊",
+      "zh": "分配，分摊，分派",
       "en": "apportion",
       "note": "verb"
     },
@@ -12451,43 +12451,43 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "38b35d04-e90a-5c41-b64a-2544c5baf755",
-      "zh": "使不动",
+      "zh": "使不动，使固定",
       "en": "immobilize",
       "note": "verb"
     },
     {
       "id": "89ccbb76-5ca4-5890-9270-2c98cfb59b14",
-      "zh": "使结晶",
+      "zh": "使结晶，使具体化",
       "en": "crystallize",
       "note": "verb"
     },
     {
       "id": "ff813783-07c8-5eaf-91c3-c983338fea91",
-      "zh": "热衷的",
+      "zh": "热衷的，热诚的",
       "en": "zealous",
       "note": "adjective"
     },
     {
       "id": "bb64064d-0d3e-52f5-bf0e-c478fe0c3e9f",
-      "zh": "协调",
+      "zh": "协调，以和声唱",
       "en": "harmonize",
       "note": "verb"
     },
     {
       "id": "1496b72f-2583-5930-b812-cb217ee2982c",
-      "zh": "过时的",
+      "zh": "过时的，废弃的",
       "en": "outmoded",
       "note": "adjective"
     },
     {
       "id": "53d65f74-eddd-5e36-b357-a9e2925e9c5c",
-      "zh": "凿子",
+      "zh": "凿子，雕凿，欺骗",
       "en": "chisel",
       "note": "noun"
     },
     {
       "id": "8bb003f8-4d9e-5b06-8c64-c2574044a249",
-      "zh": "盘尼西林",
+      "zh": "盘尼西林，青霉素",
       "en": "penicillin",
       "note": "noun"
     },
@@ -12499,43 +12499,43 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "7704dd24-4267-5d0f-aeb4-6a4449cd6f63",
-      "zh": "地质的",
+      "zh": "地质的，地质学的",
       "en": "geologic",
       "note": "adjective"
     },
     {
       "id": "370051b4-67b6-5328-9ac1-23df3284eb14",
-      "zh": "范畴的",
+      "zh": "范畴的，绝对的",
       "en": "categorical",
       "note": "adjective"
     },
     {
       "id": "09d54b52-8bab-562c-a59f-985cc0c2f9b6",
-      "zh": "无言",
+      "zh": "无言，沉默，勉强",
       "en": "reticence",
       "note": "noun"
     },
     {
       "id": "59de1701-0140-5180-b9a9-85d8e4eb7933",
-      "zh": "坚硬",
+      "zh": "坚硬，僵化，刚性",
       "en": "rigidity",
       "note": "noun"
     },
     {
       "id": "b2250cc7-257c-5621-8306-97bf70f6a7f1",
-      "zh": "用功的",
+      "zh": "勤勉的，用功的",
       "en": "diligent",
       "note": "adjective"
     },
     {
       "id": "04675fdb-b2eb-5c7f-80a1-709f28d42fe3",
-      "zh": "排斥的",
+      "zh": "排斥的，可恶的",
       "en": "repulsive",
       "note": "adjective"
     },
     {
       "id": "5facdb02-3569-508c-a3eb-bcce89de6d78",
-      "zh": "慢跑",
+      "zh": "慢跑，轻摇",
       "en": "jogging",
       "note": "noun"
     },
@@ -12565,43 +12565,43 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "72b16bef-262f-55a2-b52a-b77649b98de3",
-      "zh": "祈祷",
+      "zh": "祈祷，符咒",
       "en": "invocation",
       "note": "noun"
     },
     {
       "id": "e6777891-0220-536d-917f-d4e704c4862c",
-      "zh": "超载",
+      "zh": "超载，过载",
       "en": "overload",
       "note": "verb"
     },
     {
       "id": "833de8d6-5fa5-5170-8f50-923edb4fc493",
-      "zh": "久坐的",
+      "zh": "久坐的，坐惯的",
       "en": "sedentary",
       "note": "adjective"
     },
     {
       "id": "ea066c0c-7a55-5088-b320-dc9ab4b9c3ae",
-      "zh": "施魔法",
+      "zh": "施魔法，使入迷",
       "en": "enchant",
       "note": "verb"
     },
     {
       "id": "7d481833-a2e4-5f37-946b-197f4660be2a",
-      "zh": "上层土",
+      "zh": "上层土，表层土",
       "en": "topsoil",
       "note": "noun"
     },
     {
       "id": "5560c59f-7068-5ebb-84ca-dfd5fbbab2b1",
-      "zh": "美味的",
+      "zh": "美味的，好吃的",
       "en": "palatable",
       "note": "adjective"
     },
     {
       "id": "a5a389e4-1cb2-541f-891f-3ded1435642c",
-      "zh": "能被激动的",
+      "zh": "易兴奋的，易怒的",
       "en": "excitable",
       "note": "adjective"
     },
@@ -12613,43 +12613,43 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "46891f3a-014e-503a-bf57-6f017b296660",
-      "zh": "专业词典",
+      "zh": "专业词典，术语集",
       "en": "glossary",
       "note": "noun"
     },
     {
       "id": "6d686adb-dcfe-5266-8ce4-ebc41c97d3ec",
-      "zh": "庞大的",
+      "zh": "庞大的，惊人的",
       "en": "prodigious",
       "note": "adjective"
     },
     {
       "id": "8c6d4175-ea63-59cb-872d-05b4aa3a5084",
-      "zh": "有益的",
+      "zh": "有益的，有用的",
       "en": "salutary",
       "note": "adjective"
     },
     {
       "id": "2d808dd6-6d51-5d1a-ab0f-852b269b6093",
-      "zh": "生物化学",
+      "zh": "生物化学，生化",
       "en": "biochemistry",
       "note": "noun"
     },
     {
       "id": "d9c9ce5e-14fd-5037-b044-4781abef6056",
-      "zh": "发狂的",
+      "zh": "发狂的，狂热的",
       "en": "frenetic",
       "note": "adjective"
     },
     {
       "id": "259408fc-f8ba-5da7-826b-8b5d6b6c8da5",
-      "zh": "废黜",
+      "zh": "免职，废黜，作证",
       "en": "depose",
       "note": "verb"
     },
     {
       "id": "d737d1c1-0ec7-50af-95ff-cf5643c36cd0",
-      "zh": "无异议",
+      "zh": "同意，一致，合意",
       "en": "unanimity",
       "note": "noun"
     },
@@ -12661,79 +12661,79 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "361199ab-221c-585b-9d4c-72661b658412",
-      "zh": "使恼怒",
+      "zh": "使恼怒，激怒",
       "en": "exasperate",
       "note": "verb"
     },
     {
       "id": "6cd86d11-1cea-5920-82ee-1fe8092008ed",
-      "zh": "外表",
+      "zh": "外表，伪装，假象",
       "en": "semblance",
       "note": "noun"
     },
     {
       "id": "e380aaf6-dc35-54e2-bb85-4c4563f6e140",
-      "zh": "使空气流通",
+      "zh": "公开，通风，换气",
       "en": "ventilate",
       "note": "verb"
     },
     {
       "id": "27f86a23-fd91-54cc-bad5-415fd24ea0f8",
-      "zh": "雕刻的",
+      "zh": "雕刻的，雕刻般的",
       "en": "sculptural",
       "note": "adjective"
     },
     {
       "id": "d3edf670-e5f6-5870-b6e0-f097301daf8c",
-      "zh": "跳板",
+      "zh": "跳板，出发点",
       "en": "springboard",
       "note": "noun"
     },
     {
       "id": "739e0926-173c-57c3-868b-1e9bad6d2aa9",
-      "zh": "使复杂化",
+      "zh": "使困惑，使复杂化",
       "en": "perplex",
       "note": "verb"
     },
     {
       "id": "2058ac4d-3d4a-5f12-90ac-108485f4cfe3",
-      "zh": "使隐退",
+      "zh": "使隐退，使隔绝",
       "en": "sequester",
       "note": "verb"
     },
     {
       "id": "fb76e414-fcd3-5840-b5b4-3213d70d040f",
-      "zh": "独占",
+      "zh": "独占，垄断，专营",
       "en": "monopolize",
       "note": "verb"
     },
     {
       "id": "f219767a-5597-586e-9838-b0def8a25d13",
-      "zh": "信托",
+      "zh": "信托，确认，委派",
       "en": "accredit",
       "note": "verb"
     },
     {
       "id": "43abfbd5-4b8a-5123-81b9-542f4385c222",
-      "zh": "库存",
+      "zh": "仓库，库存，储备",
       "en": "repertory",
       "note": "noun"
     },
     {
       "id": "569a7ab2-e6a1-5897-979d-4666890ac17b",
-      "zh": "富裕",
+      "zh": "富裕，丰富，流注",
       "en": "affluence",
       "note": "noun"
     },
     {
       "id": "66ecb37a-cffe-5a23-b863-e034fd055345",
-      "zh": "球的",
+      "zh": "球的，球面的",
       "en": "spherical",
       "note": "adjective"
     },
     {
       "id": "73860225-79a1-5f11-be6a-ff84bf188af5",
-      "zh": "教条的",
+      "zh": "教条的，武断的",
       "en": "dogmatic",
       "note": "adjective"
     },
@@ -12745,19 +12745,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "4b8e3443-219c-5a75-b7c2-93b44f2ab1c8",
-      "zh": "遗腹的",
+      "zh": "遗腹的，死后的",
       "en": "posthumous",
       "note": "adjective"
     },
     {
       "id": "4465724a-643c-57ae-9900-d25c422100cf",
-      "zh": "节约地",
+      "zh": "节约地，爱惜地",
       "en": "sparingly",
       "note": "adverb"
     },
     {
       "id": "4ebe7915-f873-5c30-96b9-c8f78a803a1a",
-      "zh": "通电",
+      "zh": "通电，镀锌",
       "en": "galvanize",
       "note": "verb"
     },
@@ -12781,97 +12781,97 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "8eb2f5ff-aa8e-5cd9-b8b7-0733c7f965c7",
-      "zh": "嗜食同类",
+      "zh": "嗜食同类，食人",
       "en": "cannibalism",
       "note": "noun"
     },
     {
       "id": "e58ca5a5-d495-58ed-b606-df1f120e14a3",
-      "zh": "花托",
+      "zh": "容器，花托，插座",
       "en": "receptacle",
       "note": "noun"
     },
     {
       "id": "1c753272-d183-588d-bed9-90f3ca4cfd0e",
-      "zh": "自然的发展",
+      "zh": "结果，分枝，赘疣",
       "en": "outgrowth",
       "note": "noun"
     },
     {
       "id": "82d40f95-dde2-5ac7-b134-ae46ceb84cb0",
-      "zh": "玻璃质的",
+      "zh": "玻璃质的，如镜的",
       "en": "glassy",
       "note": "adjective"
     },
     {
       "id": "7778f11a-f849-5c78-9e5a-e9f59f0f17d9",
-      "zh": "干涉",
+      "zh": "干涉，干预，插手",
       "en": "meddle",
       "note": "verb"
     },
     {
       "id": "8e08c6d7-b482-5f4d-b279-b30799f4cdc2",
-      "zh": "宣告...无罪",
+      "zh": "赦免，免除，免偿",
       "en": "absolve",
       "note": "verb"
     },
     {
       "id": "8a2bc060-835b-54cb-aaa8-960413f0c3e0",
-      "zh": "桎梏",
+      "zh": "桎梏，束缚物",
       "en": "shackle",
       "note": "noun"
     },
     {
       "id": "cabe5e2e-cea8-5f08-b957-c6b9ff8169dd",
-      "zh": "用大字体书写",
+      "zh": "独占，使全神贯注",
       "en": "engross",
       "note": "verb"
     },
     {
       "id": "654b9b76-4288-5c7d-88b9-db8eb487c928",
-      "zh": "衰微的",
+      "zh": "衰微的，颓废的",
       "en": "decadent",
       "note": "adjective"
     },
     {
       "id": "5ea8bac8-0e27-57bb-b939-fb44777d8047",
-      "zh": "沉渣的",
+      "zh": "沉渣的，沉淀物的",
       "en": "sedimentary",
       "note": "adjective"
     },
     {
       "id": "70701745-814b-5186-89e9-07c5f881dcb0",
-      "zh": "含义模糊的",
+      "zh": "神秘的，隐藏的",
       "en": "cryptic",
       "note": "adjective"
     },
     {
       "id": "975fba8b-0692-5ae8-9b81-65b24aa158e2",
-      "zh": "能适应的",
+      "zh": "能适应的，适合的",
       "en": "adaptable",
       "note": "adjective"
     },
     {
       "id": "d4effd2a-00e5-55bd-b076-055c7889213a",
-      "zh": "发芽",
+      "zh": "发芽，萌芽",
       "en": "germinate",
       "note": "verb"
     },
     {
       "id": "4bf6dc7e-edfe-5dae-99e4-ed8b6d3dac92",
-      "zh": "小片",
+      "zh": "小片，片断，摘录",
       "en": "snippet",
       "note": "noun"
     },
     {
       "id": "2b07481c-f67a-5243-98a7-457e4f536dec",
-      "zh": "杂质",
+      "zh": "杂质，不洁，不纯",
       "en": "impurity",
       "note": "noun"
     },
     {
       "id": "224bd0e0-eb23-5dd5-9c42-da4db6eef27d",
-      "zh": "渴望的",
+      "zh": "渴望的，想望的",
       "en": "wistful",
       "note": "adjective"
     },
@@ -12883,7 +12883,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "602d2eb7-01f5-5859-a815-e6b094cf7282",
-      "zh": "无感情的",
+      "zh": "无感情的，冷淡的",
       "en": "impassive",
       "note": "adjective"
     },
@@ -12895,61 +12895,61 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "2443090b-5976-5f4a-a7de-0cd7438c1e65",
-      "zh": "不轻信",
+      "zh": "不轻信，怀疑",
       "en": "incredulity",
       "note": "noun"
     },
     {
       "id": "f21c2e7b-8391-5722-9a1b-635d81aefbd1",
-      "zh": "日炙",
+      "zh": "日炙，晒斑，晒焦",
       "en": "sunburn",
       "note": "noun"
     },
     {
       "id": "a7edd429-f9c6-505e-94c2-b19971550175",
-      "zh": "废弃",
+      "zh": "放弃，废弃，弃权",
       "en": "renunciation",
       "note": "noun"
     },
     {
       "id": "65423f21-2c1a-58d4-b686-ec6fdd239e7e",
-      "zh": "顺从的",
+      "zh": "服从的",
       "en": "submissive",
       "note": "adjective"
     },
     {
       "id": "c3735b44-e4f6-527e-85a8-35143f142bd0",
-      "zh": "自负",
+      "zh": "自负，空想，狂妄",
       "en": "conceit",
       "note": "noun"
     },
     {
       "id": "ca923b66-5ee6-5bc9-96b1-f5b8d7188076",
-      "zh": "经度",
+      "zh": "经度，经线",
       "en": "longitude",
       "note": "noun"
     },
     {
       "id": "47a8b0e9-8867-5464-91eb-28faff41ef6b",
-      "zh": "矫揉造作",
+      "zh": "习性，装相，作态",
       "en": "mannerism",
       "note": "noun"
     },
     {
       "id": "70824354-1bf0-5abc-bf59-5b07b4c202d7",
-      "zh": "勤奋地",
+      "zh": "勤奋地，勤勉地",
       "en": "diligently",
       "note": "adverb"
     },
     {
       "id": "6fba68d5-cee0-5538-88b0-002d37848a92",
-      "zh": "使耗尽的",
+      "zh": "经验，技巧，穷举",
       "en": "exhausting",
       "note": "adjective"
     },
     {
       "id": "fe14944f-ef06-5432-9ec8-ab3f943bcc68",
-      "zh": "直率地",
+      "zh": "马上，立即，直路",
       "en": "forthright",
       "note": "adverb"
     },
@@ -12961,7 +12961,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "4180f129-c2c5-5ea4-98c0-b949a87422b0",
-      "zh": "水下的",
+      "zh": "水下的，在水中的",
       "en": "submerged",
       "note": "adjective"
     },
@@ -12973,109 +12973,109 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "96c5d18f-ec98-5b4a-89d3-a7e7925b9d9d",
-      "zh": "辅音",
+      "zh": "辅音，一致的",
       "en": "consonant",
       "note": "noun"
     },
     {
       "id": "3f68538e-69d8-5c94-8e4f-3293c2ac71db",
-      "zh": "睡眠",
+      "zh": "睡眠，微睡，静止",
       "en": "slumber",
       "note": "noun"
     },
     {
       "id": "40646aa4-d2e1-558f-8aa3-8f4798620569",
-      "zh": "忧郁",
+      "zh": "忧郁，悲哀，愁思",
       "en": "melancholy",
       "note": "noun"
     },
     {
       "id": "12db06a1-5e4b-59fc-95de-dc166e1c8515",
-      "zh": "偏位的",
+      "zh": "偏位的，非对称的",
       "en": "asymmetrical",
       "note": "adjective"
     },
     {
       "id": "5fe89988-7a38-5e97-9459-94fc23dc9c77",
-      "zh": "兴奋性的",
+      "zh": "兴奋性的，激励的",
       "en": "stimulant",
       "note": "adjective"
     },
     {
       "id": "186d1756-5fde-5d52-91fd-5bfc84cd9753",
-      "zh": "除去",
+      "zh": "除去，排除，避免",
       "en": "obviate",
       "note": "verb"
     },
     {
       "id": "2c648a11-5a7a-5307-a802-2865459fc2a9",
-      "zh": "束紧",
+      "zh": "压缩，束紧，收缩",
       "en": "constrict",
       "note": "verb"
     },
     {
       "id": "09d18b73-4587-5207-8019-c67341e34038",
-      "zh": "口才",
+      "zh": "口才，雄辩，善辩",
       "en": "eloquence",
       "note": "noun"
     },
     {
       "id": "bb30019b-d2b6-5686-b18b-93a23240768b",
-      "zh": "孤独的",
+      "zh": "孤独的，悲惨的",
       "en": "forlorn",
       "note": "adjective"
     },
     {
       "id": "a33d97e3-a1ab-5126-8bea-da9e7e279d5c",
-      "zh": "难处理的",
+      "zh": "难处理的，笨拙的",
       "en": "unwieldy",
       "note": "adjective"
     },
     {
       "id": "6684f450-be49-52b1-ae64-8d894e5ee8ac",
-      "zh": "着火的",
+      "zh": "着火的，闪亮的",
       "en": "ablaze",
       "note": "adjective"
     },
     {
       "id": "df59b640-cafc-51f5-8d3b-719946f33fa3",
-      "zh": "夜的",
+      "zh": "夜的，夜曲的",
       "en": "nocturnal",
       "note": "adjective"
     },
     {
       "id": "23965c27-e289-5ba5-a22b-0d9c31878ab6",
-      "zh": "有眼力的",
+      "zh": "有眼力的，敏锐的",
       "en": "discerning",
       "note": "adjective"
     },
     {
       "id": "238e4d5f-cab0-5784-992f-1f8e0bae085d",
-      "zh": "死的",
+      "zh": "死的，不能使用的",
       "en": "defunct",
       "note": "adjective"
     },
     {
       "id": "76965408-8cf3-5572-b9f8-52282a51b3ae",
-      "zh": "无边无际的",
+      "zh": "无限的",
       "en": "boundless",
       "note": "adjective"
     },
     {
       "id": "ec6da5fa-575b-5958-9e23-f58fd641753b",
-      "zh": "依赖的",
+      "zh": "依赖的，信赖的",
       "en": "reliant",
       "note": "adjective"
     },
     {
       "id": "f2908558-a545-5fb4-ac15-a0022ff1652c",
-      "zh": "小宇宙",
+      "zh": "小宇宙，小世界",
       "en": "microcosm",
       "note": "noun"
     },
     {
       "id": "404c7d3c-7e2d-56e0-b8d3-74bbcc95fb60",
-      "zh": "显赫",
+      "zh": "显赫，名家，高处",
       "en": "eminence",
       "note": "noun"
     },
@@ -13099,7 +13099,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "e2bdeea7-9174-563b-b831-b076d150a031",
-      "zh": "侮辱",
+      "zh": "侮辱，侮辱的言行",
       "en": "indignity",
       "note": "noun"
     },
@@ -13111,7 +13111,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "0f937ae6-90ed-5bc9-b693-b3d5438be0d3",
-      "zh": "幕间",
+      "zh": "幕间，插曲，穿插",
       "en": "interlude",
       "note": "noun"
     },
@@ -13123,7 +13123,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "ed496a08-678d-56e6-baa8-c6a944a17ac6",
-      "zh": "多样化的",
+      "zh": "多样化的，各种的",
       "en": "diversified",
       "note": "adjective"
     },
@@ -13135,43 +13135,43 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "caca2ce7-0f05-5f30-8d8c-0edf40e9a479",
-      "zh": "中凸的",
+      "zh": "中凸的，凸圆的",
       "en": "convex",
       "note": "adjective"
     },
     {
       "id": "27008af9-7983-576e-b19d-eb844e128d0f",
-      "zh": "拙劣的模仿作品",
+      "zh": "嘲弄，滑稽模仿",
       "en": "travesty",
       "note": "noun"
     },
     {
       "id": "03e8e4ee-ea38-5119-a27e-fb9041a79d45",
-      "zh": "大屠杀",
+      "zh": "大屠杀，大火灾",
       "en": "holocaust",
       "note": "noun"
     },
     {
       "id": "8a2f7b73-db85-5733-9abe-68737fad952e",
-      "zh": "保管人",
+      "zh": "管理人，保管人",
       "en": "custodian",
       "note": "noun"
     },
     {
       "id": "5c72dd8c-66bd-53cd-8d1c-64d108a6ff26",
-      "zh": "隔离",
+      "zh": "隔离，隐退",
       "en": "seclusion",
       "note": "noun"
     },
     {
       "id": "50e62255-2047-55a2-bcb7-1fad45dbb83c",
-      "zh": "约束",
+      "zh": "约束，约定，契约",
       "en": "stipulation",
       "note": "noun"
     },
     {
       "id": "193f67d3-0945-5105-959a-35d676344d83",
-      "zh": "同中心的",
+      "zh": "同中心的，同轴的",
       "en": "concentric",
       "note": "adjective"
     },
@@ -13183,91 +13183,91 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "ce91a9cc-918a-5005-93a6-fc8d86b0a1e7",
-      "zh": "昏睡的",
+      "zh": "昏睡的，无生气的",
       "en": "lethargic",
       "note": "adjective"
     },
     {
       "id": "4c4354e8-5ac7-52e5-88e3-ecdff0ea05f9",
-      "zh": "即席演出",
+      "zh": "即席演出，即兴曲",
       "en": "impromptu",
       "note": "noun"
     },
     {
       "id": "41f0a9e1-dfcd-5c1f-bbaf-5971d4f60a8c",
-      "zh": "斧头",
+      "zh": "斧头，手斧，战斧",
       "en": "hatchet",
       "note": "noun"
     },
     {
       "id": "847d0b84-99da-5480-a844-186371d4eea9",
-      "zh": "坏心肠的",
+      "zh": "有恶意的",
       "en": "malevolent",
       "note": "adjective"
     },
     {
       "id": "6d0a6c3a-8767-5724-a2cb-dc70c4206d5d",
-      "zh": "憎恨",
+      "zh": "厌恶，憎恨",
       "en": "detest",
       "note": "verb"
     },
     {
       "id": "2cd86a4b-5b49-5687-92b0-45ab582294f7",
-      "zh": "脱水",
+      "zh": "脱水，去水",
       "en": "dehydrate",
       "note": "verb"
     },
     {
       "id": "cbd62b30-fc97-5f3c-82c2-2d6512fe5f12",
-      "zh": "懊恼",
+      "zh": "懊恼，使懊恼",
       "en": "chagrin",
       "note": "noun"
     },
     {
       "id": "f66cbe27-7267-5852-bd60-0f5b3f9ad50d",
-      "zh": "抚慰",
+      "zh": "抚慰，平息，怀柔",
       "en": "placate",
       "note": "verb"
     },
     {
       "id": "14924574-9686-58fa-8dda-abfd7e52a8c6",
-      "zh": "无畏的",
+      "zh": "无畏的，勇猛的",
       "en": "intrepid",
       "note": "adjective"
     },
     {
       "id": "2c83ea35-8795-5872-afa4-9cfc6206c776",
-      "zh": "使极度痛苦",
+      "zh": "使极度痛苦，折磨",
       "en": "agonize",
       "note": "verb"
     },
     {
       "id": "82b47c74-e9f0-5ed2-b683-8379952b4c90",
-      "zh": "在外的",
+      "zh": "在外的，边远的",
       "en": "outlying",
       "note": "adjective"
     },
     {
       "id": "0243f36f-863a-54eb-ae1f-4b288c67250c",
-      "zh": "稀疏地",
+      "zh": "稀疏地，稀少地",
       "en": "sparsely",
       "note": "adverb"
     },
     {
       "id": "ed15c81a-b8f6-5c4d-b14d-2f7ae830f271",
-      "zh": "报摊",
+      "zh": "报摊，报刊出售处",
       "en": "newsstand",
       "note": "noun"
     },
     {
       "id": "83974de4-8aea-53ad-968b-bb42c21d71d2",
-      "zh": "可鄙的",
+      "zh": "可鄙的，卑劣的",
       "en": "despicable",
       "note": "adjective"
     },
     {
       "id": "aa2f67f1-9a41-5e4e-8da8-c6afc6f990de",
-      "zh": "艰苦的",
+      "zh": "艰苦的，费劲的",
       "en": "laborious",
       "note": "adjective"
     },
@@ -13291,61 +13291,61 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "bdd2607b-1b69-5fcd-85db-d7c6329c4b24",
-      "zh": "羞怯",
+      "zh": "羞怯，胆怯",
       "en": "shyness",
       "note": "noun"
     },
     {
       "id": "db61bc2a-2ba0-5b6b-9911-865edbd1fdf4",
-      "zh": "脆弱",
+      "zh": "脆弱，虚弱",
       "en": "fragility",
       "note": "noun"
     },
     {
       "id": "544772d6-dae2-5e2f-87e0-59628aa44577",
-      "zh": "谦恭的",
+      "zh": "谦恭的，礼让的",
       "en": "courtly",
       "note": "adjective"
     },
     {
       "id": "a33dc8ad-97c9-53ec-9344-cd17decd0e48",
-      "zh": "骑术的",
+      "zh": "骑术的，马的",
       "en": "equestrian",
       "note": "adjective"
     },
     {
       "id": "fc423e72-e012-54e1-9771-eeee86e87068",
-      "zh": "巡回的",
+      "zh": "巡回的，巡回者",
       "en": "itinerant",
       "note": "adjective"
     },
     {
       "id": "35fe686e-443b-52d7-96c3-60d5976a1d94",
-      "zh": "非暴力",
+      "zh": "非暴力，政策",
       "en": "nonviolence",
       "note": "noun"
     },
     {
       "id": "0739d720-14ef-558f-8093-ef0545eb8908",
-      "zh": "逗弄",
+      "zh": "逗弄，使干着急",
       "en": "tantalize",
       "note": "verb"
     },
     {
       "id": "47cc71dd-d946-585d-9fa1-b25f9bc76abc",
-      "zh": "缩回",
+      "zh": "缩回，收回，取消",
       "en": "retract",
       "note": "verb"
     },
     {
       "id": "205dd200-77ec-587c-b67f-d7c0f908349d",
-      "zh": "替罪羔羊",
+      "zh": "替罪羔羊，替身",
       "en": "scapegoat",
       "note": "noun"
     },
     {
       "id": "4906a8d0-306d-50db-a691-a81a6275f522",
-      "zh": "好交际的",
+      "zh": "好交际的，社交的",
       "en": "sociable",
       "note": "adjective"
     },
@@ -13357,55 +13357,55 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "ecacf8bf-3cae-5749-b912-b20a8e1dd001",
-      "zh": "使移居入境",
+      "zh": "使移居入境，移入",
       "en": "immigrate",
       "note": "verb"
     },
     {
       "id": "be9b6607-d23f-59cc-bdef-f46aaaec82fb",
-      "zh": "热心者",
+      "zh": "热心者，狂热者",
       "en": "zealot",
       "note": "noun"
     },
     {
       "id": "8da0f337-d363-5529-aa68-1fc4d861dbc0",
-      "zh": "不敬",
+      "zh": "不敬，失礼，无礼",
       "en": "disrespect",
       "note": "noun"
     },
     {
       "id": "b67a78be-913f-542d-8f9e-25191312fc18",
-      "zh": "讽刺的",
+      "zh": "讽刺的，讥讽的",
       "en": "satirical",
       "note": "adjective"
     },
     {
       "id": "fcc98270-fd05-52c6-97c3-87e4a986b76c",
-      "zh": "迷惑",
+      "zh": "迷惑，奴役，迷住",
       "en": "enthrall",
       "note": "verb"
     },
     {
       "id": "8b47b8ba-c96b-5508-866b-357c8d399e2d",
-      "zh": "眩晕",
+      "zh": "眩晕，迷惘",
       "en": "vertigo",
       "note": "noun"
     },
     {
       "id": "eae441d8-3d9e-5af6-a535-67f1c138348a",
-      "zh": "有教养的",
+      "zh": "有教养的，上流的",
       "en": "genteel",
       "note": "adjective"
     },
     {
       "id": "219301ec-aad8-5be6-9e25-8dd3759f1a0f",
-      "zh": "不注意地",
+      "zh": "不注意地，粗心地",
       "en": "carelessly",
       "note": "adverb"
     },
     {
       "id": "e070651e-a90c-54fa-8d2b-b3a611700859",
-      "zh": "极端",
+      "zh": "极端，极点，困境",
       "en": "extremity",
       "note": "noun"
     },
@@ -13417,13 +13417,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "3b709f2b-4436-5a85-b5ee-d622445cd366",
-      "zh": "悲恸的",
+      "zh": "悲恸的，悲哀的",
       "en": "mournful",
       "note": "adjective"
     },
     {
       "id": "88bc6bdc-fba7-5cd8-8fee-58a2859bf72a",
-      "zh": "明确地叙述",
+      "zh": "明确地叙述，表明",
       "en": "enunciate",
       "note": "verb"
     },
@@ -13435,13 +13435,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "39834fb8-6f39-5b3a-829c-004655cff94e",
-      "zh": "刺绣",
+      "zh": "刺绣，镶边，装饰",
       "en": "embroider",
       "note": "verb"
     },
     {
       "id": "e15e36ab-f28f-52f5-b6cd-964469d15d2d",
-      "zh": "物神",
+      "zh": "物神，偶像，迷信",
       "en": "fetish",
       "note": "noun"
     },
@@ -13453,7 +13453,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "78ea81df-abb3-5767-a2db-ae624016370e",
-      "zh": "暴行",
+      "zh": "暴行，极恶，巨大",
       "en": "enormity",
       "note": "noun"
     },
@@ -13465,7 +13465,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "39ca993e-fbe5-5faa-a373-10a6cb94657c",
-      "zh": "同谋",
+      "zh": "同谋，串通，复杂",
       "en": "complicity",
       "note": "noun"
     },
@@ -13477,13 +13477,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "f22225f1-3626-52fb-81d1-51238a1eb96c",
-      "zh": "盆栽的",
+      "zh": "盆栽的，罐装的",
       "en": "potted",
       "note": "adjective"
     },
     {
       "id": "15f480a8-262e-516f-999a-23b1ae8948db",
-      "zh": "微温的",
+      "zh": "微温的，温热的",
       "en": "tepid",
       "note": "adjective"
     },
@@ -13501,7 +13501,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "e4b1c7d4-082c-5f23-a505-b99c22aa3a54",
-      "zh": "农事",
+      "zh": "农事，饲养业",
       "en": "husbandry",
       "note": "noun"
     },
@@ -13513,19 +13513,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "c66cf868-e9fa-5adb-a5e0-e5d6a6104ae7",
-      "zh": "刚毅",
+      "zh": "刚毅，坚毅",
       "en": "fortitude",
       "note": "noun"
     },
     {
       "id": "ae6a861b-aa3c-5187-9d6b-21184d12edd8",
-      "zh": "列举",
+      "zh": "列举，计算，枚举",
       "en": "enumerate",
       "note": "verb"
     },
     {
       "id": "8d95e716-ba71-5ad9-941e-15af906263fe",
-      "zh": "散布",
+      "zh": "散布，传播，分散",
       "en": "dispersal",
       "note": "noun"
     },
@@ -13537,7 +13537,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "ab595986-81c1-5f1f-a353-d457c922a326",
-      "zh": "水母",
+      "zh": "水母，海蜇，海蛰",
       "en": "jellyfish",
       "note": "noun"
     },
@@ -13555,61 +13555,61 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "6eae284c-3908-5629-b3d3-3103881ce1c5",
-      "zh": "微粒",
+      "zh": "微粒，微粒的",
       "en": "particulate",
       "note": "noun"
     },
     {
       "id": "18694453-cdc2-5b28-9228-ced3b1c8a3ab",
-      "zh": "无比的",
+      "zh": "无比的，无匹敌的",
       "en": "unmatched",
       "note": "adjective"
     },
     {
       "id": "4e49f0dd-5ea1-5313-b09f-d71171f914ca",
-      "zh": "友善的",
+      "zh": "友善的，友好的",
       "en": "amicable",
       "note": "adjective"
     },
     {
       "id": "c8ebc2c2-b8f3-552a-8068-212d948bfadd",
-      "zh": "淤泥",
+      "zh": "淤泥，使淤塞",
       "en": "silt",
       "note": "noun"
     },
     {
       "id": "58a05c1f-03b2-52a6-bf9c-f014a94a0d20",
-      "zh": "经常无故缺席",
+      "zh": "旷职，旷工，旷课",
       "en": "absenteeism",
       "note": "noun"
     },
     {
       "id": "dbb4a5d9-b359-5086-873c-99aad58729c7",
-      "zh": "暗示",
+      "zh": "暗示，微微觉得",
       "en": "inkling",
       "note": "noun"
     },
     {
       "id": "d64139ea-1835-5786-b7f1-547b84d3233a",
-      "zh": "迷住",
+      "zh": "迷住，使困扰",
       "en": "obsess",
       "note": "verb"
     },
     {
       "id": "89973624-4c05-58dd-8641-c453d117b2de",
-      "zh": "阴天的",
+      "zh": "阴天的，阴暗的",
       "en": "overcast",
       "note": "adjective"
     },
     {
       "id": "36637f9f-d4b6-5e76-b796-eed795257689",
-      "zh": "果断的人",
+      "zh": "果断的人，坚决的",
       "en": "resolute",
       "note": "noun"
     },
     {
       "id": "2610ee52-7087-5a2b-957f-ce8782e8f93f",
-      "zh": "许可的",
+      "zh": "许可的，获准的",
       "en": "permissive",
       "note": "adjective"
     },
@@ -13621,31 +13621,31 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "e7f86393-9d13-50ee-955b-35e9e02bc888",
-      "zh": "贫民",
+      "zh": "贫民，穷人，乞丐",
       "en": "pauper",
       "note": "noun"
     },
     {
       "id": "17720cb8-774e-5c11-b4b2-ba031ae73187",
-      "zh": "疲倦",
+      "zh": "疲倦，厌倦，疲劳",
       "en": "weariness",
       "note": "noun"
     },
     {
       "id": "f5dfcee6-5a56-5800-b89e-ea99e353e8e5",
-      "zh": "大量地",
+      "zh": "大量地，丰富地",
       "en": "abundantly",
       "note": "adverb"
     },
     {
       "id": "60045b00-6ccc-50cf-859d-7772cb6dd87c",
-      "zh": "奴役",
+      "zh": "奴役，束缚，征服",
       "en": "enslave",
       "note": "verb"
     },
     {
       "id": "f49e2366-4e7d-5179-96d7-61b5ba365efb",
-      "zh": "商业的",
+      "zh": "商业的，商人的",
       "en": "mercantile",
       "note": "adjective"
     },
@@ -13657,13 +13657,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "77225f76-c0e9-5671-a140-75a6b4bae563",
-      "zh": "朝生暮死的",
+      "zh": "短命的，短暂的",
       "en": "ephemeral",
       "note": "adjective"
     },
     {
       "id": "932b6737-bc86-5f47-8a33-0c954c22565c",
-      "zh": "警戒",
+      "zh": "警戒，警觉",
       "en": "vigilance",
       "note": "noun"
     },
@@ -13675,109 +13675,109 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "919b7570-ba58-5a20-b4f6-9c4753ecc371",
-      "zh": "重安排",
+      "zh": "重安排，重调度",
       "en": "reschedule",
       "note": "noun"
     },
     {
       "id": "8a9e8728-63d5-5dd1-973b-e1909f768bff",
-      "zh": "乐于施惠的",
+      "zh": "体贴的，有礼貌的",
       "en": "obliging",
       "note": "adjective"
     },
     {
       "id": "93a0cb93-7904-5427-8fc6-b05063b9cb3e",
-      "zh": "契约",
+      "zh": "契约，凹痕，缩排",
       "en": "indent",
       "note": "noun"
     },
     {
       "id": "a2a9de50-cc58-5954-9209-544f3116dbf0",
-      "zh": "敌手",
+      "zh": "敌手，对手",
       "en": "antagonist",
       "note": "noun"
     },
     {
       "id": "e8080ef2-be0b-5864-bac7-3b5dc7019815",
-      "zh": "四价钛的",
+      "zh": "四价钛的，正钛",
       "en": "titanic",
       "note": "adjective"
     },
     {
       "id": "24614aba-2bbb-5d51-adb2-50195b169c36",
-      "zh": "装饰品",
+      "zh": "装饰，装饰品",
       "en": "adornment",
       "note": "noun"
     },
     {
       "id": "5d10b110-334b-5677-85f7-5ab84c0492ba",
-      "zh": "社交的",
+      "zh": "社交的，群居的",
       "en": "gregarious",
       "note": "adjective"
     },
     {
       "id": "026f9c1c-977b-5398-9f0a-1ebd2ce7523b",
-      "zh": "供给食物",
+      "zh": "供养，生存，存在",
       "en": "subsist",
       "note": "verb"
     },
     {
       "id": "26c113cb-a015-53d5-b850-5589c9cfe110",
-      "zh": "运动的",
+      "zh": "运动的，动力学的",
       "en": "kinetic",
       "note": "adjective"
     },
     {
       "id": "087932f8-1f53-5216-83c1-0a8152bb04f3",
-      "zh": "免费的",
+      "zh": "免费的，无理由的",
       "en": "gratuitous",
       "note": "adjective"
     },
     {
       "id": "26d58089-1312-5e63-93c5-051a6d30a309",
-      "zh": "不结果的",
+      "zh": "不结果的，无子的",
       "en": "fruitless",
       "note": "adjective"
     },
     {
       "id": "ef019c82-1f43-5204-900c-8b2895816019",
-      "zh": "教化",
+      "zh": "开垦，教化",
       "en": "reclamation",
       "note": "noun"
     },
     {
       "id": "4bb54df3-3c5b-57bd-a806-ff7a8a7283cc",
-      "zh": "预告",
+      "zh": "预言，预告，预示",
       "en": "foretell",
       "note": "verb"
     },
     {
       "id": "d800a912-0f34-5b94-bed3-3b6eafb1a14b",
-      "zh": "缺乏",
+      "zh": "少数，少量，缺乏",
       "en": "paucity",
       "note": "noun"
     },
     {
       "id": "cd8afa95-7f76-5cb6-bd25-88fd8cd81c6f",
-      "zh": "连锁的",
+      "zh": "连锁的，咬合",
       "en": "interlocking",
       "note": "adjective"
     },
     {
       "id": "a4764f6c-3b8e-5588-a1e9-d89326bede76",
-      "zh": "责难",
+      "zh": "责难，非难，指责",
       "en": "censure",
       "note": "noun"
     },
     {
       "id": "7784822c-7c1a-55f6-b6b9-d6a51cb858f6",
-      "zh": "利他主义",
+      "zh": "利他主义，利他",
       "en": "altruism",
       "note": "noun"
     },
     {
       "id": "42d56086-7e80-55ee-ab8a-3af923904849",
-      "zh": "企业界大亨",
+      "zh": "企业界大亨，将军",
       "en": "tycoon",
       "note": "noun"
     },
@@ -13795,13 +13795,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "16087948-77bf-51bb-be39-2341530773d7",
-      "zh": "遇难船",
+      "zh": "遇难船，海难",
       "en": "shipwreck",
       "note": "noun"
     },
     {
       "id": "2d12839a-a723-5153-807a-18ef0f927948",
-      "zh": "踌躇",
+      "zh": "踌躇，犹豫，微量",
       "en": "scruple",
       "note": "noun"
     },
@@ -13813,31 +13813,31 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "ad6c962d-0211-5b68-843c-369037db6bfa",
-      "zh": "合股线",
+      "zh": "麻线，交织，编饰",
       "en": "twine",
       "note": "noun"
     },
     {
       "id": "871cd3a9-0b16-50bc-aab6-da739175dd5a",
-      "zh": "赶牛棒",
+      "zh": "激励，刺激，唆使",
       "en": "goad",
       "note": "noun"
     },
     {
       "id": "554fcf64-37ba-5d8e-a55b-5f603d62f3be",
-      "zh": "不信任",
+      "zh": "不信任，疑惑",
       "en": "mistrust",
       "note": "noun"
     },
     {
       "id": "c9aba8d9-9bbe-5f45-93d6-116421d93aaf",
-      "zh": "绿松石",
+      "zh": "绿松石，绿松石色",
       "en": "turquoise",
       "note": "noun"
     },
     {
       "id": "4ad156fb-8613-5b64-985a-92602cc8777b",
-      "zh": "隐士",
+      "zh": "隐士，隐居者",
       "en": "hermit",
       "note": "noun"
     },
@@ -13849,19 +13849,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "337153f4-2456-526e-8619-c6f54770d689",
-      "zh": "野蛮人",
+      "zh": "野蛮人，野蛮的",
       "en": "barbarian",
       "note": "noun"
     },
     {
       "id": "2dad08d4-69b4-5d1d-a670-696752ae39ab",
-      "zh": "怨恨",
+      "zh": "怨恨，恶意，怀恨",
       "en": "grudge",
       "note": "noun"
     },
     {
       "id": "9b616361-ff2f-54fe-9eb8-b8042aa4e668",
-      "zh": "运输",
+      "zh": "运输，运输工具",
       "en": "conveyance",
       "note": "noun"
     },
@@ -13873,7 +13873,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "fe78a5d9-0600-56a0-bb87-10eb75b0ad00",
-      "zh": "讽刺",
+      "zh": "讽刺，暗讽，暗示",
       "en": "innuendo",
       "note": "noun"
     },
@@ -13885,25 +13885,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "d435fc24-fd3b-525a-8062-abd00ad46287",
-      "zh": "再分",
+      "zh": "再分，细分",
       "en": "subdivide",
       "note": "noun"
     },
     {
       "id": "5c24ec4d-aeae-5623-aa61-483ca7aeae27",
-      "zh": "刺穿",
+      "zh": "刺穿，贯穿，刺通",
       "en": "transfix",
       "note": "verb"
     },
     {
       "id": "557ee1d3-e340-5c55-92aa-0c679574a6bd",
-      "zh": "远见",
+      "zh": "远见，先见，预见",
       "en": "foresight",
       "note": "noun"
     },
     {
       "id": "dcc79a43-de79-5fb8-b3d7-cc6f74305970",
-      "zh": "好笑的",
+      "zh": "好笑的，滑稽的",
       "en": "comical",
       "note": "adjective"
     },
@@ -13915,43 +13915,43 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "c0335519-8ada-5bfe-b7d1-a47ca1345d51",
-      "zh": "转化的",
+      "zh": "转化的，使反转",
       "en": "invert",
       "note": "adjective"
     },
     {
       "id": "1f97d5e3-08df-5437-917b-6e6b6c05577f",
-      "zh": "无装饰的",
+      "zh": "无装饰的，朴素的",
       "en": "unadorned",
       "note": "adjective"
     },
     {
       "id": "0f21199d-27f9-574d-8a92-776bd4e4badd",
-      "zh": "憎恶",
+      "zh": "憎恶，痛恨，回避",
       "en": "abhor",
       "note": "verb"
     },
     {
       "id": "b096997a-8ee1-5ccd-af20-caa31140459e",
-      "zh": "有延展性的",
+      "zh": "可锻的，可展的",
       "en": "malleable",
       "note": "adjective"
     },
     {
       "id": "69fa10a2-4eac-569e-b732-2bdeea0442e5",
-      "zh": "厌恶的",
+      "zh": "不情愿的，厌恶的",
       "en": "loath",
       "note": "adjective"
     },
     {
       "id": "3dcc4572-cd34-5000-abd4-c483c27f3c92",
-      "zh": "腐蚀的",
+      "zh": "腐蚀的，腐蚀性的",
       "en": "corrosive",
       "note": "adjective"
     },
     {
       "id": "773e912e-b6ca-50ea-b718-0bb8f8de28e3",
-      "zh": "倒转的",
+      "zh": "反向，反面，反白",
       "en": "inverse",
       "note": "adjective"
     },
@@ -13963,13 +13963,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "8594564e-4996-5f4c-aadd-27abf5dee19f",
-      "zh": "兴高采烈",
+      "zh": "兴高采烈，着迷",
       "en": "rapture",
       "note": "noun"
     },
     {
       "id": "44a4f50c-ae36-501a-997d-e5bacf8b2fae",
-      "zh": "不适当",
+      "zh": "不适当，不得体",
       "en": "impropriety",
       "note": "noun"
     },
@@ -13981,67 +13981,67 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "63730379-d1ed-51da-a53e-e66dd249f4fd",
-      "zh": "表皮",
+      "zh": "表皮，角质层",
       "en": "cuticle",
       "note": "noun"
     },
     {
       "id": "ad8b3773-afd6-57b6-b207-3b341b059ba3",
-      "zh": "世俗的",
+      "zh": "世俗的，不敬神的",
       "en": "profane",
       "note": "adjective"
     },
     {
       "id": "b9899e46-26c0-51b8-8535-f2076f181d00",
-      "zh": "可信任的",
+      "zh": "可信任的，可靠的",
       "en": "dependable",
       "note": "adjective"
     },
     {
       "id": "078cc322-e71c-5ab9-bf2f-cb548089926a",
-      "zh": "起皱纹",
+      "zh": "起皱纹，枯萎",
       "en": "shrivel",
       "note": "verb"
     },
     {
       "id": "9b387662-301d-566c-a55c-a81f9a0fe648",
-      "zh": "陡峭的",
+      "zh": "陡峭的，轻率的",
       "en": "precipitous",
       "note": "adjective"
     },
     {
       "id": "fdb0e72b-8b6d-59b5-b0bc-8196020b46f0",
-      "zh": "简略的",
+      "zh": "简略的，简短的",
       "en": "curt",
       "note": "adjective"
     },
     {
       "id": "0ac333ab-d1ca-5422-988d-85557abef1c2",
-      "zh": "策略",
+      "zh": "策略，手段，飞牌",
       "en": "finesse",
       "note": "noun"
     },
     {
       "id": "56e7897f-752d-546b-b1d0-5ee074ac5e4f",
-      "zh": "使无效",
+      "zh": "使无效，使无效力",
       "en": "invalidate",
       "note": "verb"
     },
     {
       "id": "3207cb02-d1b9-522c-8666-5525be256e3c",
-      "zh": "形态学",
+      "zh": "形态学，词法",
       "en": "morphology",
       "note": "noun"
     },
     {
       "id": "e96160b4-839e-521d-9a66-d334b9cfbd72",
-      "zh": "证明...是不对的",
+      "zh": "反驳，证伪",
       "en": "disprove",
       "note": "verb"
     },
     {
       "id": "3ac4ab76-225a-5f4e-9411-ad6901587f26",
-      "zh": "邻近的",
+      "zh": "邻近的，接近的",
       "en": "contiguous",
       "note": "adjective"
     },
@@ -14071,7 +14071,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "fffdb0fc-f2af-556f-b4fc-96608161280c",
-      "zh": "满足的",
+      "zh": "满足的，心安的",
       "en": "contented",
       "note": "adjective"
     },
@@ -14083,85 +14083,85 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "9c4742ed-e8da-5d1e-ab18-b6dcd2c8f281",
-      "zh": "不受惩罚",
+      "zh": "无事，无患，免罚",
       "en": "impunity",
       "note": "noun"
     },
     {
       "id": "0e26b5d9-b27f-5ed5-89a5-0cdd8fa3f474",
-      "zh": "辅助者",
+      "zh": "辅助者，辅助物",
       "en": "auxiliary",
       "note": "noun"
     },
     {
       "id": "cd564717-7934-57ae-a393-607581976f9b",
-      "zh": "维的",
+      "zh": "维的，量纲的",
       "en": "dimensional",
       "note": "adjective"
     },
     {
       "id": "f4923abe-29dd-596e-b0f5-4cdc5dbfc477",
-      "zh": "贪吃的",
+      "zh": "贪吃的，贪婪的",
       "en": "voracious",
       "note": "adjective"
     },
     {
       "id": "09c6eeb6-a11a-5055-b7ed-a22f78ba1272",
-      "zh": "机械化的",
+      "zh": "机械化的，呆板的",
       "en": "mechanized",
       "note": "adjective"
     },
     {
       "id": "2f937668-cf81-5104-9241-eb614c3f5987",
-      "zh": "高尚的",
+      "zh": "高尚的，尊贵的",
       "en": "exalted",
       "note": "adjective"
     },
     {
       "id": "9fab0969-baa1-5f16-9c9c-0e7d1c603a61",
-      "zh": "加快",
+      "zh": "加快，促进，发出",
       "en": "expedite",
       "note": "verb"
     },
     {
       "id": "f6398127-79ea-518b-b7c0-176544296e7b",
-      "zh": "斑点",
+      "zh": "斑点，雀斑，斑纹",
       "en": "fleck",
       "note": "noun"
     },
     {
       "id": "2d1e8c74-77a0-58d6-81b0-90af166c7396",
-      "zh": "横跨的一步",
+      "zh": "横跨的一步，台阶",
       "en": "sidestep",
       "note": "noun"
     },
     {
       "id": "126ec50d-167c-5b07-aa70-ee7759cad59b",
-      "zh": "多角形",
+      "zh": "多角形，多边形",
       "en": "polygon",
       "note": "noun"
     },
     {
       "id": "38a4007a-d482-598c-8f5d-b332ff6d7263",
-      "zh": "损形",
+      "zh": "损形，变丑，畸形",
       "en": "deformation",
       "note": "noun"
     },
     {
       "id": "2d7b2b84-3a42-5239-a661-797df6a13256",
-      "zh": "感觉上的",
+      "zh": "感觉上的，敏感的",
       "en": "sensuous",
       "note": "adjective"
     },
     {
       "id": "938840fb-489b-5d75-9c19-5d57b7a688dc",
-      "zh": "著名的",
+      "zh": "著名的，辉煌的",
       "en": "illustrious",
       "note": "adjective"
     },
     {
       "id": "a41b2fe5-d227-567c-b788-760d4de063c0",
-      "zh": "严厉",
+      "zh": "严厉，尖刻，辛辣",
       "en": "acrimony",
       "note": "noun"
     },
@@ -14173,31 +14173,31 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "bf85dd50-f199-50ec-b3a7-3ab3a566d8f2",
-      "zh": "无力",
+      "zh": "无力，虚弱，无效",
       "en": "impotence",
       "note": "noun"
     },
     {
       "id": "5fcb7ac4-3780-52ab-90ad-9618321ef45c",
-      "zh": "贫乏的",
+      "zh": "贫乏的，穷困的",
       "en": "indigent",
       "note": "adjective"
     },
     {
       "id": "36709169-0ba3-5f96-aef5-9c0a4f3d99ec",
-      "zh": "幻灭",
+      "zh": "觉醒，幻灭",
       "en": "disillusion",
       "note": "noun"
     },
     {
       "id": "f38660fe-f396-558c-85e3-b88dc75d737a",
-      "zh": "海草",
+      "zh": "海草，海藻",
       "en": "seaweed",
       "note": "noun"
     },
     {
       "id": "4f477046-8198-50f0-8017-368513c67eb4",
-      "zh": "曲折",
+      "zh": "曲折，断裂",
       "en": "crippling",
       "note": "noun"
     },
@@ -14215,13 +14215,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "2e3c0740-7b91-5232-84f3-c445cf150d46",
-      "zh": "小束状的",
+      "zh": "小束状的，细微的",
       "en": "wispy",
       "note": "adjective"
     },
     {
       "id": "9cddfd05-da14-594d-ae3f-d74a9c5f8bdc",
-      "zh": "说教",
+      "zh": "说教，训诫",
       "en": "homily",
       "note": "noun"
     },
@@ -14233,109 +14233,109 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "fe285367-9d86-5e60-83db-8e3337695429",
-      "zh": "使醉",
+      "zh": "使醉，沉醉状态",
       "en": "intoxication",
       "note": "noun"
     },
     {
       "id": "efc1f885-91a6-5771-93ae-69bad47af6b8",
-      "zh": "内地",
+      "zh": "内地，腹地",
       "en": "hinterland",
       "note": "noun"
     },
     {
       "id": "e687cf15-8f07-554e-a433-9b2bf4d26d92",
-      "zh": "不肥沃的",
+      "zh": "不肥沃的，不毛的",
       "en": "infertile",
       "note": "adjective"
     },
     {
       "id": "9df85240-8e01-5a32-97d8-c523a1f98615",
-      "zh": "令人不快的",
+      "zh": "厌恶的，不合意的",
       "en": "disagreeable",
       "note": "adjective"
     },
     {
       "id": "642bfe7d-8f5b-5a57-8ce9-c00231713da2",
-      "zh": "脾脏",
+      "zh": "脾脏，坏脾气",
       "en": "spleen",
       "note": "noun"
     },
     {
       "id": "656b75a5-8efa-5edf-a18f-3ea20ac77d5b",
-      "zh": "自我中心",
+      "zh": "自我中心，任性",
       "en": "selfishness",
       "note": "noun"
     },
     {
       "id": "c3978bf3-7f4c-542a-a224-683c66fcd446",
-      "zh": "冷却",
+      "zh": "冷却，冷藏，冷冻",
       "en": "refrigeration",
       "note": "noun"
     },
     {
       "id": "e189bdac-0dc2-5d0a-82e6-efb286bc18f6",
-      "zh": "小号吹奏者",
+      "zh": "小号吹奏者，号兵",
       "en": "trumpeter",
       "note": "noun"
     },
     {
       "id": "8a44abbf-0111-5539-97d6-09bef7fabefb",
-      "zh": "阴湿的",
+      "zh": "阴湿的，潮湿的",
       "en": "dank",
       "note": "adjective"
     },
     {
       "id": "70585c8f-c9a8-5ee9-8bc9-2d374679debc",
-      "zh": "弃权",
+      "zh": "放弃，弃权",
       "en": "disclaim",
       "note": "verb"
     },
     {
       "id": "0742f183-e495-5b3e-8044-234c3040dbb5",
-      "zh": "紧缩的",
+      "zh": "简洁的，紧缩的",
       "en": "succinct",
       "note": "adjective"
     },
     {
       "id": "f66fcdaf-ca77-5e33-8124-0b4eb277aaf6",
-      "zh": "优势",
+      "zh": "优势，多数",
       "en": "preponderance",
       "note": "noun"
     },
     {
       "id": "2a988532-6a65-5bf8-8043-dce7c1de35d1",
-      "zh": "造成伤害的",
+      "zh": "有害的",
       "en": "deleterious",
       "note": "adjective"
     },
     {
       "id": "57b77934-c942-51bb-816f-d02d2a3217ea",
-      "zh": "结帐台",
+      "zh": "结帐台，检验",
       "en": "checkout",
       "note": "noun"
     },
     {
       "id": "22d310f5-c5e1-5975-80ff-1b8ff4e05e59",
-      "zh": "熟悉的",
+      "zh": "熟悉的，亲近的",
       "en": "conversant",
       "note": "adjective"
     },
     {
       "id": "9971058a-5b6f-5918-84a5-6966b38f7629",
-      "zh": "强制的",
+      "zh": "强制的，强迫的",
       "en": "forcible",
       "note": "adjective"
     },
     {
       "id": "169fdc90-d258-5454-9d93-c0f53e3313f2",
-      "zh": "辛苦",
+      "zh": "辛苦，苦心，工夫",
       "en": "painstaking",
       "note": "noun"
     },
     {
       "id": "3350b471-dee3-54d8-b86d-95e358173186",
-      "zh": "失礼的",
+      "zh": "失礼的，无礼的",
       "en": "disrespectful",
       "note": "adjective"
     },
@@ -14359,7 +14359,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "9dbaead5-5563-5d3e-a282-06d18c635194",
-      "zh": "使年轻",
+      "zh": "使年轻，使复原",
       "en": "rejuvenate",
       "note": "verb"
     },
@@ -14371,61 +14371,61 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "6890c448-595f-587e-b9a8-ce5dfb17ab06",
-      "zh": "协调的",
+      "zh": "协调的，一致的",
       "en": "congenial",
       "note": "adjective"
     },
     {
       "id": "90fcc7e7-5e90-51ce-a3ce-e1a7c3b1ff82",
-      "zh": "单调",
+      "zh": "单调，平凡，陈腐",
       "en": "platitude",
       "note": "noun"
     },
     {
       "id": "022240ff-66fc-5ba6-aeb8-8b5fb3a2f327",
-      "zh": "粘着的",
+      "zh": "粘着的，粘合剂",
       "en": "adhesive",
       "note": "adjective"
     },
     {
       "id": "7b10375a-643f-5868-9710-26a99fd8284d",
-      "zh": "难受的",
+      "zh": "裁决，审判，审理",
       "en": "trying",
       "note": "adjective"
     },
     {
       "id": "5e79f7c3-55b6-5cbf-94f7-3a6101b518ef",
-      "zh": "校对",
+      "zh": "校对，校勘，整理",
       "en": "collate",
       "note": "verb"
     },
     {
       "id": "7d30cbbe-11f5-5148-8ba2-5cca9ebc1a37",
-      "zh": "浸水",
+      "zh": "浸水，泛滥，淹没",
       "en": "inundate",
       "note": "verb"
     },
     {
       "id": "894522db-8c45-5037-b26a-23178b28551d",
-      "zh": "(堤",
+      "zh": "裂缝，(堤",
       "en": "crevasse",
       "note": "noun"
     },
     {
       "id": "9b06eb6b-a1c5-5aee-ae56-4f6196840009",
-      "zh": "有益健康的",
+      "zh": "卫生的，健康的",
       "en": "healthful",
       "note": "adjective"
     },
     {
       "id": "3b1aa1ea-d646-53e7-893a-7064fdee8404",
-      "zh": "单色画",
+      "zh": "单色画，单色",
       "en": "monochrome",
       "note": "noun"
     },
     {
       "id": "32f10733-6109-5b8a-b204-f4741dcf07f8",
-      "zh": "成酸的",
+      "zh": "成酸的，尖刻的",
       "en": "acidic",
       "note": "adjective"
     },
@@ -14437,13 +14437,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "618184a9-314f-5505-b31a-4e4ee2905ba8",
-      "zh": "重新调整",
+      "zh": "重新调整，再调整",
       "en": "readjust",
       "note": "verb"
     },
     {
       "id": "674d6ca8-ce02-54b8-a366-880c6a043da9",
-      "zh": "租船人",
+      "zh": "租船人，承运人",
       "en": "freighter",
       "note": "noun"
     },
@@ -14455,13 +14455,13 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "bf21d742-fcd4-51a2-9719-8294c9996a66",
-      "zh": "意见不合",
+      "zh": "纠纷，争吵，异议",
       "en": "dissension",
       "note": "noun"
     },
     {
       "id": "ae9f260b-58e2-5ac2-ad07-8a5b2d3bb990",
-      "zh": "蚱蜢",
+      "zh": "蚱蜢，蝗虫",
       "en": "grasshopper",
       "note": "noun"
     },
@@ -14473,25 +14473,25 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "7e8eedca-b551-55db-bc55-ad3d090626df",
-      "zh": "诈取",
+      "zh": "欺骗，骗取，诈取",
       "en": "defraud",
       "note": "verb"
     },
     {
       "id": "a61504de-9ec3-55de-b5b3-eb5b59d702a2",
-      "zh": "外来的",
+      "zh": "外来的，非必要的",
       "en": "extraneous",
       "note": "adjective"
     },
     {
       "id": "e1434701-17dd-5606-b561-1c3ad3787984",
-      "zh": "不屈曲的",
+      "zh": "不屈曲的，顽固的",
       "en": "inflexible",
       "note": "adjective"
     },
     {
       "id": "a90e2cdf-1011-5372-8b81-4dcd9b6d7431",
-      "zh": "桑树",
+      "zh": "桑树，桑椹，桑葚",
       "en": "mulberry",
       "note": "noun"
     },
@@ -14503,7 +14503,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "05c6702a-cb9f-5f93-9c99-1e828270718f",
-      "zh": "闷热的",
+      "zh": "闷热的，粗暴的",
       "en": "sultry",
       "note": "adjective"
     },
@@ -14521,7 +14521,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "3c5703d1-2d9b-5e83-b07d-32330fba8b61",
-      "zh": "不断打扰",
+      "zh": "不断打扰，纠缠",
       "en": "pester",
       "note": "verb"
     },
@@ -14533,7 +14533,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "fbc96924-608a-5b7b-90bd-51226de9d950",
-      "zh": "赤道",
+      "zh": "赤道，中纬线",
       "en": "equator",
       "note": "noun"
     },
@@ -14545,19 +14545,19 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "aff96419-2fcc-50f2-a0f1-dd06d8ce872e",
-      "zh": "容易教的",
+      "zh": "容易教的，温顺的",
       "en": "docile",
       "note": "adjective"
     },
     {
       "id": "4de62d22-76f0-5b9d-bdcd-290e77110680",
-      "zh": "朴素的",
+      "zh": "节俭的，朴素的",
       "en": "frugal",
       "note": "adjective"
     },
     {
       "id": "d92ac62c-b4f0-5566-975d-4664faf41d72",
-      "zh": "小的",
+      "zh": "小的，小型的",
       "en": "diminutive",
       "note": "adjective"
     },
@@ -14569,37 +14569,37 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "7c0dfaa9-d1e5-5276-bca0-296054798607",
-      "zh": "海豚",
+      "zh": "海豚，鼠海豚",
       "en": "porpoise",
       "note": "noun"
     },
     {
       "id": "de9e3524-3998-5aaa-ac52-4772e4a87504",
-      "zh": "华丽",
+      "zh": "华丽，豪勇",
       "en": "gallantry",
       "note": "noun"
     },
     {
       "id": "d6cefbdb-107a-50db-9afa-ef76f76bceef",
-      "zh": "思家的",
+      "zh": "思家的，思乡病的",
       "en": "homesick",
       "note": "adjective"
     },
     {
       "id": "f0c62816-f187-5471-a0f5-cc7ea93a0f53",
-      "zh": "拥挤的",
+      "zh": "拥挤的，堵塞的",
       "en": "congested",
       "note": "adjective"
     },
     {
       "id": "c8b5125a-9fdf-54e0-bbe3-b26212f7f6bf",
-      "zh": "岩石圈",
+      "zh": "岩石圈，陆界",
       "en": "lithosphere",
       "note": "noun"
     },
     {
       "id": "27362e70-700a-5420-9e82-316fdf29a8d3",
-      "zh": "自负的",
+      "zh": "自负的，夸耀的",
       "en": "pretentious",
       "note": "adjective"
     },
@@ -14617,139 +14617,139 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "92c3c9f2-eb1c-59c3-bba0-0360b0ee1025",
-      "zh": "断肢",
+      "zh": "断肢，烟蒂，树桩",
       "en": "stub",
       "note": "noun"
     },
     {
       "id": "7a51e40c-f0b4-5229-94d9-1f2ac18cee64",
-      "zh": "脱水作用",
+      "zh": "脱水，脱水作用",
       "en": "dehydration",
       "note": "noun"
     },
     {
       "id": "0ecceef6-5875-550e-bd59-9489684cdc92",
-      "zh": "混合",
+      "zh": "混合，使微醉",
       "en": "muddle",
       "note": "verb"
     },
     {
       "id": "56f0a8df-1a37-5f46-9eb5-ccb7173e16c8",
-      "zh": "磨擦",
+      "zh": "磨擦，磨损，磨耗",
       "en": "abrasion",
       "note": "noun"
     },
     {
       "id": "cb042d47-796f-522d-b9ab-517c1301dde1",
-      "zh": "粗糙事物",
+      "zh": "粗糙事物，刺耳",
       "en": "harshness",
       "note": "noun"
     },
     {
       "id": "3885b9f5-30cc-558b-bc29-e3e1db6b258b",
-      "zh": "排水设备",
+      "zh": "排水设备，污水",
       "en": "sewerage",
       "note": "noun"
     },
     {
       "id": "46b8339e-9863-5670-8401-3a7fbcc7ee65",
-      "zh": "争吵",
+      "zh": "争吵，口角",
       "en": "squabble",
       "note": "verb"
     },
     {
       "id": "3f4561dd-f22f-5e09-9a81-44bf71043070",
-      "zh": "恭敬的",
+      "zh": "恭敬的，输精管的",
       "en": "deferential",
       "note": "adjective"
     },
     {
       "id": "f87f0065-2f83-517a-8408-85f8dd8bb9df",
-      "zh": "用电视播放",
+      "zh": "用电视播放，播映",
       "en": "televise",
       "note": "verb"
     },
     {
       "id": "17232c51-69d5-52a6-951a-a3f73620a74a",
-      "zh": "适切地",
+      "zh": "适切地，适合地",
       "en": "fittingly",
       "note": "adverb"
     },
     {
       "id": "e996912d-189e-550c-9ac7-15abcb1a1d75",
-      "zh": "音乐剧",
+      "zh": "音乐剧，传奇剧",
       "en": "melodrama",
       "note": "noun"
     },
     {
       "id": "0e0988fd-1cd4-5763-bed3-4cca1a84a873",
-      "zh": "柔软的",
+      "zh": "柔软的，逢迎的",
       "en": "supple",
       "note": "adjective"
     },
     {
       "id": "fcca8562-fadf-561c-8ba5-1122e594e514",
-      "zh": "讨厌的事",
+      "zh": "厌恶，移转，移位",
       "en": "aversion",
       "note": "noun"
     },
     {
       "id": "b1cef71a-c2de-5102-9d35-293b230a6984",
-      "zh": "传送",
+      "zh": "传送，对流，传导",
       "en": "convection",
       "note": "noun"
     },
     {
       "id": "3219d827-5e91-54d2-9735-6e602768ce25",
-      "zh": "气体的",
+      "zh": "气体的，气态的",
       "en": "gaseous",
       "note": "adjective"
     },
     {
       "id": "15fae6f2-fdbe-5d0a-a4bc-1d3c16349f1a",
-      "zh": "粘稠",
+      "zh": "粘稠，粘性，粘度",
       "en": "viscosity",
       "note": "noun"
     },
     {
       "id": "f5af2290-6c32-5c4f-8872-5d95642a2e1e",
-      "zh": "龙卷风",
+      "zh": "龙卷风，暴风",
       "en": "cyclone",
       "note": "noun"
     },
     {
       "id": "7ab39bac-c3b7-5871-a045-7468fe41e738",
-      "zh": "冰的",
+      "zh": "冰的，冰川的",
       "en": "glacial",
       "note": "adjective"
     },
     {
       "id": "4d297de7-0843-56c7-8593-db12f6927706",
-      "zh": "充满激情的",
+      "zh": "狂热的，热烈的",
       "en": "impassioned",
       "note": "adjective"
     },
     {
       "id": "6bf2c79c-4091-5ee6-93ff-f3224c368f94",
-      "zh": "擅自进入",
+      "zh": "侵害，侵入，打扰",
       "en": "trespass",
       "note": "noun"
     },
     {
       "id": "8d7a7c34-4d64-51e3-a52c-1615efa84c8a",
-      "zh": "流汗",
+      "zh": "流汗，努力，出汗",
       "en": "perspiration",
       "note": "noun"
     },
     {
       "id": "80702f1b-8634-5ebe-a562-e6da67c7e682",
-      "zh": "该责备的",
+      "zh": "该责备的，有罪的",
       "en": "culpable",
       "note": "adjective"
     },
     {
       "id": "144e48e1-535b-5f69-808b-cc639b872caa",
-      "zh": "使堕落",
+      "zh": "使堕落，使反常",
       "en": "pervert",
       "note": "verb"
     },
@@ -14761,79 +14761,79 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "bb1a07f6-2420-5e25-8f2a-f7860e2d9a90",
-      "zh": "赝品",
+      "zh": "赝品，仿造，伪装",
       "en": "counterfeit",
       "note": "noun"
     },
     {
       "id": "6504ad7d-21e0-5342-8c38-18bf7c57bc5a",
-      "zh": "冬眠",
+      "zh": "过冬，冬眠，冬蛰",
       "en": "hibernation",
       "note": "noun"
     },
     {
       "id": "66814d2e-da11-52f3-985b-d5777b144646",
-      "zh": "喷出",
+      "zh": "喷出，溅迸，注射",
       "en": "squirt",
       "note": "verb"
     },
     {
       "id": "5f31ad05-9c39-5dbe-9bca-d10dcdd0e95e",
-      "zh": "自然发生",
+      "zh": "自然发生，自生",
       "en": "spontaneity",
       "note": "noun"
     },
     {
       "id": "93741538-3e38-5da4-88ad-1ac39f3e4e03",
-      "zh": "指责",
+      "zh": "指责，谴责，非难",
       "en": "rebuke",
       "note": "noun"
     },
     {
       "id": "1e0cba7e-24ec-56ae-92cd-5f063a62ce3f",
-      "zh": "复印本",
+      "zh": "多种，复写，增多",
       "en": "manifold",
       "note": "noun"
     },
     {
       "id": "e6739031-5d1f-517d-9ea1-5ebec5d11736",
-      "zh": "单调的",
+      "zh": "单调的，无变化的",
       "en": "monotonous",
       "note": "adjective"
     },
     {
       "id": "9d971070-496e-53aa-ab38-8ee81133893b",
-      "zh": "可逆的",
+      "zh": "可逆的，可撤消的",
       "en": "reversible",
       "note": "adjective"
     },
     {
       "id": "37ec3ce9-c8d4-5df3-a1cf-64e4b63f96b3",
-      "zh": "不规则的",
+      "zh": "不规则的，反常的",
       "en": "anomalous",
       "note": "adjective"
     },
     {
       "id": "2f6b8033-3aa1-5441-8be7-0d0cbe1a94b7",
-      "zh": "颂扬",
+      "zh": "颂扬，称赞，吹捧",
       "en": "extol",
       "note": "verb"
     },
     {
       "id": "0940aba1-9cd8-5ada-ba08-b9fdba0fefb8",
-      "zh": "大钉一般的",
+      "zh": "长而尖的，有穗的",
       "en": "spiky",
       "note": "adjective"
     },
     {
       "id": "4717daef-39c7-529d-9648-80149f4efd3a",
-      "zh": "田园诗的",
+      "zh": "田园诗的，牧歌的",
       "en": "idyllic",
       "note": "adjective"
     },
     {
       "id": "83f7c25a-0a4d-50bf-8e0c-7462cf0e7cfe",
-      "zh": "群岛",
+      "zh": "群岛，多岛屿的海",
       "en": "archipelago",
       "note": "noun"
     },
@@ -14845,7 +14845,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "6b1b7c3c-cbd4-5c20-8d3e-726f7f200a61",
-      "zh": "豆类",
+      "zh": "豆类，豆荚",
       "en": "legume",
       "note": "noun"
     },
@@ -14857,91 +14857,91 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "9ae6e56b-7fac-5f3e-ad7b-a32853615ab5",
-      "zh": "吉兆",
+      "zh": "吉兆，占卜，赞助",
       "en": "auspice",
       "note": "noun"
     },
     {
       "id": "ba85eea4-9069-5f4f-b338-cdd59318827b",
-      "zh": "嗅觉的",
+      "zh": "嗅觉的，味道的",
       "en": "olfactory",
       "note": "adjective"
     },
     {
       "id": "68a03632-2e64-5d23-a7f2-0448993bf6d7",
-      "zh": "嘲弄",
+      "zh": "嘲弄，嘲笑",
       "en": "deride",
       "note": "verb"
     },
     {
       "id": "e6e06413-2513-5312-b810-83eb57d7a069",
-      "zh": "伐木",
+      "zh": "伐木，伐木业",
       "en": "lumbering",
       "note": "noun"
     },
     {
       "id": "58ffbe5b-f79e-5e2e-a115-1d99ec88c89d",
-      "zh": "青苔",
+      "zh": "青苔，地衣，苔癣",
       "en": "lichen",
       "note": "noun"
     },
     {
       "id": "68562c8e-8c62-51d1-bb19-f0ece277a175",
-      "zh": "倔强",
+      "zh": "倔强，顽强，棘手",
       "en": "stubbornness",
       "note": "noun"
     },
     {
       "id": "ffab0aa6-f77b-59ae-ae48-b254b726e4f8",
-      "zh": "挣扎",
+      "zh": "挣扎，折腾",
       "en": "flounder",
       "note": "verb"
     },
     {
       "id": "5843cad0-e236-5105-a018-83df72a73a78",
-      "zh": "天蓝色的",
+      "zh": "天蓝色的，蓝宝石",
       "en": "sapphire",
       "note": "adjective"
     },
     {
       "id": "cd9258cb-f813-52fb-81b3-3bfef0f14a48",
-      "zh": "崇敬",
+      "zh": "崇敬，尊崇",
       "en": "revered",
       "note": "verb"
     },
     {
       "id": "67babe3a-52ca-56fa-b5e0-e44b823035f7",
-      "zh": "敲诈",
+      "zh": "勒索，敲诈，强要",
       "en": "extort",
       "note": "verb"
     },
     {
       "id": "b03ab27d-d106-5a7d-a2af-c0f56bd4c37f",
-      "zh": "多余的",
+      "zh": "多余的，过剩的",
       "en": "superfluous",
       "note": "adjective"
     },
     {
       "id": "6e7be351-a91c-5eb6-a814-b08c31986cb5",
-      "zh": "推动",
+      "zh": "推动，激励，驱使",
       "en": "impel",
       "note": "verb"
     },
     {
       "id": "7a790a33-9712-566f-ad00-72828bcddaf2",
-      "zh": "腐蚀剂",
+      "zh": "腐蚀剂，腐蚀性的",
       "en": "caustic",
       "note": "noun"
     },
     {
       "id": "3062bf50-6b9b-53a3-a07a-b2c36ce1875d",
-      "zh": "周围环境",
+      "zh": "周围环境，气氛",
       "en": "ambience",
       "note": "noun"
     },
     {
       "id": "2fffbab7-3e1b-5b43-a040-802337b5c5b8",
-      "zh": "作注解",
+      "zh": "作注解，注释",
       "en": "annotate",
       "note": "verb"
     },
@@ -14959,7 +14959,7 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "56aad576-e337-530a-8e5f-959ac947af48",
-      "zh": "惊惶",
+      "zh": "恐惧，惊惶，忧虑",
       "en": "trepidation",
       "note": "noun"
     },
@@ -14971,43 +14971,43 @@ export const QUESTION_BANKS = {
     },
     {
       "id": "d5d231ad-6267-5334-99e5-8f891b5dd5ed",
-      "zh": "回复",
+      "zh": "回复，故态复萌",
       "en": "relapse",
       "note": "noun"
     },
     {
       "id": "233e3d44-8c3b-5e5a-85d4-deaa920f58d0",
-      "zh": "成就",
+      "zh": "成就，实现",
       "en": "fruition",
       "note": "noun"
     },
     {
       "id": "e52bac6e-9118-5965-9f82-6eb6541fd944",
-      "zh": "万能药",
+      "zh": "万能药，灵丹妙药",
       "en": "panacea",
       "note": "noun"
     },
     {
       "id": "66b03097-fec1-58fd-ac34-8b7b7bd29d5b",
-      "zh": "酵素",
+      "zh": "酵素，发酵，动乱",
       "en": "ferment",
       "note": "noun"
     },
     {
       "id": "b7085c96-0a8a-5b2a-a0bf-09db280d0ff8",
-      "zh": "擦去",
+      "zh": "擦去，抹去，削去",
       "en": "scraping",
       "note": "noun"
     },
     {
       "id": "30a1b197-a9c5-5c22-92fd-12ae140e2502",
-      "zh": "白痴的",
+      "zh": "白痴的，愚蠢的",
       "en": "idiotic",
       "note": "adjective"
     },
     {
       "id": "722ddf93-5c39-5bcb-be3c-5788b0589b53",
-      "zh": "枯萎",
+      "zh": "烧焦，枯萎，拷焦",
       "en": "scorch",
       "note": "noun"
     }

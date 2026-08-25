@@ -57,6 +57,15 @@ export type SoloLeaderboardRecord = {
   completed_at: string;
 };
 
+export type RaceLeaderboardRecord = {
+  id: string;
+  player_one_nickname: string;
+  player_two_nickname: string;
+  winner_seat: 1 | 2;
+  duration_ms: number;
+  completed_at: string;
+};
+
 export type FinalizedRound = {
   accepted: boolean;
   duration_ms: number;
@@ -250,6 +259,16 @@ export async function loadProductionSoloLeaderboard(questionSetSlug: string) {
   });
   if (error) throw error;
   return (data ?? []) as SoloLeaderboardRecord[];
+}
+
+export async function loadProductionRaceLeaderboard(questionSetSlug: string) {
+  const client = getSupabaseGameClient();
+  await ensureAnonymousSession(client);
+  const { data, error } = await client.rpc("get_race_leaderboard", {
+    p_question_set_slug: questionSetSlug,
+  });
+  if (error) throw error;
+  return (data ?? []) as RaceLeaderboardRecord[];
 }
 
 export async function loadProductionRoom(roomId: string): Promise<ProductionRoomSnapshot> {

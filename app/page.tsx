@@ -8,6 +8,7 @@ import {
   useMemo,
   useRef,
   useState,
+  useTransition,
 } from "react";
 import {
   createPracticeRoom,
@@ -16,23 +17,25 @@ import {
   expireGameRoom,
   finishGameLocalRound,
   hasGameConfig,
-  hasSharedSoloLeaderboard,
-  isLocalTestBackend,
+  hasSharedLeaderboard,
   joinGameRoom,
   loadGameRoom,
+  loadRaceLeaderboard,
   loadSoloLeaderboard,
   openGameRound,
   setGameReady,
   startGameRematch,
   subscribeToGameRoom,
   syncGameMatchProgress,
-  type GameSoloRecord,
+  type GameRaceRecord,
   type GameRoomSnapshot,
+  type GameSoloRecord,
 } from "@/lib/game-service";
 import { getQuestionSet, QUESTION_SETS, type QuestionSetSlug } from "@/lib/question-sets";
 
 type RoomStatus = "waiting" | "countdown" | "playing" | "finished" | "expired";
 type RoomMode = "race" | "practice";
+type LeaderboardMode = "solo" | "rival";
 
 type Player = {
   id: string;
@@ -88,11 +91,17 @@ type DropdownOption<T extends string> = {
   description?: string;
 };
 
+type LeaderboardCacheEntry<T> = {
+  records: T[];
+  loadedAt: number;
+};
+
 const QUESTIONS: Question[] = getQuestionSet("cet4")?.questions.slice(0, 6) ?? [];
 
 const SESSION_ROOM = "matching-rivals:active-room";
 const LOCAL_NICKNAME = "matching-rivals:nickname";
 const RUN_CLOCK_PREFIX = "matching-rivals:run-clock:";
+const RECORDS_CACHE_TTL_MS = 30_000;
 
 const NICKNAME_ADJECTIVES = ["Quiet", "Swift", "Cedar", "Silver", "Moss", "Dusk", "Night", "Calm"];
 const NICKNAME_ANIMALS = ["Lynx", "Fox", "Heron", "Otter", "Owl", "Raven", "Koi", "Wolf"];
@@ -148,6 +157,17 @@ function formatTime(milliseconds: number) {
   const minutes = Math.floor(seconds / 60);
   const remainder = seconds % 60;
   return `${minutes ? `${minutes}:` : ""}${minutes ? String(remainder).padStart(2, "0") : remainder}.${String(millisecondsPart).padStart(3, "0")}`;
+}
+
+function formatRecordDate(value: string) {
+  return new Intl.DateTimeFormat("en", {
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).format(new Date(value));
 }
 
 function formatRoomLifetime(milliseconds: number) {
@@ -222,6 +242,7 @@ export default function Home() {
   const [playerId, setPlayerId] = useState("");
   const [formError, setFormError] = useState("");
   const [selectedZh, setSelectedZh] = useState<string | null>(null);
+  const [selectedEn, setSelectedEn] = useState<string | null>(null);
   const [errorPair, setErrorPair] = useState<{ zh: string; en: string } | null>(null);
   const [clock, setClock] = useState(() => Date.now());
   const [runNow, setRunNow] = useState(0);
@@ -232,8 +253,11 @@ export default function Home() {
   const [busy, setBusy] = useState(false);
   const [booting, setBooting] = useState(true);
   const [soloLeaderboard, setSoloLeaderboard] = useState<GameSoloRecord[]>([]);
+  const [raceLeaderboard, setRaceLeaderboard] = useState<GameRaceRecord[]>([]);
   const [soloLeaderboardLoading, setSoloLeaderboardLoading] = useState(false);
+  const [soloLeaderboardRendering, startSoloLeaderboardTransition] = useTransition();
   const [recordsOpen, setRecordsOpen] = useState(false);
+  const [recordsMode, setRecordsMode] = useState<LeaderboardMode>("solo");
   const [recordsQuestionSetSlug, setRecordsQuestionSetSlug] = useState<QuestionSetSlug>("cet4");
   const [resultSyncing, setResultSyncing] = useState(false);
   const errorTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -243,6 +267,63 @@ export default function Home() {
   const refreshTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const refreshInFlightRef = useRef(false);
   const refreshQueuedRef = useRef(false);
+  const soloLeaderboardCacheRef = useRef(new Map<QuestionSetSlug, LeaderboardCacheEntry<GameSoloRecord>>());
+  const soloLeaderboardRequestsRef = useRef(new Map<QuestionSetSlug, Promise<GameSoloRecord[]>>());
+  const raceLeaderboardCacheRef = useRef(new Map<QuestionSetSlug, LeaderboardCacheEntry<GameRaceRecord>>());
+  const raceLeaderboardRequestsRef = useRef(new Map<QuestionSetSlug, Promise<GameRaceRecord[]>>());
+  const forceRecordsRefreshRef = useRef(false);
+
+  const commitSoloLeaderboard = useCallback((records: GameSoloRecord[]) => {
+    startSoloLeaderboardTransition(() => {
+      setSoloLeaderboard(records);
+      setSoloLeaderboardLoading(false);
+    });
+  }, []);
+
+  const commitRaceLeaderboard = useCallback((records: GameRaceRecord[]) => {
+    startSoloLeaderboardTransition(() => {
+      setRaceLeaderboard(records);
+      setSoloLeaderboardLoading(false);
+    });
+  }, []);
+
+  const loadCachedSoloLeaderboard = useCallback((slug: QuestionSetSlug, force = false) => {
+    const cached = soloLeaderboardCacheRef.current.get(slug);
+    if (!force && cached) return Promise.resolve(cached.records);
+
+    const pending = soloLeaderboardRequestsRef.current.get(slug);
+    if (pending) return pending;
+
+    const request = loadSoloLeaderboard(slug)
+      .then((records) => {
+        soloLeaderboardCacheRef.current.set(slug, { records, loadedAt: Date.now() });
+        return records;
+      })
+      .finally(() => {
+        soloLeaderboardRequestsRef.current.delete(slug);
+      });
+    soloLeaderboardRequestsRef.current.set(slug, request);
+    return request;
+  }, []);
+
+  const loadCachedRaceLeaderboard = useCallback((slug: QuestionSetSlug, force = false) => {
+    const cached = raceLeaderboardCacheRef.current.get(slug);
+    if (!force && cached) return Promise.resolve(cached.records);
+
+    const pending = raceLeaderboardRequestsRef.current.get(slug);
+    if (pending) return pending;
+
+    const request = loadRaceLeaderboard(slug)
+      .then((records) => {
+        raceLeaderboardCacheRef.current.set(slug, { records, loadedAt: Date.now() });
+        return records;
+      })
+      .finally(() => {
+        raceLeaderboardRequestsRef.current.delete(slug);
+      });
+    raceLeaderboardRequestsRef.current.set(slug, request);
+    return request;
+  }, []);
 
   const refreshRoom = useCallback(async (roomId: string) => {
     const snapshot = await loadGameRoom(roomId);
@@ -475,22 +556,108 @@ export default function Home() {
         : 0;
 
   useEffect(() => {
-    if (!recordsOpen) return;
+    if (!recordsOpen || recordsMode !== "solo") return;
     let cancelled = false;
-    void loadSoloLeaderboard(recordsQuestionSetSlug)
+    const cached = soloLeaderboardCacheRef.current.get(recordsQuestionSetSlug);
+    if (cached) {
+      setSoloLeaderboard(cached.records);
+      setSoloLeaderboardLoading(false);
+    } else {
+      setSoloLeaderboard([]);
+      setSoloLeaderboardLoading(true);
+    }
+
+    const shouldRefresh = forceRecordsRefreshRef.current
+      || !cached
+      || Date.now() - cached.loadedAt >= RECORDS_CACHE_TTL_MS;
+    forceRecordsRefreshRef.current = false;
+    if (!shouldRefresh) return;
+
+    void loadCachedSoloLeaderboard(recordsQuestionSetSlug, true)
       .then((records) => {
-        if (!cancelled) setSoloLeaderboard(records);
+        if (!cancelled) commitSoloLeaderboard(records);
       })
       .catch(() => {
-        if (!cancelled) setSoloLeaderboard([]);
-      })
-      .finally(() => {
-        if (!cancelled) setSoloLeaderboardLoading(false);
+        if (!cancelled) commitSoloLeaderboard([]);
       });
     return () => {
       cancelled = true;
     };
-  }, [recordsOpen, recordsQuestionSetSlug, room?.status, room?.round]);
+  }, [commitSoloLeaderboard, loadCachedSoloLeaderboard, recordsMode, recordsOpen, recordsQuestionSetSlug]);
+
+  useEffect(() => {
+    if (!recordsOpen || recordsMode !== "rival") return;
+    let cancelled = false;
+    const cached = raceLeaderboardCacheRef.current.get(recordsQuestionSetSlug);
+    if (cached) {
+      setRaceLeaderboard(cached.records);
+      setSoloLeaderboardLoading(false);
+    } else {
+      setRaceLeaderboard([]);
+      setSoloLeaderboardLoading(true);
+    }
+
+    const shouldRefresh = forceRecordsRefreshRef.current
+      || !cached
+      || Date.now() - cached.loadedAt >= RECORDS_CACHE_TTL_MS;
+    forceRecordsRefreshRef.current = false;
+    if (!shouldRefresh) return;
+
+    void loadCachedRaceLeaderboard(recordsQuestionSetSlug, true)
+      .then((records) => {
+        if (!cancelled) commitRaceLeaderboard(records);
+      })
+      .catch(() => {
+        if (!cancelled) commitRaceLeaderboard([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [commitRaceLeaderboard, loadCachedRaceLeaderboard, recordsMode, recordsOpen, recordsQuestionSetSlug]);
+
+  useEffect(() => {
+    if (booting || room) return;
+    void Promise.allSettled([
+      loadCachedSoloLeaderboard(questionSetSlug),
+      loadCachedRaceLeaderboard(questionSetSlug),
+    ]);
+  }, [booting, loadCachedRaceLeaderboard, loadCachedSoloLeaderboard, questionSetSlug, room]);
+
+  useEffect(() => {
+    if (room) return;
+    let cancelled = false;
+
+    const prefetch = async () => {
+      const orderedSets = [
+        questionSetSlug,
+        ...QUESTION_SETS.map((set) => set.slug).filter((slug) => slug !== questionSetSlug),
+      ];
+      for (const slug of orderedSets) {
+        if (cancelled) return;
+        try {
+          if (mode === "practice") await loadCachedSoloLeaderboard(slug);
+          else await loadCachedRaceLeaderboard(slug);
+        } catch {
+          // Opening the dialog will retry a failed background request.
+        }
+      }
+    };
+
+    const startPrefetch = () => void prefetch();
+    if ("requestIdleCallback" in window) {
+      const idleId = window.requestIdleCallback(startPrefetch, { timeout: 500 });
+      return () => {
+        cancelled = true;
+        window.cancelIdleCallback(idleId);
+      };
+    }
+
+    const timerId = setTimeout(startPrefetch, 120);
+    return () => {
+      cancelled = true;
+      clearTimeout(timerId);
+    };
+  }, [loadCachedRaceLeaderboard, loadCachedSoloLeaderboard, mode, questionSetSlug, room]);
 
   const chineseOrder = useMemo(
     () => seededShuffle(questions, `${room?.code}-${room?.round}-${playerId}-zh`),
@@ -609,22 +776,13 @@ export default function Home() {
     }
   }
 
-  function chooseChinese(questionId: string) {
-    if (!room || room.status !== "playing" || me?.finishedAt || errorPair) return;
-    if (me?.matchedIds.includes(questionId)) return;
-    setSelectedZh((current) => (current === questionId ? null : questionId));
-    setErrorPair(null);
-    setLiveMessage("Chinese word selected. Choose its English match.");
-  }
-
-  function chooseEnglish(questionId: string, eventTime: number) {
+  function resolvePair(chinesePairId: string, englishPairId: string, eventTime: number) {
     if (!room || room.status !== "playing" || !me || me.finishedAt || errorPair) return;
-    if (!selectedZh || me?.matchedIds.includes(questionId)) return;
-    const chinesePairId = selectedZh;
+    if (me.matchedIds.includes(chinesePairId) || me.matchedIds.includes(englishPairId)) return;
     const currentRound = localRoundRef.current && localRoundRef.current.roomId === room.id && localRoundRef.current.round === room.round
       ? localRoundRef.current
       : { roomId: room.id, round: room.round, matchedIds: [...me.matchedIds], mistakes: me.mistakes };
-    const correct = chinesePairId === questionId;
+    const correct = chinesePairId === englishPairId;
 
     if (!correct) {
       const nextRound: LocalRoundOverlay = { ...currentRound, mistakes: currentRound.mistakes + 1 };
@@ -637,12 +795,13 @@ export default function Home() {
               : player),
           }
         : current);
-      setErrorPair({ zh: chinesePairId, en: questionId });
+      setErrorPair({ zh: chinesePairId, en: englishPairId });
       setLiveMessage("Incorrect match. Input is locked for half a second.");
       if (errorTimerRef.current) clearTimeout(errorTimerRef.current);
       errorTimerRef.current = setTimeout(() => {
         setErrorPair(null);
         setSelectedZh(null);
+        setSelectedEn(null);
       }, 500);
       void syncGameMatchProgress(room.id, room.round, nextRound.matchedIds, nextRound.mistakes).catch(() => {
         // The final completion submission contains the full local result.
@@ -667,6 +826,7 @@ export default function Home() {
     };
     localRoundRef.current = nextRound;
     setSelectedZh(null);
+    setSelectedEn(null);
     setErrorPair(null);
     setLiveMessage(complete ? "Set complete. Saving the result." : "Correct match.");
     setRoom((current) => current && current.id === room.id && current.round === room.round
@@ -716,9 +876,34 @@ export default function Home() {
       .finally(() => setResultSyncing(false));
   }
 
+  function chooseChinese(questionId: string, eventTime: number) {
+    if (!room || room.status !== "playing" || me?.finishedAt || errorPair) return;
+    if (me?.matchedIds.includes(questionId)) return;
+    if (selectedEn) {
+      resolvePair(questionId, selectedEn, eventTime);
+      return;
+    }
+    setSelectedEn(null);
+    setSelectedZh((current) => (current === questionId ? null : questionId));
+    setLiveMessage("Chinese word selected. Choose its English match.");
+  }
+
+  function chooseEnglish(questionId: string, eventTime: number) {
+    if (!room || room.status !== "playing" || me?.finishedAt || errorPair) return;
+    if (me?.matchedIds.includes(questionId)) return;
+    if (selectedZh) {
+      resolvePair(selectedZh, questionId, eventTime);
+      return;
+    }
+    setSelectedZh(null);
+    setSelectedEn((current) => (current === questionId ? null : questionId));
+    setLiveMessage("English word selected. Choose its Chinese match.");
+  }
+
   async function startRematch() {
     if (!room || room.status !== "finished" || resultSyncing) return;
     setSelectedZh(null);
+    setSelectedEn(null);
     setErrorPair(null);
     localRoundRef.current = null;
     runClockRef.current = null;
@@ -745,6 +930,7 @@ export default function Home() {
     setFormError("");
     setLiveMessage("");
     setSelectedZh(null);
+    setSelectedEn(null);
     setErrorPair(null);
     setRecordsOpen(false);
     setRunClock(null);
@@ -756,22 +942,60 @@ export default function Home() {
     setFormError("");
   }
 
-  function openRecords(questionSetId: string) {
-    setSoloLeaderboardLoading(true);
-    setRecordsQuestionSetSlug(getQuestionSet(questionSetId)?.slug ?? QUESTION_SETS[0].slug);
+  function openRecords(questionSetId: string, initialMode: LeaderboardMode, forceRefresh = false) {
+    const slug = getQuestionSet(questionSetId)?.slug ?? QUESTION_SETS[0].slug;
+    const cached = initialMode === "solo"
+      ? soloLeaderboardCacheRef.current.get(slug)?.records
+      : raceLeaderboardCacheRef.current.get(slug)?.records;
+    forceRecordsRefreshRef.current = forceRefresh;
+    setSoloLeaderboard(initialMode === "solo" ? (cached as GameSoloRecord[] | undefined) ?? [] : []);
+    setRaceLeaderboard(initialMode === "rival" ? (cached as GameRaceRecord[] | undefined) ?? [] : []);
+    setSoloLeaderboardLoading(!cached);
+    setRecordsMode(initialMode);
+    setRecordsQuestionSetSlug(slug);
     setRecordsOpen(true);
   }
 
+  function selectRecordsMode(nextMode: LeaderboardMode) {
+    if (nextMode === recordsMode) return;
+    const cached = nextMode === "solo"
+      ? soloLeaderboardCacheRef.current.get(recordsQuestionSetSlug)?.records
+      : raceLeaderboardCacheRef.current.get(recordsQuestionSetSlug)?.records;
+    setSoloLeaderboard(nextMode === "solo" ? (cached as GameSoloRecord[] | undefined) ?? [] : []);
+    setRaceLeaderboard(nextMode === "rival" ? (cached as GameRaceRecord[] | undefined) ?? [] : []);
+    setSoloLeaderboardLoading(!cached);
+    setRecordsMode(nextMode);
+  }
+
   function selectRecordsQuestionSet(slug: QuestionSetSlug) {
-    setSoloLeaderboardLoading(true);
+    const cached = recordsMode === "solo"
+      ? soloLeaderboardCacheRef.current.get(slug)?.records
+      : raceLeaderboardCacheRef.current.get(slug)?.records;
+    setSoloLeaderboard(recordsMode === "solo" ? (cached as GameSoloRecord[] | undefined) ?? [] : []);
+    setRaceLeaderboard(recordsMode === "rival" ? (cached as GameRaceRecord[] | undefined) ?? [] : []);
+    setSoloLeaderboardLoading(!cached);
     setRecordsQuestionSetSlug(slug);
   }
+
+  const recordsDialog = recordsOpen ? (
+    <RecordsDialog
+      soloRecords={soloLeaderboard}
+      raceRecords={raceLeaderboard}
+      loading={soloLeaderboardLoading || soloLeaderboardRendering}
+      mode={recordsMode}
+      selectedSetSlug={recordsQuestionSet.slug}
+      shared={hasSharedLeaderboard()}
+      onSelectMode={selectRecordsMode}
+      onSelectSet={selectRecordsQuestionSet}
+      onClose={() => setRecordsOpen(false)}
+    />
+  ) : null;
 
   if (!room || !me) {
     return (
       <>
         <main className="site-shell">
-          <SiteHeader />
+          <SiteHeader onOpenLeaderboard={() => openRecords(questionSetSlug, mode === "practice" ? "solo" : "rival")} />
           <section className="hero" id="top">
           <div className="hero-copy">
             <h1>Find the right word.<br /><em>Train your instinct.</em></h1>
@@ -833,14 +1057,9 @@ export default function Home() {
                   </div>
                 </div>
               ) : (
-                <div className="mode-support-panel">
-                  <div className="mode-support-copy">
-                    <strong>Leaderboard</strong>
-                    <p>See the ten fastest solo finishes.</p>
-                  </div>
-                  <div className="mode-support-row is-solo-action">
-                    <button type="button" onClick={() => openRecords(questionSetSlug)}>View Records</button>
-                  </div>
+                <div className="solo-mode-note">
+                  <span>Start Instantly</span>
+                  <p>Match all six pairs to complete the round and record your time.</p>
                 </div>
               )}
             </div>
@@ -849,38 +1068,33 @@ export default function Home() {
           </form>
           </section>
         </main>
-        {recordsOpen && (
-          <RecordsDialog
-            records={soloLeaderboard}
-            loading={soloLeaderboardLoading}
-            selectedSetSlug={recordsQuestionSet.slug}
-            shared={hasSharedSoloLeaderboard()}
-            onSelectSet={selectRecordsQuestionSet}
-            onClose={() => setRecordsOpen(false)}
-          />
-        )}
+        {recordsDialog}
       </>
     );
   }
 
   if (room.status === "expired") {
     return (
-      <main className="arena-shell expired-shell">
-        <SiteHeader onExit={exitRoom} />
-        <section className="expired-stage">
-          <p className="eyebrow"><span>Time</span> Room Closed</p>
-          <h1>This room has expired.</h1>
-          <p>Rooms stay active for five minutes. Start a fresh room to play again.</p>
-          <button className="ready-button" type="button" onClick={exitRoom}><span>Return To Lobby</span><b>↗</b></button>
-        </section>
-      </main>
+      <>
+        <main className="arena-shell expired-shell">
+          <SiteHeader onHome={exitRoom} onExit={exitRoom} onOpenLeaderboard={() => openRecords(room.questionSetId, room.mode === "practice" ? "solo" : "rival")} />
+          <section className="expired-stage">
+            <p className="eyebrow"><span>Time</span> Room Closed</p>
+            <h1>This room has expired.</h1>
+            <p>Rooms stay active for five minutes. Start a fresh room to play again.</p>
+            <button className="ready-button" type="button" onClick={exitRoom}><span>Return To Lobby</span><b>↗</b></button>
+          </section>
+        </main>
+        {recordsDialog}
+      </>
     );
   }
 
   if (room.status === "waiting") {
     return (
+      <>
       <main className="arena-shell waiting-shell">
-        <SiteHeader roomCode={room.code} onExit={exitRoom} />
+        <SiteHeader roomCode={room.code} onHome={exitRoom} onExit={exitRoom} onOpenLeaderboard={() => openRecords(room.questionSetId, "rival")} />
         <section className="waiting-stage">
           <div className="waiting-intro">
             <p className="eyebrow"><span>Round {String(room.round).padStart(2, "0")}</span> Ready Room</p>
@@ -920,6 +1134,8 @@ export default function Home() {
           {opponent && me.ready && !opponent.ready && <p className="ready-hint">Ready. Waiting for {opponent.name}…</p>}
         </section>
       </main>
+      {recordsDialog}
+      </>
     );
   }
 
@@ -950,7 +1166,7 @@ export default function Home() {
     return (
       <>
         <main className="result-shell">
-          <SiteHeader roomCode={isPractice ? undefined : room.code} />
+          <SiteHeader roomCode={isPractice ? undefined : room.code} onHome={exitRoom} onOpenLeaderboard={() => openRecords(room.questionSetId, isPractice ? "solo" : "rival", true)} />
           <section className="result-stage">
           <p className="eyebrow"><span>{isPractice ? "Practice" : "Result"}</span> {roomQuestionSet.label} · Round {String(room.round).padStart(2, "0")}</p>
           <div className="result-title">
@@ -964,15 +1180,17 @@ export default function Home() {
                 <div className="place">0{index + 1}</div>
                 <div className="result-avatar">{player.name.slice(0, 1).toUpperCase()}</div>
                 <div className="standing-player"><span>{isPractice ? "Solo" : player.id === playerId ? "You" : "Rival"}</span><h2>{player.name}</h2></div>
-                <div className="standing-stat"><span>Time</span><strong>{player.finishedAt ? formatTime(playerTime(player, room, serverClock)) : "DNF"}</strong></div>
-                <div className="standing-stat"><span>Errors</span><strong>{String(player.mistakes).padStart(2, "0")}</strong></div>
+                <div className="standing-stats">
+                  <div className="standing-stat"><span>Time</span><strong>{player.finishedAt ? formatTime(playerTime(player, room, serverClock)) : "DNF"}</strong></div>
+                  <div className="standing-stat"><span>Errors</span><strong>{String(player.mistakes).padStart(2, "0")}</strong></div>
+                </div>
               </article>
             ))}
           </div>
 
           <div className={`result-actions ${isPractice ? "is-practice" : ""}`}>
             <button className="primary-result" type="button" onClick={startRematch} disabled={busy || resultSyncing}><span>{isPractice ? "Practice Again" : "Play Again"}</span><b>↻</b></button>
-            {isPractice && <button className="secondary-result" type="button" onClick={() => openRecords(room.questionSetId)}>View Records</button>}
+            {isPractice && <button className="secondary-result" type="button" onClick={() => openRecords(room.questionSetId, "solo", true)} disabled={resultSyncing}>View Records</button>}
             <button className="secondary-result" type="button" onClick={exitRoom}>Leave Room</button>
           </div>
           {resultSyncing && <p className="result-note">Saving the exact displayed time…</p>}
@@ -980,16 +1198,7 @@ export default function Home() {
           {!resultSyncing && !isPractice && !isHost && <p className="result-note">Either player can start a rematch.</p>}
           </section>
         </main>
-        {isPractice && recordsOpen && (
-          <RecordsDialog
-            records={soloLeaderboard}
-            loading={soloLeaderboardLoading}
-            selectedSetSlug={recordsQuestionSet.slug}
-            shared={hasSharedSoloLeaderboard()}
-            onSelectSet={selectRecordsQuestionSet}
-            onClose={() => setRecordsOpen(false)}
-          />
-        )}
+        {recordsDialog}
       </>
     );
   }
@@ -997,7 +1206,7 @@ export default function Home() {
   return (
     <main className="game-shell">
       <header className="game-header">
-        <div className="compact-brand"><BrandIcon compact /><strong>Matching Rivals</strong></div>
+        <button className="compact-brand" type="button" onClick={exitRoom} aria-label="Return To Matching Rivals Home"><BrandIcon compact /><strong>Matching Rivals</strong></button>
         <div className="round-label">{room.mode === "practice" ? "Practice" : `Round ${String(room.round).padStart(2, "0")}`} <i /> {roomQuestionSet.label}{room.mode === "race" ? ` · Room ${room.code}` : ""}</div>
         <div className="game-tools">
           <div className="game-timer"><span>Time</span><strong>{formatTime(localPlayerTime)}</strong></div>
@@ -1013,7 +1222,7 @@ export default function Home() {
 
       <section className="match-stage">
         <div className="match-heading">
-          <div><p className="eyebrow"><span>{room.mode === "practice" ? "Practice" : "Match"}</span> {roomQuestionSet.label} · Chinese First, Then English</p><h1>{room.mode === "practice" ? "Complete the set at your pace." : "Find every matching pair."}</h1></div>
+          <div><p className="eyebrow"><span>{room.mode === "practice" ? "Practice" : "Match"}</span> {roomQuestionSet.label} · Choose Either Side</p><h1>{room.mode === "practice" ? "Complete the set at your pace." : "Find every matching pair."}</h1></div>
           <div className="match-status"><strong>{me.progress}/{questions.length}</strong><span>Complete</span></div>
         </div>
 
@@ -1030,8 +1239,9 @@ export default function Home() {
                   key={question.id}
                   className={`word-card ${matched ? "matched" : ""} ${selected ? "selected" : ""} ${failed ? "failed" : ""}`}
                   disabled={matched || Boolean(errorPair)}
-                  onClick={() => chooseChinese(question.id)}
+                  onClick={(event) => chooseChinese(question.id, event.timeStamp)}
                   aria-pressed={selected}
+                  title={question.zh}
                 >
                   <span className="word-index">{String(index + 1).padStart(2, "0")}</span>
                   <strong>{question.zh}</strong>
@@ -1047,14 +1257,17 @@ export default function Home() {
             <div className="column-label"><span>EN</span>English</div>
             {englishOrder.map((question, index) => {
               const matched = me.matchedIds.includes(question.id);
+              const selected = selectedEn === question.id;
               const failed = errorPair?.en === question.id;
               return (
                 <button
                   type="button"
                   key={question.id}
-                  className={`word-card ${matched ? "matched" : ""} ${failed ? "failed" : ""}`}
-                  disabled={matched || !selectedZh || Boolean(errorPair)}
+                  className={`word-card ${matched ? "matched" : ""} ${selected ? "selected" : ""} ${failed ? "failed" : ""}`}
+                  disabled={matched || Boolean(errorPair)}
                   onClick={(event) => chooseEnglish(question.id, event.timeStamp)}
+                  aria-pressed={selected}
+                  title={question.en}
                 >
                   <span className="word-index">{String.fromCharCode(65 + index)}</span>
                   <strong>{question.en}</strong>
@@ -1077,15 +1290,33 @@ export default function Home() {
   );
 }
 
-function SiteHeader({ roomCode, onExit }: { roomCode?: string; onExit?: () => void }) {
+function SiteHeader({
+  roomCode,
+  onHome,
+  onExit,
+  onOpenLeaderboard,
+}: {
+  roomCode?: string;
+  onHome?: () => void;
+  onExit?: () => void;
+  onOpenLeaderboard?: () => void;
+}) {
+  function returnHome() {
+    if (onHome) {
+      onHome();
+      return;
+    }
+    document.getElementById("top")?.scrollIntoView({ behavior: "smooth" });
+  }
+
   return (
     <nav className="topbar" aria-label="Main Navigation">
-      <a className="brand" href="#top" aria-label="Matching Rivals Home">
+      <button className="brand" type="button" onClick={returnHome} aria-label="Matching Rivals Home">
         <BrandIcon /><span>Matching Rivals</span>
-      </a>
+      </button>
       <div className="nav-actions">
         {roomCode && <span className="nav-room">Room {roomCode}</span>}
-        <span className="demo-pill"><i /> {isLocalTestBackend() ? "Local Test" : "Live Beta"}</span>
+        {onOpenLeaderboard && <button className="nav-leaderboard-button" type="button" onClick={onOpenLeaderboard}>Leaderboard</button>}
         <ThemeToggle />
         {onExit && <button className="text-button" type="button" onClick={onExit}>Exit</button>}
       </div>
@@ -1285,22 +1516,38 @@ function CompositeDropdown<T extends string>({
   );
 }
 
+function LeaderboardLoading() {
+  return (
+    <div className="leaderboard-loading" role="status" aria-live="polite">
+      <p className="sr-only">Loading Records...</p>
+      <div className="leaderboard-skeleton" aria-hidden="true">
+        {Array.from({ length: 10 }, (_, index) => (
+          <div className="leaderboard-skeleton-row" key={index}>
+            <i /><span /><span /><span />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function SoloLeaderboard({ records, loading }: {
   records: GameSoloRecord[];
   loading: boolean;
 }) {
   return (
-    <section className="solo-leaderboard" aria-label="Solo Leaderboard">
-      {loading ? (
-        <p className="leaderboard-empty">Loading Records...</p>
-      ) : records.length ? (
+    <section className="solo-leaderboard" aria-label="Solo Leaderboard" aria-busy={loading}>
+      {loading ? <LeaderboardLoading /> : records.length ? (
         <ol>
           {records.map((record, index) => (
             <li className={index < 3 ? `podium rank-${index + 1}` : ""} key={record.id}>
               <span className="leaderboard-rank">{String(index + 1).padStart(2, "0")}</span>
-              <strong title={record.nickname}>{record.nickname}</strong>
+              <span className="leaderboard-player">
+                <strong title={record.nickname}>{record.nickname}</strong>
+                <small>{formatRecordDate(record.completed_at)}</small>
+              </span>
               <time>{formatTime(record.duration_ms)}</time>
-              <small>{record.mistakes} Err</small>
+              <small className="leaderboard-errors">{record.mistakes} Err</small>
             </li>
           ))}
         </ol>
@@ -1311,38 +1558,71 @@ function SoloLeaderboard({ records, loading }: {
   );
 }
 
+function RaceLeaderboard({ records, loading }: {
+  records: GameRaceRecord[];
+  loading: boolean;
+}) {
+  return (
+    <section className="solo-leaderboard race-leaderboard" aria-label="Rival Leaderboard" aria-busy={loading}>
+      {loading ? <LeaderboardLoading /> : records.length ? (
+        <ol>
+          {records.map((record, index) => {
+            const firstWon = record.winner_seat === 1;
+            return (
+              <li className={index < 3 ? `podium rank-${index + 1}` : ""} key={record.id}>
+                <span className="leaderboard-rank">{String(index + 1).padStart(2, "0")}</span>
+                <span className="race-leaderboard-players">
+                  <span><strong className={firstWon ? "winner" : ""}>{firstWon && <b aria-label="Winner">★</b>}{record.player_one_nickname}</strong><i>vs</i><strong className={!firstWon ? "winner" : ""}>{!firstWon && <b aria-label="Winner">★</b>}{record.player_two_nickname}</strong></span>
+                  <small>{formatRecordDate(record.completed_at)}</small>
+                </span>
+                <time>{formatTime(record.duration_ms)}</time>
+              </li>
+            );
+          })}
+        </ol>
+      ) : (
+        <p className="leaderboard-empty">No rival records yet. Finish the first match.</p>
+      )}
+    </section>
+  );
+}
+
 function RecordsDialog({
-  records,
+  soloRecords,
+  raceRecords,
   loading,
+  mode,
   selectedSetSlug,
   shared,
+  onSelectMode,
   onSelectSet,
   onClose,
 }: {
-  records: GameSoloRecord[];
+  soloRecords: GameSoloRecord[];
+  raceRecords: GameRaceRecord[];
   loading: boolean;
+  mode: LeaderboardMode;
   selectedSetSlug: QuestionSetSlug;
   shared: boolean;
+  onSelectMode: (mode: LeaderboardMode) => void;
   onSelectSet: (slug: QuestionSetSlug) => void;
   onClose: () => void;
 }) {
-  const selectedSet = getQuestionSet(selectedSetSlug) ?? QUESTION_SETS[0];
-
   return (
     <div className="records-modal-layer">
       <button className="records-backdrop" type="button" aria-label="Close Records" onClick={onClose} />
       <section className="records-dialog" role="dialog" aria-modal="true" aria-labelledby="records-title">
         <header>
           <div>
-            <p><span>Solo Records</span></p>
-            <h2 id="records-title">{selectedSet.label} Leaderboard</h2>
+            <p><span>Records</span></p>
+            <h2 id="records-title">Leaderboard</h2>
           </div>
           <button className="records-close" type="button" aria-label="Close Records" onClick={onClose}>×</button>
         </header>
-        <div className="records-summary">
-          <div>
-            <p>{shared ? "Shared across all Matching Rivals players." : "Records stay in this browser until Supabase is configured."}</p>
-            <span>Fastest 10</span>
+        <div className="records-controls">
+          <div className="records-mode-toggle" role="group" aria-label="Leaderboard Mode">
+            <button type="button" className={mode === "solo" ? "active" : ""} aria-pressed={mode === "solo"} onClick={() => onSelectMode("solo")}>Solo</button>
+            <button type="button" className={mode === "rival" ? "active" : ""} aria-pressed={mode === "rival"} onClick={() => onSelectMode("rival")}>Rival</button>
           </div>
           <div className="records-set-picker">
             <span>Question Set</span>
@@ -1356,7 +1636,15 @@ function RecordsDialog({
             />
           </div>
         </div>
-        <SoloLeaderboard records={records} loading={loading} />
+        <div className="records-summary">
+          <div>
+            <p>{mode === "rival" ? "Both rivals are shown. The winner is marked with a star." : "Every finish includes the time it was recorded."}</p>
+            <span>{shared ? "Shared Records" : "Browser Records"}</span>
+          </div>
+        </div>
+        {mode === "solo"
+          ? <SoloLeaderboard records={soloRecords} loading={loading} />
+          : <RaceLeaderboard records={raceRecords} loading={loading} />}
       </section>
     </div>
   );

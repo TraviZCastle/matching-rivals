@@ -6,6 +6,7 @@ import {
   finishProductionLocalRound,
   hasSupabaseConfig,
   joinProductionRoom,
+  loadProductionRaceLeaderboard,
   loadProductionSoloLeaderboard,
   loadProductionRoom,
   openProductionRound,
@@ -14,6 +15,7 @@ import {
   syncProductionMatchProgress,
   subscribeToProductionRoom,
   type ProductionRoomSnapshot,
+  type RaceLeaderboardRecord,
   type SoloLeaderboardRecord,
 } from "@/lib/supabase-game";
 import {
@@ -23,6 +25,7 @@ import {
   expireLocalRoom,
   finishLocalRound,
   joinLocalRoom,
+  loadLocalRaceLeaderboard,
   loadLocalSoloLeaderboard,
   loadLocalRoom,
   openLocalRound,
@@ -34,6 +37,7 @@ import {
 
 export type GameRoomSnapshot = ProductionRoomSnapshot;
 export type GameSoloRecord = SoloLeaderboardRecord;
+export type GameRaceRecord = RaceLeaderboardRecord;
 
 export function isLocalTestBackend() {
   return process.env.NEXT_PUBLIC_GAME_BACKEND === "local";
@@ -113,7 +117,13 @@ export function loadSoloLeaderboard(questionSetSlug: string) {
     : loadLocalSoloLeaderboard(questionSetSlug);
 }
 
-export function hasSharedSoloLeaderboard() {
+export function loadRaceLeaderboard(questionSetSlug: string) {
+  return hasSupabaseConfig()
+    ? loadProductionRaceLeaderboard(questionSetSlug)
+    : loadLocalRaceLeaderboard(questionSetSlug);
+}
+
+export function hasSharedLeaderboard() {
   return hasSupabaseConfig();
 }
 
