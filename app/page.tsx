@@ -102,6 +102,7 @@ const SESSION_ROOM = "matching-rivals:active-room";
 const LOCAL_NICKNAME = "matching-rivals:nickname";
 const RUN_CLOCK_PREFIX = "matching-rivals:run-clock:";
 const RECORDS_CACHE_TTL_MS = 30_000;
+const ROOM_REQUEST_RETRY_DELAYS_MS = [0, 180, 600] as const;
 
 const NICKNAME_ADJECTIVES = ["Quiet", "Swift", "Cedar", "Silver", "Moss", "Dusk", "Night", "Calm"];
 const NICKNAME_ANIMALS = ["Lynx", "Fox", "Heron", "Otter", "Owl", "Raven", "Koi", "Wolf"];
@@ -232,12 +233,40 @@ function friendlyGameError(error: unknown) {
   return "Something went wrong. Please try again.";
 }
 
+function isTerminalRoomError(error: unknown) {
+  const message = error instanceof Error ? error.message : String(error);
+  return [
+    "room_not_found",
+    "room_full",
+    "room_not_joinable",
+    "room_expired",
+    "invalid_nickname",
+    "authentication_required",
+  ].some((code) => message.includes(code));
+}
+
+async function withRoomRequestRetry<T>(request: () => Promise<T>) {
+  let lastError: unknown;
+  for (const delay of ROOM_REQUEST_RETRY_DELAYS_MS) {
+    if (delay) await new Promise((resolve) => window.setTimeout(resolve, delay));
+    try {
+      return await request();
+    } catch (error) {
+      lastError = error;
+      if (isTerminalRoomError(error)) throw error;
+    }
+  }
+  throw lastError;
+}
+
 export default function Home() {
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
   const [mode, setMode] = useState<RoomMode>("race");
   const [questionSetSlug, setQuestionSetSlug] = useState<QuestionSetSlug>("cet4");
   const [room, setRoom] = useState<Room | null>(null);
+  const [pendingRoomId, setPendingRoomId] = useState<string | null>(null);
+  const [joiningRoom, setJoiningRoom] = useState(false);
   const [questions, setQuestions] = useState<Question[]>(QUESTIONS);
   const [playerId, setPlayerId] = useState("");
   const [formError, setFormError] = useState("");
@@ -325,11 +354,13 @@ export default function Home() {
     return request;
   }, []);
 
-  const refreshRoom = useCallback(async (roomId: string) => {
-    const snapshot = await loadGameRoom(roomId);
+  const applyRoomSnapshot = useCallback((snapshot: GameRoomSnapshot) => {
     const mapped = mapGameSnapshot(snapshot);
     const localRound = localRoundRef.current;
     const currentPlayerId = playerIdRef.current;
+    if (currentPlayerId && !mapped.room.players.some((player) => player.id === currentPlayerId)) {
+      throw new Error("room_not_found");
+    }
     if (localRound && localRound.roomId === mapped.room.id && localRound.round === mapped.room.round) {
       const currentPlayer = mapped.room.players.find((player) => player.id === currentPlayerId);
       if (currentPlayer) {
@@ -351,10 +382,16 @@ export default function Home() {
     const measuredAt = Date.now();
     setRoom(mapped.room);
     setQuestions(mapped.questions);
+    setPendingRoomId(null);
     setServerClockOffset(Date.parse(snapshot.serverNow) - snapshot.clientClockSampledAt);
     setClock(measuredAt);
     return mapped.room;
   }, []);
+
+  const refreshRoom = useCallback(async (roomId: string) => {
+    const snapshot = await withRoomRequestRetry(() => loadGameRoom(roomId));
+    return applyRoomSnapshot(snapshot);
+  }, [applyRoomSnapshot]);
 
   const queueRoomRefresh = useCallback((roomId: string) => {
     refreshQueuedRef.current = true;
@@ -404,10 +441,17 @@ export default function Home() {
 
         const savedRoomId = window.sessionStorage.getItem(SESSION_ROOM);
         if (savedRoomId) {
+          setPendingRoomId(savedRoomId);
           try {
             await refreshRoom(savedRoomId);
-          } catch {
-            window.sessionStorage.removeItem(SESSION_ROOM);
+          } catch (error) {
+            if (isTerminalRoomError(error)) {
+              window.sessionStorage.removeItem(SESSION_ROOM);
+              setPendingRoomId(null);
+              setFormError(friendlyGameError(error));
+            } else {
+              setFormError("Reconnecting to your room. Your place is still reserved.");
+            }
           }
         }
       } catch (error) {
@@ -438,9 +482,11 @@ export default function Home() {
     };
   }, [recordsOpen]);
 
+  const subscribedRoomId = room?.id ?? pendingRoomId;
+
   useEffect(() => {
-    if (!room?.id || !playerId) return;
-    const roomId = room.id;
+    if (!subscribedRoomId || !playerId) return;
+    const roomId = subscribedRoomId;
     let unsubscribe: (() => void) | undefined;
     let cancelled = false;
 
@@ -457,7 +503,14 @@ export default function Home() {
       cancelled = true;
       unsubscribe?.();
     };
-  }, [room?.id, playerId, queueRoomRefresh]);
+  }, [subscribedRoomId, playerId, queueRoomRefresh]);
+
+  useEffect(() => {
+    if (!pendingRoomId || room?.id === pendingRoomId || !playerId) return;
+    queueRoomRefresh(pendingRoomId);
+    const timer = window.setInterval(() => queueRoomRefresh(pendingRoomId), 2_000);
+    return () => window.clearInterval(timer);
+  }, [pendingRoomId, playerId, queueRoomRefresh, room?.id]);
 
   useEffect(() => {
     if (!room || room.status === "finished" || room.status === "expired") {
@@ -670,11 +723,22 @@ export default function Home() {
 
   async function rememberGameRoom(roomId: string) {
     window.sessionStorage.setItem(SESSION_ROOM, roomId);
+    setPendingRoomId(roomId);
     localRoundRef.current = null;
     runClockRef.current = null;
     setRunClock(null);
     setResultSyncing(false);
     await refreshRoom(roomId);
+  }
+
+  function rememberGameSnapshot(snapshot: GameRoomSnapshot) {
+    window.sessionStorage.setItem(SESSION_ROOM, snapshot.room.id);
+    setPendingRoomId(snapshot.room.id);
+    localRoundRef.current = null;
+    runClockRef.current = null;
+    setRunClock(null);
+    setResultSyncing(false);
+    applyRoomSnapshot(snapshot);
   }
 
   function validateName() {
@@ -739,15 +803,17 @@ export default function Home() {
       return;
     }
     setBusy(true);
+    setJoiningRoom(true);
     try {
-      const joinedRoom = await joinGameRoom(code, cleanName);
+      const joinedSnapshot = await withRoomRequestRetry(() => joinGameRoom(code, cleanName));
       setFormError("");
-      await rememberGameRoom(joinedRoom.id);
+      rememberGameSnapshot(joinedSnapshot);
     } catch (error) {
       const message = friendlyGameError(error);
       setFormError(message);
       setLiveMessage(message);
     } finally {
+      setJoiningRoom(false);
       setBusy(false);
     }
   }
@@ -925,6 +991,8 @@ export default function Home() {
     localRoundRef.current = null;
     runClockRef.current = null;
     setRoom(null);
+    setPendingRoomId(null);
+    setJoiningRoom(false);
     setQuestions(selectedQuestionSet.questions.slice(0, 6));
     setCode("");
     setFormError("");
@@ -990,6 +1058,22 @@ export default function Home() {
       onClose={() => setRecordsOpen(false)}
     />
   ) : null;
+
+  if ((joiningRoom || pendingRoomId) && (!room || !me)) {
+    return (
+      <main className="arena-shell connection-shell">
+        <SiteHeader />
+        <section className="connection-stage" role="status" aria-live="polite">
+          <div className="connection-pulse" aria-hidden="true"><i /><i /><i /></div>
+          <p className="eyebrow"><span>Secure Room</span> Live Connection</p>
+          <h1>Connecting Room</h1>
+          <p>{joiningRoom
+            ? "Your place is being confirmed with the rival. Keep this page open."
+            : "Your room is saved. Reconnecting automatically without losing your place."}</p>
+        </section>
+      </main>
+    );
+  }
 
   if (!room || !me) {
     return (

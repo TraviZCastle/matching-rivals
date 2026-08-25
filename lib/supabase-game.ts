@@ -74,6 +74,13 @@ export type FinalizedRound = {
   completion_id: string;
 };
 
+type RawRoomSnapshot = {
+  room: ProductionRoom;
+  players: ProductionPlayer[];
+  questions: ProductionQuestion[];
+  server_now: string;
+};
+
 const globalForSupabase = globalThis as typeof globalThis & {
   matchingRivalsSupabaseClient?: SupabaseClient;
 };
@@ -148,12 +155,14 @@ export async function createProductionPracticeRoom(nickname: string, questionSet
 export async function joinProductionRoom(code: string, nickname: string) {
   const client = getSupabaseGameClient();
   await ensureAnonymousSession(client);
-  const { data, error } = await client.rpc("join_room", {
+  const requestStartedAt = Date.now();
+  const { data, error } = await client.rpc("join_room_snapshot", {
     p_code: code,
     p_nickname: nickname,
   });
+  const requestFinishedAt = Date.now();
   if (error) throw error;
-  return data as ProductionRoom;
+  return normalizeRoomSnapshot(data as RawRoomSnapshot, requestStartedAt, requestFinishedAt);
 }
 
 export async function setProductionReady(roomId: string, ready: boolean) {
@@ -279,14 +288,14 @@ export async function loadProductionRoom(roomId: string): Promise<ProductionRoom
   });
   const requestFinishedAt = Date.now();
   if (error) throw error;
+  return normalizeRoomSnapshot(data as RawRoomSnapshot, requestStartedAt, requestFinishedAt);
+}
 
-  const snapshot = data as {
-    room: ProductionRoom;
-    players: ProductionPlayer[];
-    questions: ProductionQuestion[];
-    server_now: string;
-  };
-
+function normalizeRoomSnapshot(
+  snapshot: RawRoomSnapshot,
+  requestStartedAt: number,
+  requestFinishedAt: number,
+): ProductionRoomSnapshot {
   return {
     room: snapshot.room,
     players: snapshot.players,

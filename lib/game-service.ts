@@ -63,8 +63,10 @@ export function createPracticeRoom(nickname: string, questionSetSlug: string) {
     : createProductionPracticeRoom(nickname, questionSetSlug);
 }
 
-export function joinGameRoom(code: string, nickname: string) {
-  return isLocalTestBackend() ? joinLocalRoom(code, nickname) : joinProductionRoom(code, nickname);
+export async function joinGameRoom(code: string, nickname: string): Promise<GameRoomSnapshot> {
+  if (!isLocalTestBackend()) return joinProductionRoom(code, nickname);
+  const joinedRoom = await joinLocalRoom(code, nickname);
+  return loadLocalRoom(joinedRoom.id);
 }
 
 export function setGameReady(roomId: string, ready: boolean) {

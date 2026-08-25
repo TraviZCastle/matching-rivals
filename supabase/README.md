@@ -7,7 +7,7 @@ This folder contains the first production-backend milestone for Matching Rivals.
 - Anonymous Supabase Auth-compatible user ownership.
 - Rooms, two-player membership, question sets, attempts, and authoritative results.
 - Row Level Security policies that expose a room only to its members.
-- Atomic RPC functions for creating and joining rooms, readying players, opening a round, submitting a match, rematching, and loading one authoritative room snapshot.
+- Atomic RPC functions for creating and joining rooms, readying players, opening a round, submitting a match, rematching, and loading one authoritative room snapshot. Rival joins commit membership and return that complete snapshot in one transaction.
 - Database timestamps for countdowns and finish times, plus a read-only server clock used to correct client display skew.
 - Private Realtime Broadcast triggers for `rooms` and `room_players` with topic-level authorization.
 - The original six Demo pairs as the legacy `starter` question set.
@@ -30,4 +30,4 @@ These values are intentionally absent from source control. The publishable key i
 3. Add the two public environment variables locally and to the production host.
 4. Connect the application through Supabase Auth, RPC, private Realtime Broadcast, and RLS-protected table reads.
 
-Migrations through `202608210009_expand_question_glosses.sql` define the current Matching Rivals backend. The five production banks contain 500 pairs each (2,500 total); the local-first migration adds background progress sync, exact client-visible duration persistence, completion idempotency, and final six-pair validation. Migration 008 adds the shared Rival top-ten records, while migration 009 updates every production Chinese prompt to comma-separated meanings with an eight-character maximum. Anonymous sign-ins and the three Vercel environment scopes are configured.
+Migrations through `202608250010_atomic_room_join.sql` define the current Matching Rivals backend. The five production banks contain 500 pairs each (2,500 total); the local-first migration adds background progress sync, exact client-visible duration persistence, completion idempotency, and final six-pair validation. Migration 008 adds the shared Rival top-ten records, migration 009 updates every production Chinese prompt to comma-separated meanings with an eight-character maximum, and migration 010 prevents half-entered rooms by joining and returning the authoritative snapshot in one transaction. Anonymous sign-ins and the three Vercel environment scopes are configured.

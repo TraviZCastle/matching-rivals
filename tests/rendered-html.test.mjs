@@ -111,7 +111,14 @@ test("ships race, practice, first-finisher, and half-second error interactions",
   assert.match(styles, /\.leaderboard-skeleton-row/);
   assert.match(styles, /\.word-card strong \{[^}]*white-space: nowrap/);
   assert.match(source, /standing-stats/);
+  assert.match(source, /ROOM_REQUEST_RETRY_DELAYS_MS/);
+  assert.match(source, /rememberGameSnapshot/);
+  assert.match(source, /pendingRoomId/);
+  assert.match(source, /Connecting Room/);
+  assert.match(source, /const joinedSnapshot = await withRoomRequestRetry\(\(\) => joinGameRoom/);
+  assert.doesNotMatch(source, /const joinedRoom = await joinGameRoom[\s\S]{0,160}rememberGameRoom\(joinedRoom\.id\)/);
   assert.match(styles, /\.standing-stats \{[^}]*grid-template-columns: 135px 90px/);
+  assert.match(styles, /\.connection-pulse/);
   assert.match(styles, /@media \(max-width: 680px\)[\s\S]*\.standing-stats \{[^}]*grid-column: 2 \/ -1/);
   assert.match(styles, /\.race-leaderboard li/);
   assert.doesNotMatch(styles, /\.records-backdrop[^}]*backdrop-filter/);
@@ -164,6 +171,7 @@ test("includes five disjoint 500-pair banks and randomly selects six pairs per r
   assert.match(service, /hasSupabaseConfig\(\)[\s\S]*loadProductionSoloLeaderboard/);
   assert.match(service, /hasSharedLeaderboard/);
   assert.match(service, /NEXT_PUBLIC_GAME_BACKEND === "local"/);
+  assert.match(service, /const joinedRoom = await joinLocalRoom[\s\S]*return loadLocalRoom\(joinedRoom\.id\)/);
 });
 
 test("includes the Supabase production foundation", async () => {
@@ -200,6 +208,10 @@ test("includes the Supabase production foundation", async () => {
     new URL("../supabase/migrations/202608210009_expand_question_glosses.sql", import.meta.url),
     "utf8",
   );
+  const atomicJoinMigration = await readFile(
+    new URL("../supabase/migrations/202608250010_atomic_room_join.sql", import.meta.url),
+    "utf8",
+  );
 
   assert.match(migration, /enable row level security/i);
   assert.match(migration, /realtime\.broadcast_changes/i);
@@ -212,6 +224,8 @@ test("includes the Supabase production foundation", async () => {
   assert.match(adapter, /window\.sessionStorage/);
   assert.match(adapter, /private: true/);
   assert.match(adapter, /submitProductionMatch/);
+  assert.match(adapter, /join_room_snapshot/);
+  assert.match(adapter, /normalizeRoomSnapshot/);
   assert.match(snapshotMigration, /create or replace function public\.get_room_snapshot/i);
   assert.match(snapshotMigration, /clock_timestamp\(\)/i);
   assert.match(nextMilestoneMigration, /interval '5 minutes'/i);
@@ -249,4 +263,8 @@ test("includes the Supabase production foundation", async () => {
   assert.match(raceLeaderboardMigration, /create or replace function public\.get_race_leaderboard/i);
   assert.match(raceLeaderboardMigration, /limit 10/i);
   assert.equal((glossMigration.match(/^ {2}\('[0-9a-f-]{36}'::uuid,/gm) ?? []).length, 2_500);
+  assert.match(atomicJoinMigration, /create or replace function public\.join_room_snapshot/i);
+  assert.match(atomicJoinMigration, /from public\.join_room\(p_code, p_nickname\)/i);
+  assert.match(atomicJoinMigration, /return public\.get_room_snapshot\(joined_room\.id\)/i);
+  assert.match(atomicJoinMigration, /grant execute on function public\.join_room_snapshot\(text, text\) to authenticated/i);
 });
