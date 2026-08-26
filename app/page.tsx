@@ -101,7 +101,7 @@ type RoomSession = {
   generation: number;
 };
 
-const QUESTIONS: Question[] = getQuestionSet("cet4")?.questions.slice(0, 6) ?? [];
+const QUESTIONS: Question[] = [];
 
 const SESSION_ROOM = "matching-rivals:active-room";
 const LOCAL_NICKNAME = "matching-rivals:nickname";
@@ -1046,7 +1046,7 @@ export default function Home() {
     setRoom(null);
     setPendingRoomId(null);
     setJoiningRoom(false);
-    setQuestions(selectedQuestionSet.questions.slice(0, 6));
+    setQuestions(QUESTIONS);
     setCode("");
     setFormError("");
     setLiveMessage("");

@@ -1,5 +1,3 @@
-import { QUESTION_BANKS } from "@/lib/question-bank-data.generated";
-
 export type QuestionSetSlug = "cet4" | "cet6" | "tem8" | "ielts" | "toefl";
 
 export type QuestionSeed = {
@@ -13,7 +11,6 @@ export type QuestionSetDefinition = {
   slug: QuestionSetSlug;
   label: string;
   description: string;
-  questions: QuestionSeed[];
 };
 
 export const QUESTION_SETS: QuestionSetDefinition[] = [
@@ -21,31 +18,26 @@ export const QUESTION_SETS: QuestionSetDefinition[] = [
     slug: "cet4",
     label: "CET-4",
     description: "college core",
-    questions: [...QUESTION_BANKS.cet4],
   },
   {
     slug: "cet6",
     label: "CET-6",
     description: "advanced college",
-    questions: [...QUESTION_BANKS.cet6],
   },
   {
     slug: "tem8",
     label: "TEM-8",
     description: "English-major core",
-    questions: [...QUESTION_BANKS.tem8],
   },
   {
     slug: "ielts",
     label: "IELTS",
     description: "academic and social",
-    questions: [...QUESTION_BANKS.ielts],
   },
   {
     slug: "toefl",
     label: "TOEFL",
     description: "academic lecture",
-    questions: [...QUESTION_BANKS.toefl],
   },
 ];
 

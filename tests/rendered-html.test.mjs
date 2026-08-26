@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import test from "node:test";
 
 async function renderedHtml() {
@@ -7,8 +7,12 @@ async function renderedHtml() {
 }
 
 async function questionBanks() {
-  const source = await readFile(new URL("../lib/question-bank-data.generated.ts", import.meta.url), "utf8");
-  return JSON.parse(source.slice(source.indexOf("{"), source.lastIndexOf(" as const;")));
+  return JSON.parse(await readFile(new URL("../data/question-banks.generated.json", import.meta.url), "utf8"));
+}
+
+async function localQuestionBanks() {
+  const source = await readFile(new URL("../lib/local-question-bank.generated.ts", import.meta.url), "utf8");
+  return JSON.parse(source.slice(source.indexOf("= ") + 2, source.lastIndexOf(" satisfies")));
 }
 
 test("server-renders the Matching Rivals lobby", async () => {
@@ -137,29 +141,44 @@ test("ships race, practice, first-finisher, and half-second error interactions",
   assert.match(exitRoomSource, /clearTimeout\(refreshTimerRef\.current\)/);
 });
 
-test("includes five disjoint 500-pair banks and randomly selects six pairs per round", async () => {
+test("includes five globally disjoint 25,000-pair banks and randomly selects six pairs per round", async () => {
   const sets = await readFile(new URL("../lib/question-sets.ts", import.meta.url), "utf8");
   const localGame = await readFile(new URL("../lib/local-game.ts", import.meta.url), "utf8");
   const service = await readFile(new URL("../lib/game-service.ts", import.meta.url), "utf8");
   const banks = await questionBanks();
+  const localBanks = await localQuestionBanks();
+  const expectedCounts = { cet4: 4_000, cet6: 4_500, tem8: 5_500, ielts: 5_000, toefl: 6_000 };
+  const html = await renderedHtml();
+  const chunkDirectory = new URL("../.next/static/chunks/", import.meta.url);
+  const chunkNames = (await readdir(chunkDirectory)).filter((name) => name.endsWith(".js"));
+  const localBankChunk = await Promise.all(chunkNames.map(async (name) => ({
+    name,
+    source: await readFile(new URL(name, chunkDirectory), "utf8"),
+  }))).then((chunks) => chunks.find((chunk) => chunk.source.includes(localBanks.cet4[0].id)));
 
   assert.doesNotMatch(sets, /500-word/i);
 
   for (const slug of ["cet4", "cet6", "tem8", "ielts", "toefl"]) {
-    assert.equal(banks[slug].length, 500);
+    assert.equal(banks[slug].length, expectedCounts[slug]);
+    assert.equal(localBanks[slug].length, 500);
+    assert.equal(new Set(banks[slug].map((pair) => pair.zh)).size, expectedCounts[slug]);
     assert.match(sets, new RegExp(`slug: "${slug}"`));
   }
   const allPairs = Object.values(banks).flat();
-  assert.equal(allPairs.length, 2_500);
-  assert.equal(new Set(allPairs.map((pair) => pair.id)).size, 2_500);
-  assert.equal(new Set(allPairs.map((pair) => pair.en.toLowerCase())).size, 2_500);
-  assert.equal(new Set(allPairs.map((pair) => pair.zh)).size, 2_500);
-  assert.ok(allPairs.filter((pair) => pair.zh.includes("，")).length >= 2_000);
+  assert.equal(allPairs.length, 25_000);
+  assert.equal(new Set(allPairs.map((pair) => pair.id)).size, 25_000);
+  assert.equal(new Set(allPairs.map((pair) => pair.en.toLowerCase())).size, 25_000);
+  assert.ok(allPairs.filter((pair) => pair.zh.includes("，")).length >= 15_000);
   assert.ok(allPairs.every((pair) => pair.zh.length <= 8));
-  assert.ok(allPairs.every((pair) => !pair.zh.includes("/")));
+  assert.ok(allPairs.every((pair) => !/[,、/;；\s]/.test(pair.zh)));
+  assert.ok(allPairs.every((pair) => pair.zh.split("，").every((meaning) => /^[\u3400-\u9fff]+$/.test(meaning))));
   assert.ok(allPairs.every((pair) => pair.zh.split("，").length <= 3));
   assert.ok(allPairs.every((pair) => ["noun", "verb", "adjective", "adverb", "phrase"].includes(pair.note)));
-  assert.match(sets, /QUESTION_BANKS/);
+  assert.doesNotMatch(sets, /QUESTION_BANKS|question-bank-data/);
+  assert.match(localGame, /import\("@\/lib\/local-question-bank\.generated"\)/);
+  assert.match(localGame, /ensureLocalQuestionBanks/);
+  assert.ok(localBankChunk, "the local fallback should build as a separate chunk");
+  assert.ok(!html.includes(localBankChunk.name), "the local fallback chunk must not be part of the production entry page");
   assert.match(localGame, /LOCAL_ROOM_LIFETIME_MS = 5 \* 60 \* 1000/);
   assert.match(localGame, /ROUND_PAIR_COUNT = 6/);
   assert.match(localGame, /randomQuestionIds/);
@@ -222,6 +241,10 @@ test("includes the Supabase production foundation", async () => {
     new URL("../supabase/migrations/202608250010_atomic_room_join.sql", import.meta.url),
     "utf8",
   );
+  const expandedBankMigration = await readFile(
+    new URL("../supabase/migrations/202608260011_expand_question_banks_25000.sql", import.meta.url),
+    "utf8",
+  );
 
   assert.match(migration, /enable row level security/i);
   assert.match(migration, /realtime\.broadcast_changes/i);
@@ -279,4 +302,13 @@ test("includes the Supabase production foundation", async () => {
   assert.match(atomicJoinMigration, /from public\.join_room\(p_code, p_nickname\)/i);
   assert.match(atomicJoinMigration, /return public\.get_room_snapshot\(joined_room\.id\)/i);
   assert.match(atomicJoinMigration, /grant execute on function public\.join_room_snapshot\(text, text\) to authenticated/i);
+  assert.equal((expandedBankMigration.match(/^ {2}\('[0-9a-f-]{36}',/gm) ?? []).length, 25_000);
+  assert.match(expandedBankMigration, /'cet4', 2, 'CET-4', true/i);
+  assert.match(expandedBankMigration, /question_pairs_compact_zh_check/i);
+  assert.match(expandedBankMigration, /char_length\(zh\) between 1 and 8/i);
+  assert.match(expandedBankMigration, /question_pairs_en_unique_idx/i);
+  assert.match(expandedBankMigration, /question_pairs_set_zh_unique_idx/i);
+  assert.match(expandedBankMigration, /update public\.solo_records set question_set_id/i);
+  assert.match(expandedBankMigration, /update public\.race_records set question_set_id/i);
+  assert.match(expandedBankMigration, /question_bank_total_invalid/i);
 });

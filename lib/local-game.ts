@@ -6,7 +6,7 @@ import type {
   ProductionRoomSnapshot,
   SoloLeaderboardRecord,
 } from "@/lib/supabase-game";
-import { getQuestionSet } from "@/lib/question-sets";
+import { getQuestionSet, type QuestionSeed, type QuestionSetSlug } from "@/lib/question-sets";
 
 const ROOM_PREFIX = "matching-rivals:local-room:";
 const PLAYER_KEY = "matching-rivals:local-player-id";
@@ -14,6 +14,20 @@ const LEADERBOARD_PREFIX = "matching-rivals:solo-leaderboard:";
 const RACE_LEADERBOARD_PREFIX = "matching-rivals:race-leaderboard:";
 export const LOCAL_ROOM_LIFETIME_MS = 5 * 60 * 1000;
 const ROUND_PAIR_COUNT = 6;
+let localQuestionBanks: Record<QuestionSetSlug, QuestionSeed[]> | null = null;
+
+async function ensureLocalQuestionBanks() {
+  if (localQuestionBanks) return localQuestionBanks;
+  const { LOCAL_QUESTION_BANKS } = await import("@/lib/local-question-bank.generated");
+  localQuestionBanks = LOCAL_QUESTION_BANKS;
+  return localQuestionBanks;
+}
+
+function getLocalQuestionSet(questionSetSlug: string) {
+  const definition = getQuestionSet(questionSetSlug);
+  if (!definition || !localQuestionBanks) return null;
+  return { ...definition, questions: localQuestionBanks[definition.slug] };
+}
 
 function localUserId() {
   const current = window.sessionStorage.getItem(PLAYER_KEY);
@@ -82,7 +96,7 @@ function mutateRoom<T>(roomId: string, mutation: (record: { room: ProductionRoom
 }
 
 function questionsFor(room: ProductionRoom): ProductionQuestion[] {
-  const set = getQuestionSet(room.question_set_id);
+  const set = getLocalQuestionSet(room.question_set_id);
   if (!set) throw new Error("question_set_not_found");
   const byId = new Map(set.questions.map((question) => [question.id, question]));
   const selectedIds = room.selected_pair_ids?.length
@@ -103,7 +117,7 @@ function questionsFor(room: ProductionRoom): ProductionQuestion[] {
 }
 
 function randomQuestionIds(questionSetSlug: string) {
-  const set = getQuestionSet(questionSetSlug);
+  const set = getLocalQuestionSet(questionSetSlug);
   if (!set || set.questions.length < ROUND_PAIR_COUNT) throw new Error("question_set_not_found");
   const questions = [...set.questions];
   for (let index = questions.length - 1; index > 0; index -= 1) {
@@ -182,7 +196,7 @@ function createCode() {
 }
 
 function createLocalRoom(nickname: string, questionSetSlug: string, mode: "race" | "practice") {
-  if (!getQuestionSet(questionSetSlug)) throw new Error("question_set_not_found");
+  if (!getLocalQuestionSet(questionSetSlug)) throw new Error("question_set_not_found");
   const userId = localUserId();
   const now = Date.now();
   const room: ProductionRoom = {
@@ -219,14 +233,17 @@ function createLocalRoom(nickname: string, questionSetSlug: string, mode: "race"
 }
 
 export async function ensureLocalSession() {
+  await ensureLocalQuestionBanks();
   return { id: localUserId() };
 }
 
 export async function createLocalRaceRoom(nickname: string, questionSetSlug: string) {
+  await ensureLocalQuestionBanks();
   return createLocalRoom(nickname, questionSetSlug, "race");
 }
 
 export async function createLocalPracticeRoom(nickname: string, questionSetSlug: string) {
+  await ensureLocalQuestionBanks();
   return createLocalRoom(nickname, questionSetSlug, "practice");
 }
 
@@ -293,6 +310,7 @@ export async function openLocalRound(roomId: string) {
 }
 
 export async function submitLocalMatch(roomId: string, chinesePairId: string, englishPairId: string) {
+  await ensureLocalQuestionBanks();
   return mutateRoom(roomId, (record) => {
     if (record.room.status === "expired") throw new Error("room_expired");
     if (record.room.status !== "playing") throw new Error("room_not_playing");
@@ -332,6 +350,7 @@ export async function syncLocalMatchProgress(
   matchedPairIds: string[],
   mistakes: number,
 ) {
+  await ensureLocalQuestionBanks();
   return mutateRoom(roomId, (record) => {
     if (record.room.status === "expired") throw new Error("room_expired");
     const player = record.players.find((item) => item.user_id === localUserId());
@@ -367,6 +386,7 @@ export async function finishLocalRound(
   durationMs: number,
   completionId: string,
 ) {
+  await ensureLocalQuestionBanks();
   return mutateRoom(roomId, (record) => {
     if (record.room.status === "expired") throw new Error("room_expired");
     if (record.room.round !== round) throw new Error("round_mismatch");
@@ -419,6 +439,7 @@ export async function finishLocalRound(
 }
 
 export async function startLocalRematch(roomId: string) {
+  await ensureLocalQuestionBanks();
   return mutateRoom(roomId, (record) => {
     if (record.room.status !== "finished") throw new Error("room_not_finished");
     const now = Date.now();
@@ -449,6 +470,7 @@ export async function expireLocalRoom(roomId: string) {
 }
 
 export async function loadLocalRoom(roomId: string): Promise<ProductionRoomSnapshot> {
+  await ensureLocalQuestionBanks();
   const found = readRoom(roomId);
   if (!found) throw new Error("room_not_found");
   const record = ensureActive(found);

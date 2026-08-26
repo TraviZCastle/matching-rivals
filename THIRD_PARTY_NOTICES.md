@@ -1,6 +1,6 @@
 # Third-party vocabulary data
 
-The generated question data in `lib/question-bank-data.generated.ts` and `supabase/migrations/202608200005_question_banks.sql` is built from the following open datasets. It is not an official vocabulary list issued by any examination authority.
+The generated question data in `data/question-banks.generated.json`, `lib/local-question-bank.generated.ts`, and the question-bank Supabase migrations is built from the following open datasets. It is not an official vocabulary list issued by any examination authority.
 
 ## ECDICT
 
