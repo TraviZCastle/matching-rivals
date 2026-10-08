@@ -32,6 +32,7 @@ import {
   type GameSoloRecord,
 } from "@/lib/game-service";
 import { getQuestionSet, QUESTION_SETS, type QuestionSetSlug } from "@/lib/question-sets";
+import { completedLeaderboardRun, currentRaceRecordId, currentSoloRecordId, type CompletedLeaderboardRun } from "@/lib/leaderboard-highlight";
 
 type RoomStatus = "waiting" | "countdown" | "playing" | "finished" | "expired";
 type RoomMode = "race" | "practice";
@@ -293,6 +294,8 @@ export default function Home() {
   const [recordsOpen, setRecordsOpen] = useState(false);
   const [recordsMode, setRecordsMode] = useState<LeaderboardMode>("solo");
   const [recordsQuestionSetSlug, setRecordsQuestionSetSlug] = useState<QuestionSetSlug>("cet4");
+  const [completedRun, setCompletedRun] = useState<CompletedLeaderboardRun | null>(null);
+  const completedRunRef = useRef<CompletedLeaderboardRun | null>(null);
   const [resultSyncing, setResultSyncing] = useState(false);
   const errorTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const playerIdRef = useRef("");
@@ -332,11 +335,13 @@ export default function Home() {
 
     const request = loadSoloLeaderboard(slug)
       .then((records) => {
-        soloLeaderboardCacheRef.current.set(slug, { records, loadedAt: Date.now() });
+        if (soloLeaderboardRequestsRef.current.get(slug) === request) {
+          soloLeaderboardCacheRef.current.set(slug, { records, loadedAt: Date.now() });
+        }
         return records;
       })
       .finally(() => {
-        soloLeaderboardRequestsRef.current.delete(slug);
+        if (soloLeaderboardRequestsRef.current.get(slug) === request) soloLeaderboardRequestsRef.current.delete(slug);
       });
     soloLeaderboardRequestsRef.current.set(slug, request);
     return request;
@@ -351,11 +356,13 @@ export default function Home() {
 
     const request = loadRaceLeaderboard(slug)
       .then((records) => {
-        raceLeaderboardCacheRef.current.set(slug, { records, loadedAt: Date.now() });
+        if (raceLeaderboardRequestsRef.current.get(slug) === request) {
+          raceLeaderboardCacheRef.current.set(slug, { records, loadedAt: Date.now() });
+        }
         return records;
       })
       .finally(() => {
-        raceLeaderboardRequestsRef.current.delete(slug);
+        if (raceLeaderboardRequestsRef.current.get(slug) === request) raceLeaderboardRequestsRef.current.delete(slug);
       });
     raceLeaderboardRequestsRef.current.set(slug, request);
     return request;
@@ -384,6 +391,25 @@ export default function Home() {
     const currentPlayerId = playerIdRef.current;
     if (currentPlayerId && !mapped.room.players.some((player) => player.id === currentPlayerId)) {
       throw new Error("room_not_found");
+    }
+    const confirmedRun = completedLeaderboardRun(snapshot);
+    if (confirmedRun && completedRunRef.current?.key !== confirmedRun.key) {
+      completedRunRef.current = confirmedRun;
+      setCompletedRun(confirmedRun);
+      const slug = getQuestionSet(confirmedRun.questionSetSlug)?.slug;
+      if (slug) {
+        // Discard pre-finish reads so an open dialog also receives the saved result.
+        if (confirmedRun.mode === "solo") {
+          soloLeaderboardCacheRef.current.delete(slug);
+          soloLeaderboardRequestsRef.current.delete(slug);
+        } else {
+          raceLeaderboardCacheRef.current.delete(slug);
+          raceLeaderboardRequestsRef.current.delete(slug);
+        }
+      }
+    } else if (!confirmedRun && completedRunRef.current && completedRunRef.current.key !== `${snapshot.room.id}:${snapshot.room.round}`) {
+      completedRunRef.current = null;
+      setCompletedRun(null);
     }
     if (localRound && localRound.roomId === mapped.room.id && localRound.round === mapped.room.round) {
       const currentPlayer = mapped.room.players.find((player) => player.id === currentPlayerId);
@@ -678,7 +704,7 @@ export default function Home() {
     return () => {
       cancelled = true;
     };
-  }, [commitSoloLeaderboard, loadCachedSoloLeaderboard, recordsMode, recordsOpen, recordsQuestionSetSlug]);
+  }, [commitSoloLeaderboard, completedRun, loadCachedSoloLeaderboard, recordsMode, recordsOpen, recordsQuestionSetSlug]);
 
   useEffect(() => {
     if (!recordsOpen || recordsMode !== "rival") return;
@@ -708,7 +734,7 @@ export default function Home() {
     return () => {
       cancelled = true;
     };
-  }, [commitRaceLeaderboard, loadCachedRaceLeaderboard, recordsMode, recordsOpen, recordsQuestionSetSlug]);
+  }, [commitRaceLeaderboard, completedRun, loadCachedRaceLeaderboard, recordsMode, recordsOpen, recordsQuestionSetSlug]);
 
   useEffect(() => {
     if (booting || room) return;
@@ -1102,6 +1128,9 @@ export default function Home() {
     <RecordsDialog
       soloRecords={soloLeaderboard}
       raceRecords={raceLeaderboard}
+      currentRecordId={recordsMode === "solo"
+        ? currentSoloRecordId(soloLeaderboard, completedRun, recordsQuestionSetSlug)
+        : currentRaceRecordId(raceLeaderboard, completedRun, recordsQuestionSetSlug)}
       loading={soloLeaderboardLoading || soloLeaderboardRendering}
       mode={recordsMode}
       selectedSetSlug={recordsQuestionSet.slug}
@@ -1668,19 +1697,20 @@ function LeaderboardLoading() {
   );
 }
 
-function SoloLeaderboard({ records, loading }: {
+function SoloLeaderboard({ records, loading, currentRecordId }: {
   records: GameSoloRecord[];
   loading: boolean;
+  currentRecordId?: string;
 }) {
   return (
     <section className="solo-leaderboard" aria-label="Solo Leaderboard" aria-busy={loading}>
       {loading ? <LeaderboardLoading /> : records.length ? (
         <ol>
           {records.map((record, index) => (
-            <li className={index < 3 ? `podium rank-${index + 1}` : ""} key={record.id}>
+            <li className={`${index < 3 ? `podium rank-${index + 1}` : ""} ${record.id === currentRecordId ? "is-current-run" : ""}`} key={record.id} aria-current={record.id === currentRecordId ? "true" : undefined}>
               <span className="leaderboard-rank">{String(index + 1).padStart(2, "0")}</span>
               <span className="leaderboard-player">
-                <strong title={record.nickname}>{record.nickname}</strong>
+                <span className="leaderboard-player-name"><strong title={record.nickname}>{record.nickname}</strong>{record.id === currentRecordId && <span className="leaderboard-run-badge">This Run</span>}</span>
                 <small>{formatRecordDate(record.completed_at)}</small>
               </span>
               <time>{formatTime(record.duration_ms)}</time>
@@ -1695,9 +1725,10 @@ function SoloLeaderboard({ records, loading }: {
   );
 }
 
-function RaceLeaderboard({ records, loading }: {
+function RaceLeaderboard({ records, loading, currentRecordId }: {
   records: GameRaceRecord[];
   loading: boolean;
+  currentRecordId?: string;
 }) {
   return (
     <section className="solo-leaderboard race-leaderboard" aria-label="Rival Leaderboard" aria-busy={loading}>
@@ -1706,13 +1737,13 @@ function RaceLeaderboard({ records, loading }: {
           {records.map((record, index) => {
             const firstWon = record.winner_seat === 1;
             return (
-              <li className={index < 3 ? `podium rank-${index + 1}` : ""} key={record.id}>
+              <li className={`${index < 3 ? `podium rank-${index + 1}` : ""} ${record.id === currentRecordId ? "is-current-run" : ""}`} key={record.id} aria-current={record.id === currentRecordId ? "true" : undefined}>
                 <span className="leaderboard-rank">{String(index + 1).padStart(2, "0")}</span>
                 <span className="race-leaderboard-players">
                   <span><strong className={firstWon ? "winner" : ""}>{firstWon && <b aria-label="Winner">★</b>}{record.player_one_nickname}</strong><i>vs</i><strong className={!firstWon ? "winner" : ""}>{!firstWon && <b aria-label="Winner">★</b>}{record.player_two_nickname}</strong></span>
                   <small>{formatRecordDate(record.completed_at)}</small>
                 </span>
-                <time>{formatTime(record.duration_ms)}</time>
+                <span className="leaderboard-finish"><time>{formatTime(record.duration_ms)}</time>{record.id === currentRecordId && <span className="leaderboard-run-badge">This Run</span>}</span>
               </li>
             );
           })}
@@ -1727,6 +1758,7 @@ function RaceLeaderboard({ records, loading }: {
 function RecordsDialog({
   soloRecords,
   raceRecords,
+  currentRecordId,
   loading,
   mode,
   selectedSetSlug,
@@ -1737,6 +1769,7 @@ function RecordsDialog({
 }: {
   soloRecords: GameSoloRecord[];
   raceRecords: GameRaceRecord[];
+  currentRecordId?: string;
   loading: boolean;
   mode: LeaderboardMode;
   selectedSetSlug: QuestionSetSlug;
@@ -1780,8 +1813,8 @@ function RecordsDialog({
           </div>
         </div>
         {mode === "solo"
-          ? <SoloLeaderboard records={soloRecords} loading={loading} />
-          : <RaceLeaderboard records={raceRecords} loading={loading} />}
+          ? <SoloLeaderboard records={soloRecords} loading={loading} currentRecordId={currentRecordId} />
+          : <RaceLeaderboard records={raceRecords} loading={loading} currentRecordId={currentRecordId} />}
       </section>
     </div>
   );
