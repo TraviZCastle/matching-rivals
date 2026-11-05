@@ -23,4 +23,13 @@ The complete MIT license is available in the [upstream repository](https://githu
 - Use: TEM-8 vocabulary membership.
 - Data license: [Creative Commons Attribution-ShareAlike 4.0 International](https://github.com/openetymology/OpenEtymology/blob/main/DATA_LICENSE.md).
 
-The generated question-bank data is a transformed subset: entries are filtered, assigned concise ECDICT translations and parts of speech, deduplicated across difficulty banks, and ranked for representative sampling. The generated data file is shared under CC BY-SA 4.0; this notice does not change the licensing of the application source code.
+## Princeton WordNet
+
+- Project: [Princeton WordNet](https://wordnet.princeton.edu/)
+- Distribution used: [NLTK WordNet corpus package](https://github.com/nltk/nltk_data/tree/gh-pages/packages/corpora)
+- Use: identification of single-word person and place instances so proper names can be excluded before bank selection.
+- License: [WordNet 3.0 License](https://wordnet.princeton.edu/license-and-commercial-use).
+
+WordNet 3.0 is Copyright © 2006 by Princeton University. Its license permits use, copying, modification and distribution subject to retaining the copyright notice and disclaimer.
+
+The generated question-bank data is a transformed subset: entries are filtered against the generated proper-name blocklist, assigned concise ECDICT translations and parts of speech, deduplicated across difficulty banks, and ranked for representative sampling. The generated data file is shared under CC BY-SA 4.0; this notice does not change the licensing of the application source code.

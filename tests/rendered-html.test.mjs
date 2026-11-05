@@ -10,6 +10,10 @@ async function questionBanks() {
   return JSON.parse(await readFile(new URL("../data/question-banks.generated.json", import.meta.url), "utf8"));
 }
 
+async function properNameBlocklist() {
+  return JSON.parse(await readFile(new URL("../data/proper-name-blocklist.generated.json", import.meta.url), "utf8"));
+}
+
 async function localQuestionBanks() {
   const source = await readFile(new URL("../lib/local-question-bank.generated.ts", import.meta.url), "utf8");
   return JSON.parse(source.slice(source.indexOf("= ") + 2, source.lastIndexOf(" satisfies")));
@@ -146,6 +150,7 @@ test("includes five globally disjoint 25,000-pair banks and randomly selects six
   const localGame = await readFile(new URL("../lib/local-game.ts", import.meta.url), "utf8");
   const service = await readFile(new URL("../lib/game-service.ts", import.meta.url), "utf8");
   const banks = await questionBanks();
+  const properNames = await properNameBlocklist();
   const localBanks = await localQuestionBanks();
   const expectedCounts = { cet4: 4_000, cet6: 4_500, tem8: 5_500, ielts: 5_000, toefl: 6_000 };
   const html = await renderedHtml();
@@ -165,9 +170,32 @@ test("includes five globally disjoint 25,000-pair banks and randomly selects six
     assert.match(sets, new RegExp(`slug: "${slug}"`));
   }
   const allPairs = Object.values(banks).flat();
+  const properNameWords = new Set(properNames.words);
   assert.equal(allPairs.length, 25_000);
   assert.equal(new Set(allPairs.map((pair) => pair.id)).size, 25_000);
   assert.equal(new Set(allPairs.map((pair) => pair.en.toLowerCase())).size, 25_000);
+  assert.ok(properNames.words.length >= 4_000);
+  assert.equal(
+    allPairs.filter((pair) => properNameWords.has(pair.en.toLowerCase())).length,
+    0,
+  );
+  for (const name of [
+    "alexandria",
+    "cicero",
+    "dakota",
+    "forbes",
+    "goliath",
+    "jonah",
+    "mackenzie",
+    "perth",
+    "roma",
+    "samson",
+    "sutherland",
+    "voltaire",
+    "wollongong",
+  ]) {
+    assert.ok(!allPairs.some((pair) => pair.en.toLowerCase() === name), `${name} must be excluded`);
+  }
   assert.ok(allPairs.filter((pair) => pair.zh.includes("，")).length >= 15_000);
   assert.ok(allPairs.every((pair) => pair.zh.length <= 8));
   assert.ok(allPairs.every((pair) => !/[,、/;；\s]/.test(pair.zh)));
@@ -245,6 +273,10 @@ test("includes the Supabase production foundation", async () => {
     new URL("../supabase/migrations/202608260011_expand_question_banks_25000.sql", import.meta.url),
     "utf8",
   );
+  const properNameMigration = await readFile(
+    new URL("../supabase/migrations/202608270012_remove_proper_names.sql", import.meta.url),
+    "utf8",
+  );
 
   assert.match(migration, /enable row level security/i);
   assert.match(migration, /realtime\.broadcast_changes/i);
@@ -311,4 +343,11 @@ test("includes the Supabase production foundation", async () => {
   assert.match(expandedBankMigration, /update public\.solo_records set question_set_id/i);
   assert.match(expandedBankMigration, /update public\.race_records set question_set_id/i);
   assert.match(expandedBankMigration, /question_bank_total_invalid/i);
+  assert.equal((properNameMigration.match(/^ {2}\('[0-9a-f-]{36}',/gm) ?? []).length, 25_000);
+  assert.match(properNameMigration, /'cet4', 3, 'CET-4', true/i);
+  assert.match(properNameMigration, /13000000-0000-4000-8000-000000000001/i);
+  assert.match(properNameMigration, /12000000-0000-4000-8000-000000000001/i);
+  assert.match(properNameMigration, /update public\.solo_records set question_set_id/i);
+  assert.match(properNameMigration, /update public\.race_records set question_set_id/i);
+  assert.match(properNameMigration, /question_bank_total_invalid/i);
 });

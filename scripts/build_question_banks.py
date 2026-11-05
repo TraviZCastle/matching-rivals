@@ -19,16 +19,19 @@ import re
 import tempfile
 import urllib.request
 import uuid
+import zipfile
 from dataclasses import dataclass
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_OUTPUT = ROOT / "data" / "question-banks.generated.json"
+PROPER_NAME_OUTPUT = ROOT / "data" / "proper-name-blocklist.generated.json"
 LOCAL_OUTPUT = ROOT / "lib" / "local-question-bank.generated.ts"
-SQL_OUTPUT = ROOT / "supabase" / "migrations" / "202608260011_expand_question_banks_25000.sql"
+SQL_OUTPUT = ROOT / "supabase" / "migrations" / "202608270012_remove_proper_names.sql"
 ECDICT_URL = "https://raw.githubusercontent.com/skywind3000/ECDICT/master/ecdict.csv"
 TEM8_URL = "https://raw.githubusercontent.com/openetymology/OpenEtymology/main/TEM8/TEM8.txt"
+WORDNET_URL = "https://raw.githubusercontent.com/nltk/nltk_data/gh-pages/packages/corpora/wordnet.zip"
 SOURCE_CACHE = Path(tempfile.gettempdir()) / "matching-rivals-question-bank-sources"
 NAMESPACE = uuid.UUID("8fc2cde5-2c81-49ad-b3e7-465907673fab")
 SLUGS = ("cet4", "cet6", "tem8", "ielts", "toefl")
@@ -42,11 +45,11 @@ TARGET_COUNTS = {
 }
 LOCAL_SAMPLE_COUNT = 500
 QUESTION_SET_IDS = {
-    "cet4": "12000000-0000-4000-8000-000000000001",
-    "cet6": "12000000-0000-4000-8000-000000000002",
-    "tem8": "12000000-0000-4000-8000-000000000003",
-    "ielts": "12000000-0000-4000-8000-000000000004",
-    "toefl": "12000000-0000-4000-8000-000000000005",
+    "cet4": "13000000-0000-4000-8000-000000000001",
+    "cet6": "13000000-0000-4000-8000-000000000002",
+    "tem8": "13000000-0000-4000-8000-000000000003",
+    "ielts": "13000000-0000-4000-8000-000000000004",
+    "toefl": "13000000-0000-4000-8000-000000000005",
 }
 QUESTION_SET_TITLES = {
     "cet4": "CET-4",
@@ -56,11 +59,11 @@ QUESTION_SET_TITLES = {
     "toefl": "TOEFL",
 }
 PREVIOUS_QUESTION_SET_IDS = {
-    "cet4": "11000000-0000-4000-8000-000000000001",
-    "cet6": "11000000-0000-4000-8000-000000000002",
-    "tem8": "11000000-0000-4000-8000-000000000003",
-    "ielts": "11000000-0000-4000-8000-000000000004",
-    "toefl": "11000000-0000-4000-8000-000000000005",
+    "cet4": "12000000-0000-4000-8000-000000000001",
+    "cet6": "12000000-0000-4000-8000-000000000002",
+    "tem8": "12000000-0000-4000-8000-000000000003",
+    "ielts": "12000000-0000-4000-8000-000000000004",
+    "toefl": "12000000-0000-4000-8000-000000000005",
 }
 TARGET_FREQUENCY = {
     "cet4": 3_500,
@@ -98,7 +101,6 @@ COMPACT_GLOSS_OVERRIDES = {
     "dumbfound": ("惊呆", "愕然"),
     "gibber": ("胡言", "乱语"),
     "idolise": ("崇拜",),
-    "forbes": ("福布斯",),
     "disprove": ("反驳", "证伪"),
     "converter": ("转换器", "变流器"),
     "invalid": ("无效的", "作废的"),
@@ -132,8 +134,58 @@ PROPER_NOUN_MARKERS = (
     "城市名",
     "国家名",
     "州名",
+    "省名",
+    "郡名",
+    "县名",
+    "河名",
+    "山名",
+    "岛名",
+    "海名",
+    "湖名",
+    "港名",
+    "湾名",
+    "人物",
 )
-LOW_VALUE_ENTITY_MARKERS = ("集团", "有限公司", "球队")
+LOW_VALUE_ENTITY_MARKERS = (
+    "有限公司",
+    "公司名",
+    "商标名",
+    "品牌名",
+    "财富强公司",
+    "财富500强",
+    "总部所在地",
+    "著名财经杂志",
+)
+CURATED_PROPER_NAMES = frozenset(
+    {
+        "cicero",
+        "cinderella",
+        "dakota",
+        "dixie",
+        "eros",
+        "forbes",
+        "frankenstein",
+        "goliath",
+        "guinea",
+        "jonah",
+        "lambert",
+        "lucifer",
+        "mackenzie",
+        "maxwell",
+        "medina",
+        "messiah",
+        "nemesis",
+        "pegasus",
+        "reich",
+        "roma",
+        "rutherford",
+        "samson",
+        "sinai",
+        "tarzan",
+        "zion",
+    }
+)
+WORDNET_PROPER_LEXICOGRAPHER_FILES = frozenset({15, 18})
 
 
 @dataclass(frozen=True)
@@ -146,12 +198,12 @@ class Entry:
     collins: int
 
 
-def fetch_text(url: str) -> io.StringIO:
+def fetch_bytes(url: str) -> bytes:
     SOURCE_CACHE.mkdir(parents=True, exist_ok=True)
     suffix = Path(url).suffix or ".txt"
     cache_path = SOURCE_CACHE / f"{hashlib.sha256(url.encode()).hexdigest()[:16]}{suffix}"
     if cache_path.exists():
-        return io.StringIO(cache_path.read_text(encoding="utf-8", errors="replace"), newline="")
+        return cache_path.read_bytes()
 
     content = bytearray()
     expected_size: int | None = None
@@ -176,8 +228,12 @@ def fetch_text(url: str) -> io.StringIO:
             content.extend(chunk)
         if expected_size is None or len(content) >= expected_size:
             cache_path.write_bytes(content)
-            return io.StringIO(bytes(content).decode("utf-8", errors="replace"), newline="")
+            return bytes(content)
     raise RuntimeError(f"Could not download complete source after retries: {url}")
+
+
+def fetch_text(url: str) -> io.StringIO:
+    return io.StringIO(fetch_bytes(url).decode("utf-8", errors="replace"), newline="")
 
 
 def positive_int(value: str | None) -> int | None:
@@ -331,24 +387,133 @@ def load_tem8_words() -> set[str]:
         }
 
 
-def load_entries() -> dict[str, Entry]:
+def common_lemma_forms(word: str) -> set[str]:
+    forms = {word}
+    if len(word) > 4 and word.endswith("ies"):
+        forms.add(word[:-3] + "y")
+    if len(word) > 3 and word.endswith("s"):
+        forms.add(word[:-1])
+    if len(word) > 4 and word.endswith("es"):
+        forms.add(word[:-2])
+    if len(word) > 5 and word.endswith("ied"):
+        forms.add(word[:-3] + "y")
+    elif len(word) > 4 and word.endswith("ed"):
+        forms.update((word[:-2], word[:-1]))
+    if len(word) > 5 and word.endswith("ing"):
+        forms.update((word[:-3], word[:-3] + "e"))
+    return forms
+
+
+def load_wordnet_proper_names() -> set[str]:
+    """Return single-word person/place instances without an ordinary lexical sense."""
+
+    proper_instances: set[str] = set()
+    common_lemmas: set[str] = set()
+    with zipfile.ZipFile(io.BytesIO(fetch_bytes(WORDNET_URL))) as archive:
+        for filename in ("data.noun", "data.verb", "data.adj", "data.adv"):
+            data = archive.read(f"wordnet/{filename}").decode("utf-8", errors="replace")
+            for raw_line in data.splitlines():
+                if not raw_line or not raw_line[0].isdigit():
+                    continue
+                fields = raw_line.split("|", 1)[0].split()
+                lexicographer_file = int(fields[1])
+                word_count = int(fields[3], 16)
+                cursor = 4
+                lemmas: set[str] = set()
+                for _ in range(word_count):
+                    lemma = fields[cursor]
+                    cursor += 2
+                    if re.fullmatch(r"[A-Za-z]{3,18}", lemma):
+                        lemmas.add(lemma.lower())
+                pointer_count = int(fields[cursor])
+                cursor += 1
+                pointers: set[str] = set()
+                for _ in range(pointer_count):
+                    pointers.add(fields[cursor])
+                    cursor += 4
+
+                is_named_instance = (
+                    filename == "data.noun"
+                    and lexicographer_file in WORDNET_PROPER_LEXICOGRAPHER_FILES
+                    and "@i" in pointers
+                )
+                if is_named_instance:
+                    proper_instances.update(lemmas)
+                else:
+                    common_lemmas.update(lemmas)
+
+    proper_only = {
+        word
+        for word in proper_instances
+        if not common_lemma_forms(word).intersection(common_lemmas)
+    }
+    return proper_only | set(CURATED_PROPER_NAMES)
+
+
+def looks_like_unmarked_named_entity(translation: str, definition: str) -> bool:
+    if any(marker in translation for marker in LOW_VALUE_ENTITY_MARKERS):
+        return True
+    if re.search(
+        r"[\[（][^\]）]*(?:首都|城市|港市|地区名|河流|群岛|公国)[^\]）]*[\]）]",
+        translation,
+    ):
+        return True
+
+    first_definition = definition.replace("\\n", "\n").split("\n", 1)[0].strip()
+    if re.match(
+        r"^n\. (?:an? |the )?(?:city|town|village|port|river|lake|island|archipelago|country|republic|kingdom|province|state|county|territory|region|department) (?:in|of|on)\b",
+        first_definition,
+        flags=re.IGNORECASE,
+    ):
+        return True
+    if re.match(r"^n\. (?:the )?(?:capital|chief port) (?:and |of |in )", first_definition, flags=re.IGNORECASE):
+        return True
+    if (
+        re.match(r"^n\. (?!a |an |the )[A-Z]", first_definition)
+        and (
+            " who " in first_definition
+            or re.search(r"\((?:born in )?\d{3,4}(?:-\d{2,4})?\)", first_definition)
+        )
+    ):
+        return True
+    return False
+
+
+def load_ecdict_marked_names() -> set[str]:
+    marked_names: set[str] = set()
+    with fetch_text(ECDICT_URL) as source:
+        for row in csv.DictReader(source):
+            raw_word = (row.get("word") or "").strip()
+            word = raw_word.lower()
+            if not re.fullmatch(r"[a-z]{3,18}", word):
+                continue
+            translation = (row.get("translation") or "").strip()
+            definition = (row.get("definition") or "").strip()
+            if (
+                raw_word != word
+                or any(marker in translation for marker in PROPER_NOUN_MARKERS)
+                or looks_like_unmarked_named_entity(translation, definition)
+            ):
+                marked_names.add(word)
+    return marked_names
+
+
+def load_entries(proper_names: set[str]) -> dict[str, Entry]:
     entries: dict[str, Entry] = {}
     with fetch_text(ECDICT_URL) as source:
         for row in csv.DictReader(source):
             raw_word = (row.get("word") or "").strip()
             word = raw_word.lower()
             translation = (row.get("translation") or "").strip()
+            definition = (row.get("definition") or "").strip()
             row_tags = frozenset((row.get("tag") or "").lower().split())
             row_collins = positive_int(row.get("collins")) or 0
             if (
                 raw_word != word
                 or not re.fullmatch(r"[a-z]{3,18}", word)
+                or word in proper_names
                 or any(marker in translation for marker in PROPER_NOUN_MARKERS)
-                or (
-                    not row_tags
-                    and row_collins == 0
-                    and any(marker in translation for marker in LOW_VALUE_ENTITY_MARKERS)
-                )
+                or looks_like_unmarked_named_entity(translation, definition)
             ):
                 continue
             pos = dominant_pos(row.get("pos") or "", translation, word)
@@ -430,7 +595,7 @@ def build_banks(
                 return False
             selected.append(
                 {
-                    "id": str(uuid.uuid5(NAMESPACE, f"v2:{slug}:{entry.word}")),
+                    "id": str(uuid.uuid5(NAMESPACE, f"v3:{slug}:{entry.word}")),
                     "zh": gloss,
                     "en": entry.word,
                     "note": entry.pos,
@@ -515,7 +680,7 @@ def render_sql(banks: dict[str, list[dict[str, str]]]) -> str:
     )
     set_ids = ", ".join(sql_text(QUESTION_SET_IDS[slug]) + "::uuid" for slug in SLUGS)
     question_sets = ",\n".join(
-        f"  ('{QUESTION_SET_IDS[slug]}'::uuid, '{slug}', 2, '{QUESTION_SET_TITLES[slug]}', true)"
+        f"  ('{QUESTION_SET_IDS[slug]}'::uuid, '{slug}', 3, '{QUESTION_SET_TITLES[slug]}', true)"
         for slug in SLUGS
     )
     record_moves = "\n".join(
@@ -524,7 +689,7 @@ def render_sql(banks: dict[str, list[dict[str, str]]]) -> str:
     )
     return f"""-- Generated by scripts/build_question_banks.py. Do not edit by hand.
 -- Complete banks live in Postgres; each room snapshot still returns only six pairs.
--- Version 1 stays available for existing rooms; new rooms use the active version 2 banks.
+-- Earlier versions stay available for existing rooms; new rooms use the active version 3 banks.
 
 begin;
 
@@ -583,7 +748,7 @@ commit;
 """
 
 
-def validate(banks: dict[str, list[dict[str, str]]]) -> None:
+def validate(banks: dict[str, list[dict[str, str]]], proper_names: set[str]) -> None:
     pairs = [pair for slug in SLUGS for pair in banks[slug]]
     total = sum(TARGET_COUNTS.values())
     if len(pairs) != total:
@@ -597,6 +762,9 @@ def validate(banks: dict[str, list[dict[str, str]]]) -> None:
         raise RuntimeError("English words overlap within or between banks")
     if len({pair["id"] for pair in pairs}) != total:
         raise RuntimeError("Question IDs are not unique")
+    blocked_words = {pair["en"].casefold() for pair in pairs}.intersection(proper_names)
+    if blocked_words:
+        raise RuntimeError(f"Question banks contain proper names: {sorted(blocked_words)[:10]}")
     if any(not valid_gloss(pair["zh"]) for pair in pairs):
         raise RuntimeError("A Chinese card violates the compact gloss format")
     if any(pair["note"] not in {"noun", "verb", "adjective", "adverb", "phrase"} for pair in pairs):
@@ -605,22 +773,37 @@ def validate(banks: dict[str, list[dict[str, str]]]) -> None:
 
 def main() -> None:
     tem8_words = load_tem8_words()
-    entries = load_entries()
+    proper_names = load_wordnet_proper_names() | load_ecdict_marked_names()
+    entries = load_entries(proper_names)
     banks, exact_counts = build_banks(entries, tem8_words)
-    validate(banks)
+    validate(banks, proper_names)
     DATA_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     DATA_OUTPUT.write_text(render_data(banks), encoding="utf-8")
+    PROPER_NAME_OUTPUT.write_text(
+        json.dumps(
+            {
+                "sources": ["Princeton WordNet 3.0", "ECDICT proper-name markers"],
+                "words": sorted(proper_names),
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
     LOCAL_OUTPUT.write_text(render_local_typescript(banks), encoding="utf-8")
     SQL_OUTPUT.write_text(render_sql(banks), encoding="utf-8")
     print(
         json.dumps(
             {
                 "data_output": str(DATA_OUTPUT),
+                "proper_name_output": str(PROPER_NAME_OUTPUT),
                 "local_output": str(LOCAL_OUTPUT),
                 "sql_output": str(SQL_OUTPUT),
                 "banks": {slug: len(banks[slug]) for slug in SLUGS},
                 "exact_source_membership": exact_counts,
                 "total": sum(TARGET_COUNTS.values()),
+                "blocked_proper_names": len(proper_names),
             },
             ensure_ascii=False,
         )
